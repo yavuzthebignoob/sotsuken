@@ -138,7 +138,7 @@ void PlayNRounds(int n){
   dir_e dir;
 	
   for(int i = 0;i < n;i++){
-    writing_file.open("game"+to_string(i)+".txt", ios::out);
+    writing_file.open("./gameValueOut/game"+to_string(i)+".txt", ios::out);
     //cout << "Playing Game: " << i;
     isGameOver = false;
     iTupleSelect = 0;
@@ -181,11 +181,14 @@ void PlayNRounds(int n){
 }
 
 int main(int argc, char* argv[]){
-  srand(time(NULL));
+  time_t seed = time(NULL);
+  time_t const_seed = 1495508584;
+  cout << "seed: " << seed << endl;
+  srand(const_seed);
   init();
-  PlayNRounds(100);
+  PlayNRounds(5);
 
-  cout << TDLearning[100] << endl;
+  // cout << TDLearning[100] << endl;
 	
   return 0;
 }
