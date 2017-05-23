@@ -184,6 +184,7 @@ int main(int argc, char* argv[]){
   time_t seed = time(NULL);
   time_t const_seed = 1495508584;
   cout << "seed: " << seed << endl;
+  cout << "const_seed: " << const_seed << endl;
   srand(const_seed);
   init();
   PlayNRounds(5);
