@@ -1,3 +1,4 @@
 .DS_Store
 ._.DS_Store
-taiwan_cgi/#main.cpp#
+#.gitignore#
+.#.gitignore
