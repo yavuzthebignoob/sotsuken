@@ -1,0 +1,17 @@
+#main.cpp#
+2048.o
+BitBoard2.o
+main.o
+tupleNetwork2.o
+gameValueOut/
+open_src_version2.log
+#2048.h#
+2048.cpp~
+2048.h~
+a.out
+main.cpp~
+pruneEmm.h~
+tuple_network_it_8192.data
+trainingResult(Binary)_8192Appear.txt
+trainingResult(Binary)_16384_8192Appear.txt
+trainingResult(Binary)_before8192.txt
