@@ -1,19 +1,16 @@
 #include <iostream>
 #include <utility>
 #include <string>
+#include <math.h>
 using namespace std;
 
-pair<int, int> hoge(int a, int b) {
-  pair<int, int> t = make_pair(a, b);
-  return t
+void foo(char* a) {
+  cout << a << endl;
 }
 
-template <typename TYPE>
-class CArray {
-  
-};
-
-int main() {
-  pair<int, int> foo = hoge(10, 29);
-  cout << foo.first << ", " << foo.second << endl;
+int main(int argc, char* argv[]) {
+  char *a = argv[1];
+  int num = atoi(argv[2]);
+  cout << a << " " << num << endl;
+  foo(a);
 }
