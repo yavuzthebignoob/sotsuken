@@ -1,3 +1,6 @@
+#include <vector>
+
 class action {
-  double[] getDescription();
+ public:
+  virtual vector<double> getDescription() = 0;
 };
