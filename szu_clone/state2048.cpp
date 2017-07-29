@@ -227,7 +227,7 @@ vector<Action2048> State2048::getPossibleMoves() {
       if (!set[Action2048.RIGHT.id()]) {
 	for (int col2 = 0; col2 < col; col2++) {
 	  if (board[row][col2] > 0) {
-	    canMove[Actino2048.RIGHT.id()] = true;
+	    canMove[Action2048.RIGHT.id()] = true;
 	    moves.push_back(Action2048.RIGHT);
 	    break;
 	  }
