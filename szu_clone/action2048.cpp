@@ -7,20 +7,11 @@ using namespace std;
 // because enum can't inherit class
 
 class Action2048 : public action {
-
-  // SzubertのJavaでは列挙型で実装されていたため，インスタンスを作成する必要がなく，
-  // したがってコンストラクタもprivateだったが，このコードでは列挙型ではなくクラスで
-  // 実装することにしたため，インスタンスを生成できるようにメンバ変数とコンストラクタ
-  // をpublicにしてある
-  
 public:
-  /*
-  static const int UP[] = {0, 0, -1};
-  static const int RIGHT[] = {1, 1, 0};
-  static const int DOWN[] = {2, 0, 0};
-  static const int LEFT[] = {3, -1, 0};
-  */
-  
+  static Action2048 *UP;
+  static Action2048 *RIGHT;
+  static Action2048 *DOWN;
+  static Action2048 *LEFT;  
   int dirRow;
   int dirCol;
   int id;
@@ -47,13 +38,18 @@ int Action2048::getId() {
   return id;
 }
 
-Action2048 UP(0, 0, -1);
-Action2048 RIGHT(1, 1, 0);
-Action2048 DOWN(2, 0, 0);
-Action2048 LEFT(3, -1, 0);
+Action2048 ue(0,0,-1);
+Action2048 migi(1,1,0);
+Action2048 sita(2,0,1);
+Action2048 hidari(3,-1,0);
+
+Action2048* Action2048::UP = &ue;
+Action2048* Action2048::RIGHT = &migi;
+Action2048* Action2048::DOWN = &sita;
+Action2048* Action2048::LEFT = &hidari;
 
 int main() {
-  cout << LEFT.id << " = " << LEFT.getId() << endl;
-  cout << LEFT.dirRow << " = " << LEFT.getDescription()[0] << endl;
-  cout << LEFT.dirCol << " = " << LEFT.getDescription()[1] << endl;
+  cout << Action2048::UP->id << " = " << Action2048::UP->getId() << endl;
+  cout << Action2048::UP->dirRow << " = " << Action2048::UP->getDescription()[0] << endl;
+  cout << Action2048::UP->dirCol << " = " << Action2048::UP->getDescription()[1] << endl;
 }
