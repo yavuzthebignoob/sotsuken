@@ -48,8 +48,10 @@ Action2048* Action2048::RIGHT = &migi;
 Action2048* Action2048::DOWN = &sita;
 Action2048* Action2048::LEFT = &hidari;
 
+/*
 int main() {
   cout << Action2048::UP->id << " = " << Action2048::UP->getId() << endl;
   cout << Action2048::UP->dirRow << " = " << Action2048::UP->getDescription()[0] << endl;
   cout << Action2048::UP->dirCol << " = " << Action2048::UP->getDescription()[1] << endl;
 }
+*/
