@@ -4,3 +4,5 @@ a.out
 sandbox.cpp
 sandbox2.cpp
 sandbox/
+*gch
+*.o
