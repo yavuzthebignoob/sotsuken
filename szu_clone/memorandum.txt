@@ -11,9 +11,9 @@ put/ci/cevo/
 		board/
 			Board.java*
 			BoardPos.java*
-			BoardPosList.java
-			BoardUtils.java
-			RectSize.java
+			BoardPosList.java*
+			BoardUtils.java*
+			RectSize.java*
 		encodings/ntuple/
 			eval/
 				DefaultNTupleEvaluator.java
