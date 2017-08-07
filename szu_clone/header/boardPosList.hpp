@@ -1,9 +1,13 @@
 #include <vector>
-#include "board.hpp"
+#include "boardUtils.hpp"
+using namespace std;
+
+// BoardPosList::toString not implemented for seems not necessary
+// also BoardPosList::hashCode
 
 class BoardPosList {
 private:
-  const vector<BoardPos> positions;
+  vector<BoardPos> positions;
 
 public:
   BoardPosList getAligned();
@@ -17,7 +21,10 @@ private:
   BoardPos getMinCorner();
   
 public:
-  BoardPosList(BoardPos pos[]) {
-    this->positions = pos;
+  BoardPosList(vector<BoardPos> pos) {
+    int size = pos.size();
+    for (int i=0; i<size; i++) {
+      positions.push_back(pos[i]);
+    }
   }
 };

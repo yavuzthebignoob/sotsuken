@@ -4,7 +4,7 @@
 // seems not used in any (Board-concerned) codes
 
 class BoardPos {
-private:
+public:
   static int row;
   static int col;
 
