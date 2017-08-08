@@ -2,34 +2,17 @@
 #include <fstream>
 #include <vector> // using vector instead of list
 #include <math.h>
+#include <random>
 
-// argument parser????
-// random data generator????
+#include "game2048/NTuplePlayer2048.hpp"
+#include "util/summaryStatistics.hpp"
 
 using namespace std;
-
-class NTuplePlayer2048 {
-private:
-  SerializationManager serializer = SerializationManagaerFactory.create(); // pending implementation
-  Game2048 game = new Game2048();
-  NTuples ntuples;
-
-public:
-  NTuplePlayer2048(NTuples ntuples1) {
-    ntuples = ntuples1;
-  }
-
-public:
-  Action2048 chooseAction(State2048 state, vector<Action2048> actions);
-  NTuplePlayer2048 readPlayer(File file);
-  void evaluate(int numGames, randomDataGenerator random);
-  void main
-};
 
 Action2048 NTuplePlayer2048::chooseAction(State2048 state, vector<Action2048> actions) {
   Action2048 bestAction = NULL;
   double bestValue = -1 * INFINITY;
-
+  
   for (int i=0; i<actions.size(); i++) {
     Transition<State2048, Action2048> transition = game.computeTransition(state, action);
     double value = transition.getReward() + ntuples.getValue(transition.getAfterState().getFeatures());
@@ -41,17 +24,18 @@ Action2048 NTuplePlayer2048::chooseAction(State2048 state, vector<Action2048> ac
   return bestAction;
 }
 
-NTuplePlayer2048 NTuplePlayer::readPlayer(char *file) {
+NTuplePlayer2048 NTuplePlayer2048::readPlayer(char *file) {
   NTuples ntuples = serializer.deserializeWrapExceptions(file);
-  NTuplePlayer2048 foo = NTuplePlayer2048(ntuples);
-  return foo;
+  NTuplePlayer2048 res = NTuplePlayer2048(ntuples);
+  return res;
 }
 
-void NTuplePlayer::evaluate(int numGames, randomDataGenerator random) {
+void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
   double wonGames = 0;
-  SummaryStatistics stats = new SummaryStatistics();
+  // implement in util/summaryStatistics
+  SummaryStatistics stats;
   for (int j=0; j<numGames; j++) {
-    pair<int, int> res = game.playGame(player, random); // ????????
+    pair<int, int> res = game.playGame(player, random);
     if (res.second() > State2048.REWARDS[10])
       wonGames += 1.0;
     stats.addValue(res.first());
@@ -62,8 +46,8 @@ void NTuplePlayer::evaluate(int numGames, randomDataGenerator random) {
 }
 
 int main(int argc, char* argv[]) {
-  // argumentParserをC++でどう実装するのかよくわからなかったので普通にコマンドライン引数で
-  // 学習データと試行回数を読み込むことにしました
+  // argumentParserをC++でどう実装するのかよくわからなかったので普通に
+  // コマンドライン引数で学習データと試行回数を読み込むことにしました
   char *path = argv[1];
   ifstream ifs(path);
   if (!ifs) {
@@ -77,6 +61,6 @@ int main(int argc, char* argv[]) {
   }
   
   NTuplePlayer2048 player = readPlayer(path);
-  randomDataGenerator random;
+  mt19937 random;
   player.evaluate(numGames, random);
 }
