@@ -44,7 +44,7 @@ put/ci/cevo/
 		serializers/#
 	rl/
 		agent/functions/
-			RealFunctions.java
+			RealFunctions.java*
 		environment/
 			Action.java*
 			Environment.java*
@@ -52,8 +52,8 @@ put/ci/cevo/
 			Transition.java*
 	util/
 		serialization/#
-		ArrayUtils.java!
-		CollectionUtils.java?
-		Pair.java!
-		RandomFactory.java
+		ArrayUtils.java*
+		CollectionUtils.java*
+		Pair.java!（C++では標準ライブラリで実装されている機能のため）
+		RandomFactory.java*
 		RandomUtils.java*
