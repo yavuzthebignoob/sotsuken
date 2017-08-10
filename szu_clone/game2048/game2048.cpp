@@ -36,7 +36,7 @@ bool Game2048::isTerminalState(State2048 state) {
   return state.isTerminal();
 }
 
-pair<int, int> Game2048::playGame(Player2048 player, mt19937 random) {
+pair<int, int> Game2048::playGame(Player2048 plyr, mt19937 random) {
   int sumRewards = 0;
   State2048 state = sampleInitialStateDistribution(random);
   vector<Action2048> actions = getPossibleActions(state);

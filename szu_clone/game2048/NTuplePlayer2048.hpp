@@ -2,9 +2,10 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector> // using vector instead of list
+#include <vector>
 #include <math.h>
 #include <random>
+#include <string>
 #include "game2048.hpp"
 
 using namespace std;
@@ -22,6 +23,6 @@ public:
 
 public:
   Action2048* chooseAction(State2048 state, vector<Action2048*> actions);
-  NTuplePlayer2048 readPlayer(File file);
+  NTuplePlayer2048 readPlayer(string file);
   void evaluate(int numGames, mt19937 random);
 };

@@ -10,6 +10,6 @@ public:
   double getMean();
   double getStandardDeviation();
 
-private:
+public:
   SummaryStatistics();
 };

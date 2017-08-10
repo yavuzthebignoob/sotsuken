@@ -1,15 +1,15 @@
 #include <iostream>
 #include <fstream>
-#include <vector> // using vector instead of list
+#include <vector>
 #include <math.h>
 #include <random>
-
+#include <utility>
+#include <string>
 #include "game2048/NTuplePlayer2048.hpp"
 #include "util/summaryStatistics.hpp"
-
 using namespace std;
 
-Action2048 NTuplePlayer2048::chooseAction(State2048 state, vector<Action2048> actions) {
+Action2048* NTuplePlayer2048::chooseAction(State2048 state, vector<*Action2048> actions) {
   Action2048 bestAction = NULL;
   double bestValue = -1 * INFINITY;
   
@@ -24,9 +24,9 @@ Action2048 NTuplePlayer2048::chooseAction(State2048 state, vector<Action2048> ac
   return bestAction;
 }
 
-NTuplePlayer2048 NTuplePlayer2048::readPlayer(char *file) {
-  NTuples ntuples = serializer.deserializeWrapExceptions(file);
-  NTuplePlayer2048 res = NTuplePlayer2048(ntuples);
+NTuplePlayer2048 NTuplePlayer2048::readPlayer(stirng file) {
+  // NTuples ntuples = serializer.deserializeWrapExceptions(file);
+  NTuplePlayer2048 res = NTuplePlayer2048(file);
   return res;
 }
 
@@ -35,10 +35,10 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
   // implement in util/summaryStatistics
   SummaryStatistics stats;
   for (int j=0; j<numGames; j++) {
-    pair<int, int> res = game.playGame(player, random);
-    if (res.second() > State2048.REWARDS[10])
+    pair<int, int> res = game.playGame(this, random);
+    if (res.second > State2048::REWARDS[10])
       wonGames += 1.0;
-    stats.addValue(res.first());
+    stats.addValue(res.first);
   }
   cout << "Average score     : " << stats.getMean() << endl;
   cout << "Standard deviation: " << stats.getStandardDeviation() << endl;
@@ -48,7 +48,7 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
 int main(int argc, char* argv[]) {
   // argumentParserをC++でどう実装するのかよくわからなかったので普通に
   // コマンドライン引数で学習データと試行回数を読み込むことにしました
-  char *path = argv[1];
+  string path = argv[1];
   ifstream ifs(path);
   if (!ifs) {
     cout << "Input a valid file path" << endl;
@@ -60,7 +60,8 @@ int main(int argc, char* argv[]) {
     return -1;
   }
   
-  NTuplePlayer2048 player = readPlayer(path);
+  NTuplePlayer2048 player;
+  player = player.readPlayer(path);
   mt19937 random;
   player.evaluate(numGames, random);
 }
