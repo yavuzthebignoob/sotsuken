@@ -3,18 +3,19 @@
 #include <utility>
 #include <math.h>
 #include <random>
-#include "state.h"
-#include "randomUtils.hpp"
+#include "../rl/state.hpp"
+#include "../util/randomUtils.hpp"
+#include "../board/boardUtils.hpp"
+using namespace std;
 
 class State2048 : public State {
 public:
-  static const int SIZE = 4;
-  static const RectSize BOARD_SIZE = new RectSize(SIZE);
-  static const int NUM_INITIAL_LOCATIONS = 2;
-  static const double RANDOM_FOUR_PROB = 0.1;
-
-  static const int SIZE_OF_REWARDS = 17;
-  const int REWARDS[] = { 0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536 };
+  static constexpr int SIZE = 4;
+  static const RectSize BOARD_SIZE;
+  static const int NUM_INITIAL_LOCATIONS;
+  static const double RANDOM_FOUR_PROB;
+  static const int SIZE_OF_REWARDS;
+  static int REWARDS[];
 
 private:
   static int board[SIZE][SIZE];
@@ -48,7 +49,9 @@ public:
   State2048(const State2048 &state) {
     int board[SIZE][SIZE];
     for (int row = 0; row < SIZE; row++) {
-      board[row] = state.board[row].clone; // clone is what?
+      for (int col = 0; col < SIZE; col++) {
+	board[row][col] = state.board[row][col];
+      }
     }
   }
   State2048(double features[16]) {

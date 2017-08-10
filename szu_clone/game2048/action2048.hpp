@@ -1,4 +1,4 @@
-#include "action.h"
+#include "../rl/action.h"
 
 // 'Action2048' is implemented as class instead of enumeration
 // because enum can't inherit class

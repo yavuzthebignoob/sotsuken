@@ -2,7 +2,7 @@
 #include <vector>
 #include <set>
 #include <random>
-#include "action2048.hpp"
+#include "../game2048/action2048.hpp"
 
 class randomUtils {
 public:

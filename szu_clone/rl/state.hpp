@@ -2,5 +2,5 @@
 using namespace std;
 
 class State{
-  vector<double> getFeatures();
+  std::vector<double> getFeatures();
 };

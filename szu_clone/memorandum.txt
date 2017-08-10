@@ -42,9 +42,9 @@ put/ci/cevo/
 		game2048/
 			Action2048.java*
 			Game2048.java*
-			Game2048Board.java
+			Game2048Board.java*
 			NTuplePlayer2048.java*
-			Player2048.java
+			Player2048.java*
 			State2048.java*
 			TDLGame2048.java
 		serializers/#

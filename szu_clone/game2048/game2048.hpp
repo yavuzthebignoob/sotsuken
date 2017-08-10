@@ -4,15 +4,14 @@
 #include <utility>
 #include <vector>
 #include <random>
-#include "../rl/environment.h"
-#include "../rl/transition.hpp"
-#include "action2048.hpp"
+#include "../rl/environment.hpp"
 #include "state2048.hpp"
+#include "player2048.hpp"
 using namespace std;
 
 class Game2048 {
 public:
-  Transition<State2048, Action2048> computeTransition(State2048 state, Action2048 action);
+  Transition<State2048, Action2048> computeTransition(State2048 state, Action2048* action);
   State2048 getNextState(State2048 state, mt19937 random);
   vector<pair<double, State2048> > getPossibleNextStates(State2048 state);
   vector<Action2048> getPossibleActions(State2048 state);

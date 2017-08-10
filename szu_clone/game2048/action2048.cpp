@@ -1,4 +1,4 @@
-#include "header/action2048.hpp"
+#include "action2048.hpp"
 #include <vector>
 #include <iostream>
 using namespace std;

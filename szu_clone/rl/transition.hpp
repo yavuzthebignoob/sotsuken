@@ -1,4 +1,4 @@
-template <typename S, typename A>
+template <class S, class A>
 class Transition {
 public:
   S state;
@@ -11,28 +11,31 @@ private:
 
 public:
   Transition(S state1, A action1, S afterState1, double reward1, bool isTerminal1) {
-    state = state;
+    state = state1;
     action = action1;
     afterState = afterState1;
     reward = reward1;
     isTerminal = isTerminal1;
   }
-  Transition(S state, A action, S afterState, double reward) {
-    Transition(state, action, afterState, reward, false);
+  Transition(S state1, A action1, S afterState1, double reward1) {
+    state = state1;
+    action = action1;
+    afterState = afterState1;
+    reward = reward1;
+    isTerminal = false;
   }
 
 public:
   S getState();
   A getAction();
   S getAfterState();
-  double getreward();
-  bool isTerminal();
+  double getReward();
+  bool getIfTerminal();
 };
 
-template <typename S, typename A>
-S Transition::getState() { return state; }
-A Transition::getAction() { return action; }
-S Transition::getAfterState() { return afterState; }
+template <class S, class A> S Transition<S, A>::getState() { return state; }
+template <class S, class A> A Transition<S, A>::getAction() { return action; }
+template <class S, class A> S Transition<S, A>::getAfterState() { return afterState; }
 
-double Transition::getReward() { return reward; }
-bool Transition::isTerminal() { return isTerminal; }
+template <class S, class A> double Transition<S, A>::getReward() { return reward; }
+template <class S, class A> bool Transition<S, A>::getIfTerminal() { return isTerminal; }
