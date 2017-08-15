@@ -9,12 +9,12 @@
 #include "util/summaryStatistics.hpp"
 using namespace std;
 
-Action2048* NTuplePlayer2048::chooseAction(State2048 state, vector<*Action2048> actions) {
-  Action2048 bestAction = NULL;
+Action2048* NTuplePlayer2048::chooseAction(State2048 state, vector<Action2048*> actions) {
+  Action2048* bestAction = NULL;
   double bestValue = -1 * INFINITY;
   
   for (int i=0; i<actions.size(); i++) {
-    Transition<State2048, Action2048> transition = game.computeTransition(state, action);
+    Transition<State2048, Action2048> transition = game.computeTransition(state, actions[i]);
     double value = transition.getReward() + ntuples.getValue(transition.getAfterState().getFeatures());
     if (value > bestValue) {
       bestAction = actions[i];
@@ -34,8 +34,9 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
   double wonGames = 0;
   // implement in util/summaryStatistics
   SummaryStatistics stats;
+  NTuplePlayer2048 obj(this->ntuples);
   for (int j=0; j<numGames; j++) {
-    pair<int, int> res = game.playGame(this, random);
+    pair<int, int> res = game.playGame(obj, random);
     if (res.second > State2048::REWARDS[10])
       wonGames += 1.0;
     stats.addValue(res.first);
@@ -60,7 +61,7 @@ int main(int argc, char* argv[]) {
     return -1;
   }
   
-  NTuplePlayer2048 player;
+  NTuplePlayer2048 player = NTuplePlayer2048::readPlayer(path);
   player = player.readPlayer(path);
   mt19937 random;
   player.evaluate(numGames, random);

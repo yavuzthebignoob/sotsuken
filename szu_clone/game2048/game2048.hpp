@@ -17,5 +17,5 @@ public:
   vector<Action2048> getPossibleActions(State2048 state);
   State2048 sampleInitialStateDistribution(mt19937 random);
   bool isTerminalState(State2048 state);
-  pair<int, int> playGame(Player2048 plyr, mt19937 random);
+  pair<int, int> playGame(NTuplePlayer2048 plyr, mt19937 random);
 };

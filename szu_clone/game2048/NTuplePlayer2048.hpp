@@ -7,6 +7,7 @@
 #include <random>
 #include <string>
 #include "game2048.hpp"
+#include "../NTuple/NTuple.hpp"
 
 using namespace std;
 
@@ -23,6 +24,6 @@ public:
 
 public:
   Action2048* chooseAction(State2048 state, vector<Action2048*> actions);
-  NTuplePlayer2048 readPlayer(string file);
+  static NTuplePlayer2048 readPlayer(string file);
   void evaluate(int numGames, mt19937 random);
 };
