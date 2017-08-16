@@ -8,8 +8,9 @@
 #include <string>
 #include "game2048.hpp"
 #include "../NTuple/NTuple.hpp"
-
 using namespace std;
+
+class Game2048;
 
 class NTuplePlayer2048 : public Player2048 {
 private:

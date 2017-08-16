@@ -7,7 +7,10 @@
 #include "../rl/environment.hpp"
 #include "state2048.hpp"
 #include "player2048.hpp"
+#include "NTuplePlayer2048.hpp"
 using namespace std;
+
+class NTuplePlayer2048;
 
 class Game2048 {
 public:

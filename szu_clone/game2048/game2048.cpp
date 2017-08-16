@@ -5,6 +5,7 @@
 #include <vector>
 #include <random>
 #include "game2048.hpp"
+#include "NTuplePlayer2048.hpp"
 using namespace std;
 
 Transition<State2048, Action2048> Game2048::computeTransition(State2048 state, Action2048* action) {
@@ -42,7 +43,7 @@ pair<int, int> Game2048::playGame(NTuplePlayer2048 plyr, mt19937 random) {
   vector<Action2048> actions = getPossibleActions(state);
 
   while (!actions.empty()) {
-    Action2048* action = player.chooseAction(state, actions);
+    Action2048* action = plyr.chooseAction(state, actions);
     Transition<State2048, Action2048> transition = computeTransition(state, action);
     sumRewards += transition.getReward();
 

@@ -24,9 +24,9 @@ Action2048* NTuplePlayer2048::chooseAction(State2048 state, vector<Action2048*> 
   return bestAction;
 }
 
-NTuplePlayer2048 NTuplePlayer2048::readPlayer(stirng file) {
-  // NTuples ntuples = serializer.deserializeWrapExceptions(file);
-  NTuplePlayer2048 res = NTuplePlayer2048(file);
+NTuplePlayer2048 NTuplePlayer2048::readPlayer(string file) {
+  NTuples ntuples = NTuples::deserializeWrapExceptions(file);
+  NTuplePlayer2048 res = NTuplePlayer2048(ntuples);
   return res;
 }
 
@@ -36,7 +36,7 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
   SummaryStatistics stats;
   NTuplePlayer2048 obj(this->ntuples);
   for (int j=0; j<numGames; j++) {
-    pair<int, int> res = game.playGame(obj, random);
+    pair<int, int> res = game.playGame(random);
     if (res.second > State2048::REWARDS[10])
       wonGames += 1.0;
     stats.addValue(res.first);

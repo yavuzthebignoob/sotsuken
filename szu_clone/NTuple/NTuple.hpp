@@ -9,4 +9,5 @@ class NTuple {
 class NTuples {
 public:
   int getValue(vector<double> input);
+  static NTuples deserializeWrapExceptions(string file);
 };
