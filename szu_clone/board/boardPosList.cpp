@@ -10,7 +10,7 @@ BoardPosList BoardPosList::getAligned() {
 }
 
 BoardPosList BoardPosList::getShifted(int shiftRow, int shiftCol) {
-  int size = sizeof(positions)/sizeof(positions[0]);
+  int size = positions.size();
   vector<BoardPos> shifted;
   BoardPos temp = BoardPos(shiftRow, shiftCol);
   for (int i=0; i<size; i++) {
@@ -53,11 +53,15 @@ bool BoardPosList::fitOnBoard(RectSize boardSize) {
 bool BoardPosList::equals(BoardPosList list) {
   if (this == &list)
     return true;
-  else {
+  else if (this->positions.size()==list.size()) {
     vector<BoardPos> buf1 = this->positions;
     vector<BoardPos> buf2 = list.positions;
-    return false;
+    for (int i=0; i<list.size(); i++) {
+      if (!(buf1[i].equals(buf2[i]))) return false;
+    }
+    return true;
   }
+  else return false;
 }
 
 int BoardPosList::size() {

@@ -10,16 +10,17 @@
   !: C++で実装しなくてよい（C++の標準ライブラリや機能で代用できる）
   ?: C++で実装しなくてよい気がする（本当に実装しなくてよいのか未確認）
   #: C++では別の手段で実装するのでとりあえず無視してよい（serializer）
+- C++に転写したコードのテスト用のコードも書けたやつはファイル名の頭に「$$$」をつけた
 
 java:
 put/ci/cevo/
 	games/
 		board/
-			Board.java*
-			BoardPos.java*
-			BoardPosList.java*
-			BoardUtils.java*
-			RectSize.java*
+			$$$Board.java*
+			$$$BoardPos.java*
+			$$$BoardPosList.java*
+			$$$BoardUtils.java*
+			$$$RectSize.java*
 		encodings/ntuple/
 			eval/
 				DefaultNTupleEvaluator.java

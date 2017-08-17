@@ -5,8 +5,8 @@
 
 class BoardPos {
 public:
-  static int row;
-  static int col;
+  int row;
+  int col;
 
 public:
   int rowIs();

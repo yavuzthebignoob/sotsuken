@@ -1,11 +1,11 @@
-CC=g++
-CFLAG=-g
-OBJGROUP=NTuplePlayer2048.o action2048.o game2048.o randomUtils.o state2048.o
+CXX = g++
+CXXFLAGS = -g -std=c++11
+OBJS = test.o board/boardPos.o board/boardPosList.o board/boardUtils.o board/rectSize.o
 
 all: clean program
 
-program: $(OBJGROUP)
-	(CC) -o program $(OBJGROUP)
+program: $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS)
 
 clean:
-	\rm *.o
+	\rm -f *.o

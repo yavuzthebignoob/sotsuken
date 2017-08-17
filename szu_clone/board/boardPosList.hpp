@@ -16,8 +16,6 @@ public:
   bool fitOnBoard(RectSize boardSize);
   bool equals(BoardPosList list);
   int size();
-
-private:
   BoardPos getMinCorner();
   
 public:

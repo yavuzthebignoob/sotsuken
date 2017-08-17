@@ -4,9 +4,9 @@
 // toString(),hashCode() not implemented for seems not necessary
 
 class RectSize {
-private:
-  static int columns;
-  static int rows;
+public:
+  int columns;
+  int rows;
 
 public:
   int width();
