@@ -14,7 +14,7 @@ Action2048* NTuplePlayer2048::chooseAction(State2048 state, vector<Action2048*> 
   double bestValue = -1 * INFINITY;
   
   for (int i=0; i<actions.size(); i++) {
-    Transition<State2048, Action2048> transition = game.computeTransition(state, actions[i]);
+    Transition<State2048, Action2048*> transition = game->computeTransition(state, actions[i]);
     double value = transition.getReward() + ntuples.getValue(transition.getAfterState().getFeatures());
     if (value > bestValue) {
       bestAction = actions[i];
@@ -36,7 +36,7 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
   SummaryStatistics stats;
   NTuplePlayer2048 obj(this->ntuples);
   for (int j=0; j<numGames; j++) {
-    pair<int, int> res = game.playGame(random);
+    pair<int, int> res = game->playGame(&obj,random);
     if (res.second > State2048::REWARDS[10])
       wonGames += 1.0;
     stats.addValue(res.first);
@@ -46,6 +46,7 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
   cout << "Win ratio         : " << wonGames/numGames << endl;
 }
 
+/*
 int main(int argc, char* argv[]) {
   // argumentParserをC++でどう実装するのかよくわからなかったので普通に
   // コマンドライン引数で学習データと試行回数を読み込むことにしました
@@ -66,3 +67,4 @@ int main(int argc, char* argv[]) {
   mt19937 random;
   player.evaluate(numGames, random);
 }
+*/

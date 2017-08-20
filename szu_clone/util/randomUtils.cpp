@@ -2,7 +2,7 @@
 #include <vector>
 #include <set>
 #include <random>
-#include "header/randomUtils.hpp"
+#include "randomUtils.hpp"
 using namespace std;
 
 int randomUtils::nextInt(int lower, int upper, mt19937 random) {

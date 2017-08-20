@@ -1,5 +1,4 @@
-template <class S, class A>
-class Transition {
+template <class S, class A> class Transition {
 public:
   S state;
   A action;

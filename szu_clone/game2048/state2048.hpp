@@ -28,7 +28,7 @@ public:
   int moveUP();
   void rotateBoard();
   int makeMove(Action2048 *action);
-  vector<Action2048> getPossibleMoves();
+  vector<Action2048*> getPossibleMoves();
   bool isTerminal();
   int getMaxTile();
   void printHumanReadable();

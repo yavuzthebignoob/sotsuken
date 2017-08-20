@@ -1,4 +1,6 @@
 // coding and debug not finished yet
+#ifndef GAME2048_INCLUDE
+#define GAME2048_INCLUDE
 
 #include <iostream>
 #include <utility>
@@ -14,11 +16,13 @@ class NTuplePlayer2048;
 
 class Game2048 {
 public:
-  Transition<State2048, Action2048> computeTransition(State2048 state, Action2048* action);
+  Transition<State2048, Action2048*> computeTransition(State2048 state, Action2048* action);
   State2048 getNextState(State2048 state, mt19937 random);
   vector<pair<double, State2048> > getPossibleNextStates(State2048 state);
-  vector<Action2048> getPossibleActions(State2048 state);
+  vector<Action2048*> getPossibleActions(State2048 state);
   State2048 sampleInitialStateDistribution(mt19937 random);
   bool isTerminalState(State2048 state);
-  pair<int, int> playGame(NTuplePlayer2048 plyr, mt19937 random);
+  pair<int, int> playGame(NTuplePlayer2048 *plyr, mt19937 random);
 };
+
+#endif

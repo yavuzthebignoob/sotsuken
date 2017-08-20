@@ -5,13 +5,12 @@
 #include <vector>
 #include <random>
 #include "game2048.hpp"
-#include "NTuplePlayer2048.hpp"
 using namespace std;
 
-Transition<State2048, Action2048> Game2048::computeTransition(State2048 state, Action2048* action) {
+Transition<State2048, Action2048*> Game2048::computeTransition(State2048 state, Action2048* action) {
   State2048 afterState;
   int reward = afterState.makeMove(action);
-  Transition<State2048, Action2048> res(state, action, afterState, reward);
+  Transition<State2048, Action2048*> res(state, action, afterState, reward);
   return res;
 }
 
@@ -25,7 +24,7 @@ vector< pair<double, State2048> > Game2048::getPossibleNextStates(State2048 afte
   return afterState.getPossibleNextStates();
 }
 
-vector<Action2048> Game2048::getPossibleActions(State2048 state) {
+vector<Action2048*> Game2048::getPossibleActions(State2048 state) {
   return state.getPossibleMoves();
 }
 
@@ -37,14 +36,14 @@ bool Game2048::isTerminalState(State2048 state) {
   return state.isTerminal();
 }
 
-pair<int, int> Game2048::playGame(NTuplePlayer2048 plyr, mt19937 random) {
+pair<int, int> Game2048::playGame(NTuplePlayer2048 *plyr, mt19937 random) {
   int sumRewards = 0;
   State2048 state = sampleInitialStateDistribution(random);
-  vector<Action2048> actions = getPossibleActions(state);
+  vector<Action2048*> actions = getPossibleActions(state);
 
   while (!actions.empty()) {
-    Action2048* action = plyr.chooseAction(state, actions);
-    Transition<State2048, Action2048> transition = computeTransition(state, action);
+    Action2048* action = plyr->chooseAction(state, actions);
+    Transition<State2048, Action2048*> transition = computeTransition(state, action);
     sumRewards += transition.getReward();
 
     state = getNextState(transition.getAfterState(), random);

@@ -152,10 +152,10 @@ int State2048::makeMove(Action2048 *action) {
   return reward;
 }
 
-vector<Action2048> State2048::getPossibleMoves() {
+vector<Action2048*> State2048::getPossibleMoves() {
   // changed name of array due to confuse 'set' with std::set
   bool canMove[] = {false, false, false, false};
-  vector<Action2048> moves;
+  vector<Action2048*> moves;
 
   for (int row = 0; row < SIZE; row++) {
     for (int col = 0; col < SIZE; col++) {
@@ -166,7 +166,7 @@ vector<Action2048> State2048::getPossibleMoves() {
 	for (int col2 = 0; col2 < col; col2++) {
 	  if (board[row][col2] > 0) {
 	    canMove[Action2048::RIGHT->id] = true;
-	    moves.push_back(*Action2048::RIGHT);
+	    moves.push_back(Action2048::RIGHT);
 	    break;
 	  }
 	}
@@ -176,7 +176,7 @@ vector<Action2048> State2048::getPossibleMoves() {
 	for (int col2 = 0; col2 < col; col2++) {
 	  if (board[row][col2] > 0) {
 	    canMove[Action2048::LEFT->id] = true;
-	    moves.push_back(*Action2048::LEFT);
+	    moves.push_back(Action2048::LEFT);
 	    break;
 	  }
 	}
@@ -186,7 +186,7 @@ vector<Action2048> State2048::getPossibleMoves() {
 	for (int row2 = 0; row2 < row; row2++) {
 	  if (board[row2][col] > 0) {
 	    canMove[Action2048::DOWN->id] = true;
-	    moves.push_back(*Action2048::DOWN);
+	    moves.push_back(Action2048::DOWN);
 	    break;
 	  }
 	}
@@ -196,7 +196,7 @@ vector<Action2048> State2048::getPossibleMoves() {
 	for (int row2 = row+1; row2 < SIZE; row2++) {
 	  if (board[row2][col] > 0) {
 	    canMove[Action2048::UP->id] = true;
-	    moves.push_back(*Action2048::UP);
+	    moves.push_back(Action2048::UP);
 	    break;
 	  }
 	}
@@ -213,8 +213,8 @@ vector<Action2048> State2048::getPossibleMoves() {
 	if (board[row][col] > 0 && board[row][col] == board[row][col+1]) {
 	  canMove[Action2048::LEFT->id] = true;
 	  canMove[Action2048::RIGHT->id] = true;
-	  moves.push_back(*Action2048::LEFT);
-	  moves.push_back(*Action2048::RIGHT);
+	  moves.push_back(Action2048::LEFT);
+	  moves.push_back(Action2048::RIGHT);
 	}
       }
     }
@@ -226,8 +226,8 @@ vector<Action2048> State2048::getPossibleMoves() {
 	if (board[row][col] > 0 && board[row][col] == board[row+1][col]) {
 	  canMove[Action2048::UP->id] = true;
 	  canMove[Action2048::DOWN->id] = true;
-	  moves.push_back(*Action2048::UP);
-	  moves.push_back(*Action2048::DOWN);
+	  moves.push_back(Action2048::UP);
+	  moves.push_back(Action2048::DOWN);
 	}
       }
     }

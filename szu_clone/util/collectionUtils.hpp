@@ -6,6 +6,7 @@
 // したがって現時点ではコンパイルできない（NTupleの実装がまだのため）
 
 #include <vector>
+#include "../NTuple/NTuple.hpp"
 using namespace std;
 
 class CollectionUtils {
