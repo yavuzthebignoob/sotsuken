@@ -3,8 +3,10 @@
 #include <string>
 #include <algorithm>
 #include <iterator>
+#include <random>
 
 #include "board/boardPosList.hpp"
+#include "util/arrayUtils.hpp"
 
 using namespace std;
 
@@ -310,7 +312,61 @@ int main() {
   cout << endl;
 
   // end of testing 'rectSize.cpp'
+
+  // testing in programs in board/
+
+  cout << "** testing programs in util/" << endl;
   
+  
+  // testing 'arrayUtils.cpp'
+  vector<int> arr, arrToSix, arrToTen;
+  bool arrUtilTest[2] = {false, false};
+  
+  arr.push_back(168076192);
+  arr.push_back(282475246);
+  arr.push_back(162265007);
+  arr.push_back(984943658);
+  arr.push_back(114410893);
+  arr.push_back(470211272);
+  copy(arr.begin(), arr.end(), back_inserter(arrToSix));
+  sort(arrToSix.begin(), arrToSix.end());
+  arr.push_back(101027544);
+  arr.push_back(145785087);
+  arr.push_back(145877792);
+  arr.push_back(200723770);
+  copy(arr.begin(), arr.end(), back_inserter(arrToTen));
+  sort(arrToTen.begin(), arrToTen.end());
+
+  vector<int> utilSix = ArrayUtils::sorted(arr, 6);
+  vector<int> utilTen = ArrayUtils::sorted(arr);
+
+  for (int i=0; i<6; i++) {
+    if (arrToSix[i]!=utilSix[i]) {
+      arrUtilTest[0] = false;
+      break;
+    }
+    else arrUtilTest[0] = true;
+  }
+
+  for (int i=0; i<10; i++) {
+    if (arrToTen[i]!=utilTen[i]) {
+      arrUtilTest[1] = false;
+      break;
+    }
+    else arrUtilTest[1] = true;
+  }
+
+  cout << "*** arrayUtils.cpp" << endl;
+  for (int i=0; i<2; i++) {
+    string str1 = "test";
+    string str2 = ": ";
+    str1 += to_string(i);
+    str1 += str2;
+    cout << str1 << tf(arrUtilTest[i]) << endl;
+  }
+  cout << endl;
+
+  // end of testing 'arrayUtils.cpp'
   
   // check if any errors/bugs were discovered
   if (allOK==true)
