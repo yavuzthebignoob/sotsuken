@@ -10,6 +10,7 @@ const double State2048::RANDOM_FOUR_PROB = 0.1;
 const int State2048::NUM_INITIAL_LOCATIONS = 2;
 const int State2048::SIZE_OF_REWARDS = 17;
 int State2048::REWARDS[] = {0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536};
+int State2048::boards[State2048::SIZE][State2048::SIZE] = {{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0}};
 
 int State2048::getNumValues() {
   return SIZE_OF_REWARDS;
@@ -22,18 +23,18 @@ vector<double> State2048::getFeatures() {
   vector<double> features(SIZE * SIZE);
   for (int row = 0; row < SIZE; row++) {
     for (int col = 0; col < SIZE; col++) {
-      features[index++] = board[row][col];
+      features[index++] = boards[row][col];
     }
   }
   return features;
 }
 
 int State2048::getValue(int flatlocation) {
-  return board[flatlocation / SIZE][flatlocation % SIZE];
+  return boards[flatlocation / SIZE][flatlocation % SIZE];
 }
 
 void State2048::setValue(int flatlocation, int value) {
-  board[flatlocation / SIZE][flatlocation % SIZE] = value;
+  boards[flatlocation / SIZE][flatlocation % SIZE] = value;
 }
 
 vector<pair <double, State2048> > State2048::getPossibleNextStates() {
@@ -86,19 +87,19 @@ int State2048::moveUP() {
     int freeRow = 0;
     bool isMerged = false;
     for (int row=0; row<SIZE; row++) {
-      if (board[row][col] == 0)
+      if (boards[row][col] == 0)
 	continue;
       if (freeRow > 0 && !isMerged &&
-	  board[freeRow-1][col] == board[row][col]) {
-	board[freeRow-1][col] *= 2;
-	board[row][col] = 0;
-	reward += REWARDS[board[freeRow-1][col]];
+	  boards[freeRow-1][col] == boards[row][col]) {
+	boards[freeRow-1][col] *= 2;
+	boards[row][col] = 0;
+	reward += REWARDS[boards[freeRow-1][col]];
 	isMerged = true;
       }
       else {
-	int buf = board[row][col];
-	board[row][col] = 0;
-	board[freeRow++][col] = buf;
+	int buf = boards[row][col];
+	boards[row][col] = 0;
+	boards[freeRow++][col] = buf;
 	isMerged = false;
       }
     }
@@ -109,11 +110,11 @@ int State2048::moveUP() {
 void State2048::rotateBoard() {
   for (int i=0; i<(SIZE/2); i++) {
     for (int j=i; j<(SIZE-i-1); j++) {
-      int buf = board[i][j];
-      board[i][j] = board[j][3-i];
-      board[j][3-i] = board[3-i][3-j];
-      board[3-i][3-j] = board[3-j][i];
-      board[3-j][i] = buf;
+      int buf = boards[i][j];
+      boards[i][j] = boards[j][3-i];
+      boards[j][3-i] = boards[3-i][3-j];
+      boards[3-i][3-j] = boards[3-j][i];
+      boards[3-j][i] = buf;
     }
   }
 }
@@ -159,12 +160,12 @@ vector<Action2048*> State2048::getPossibleMoves() {
 
   for (int row = 0; row < SIZE; row++) {
     for (int col = 0; col < SIZE; col++) {
-      if (board[row][col] > 0)
+      if (boards[row][col] > 0)
 	continue;
 
       if (!canMove[Action2048::RIGHT->id]) {
 	for (int col2 = 0; col2 < col; col2++) {
-	  if (board[row][col2] > 0) {
+	  if (boards[row][col2] > 0) {
 	    canMove[Action2048::RIGHT->id] = true;
 	    moves.push_back(Action2048::RIGHT);
 	    break;
@@ -174,7 +175,7 @@ vector<Action2048*> State2048::getPossibleMoves() {
       
       if (!canMove[Action2048::LEFT->id]) {
 	for (int col2 = 0; col2 < col; col2++) {
-	  if (board[row][col2] > 0) {
+	  if (boards[row][col2] > 0) {
 	    canMove[Action2048::LEFT->id] = true;
 	    moves.push_back(Action2048::LEFT);
 	    break;
@@ -184,7 +185,7 @@ vector<Action2048*> State2048::getPossibleMoves() {
 
       if (!canMove[Action2048::DOWN->id]) {
 	for (int row2 = 0; row2 < row; row2++) {
-	  if (board[row2][col] > 0) {
+	  if (boards[row2][col] > 0) {
 	    canMove[Action2048::DOWN->id] = true;
 	    moves.push_back(Action2048::DOWN);
 	    break;
@@ -194,7 +195,7 @@ vector<Action2048*> State2048::getPossibleMoves() {
 
       if (!canMove[Action2048::UP->id]) {
 	for (int row2 = row+1; row2 < SIZE; row2++) {
-	  if (board[row2][col] > 0) {
+	  if (boards[row2][col] > 0) {
 	    canMove[Action2048::UP->id] = true;
 	    moves.push_back(Action2048::UP);
 	    break;
@@ -210,7 +211,7 @@ vector<Action2048*> State2048::getPossibleMoves() {
   if (!canMove[Action2048::RIGHT->id] || !canMove[Action2048::LEFT->id]) {
     for (int row = 0; row < SIZE; row++) {
       for (int col = 0; col < SIZE-1; col++) {
-	if (board[row][col] > 0 && board[row][col] == board[row][col+1]) {
+	if (boards[row][col] > 0 && boards[row][col] == boards[row][col+1]) {
 	  canMove[Action2048::LEFT->id] = true;
 	  canMove[Action2048::RIGHT->id] = true;
 	  moves.push_back(Action2048::LEFT);
@@ -223,7 +224,7 @@ vector<Action2048*> State2048::getPossibleMoves() {
   if (!canMove[Action2048::DOWN->id] || !canMove[Action2048::UP->id]) {
     for (int col = 0; col < SIZE; col++) {
       for (int row = 0; row < SIZE-1; row++) {
-	if (board[row][col] > 0 && board[row][col] == board[row+1][col]) {
+	if (boards[row][col] > 0 && boards[row][col] == boards[row+1][col]) {
 	  canMove[Action2048::UP->id] = true;
 	  canMove[Action2048::DOWN->id] = true;
 	  moves.push_back(Action2048::UP);
@@ -237,10 +238,10 @@ vector<Action2048*> State2048::getPossibleMoves() {
 }
 
 bool State2048::hasEqualNeighbor(const int row, const int col) {
-  if ((row > 0 && board[row-1][col] == board[row][col])
-      || (col < 3 && board[row][col+1] == board[row][col])
-      || (row < 3 && board[row+1][col] == board[row][col])
-      || (col > 0 && board[row][col-1] == board[row][col])) {
+  if ((row > 0 && boards[row-1][col] == boards[row][col])
+      || (col < 3 && boards[row][col+1] == boards[row][col])
+      || (row < 3 && boards[row+1][col] == boards[row][col])
+      || (col > 0 && boards[row][col-1] == boards[row][col])) {
     return true;
   }
   else return false;
@@ -249,7 +250,7 @@ bool State2048::hasEqualNeighbor(const int row, const int col) {
 bool State2048::isTerminal() {
   for (int row=0; row<SIZE; row++) {
     for (int col=0; col<SIZE; col++) {
-      if (board[row][col]==0)
+      if (boards[row][col]==0)
 	return false;
     }
   }
@@ -268,7 +269,7 @@ int State2048::getMaxTile() {
   int maxTile = 0;
   for (int row=0; row < SIZE; row++) {
     for (int col=0; col < SIZE; col++)
-      maxTile = max(board[row][col], maxTile);
+      maxTile = max(boards[row][col], maxTile);
   }
   return REWARDS[maxTile];
 }
@@ -278,7 +279,7 @@ void State2048::printHumanReadable() {
   for (int row=0; row<SIZE; row++) {
     cout << "|";
     for (int col=0; col<SIZE; col++) {
-      printf("%5d", REWARDS[board[row][col]]);
+      printf("%5d", REWARDS[boards[row][col]]);
       cout << "|";
       if (col==3) cout << endl;
     }
@@ -286,7 +287,7 @@ void State2048::printHumanReadable() {
   }
 }
 
-static State2048 getInitialState(int numLoc, mt19937 random) {
+State2048 State2048::getInitialState(int numLoc, mt19937 random) {
   State2048 state;
 
   for (int i = 0; i < numLoc; i++)
@@ -295,6 +296,6 @@ static State2048 getInitialState(int numLoc, mt19937 random) {
   return state;
 }
 
-static State2048 getInitialState(mt19937 random) {
+State2048 State2048::getInitialState(mt19937 random) {
   return getInitialState(State2048::NUM_INITIAL_LOCATIONS, random);
 }

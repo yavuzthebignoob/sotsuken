@@ -18,6 +18,7 @@ vector<int> ArrayUtils::sorted(vector<int> arr) {
   return sorted(arr, arr.size());
 }
 
+/*
 int main() {
   vector<int> a;
   for (int i=0; i<10; i++) {
@@ -32,3 +33,4 @@ int main() {
     cout << b[i] << endl;
   }
 }
+*/

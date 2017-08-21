@@ -31,6 +31,7 @@ vector<NTuple> CollectionUtils::concat(vector<NTuple> arr1, vector<NTuple> arr2)
   return res;
 }
 
+/*
 int main() {
   vector<double> a;
   for (int i=0; i<10; i++) {
@@ -61,3 +62,4 @@ int main() {
     cout << c[i] << endl;
   }
 }
+*/

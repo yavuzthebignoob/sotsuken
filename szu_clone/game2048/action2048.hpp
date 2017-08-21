@@ -1,7 +1,12 @@
+#ifndef ACT_INCLUDE
+#define ACT_INCLUDE
+
 #include "../rl/action.h"
 
 // 'Action2048' is implemented as class instead of enumeration
 // because enum can't inherit class
+
+class Player2048;
 
 class Action2048 : public action {
 public:
@@ -24,3 +29,5 @@ public:
   vector<double> getDescription();
   int getId();
 };
+
+#endif

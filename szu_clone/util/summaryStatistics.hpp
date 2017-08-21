@@ -9,7 +9,4 @@ public:
   void addValue(int v);
   double getMean();
   double getStandardDeviation();
-
-public:
-  SummaryStatistics();
 };

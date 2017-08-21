@@ -1,3 +1,6 @@
+#ifndef STA_INCLUDE
+#define STA_INCLUDE
+
 #include <iostream>
 #include <vector>
 #include <utility>
@@ -8,6 +11,8 @@
 #include "../board/boardUtils.hpp"
 using namespace std;
 
+class Player2048;
+
 class State2048 : public State {
 public:
   static constexpr int SIZE = 4;
@@ -17,8 +22,8 @@ public:
   static const int SIZE_OF_REWARDS;
   static int REWARDS[];
 
-private:
-  static int board[SIZE][SIZE];
+public:
+  static int boards[State2048::SIZE][State2048::SIZE];
   
 public:
   static int getNumValues();
@@ -43,25 +48,27 @@ private:
 public:
   State2048() {
     for (int i=0; i<16; i++) {
-      board[i/4][i%4] = 0;
+      boards[i/4][i%4] = 0;
     }
   }
   State2048(const State2048 &state) {
-    int board[SIZE][SIZE];
+    // int board[SIZE][SIZE];
     for (int row = 0; row < SIZE; row++) {
       for (int col = 0; col < SIZE; col++) {
-	board[row][col] = state.board[row][col];
+	boards[row][col] = state.boards[row][col];
       }
     }
   }
   State2048(double features[16]) {
-    int board[SIZE][SIZE];
+    // int board[SIZE][SIZE];
     int index = 0;
     for (int row = 0; row < SIZE; row++) {
       for (int col = 0; col < SIZE; col++) {
-	board[row][col] = (int)features[index++];
+	boards[row][col] = (int)features[index++];
       }
     }
   }
 
 };
+
+#endif
