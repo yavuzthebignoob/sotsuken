@@ -2,7 +2,7 @@
 using namespace std;
 
 class SummaryStatistics {
-private:
+public:
   vector<double> data;
 
 public:

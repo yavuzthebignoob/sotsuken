@@ -4,9 +4,14 @@
 #include <algorithm>
 #include <iterator>
 #include <random>
+#include <cmath>
 
+#include "game2048/action2048.hpp"
 #include "board/boardPosList.hpp"
 #include "util/arrayUtils.hpp"
+#include "util/collectionUtils.hpp"
+#include "util/randomUtils.hpp"
+#include "util/summaryStatistics.hpp"
 
 using namespace std;
 
@@ -367,6 +372,212 @@ int main() {
   cout << endl;
 
   // end of testing 'arrayUtils.cpp'
+
+  // testing 'collectionUtils.cpp'
+  vector<double> col1;
+  vector<vector<int> > col2;
+  vector<int> col3;
+  double colUtilSum = 0;
+  bool colUtilTest[2] = {false, false};
+  
+  for (int i=0; i<10; i++) {
+    col1.push_back(rand()/10.0);
+  }
+  for (int i=0; i<10; i++) {
+    colUtilSum += col1[i];
+  }
+
+  for (int i=0; i<10; i++) {
+    vector<int> integerVector;
+    col2.push_back(integerVector);
+    for (int j=0; j<10; j++) {
+      col2[i].push_back(rand()/10);
+    }
+  }
+  for (int i=0; i<10; i++) {
+    for (int j=0; j<10; j++) {
+      col3.push_back(col2[i][j]);
+    }
+  }
+
+  double checkColUtil1 = CollectionUtils::sum(col1);
+  vector<int> checkColUtil2 = CollectionUtils::flatten(col2);
+
+  if (colUtilSum == checkColUtil1) colUtilTest[0] = true;
+  if (col3.size() == checkColUtil2.size()) {
+    for (int i=0; i<100; i++) {
+      if (col3[i] == checkColUtil2[i])
+	colUtilTest[1] = true;
+      else
+	colUtilTest[1] = false;
+    }
+  }
+
+  cout << "*** collectionUtil.cpp" << endl;
+  for (int i=0; i<2; i++) {
+    string str1 = "test";
+    string str2 = ": ";
+    str1 += to_string(i);
+    str1 += str2;
+    cout << str1 << tf(colUtilTest[i]) << endl;
+  }
+  cout << endl;
+  
+  // end of testing 'collectionUtils.cpp'
+
+  // testing 'randomUtils.cpp'
+  cout << "*** randomUtils.cpp" << endl;
+
+  // random_device seed_gen;
+  random_device seed;
+  // remove comment-out either of row
+  // int seed_value = seed();
+  int seed_value = 1497270178;
+  cout << "random seed: " << seed_value << endl;
+  mt19937 random(seed_value);
+  vector<int> randomIntegerVector;
+  vector<double> randomDoubleVector;
+  vector<Action2048*> randomActionVector;
+  vector<int> randomPickVector;
+
+  vector<Action2048*> ActionItems;
+  ActionItems.push_back(Action2048::UP);
+  ActionItems.push_back(Action2048::DOWN);
+  ActionItems.push_back(Action2048::RIGHT);
+  ActionItems.push_back(Action2048::LEFT);
+
+  vector<int> intItems;
+  for (int i=0; i<10; i++)
+    intItems.push_back(i);
+
+  for (int i=0; i<400000; i++) {
+    random();
+    randomIntegerVector.push_back(randomUtils::nextInt(0, 9, random));
+    randomDoubleVector.push_back(randomUtils::nextUniform(0, 10, random));
+    randomActionVector.push_back(randomUtils::pickRandom(ActionItems, random));
+    randomPickVector.push_back(randomUtils::pickRandom(intItems, random));
+  }
+
+  int randIntDist[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  int randDouDist[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  int randActDist[4] = {0, 0, 0, 0};
+  int randPickDist[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};;
+
+  for (int i=0; i<400000; i++) {
+    randIntDist[randomIntegerVector[i]]++;
+    
+    if (randomDoubleVector[i] < 1)
+      randDouDist[0]++;
+    else if (randomDoubleVector[i] < 2)
+      randDouDist[1]++;
+    else if (randomDoubleVector[i] < 3)
+      randDouDist[2]++;
+    else if (randomDoubleVector[i] < 4)
+      randDouDist[3]++;
+    else if (randomDoubleVector[i] < 5)
+      randDouDist[4]++;
+    else if (randomDoubleVector[i] < 6)
+      randDouDist[5]++;
+    else if (randomDoubleVector[i] < 7)
+      randDouDist[6]++;
+    else if (randomDoubleVector[i] < 8)
+      randDouDist[7]++;
+    else if (randomDoubleVector[i] < 9)
+      randDouDist[8]++;
+    else
+      randDouDist[9]++;
+
+    if (randomActionVector[i]==Action2048::UP)
+      randActDist[0]++;
+    if (randomActionVector[i]==Action2048::DOWN)
+      randActDist[1]++;
+    if (randomActionVector[i]==Action2048::RIGHT)
+      randActDist[2]++;
+    if (randomActionVector[i]==Action2048::LEFT)
+      randActDist[3]++;
+
+    randPickDist[randomPickVector[i]]++;
+  }
+
+  for (int i=0; i<10; i++) {
+    cout << "randIntDist" << i << ": " << randIntDist[i] << endl;
+  }
+
+  cout << endl;
+  
+  for (int i=0; i<10; i++) {
+    cout << "randDoubleDist" << i << ": " << randDouDist[i] << endl;
+  }
+
+  cout << endl;
+  
+  for (int i=0; i<4; i++) {
+    cout << "randActionDist" << i << ": " << randActDist[i] << endl;
+  } 
+
+  cout << endl;
+  
+  for (int i=0; i<10; i++) {
+    cout << "randPickDist" << i << ": " << randPickDist[i] << endl;
+  }
+
+  cout << endl;
+  
+  // end of testing 'randomUtils.cpp'
+
+  // testing 'summaryStatistics.cpp'
+  
+  SummaryStatistics statisticsEntity;
+  bool statTest[3] = {false, false, false};
+
+  vector<int> statData;
+  for (int i=0; i<10; i++) {
+    statData.push_back(rand());
+  }
+
+  /*
+  for (int i=0; i<10; i++)
+    cout << "statData[" << i << "]: " << statData[i] << endl;
+
+  cout << endl;
+  */
+  
+  for (int i=0; i<10; i++) {
+    statisticsEntity.addValue(statData[i]);
+  }
+
+  double statSum = 0;
+  for (int i=0; i<10; i++) {
+    statSum += statData[i];
+  }
+  statSum /= 10.0;
+
+  double statS2 = 0;
+  for (int i=0; i<10; i++) {
+    statS2 += pow(statData[i]-statSum, 2);
+  }
+  statS2 /= 10;
+  statS2 = sqrt(statS2);
+
+  for (int i=0; i<10; i++) {
+    if (statData[i]==statisticsEntity.data[i]) statTest[0] = true;
+    else statTest[0] = false;
+  }
+  if (statSum==statisticsEntity.getMean()) statTest[1] = true;
+  if (statS2==statisticsEntity.getStandardDeviation()) statTest[2] = true;
+
+  cout << "*** summaryStatistics.cpp" << endl;
+  for (int i=0; i<3; i++) {
+    string str1 = "test";
+    string str2 = ": ";
+    str1 += to_string(i);
+    str1 += str2;
+    cout << str1 << tf(colUtilTest[i]) << endl;
+  }
+  cout << endl;
+  
+  // end of testing 'summaryStatistics.cpp'
+  
   
   // check if any errors/bugs were discovered
   if (allOK==true)
