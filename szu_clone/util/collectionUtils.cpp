@@ -12,8 +12,8 @@ double CollectionUtils::sum(vector<double> arr) {
   return s;
 }
 
-vector<int> CollectionUtils::flatten(vector<vector<int > > arr) {
-  vector<int> res;
+vector<vector<int> > CollectionUtils::flatten(vector<vector<vector<int > > > arr) {
+  vector<vector<int> > res;
   for (int i=0; i<arr.size(); i++) {
     for (int j=0; j<arr[i].size(); j++) {
       res.push_back(arr[i][j]);

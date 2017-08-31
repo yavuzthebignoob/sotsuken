@@ -11,7 +11,7 @@ using namespace std;
 NTuple NTuple::newWithRandomWeights(int numValues, vector<int> locations, double minWeight, double maxWeight,
 				    mt19937 random) {
   if (locations.size() <= 0) abort();
-  int weightSize = NTuple.computeNumWeights(numValues, locations.size());
+  int weightSize = NTuple::computeNumWeights(numValues, locations.size());
   vector<double> weights = RandomUtils::randomDoubleVector(weights.size(), minWeight, maxWeight, random);
   NTuple res(numValues, locations, weights);
   return res;
@@ -50,8 +50,8 @@ int NTuple::getNumWeights() {
   return LUT.size();
 }
 
-vector<double> NTuple::getLocations() {
-  vector<double> res;
+vector<int> NTuple::getLocations() {
+  vector<int> res;
   copy(locations.begin(), locations.end(), back_inserter(res));
   return res;
 }
@@ -64,7 +64,7 @@ int NTuple::getNumValues() {
   return numValues;
 }
 
-int NTuple::computeNumWegiths(int numValues, int numFields) {
+int NTuple::computeNumWeights(int numValues, int numFields) {
   return (int) (pow(numValues, numFields) + 0.5);
 }
 
@@ -76,7 +76,7 @@ bool NTuple::equals(NTuple obj) {
 string NTuple::toString() {
   string res = "[";
   string bra_end = "]";
-  string commma = ",";
+  string comma = ",";
   for (int i=0; i<locations.size(); i++) {
     string buf = to_string(locations[i]);
     res += buf;

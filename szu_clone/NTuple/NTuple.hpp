@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "../board/board.hpp"
+#include "../util/randomUtils.hpp"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ private:
   static vector<double> LUT;
 
 public:
-  static NTuple newWithRandomWeights(int numValues, vector<int> locations, double minWeight, double maxWeight);
+  static NTuple newWithRandomWeights(int numValues, vector<int> locations, double minWeight, double maxWeight, mt19937 random);
   double valueFor(Board board);
   int address(Board board);
   vector<int> valuesFromAddress(int address);
@@ -27,7 +28,7 @@ public:
   // do we need hashCode() ??
   // int hashCode();
   bool equals(NTuple obj);
-  string toStirng();
+  string toString();
   // never called, so not implemented
   // string toStringDetailed();
   
@@ -40,12 +41,6 @@ public:
     this->LUT = weights0;
   }
   NTuple(NTuple& tuple) {
-    NTuple(tuple.numValues, tuple.locations, tuple.weigths);
+    NTuple(tuple.numValues, tuple.locations, tuple.LUT);
   }
-};
-
-class NTuples {
-public:
-  int getValue(vector<double> input);
-  static NTuples deserializeWrapExceptions(string file);
 };

@@ -1,10 +1,13 @@
+#ifndef RAND_INCLUDE
+#define RAND_INCLUDE
+
 #include <iostream>
 #include <vector>
 #include <set>
 #include <random>
 #include "../game2048/action2048.hpp"
 
-class randomUtils {
+class RandomUtils {
 public:
   static int nextInt(int lower, int upper, mt19937 random);
   static double nextUniform(int lower, int upper, mt19937 random);
@@ -12,3 +15,5 @@ public:
   static int pickRandom(vector<int> items, mt19937 random);
   static vector<double> randomDoubleVector(int n, double minValue, double maxValue, mt19937 random);
 };
+
+#endif

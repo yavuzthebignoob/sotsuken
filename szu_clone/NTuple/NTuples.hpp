@@ -6,6 +6,7 @@
 #include "../game2048/game2048Board.hpp"
 #include "../rl/realFunctions.hpp"
 #include "../util/collectionUtils.hpp"
+#include "expanders/symmetryExpander.hpp"
 
 using namespace std;
 
@@ -51,7 +52,7 @@ public:
   NTuples(vector<NTuple> tuples, SymmetryExpander expander) {
     for (int i=0; i<tuples.size(); i++) {
       NTuple buf(tuples[i]);
-      mainNTuples.add(buf);
+      mainNTuples.push_back(buf);
     }
     for (int i=0; i<mainNTuples.size(); i++) {
       vector<NTuple> symmetric = createSymmetric(mainNTuples[i], expander);

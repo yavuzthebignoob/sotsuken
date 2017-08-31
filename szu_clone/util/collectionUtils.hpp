@@ -12,6 +12,6 @@ using namespace std;
 class CollectionUtils {
 public:
   static double sum(vector<double> arr);
-  static vector<int> flatten(vector<vector<int> > arr);
+  static vector<vector<int> > flatten(vector<vector<vector<int> > > arr);
   static vector<NTuple> concat(vector<NTuple> arr1, vector<NTuple> arr2);
 };
