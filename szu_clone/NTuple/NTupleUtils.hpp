@@ -1,6 +1,7 @@
 #include <vector>
 
 #include "NTuple.hpp"
+#include "NTuples.hpp"
 
 using namespace std;
 

@@ -1,3 +1,6 @@
+#ifndef NTuples_INCLUDED
+#define NTuples_INCLUDED
+
 #include <vector>
 #include <stdlib.h>
 #include <string>
@@ -15,7 +18,7 @@ class NTuples : public RealFunction {
   // class 'Builder' is implemented as static class in Java 
   class Builder {
   private:
-    const vector<NTuple> tuples;
+    static vector<NTuple> tuples;
 
   private:
     static SymmetryExpander expander;
@@ -25,7 +28,7 @@ class NTuples : public RealFunction {
       this->expander = exp;
     }
     void add(NTuple tuple) {
-      tuples.add(tuple);
+      tuples.push_back(tuple);
     }
     NTuples build() {
       NTuples res(tuples, expander);
@@ -37,16 +40,21 @@ private:
   static const long serialVersionUID = -3843856387088040436L;
   static vector<NTuple> allNTuples;
   static vector<NTuple> mainNTuples;
-  const final SymmetryExpander symmetryExpander;
+  static SymmetryExpander symmetryExpander;
 
 public:
+  // temporary definition of constructor: delete later
+  NTuples() {
+  }
+  // temporary definition ends here
+  
   NTuples(vector<NTuple> tuples) {
     SymmetryExpander exp = IdentitySymmetryExpander();
     NTuples(tuples, exp);
   }
 
   NTuples(NTuples& ntuples) {    
-    NTuples(ntuples.mainNTuples, ntuples.SymmetryExpander);
+    NTuples(ntuples.mainNTuples, ntuples.symmetryExpander);
   }
 
   NTuples(vector<NTuple> tuples, SymmetryExpander expander) {
@@ -56,10 +64,12 @@ public:
     }
     for (int i=0; i<mainNTuples.size(); i++) {
       vector<NTuple> symmetric = createSymmetric(mainNTuples[i], expander);
-      if (symmetric[0]!=mainNTuples[i]) abort();
-      allNTuples.addAll(symmetric);
+      if (!(symmetric[0].equals(mainNTuples[0]))) abort();
+      for (int j=0; j<symmetric.size(); j++) {
+	allNTuples.push_back(symmetric[j]);
+      }
     }
-    SymmetryExpander = expander;
+    this->symmetryExpander = expander;
   }
 
   NTuples add(NTuples other);
@@ -73,7 +83,8 @@ public:
   int size();
   // int hashCode();
   bool equals(NTuples obj);
-  string toString();
+  // seems troublesome to cast NTuple to readable, so skipped implementation
+  // string toString();
   double getValue(vector<double> input);
   void update(vector<double> input, double expectedValue, double learningRate);
 
@@ -81,3 +92,5 @@ public:
   // temporary implementation: should be implemented in other code
   static NTuples deserializerWrapException(string file);
 };
+
+#endif

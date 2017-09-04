@@ -5,6 +5,7 @@
 #include <cmath>
 
 #include "NTuple.hpp"
+#include "NTuples.hpp"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ NTuple NTuple::newWithRandomWeights(int numValues, vector<int> locations, double
 				    mt19937 random) {
   if (locations.size() <= 0) abort();
   int weightSize = NTuple::computeNumWeights(numValues, locations.size());
-  vector<double> weights = RandomUtils::randomDoubleVector(weights.size(), minWeight, maxWeight, random);
+  vector<double> weights = RandomUtils::randomDoubleVector(weightSize, minWeight, maxWeight, random);
   NTuple res(numValues, locations, weights);
   return res;
 }
@@ -89,11 +90,14 @@ string NTuple::toString() {
 
 
 // temporary implementation
-int NTuples::getValue(vector<double> input) {
+
+/*
+double NTuples::getValue(vector<double> input) {
   return 0;
 }
 
-NTuples NTuples::deserializeWrapExceptions(string file) {
+NTuples NTuples::deserializerWrapExceptions(string file) {
   NTuples res;
   return res;
 }
+*/

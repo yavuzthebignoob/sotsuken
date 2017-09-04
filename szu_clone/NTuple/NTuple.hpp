@@ -1,3 +1,6 @@
+#ifndef NTuple_INCLUDED
+#define NTuple_INCLUDED
+
 #include <vector>
 #include <string>
 #include <random>
@@ -44,3 +47,5 @@ public:
     NTuple(tuple.numValues, tuple.locations, tuple.LUT);
   }
 };
+
+#endif

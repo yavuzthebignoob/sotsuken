@@ -6,12 +6,12 @@
 using namespace std;
 
 NTuples NTuples::add(NTuples other) {
-  NTuples res(concat(this->getAll(), other.getAll()));
+  NTuples res(CollectionUtils::concat(this->getAll(), other.getAll()));
   return res;  
 }
 
 vector<NTuple> NTuples::getMain() {
-  return mainTuples;
+  return mainNTuples;
 }
 
 vector<NTuple> NTuples::getAll() {
@@ -23,13 +23,16 @@ NTuple NTuples::getTuple(int idx) {
 }
 
 int NTuples::totalWeights() {
-  return weights.size();
+  return weights().size();
 }
 
 vector<double> NTuples::weights() {
   vector<double> res;
   for (int i=0; i<mainNTuples.size(); i++) {
-    res.add(mainNTuple[i].getWeights());
+    vector<double> buf = mainNTuples[i].getWeights();
+    for (int j=0; j<buf.size(); j++) {
+      res.push_back(buf[j]);
+    }
   }
   return res;
 }
@@ -55,6 +58,7 @@ bool NTuples::equals(NTuples obj) {
   }
 }
 
+/*
 string NTuples::toString() {
   string str1 = "NTuples [mainNTuples=";
   string str2 = ", SymmetryExpander=";
@@ -68,6 +72,7 @@ string NTuples::toString() {
   str1 += str3;
   return str1;
 }
+*/
 
 double NTuples::getValue(vector<double> input) {
   DefaultNTupleEvaluator evaluator;
@@ -84,6 +89,6 @@ void NTuples::update(vector<double> input, double expectedValue, double learning
 
   Game2048Board buf(input);
   for (int i=0; i<allNTuples.size(); i++) {
-    allNTuples[i].getWeights()[allNTuples.address(buf)] += delta;
+    allNTuples[i].getWeights()[allNTuples[i].address(buf)] += delta;
   }
 }
