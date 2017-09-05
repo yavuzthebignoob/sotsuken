@@ -1,3 +1,6 @@
+#ifndef bPL_INCLUDED
+#define bPL_INCLUDED
+
 #include <vector>
 #include "boardUtils.hpp"
 using namespace std;
@@ -26,3 +29,5 @@ public:
     }
   }
 };
+
+#endif

@@ -9,11 +9,11 @@ using namespace std;
 
 class NTuplesBuilder {
 private:
-  const mt19937 random;
+  static mt19937 random;
   static vector<vector<vector<int> > > all;
   static vector<vector<int> > main;
-  const SymmetryExpander expander;
-  static numValues;
+  static SymmetryExpander expander;
+  static int numValues;
   static double minWeight;
   static double maxWeight;
   static bool removeSubtuples;

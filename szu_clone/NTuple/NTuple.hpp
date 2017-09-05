@@ -1,5 +1,5 @@
-#ifndef NTuple_INCLUDED
-#define NTuple_INCLUDED
+#ifndef NT_INCLUDED
+#define NT_INCLUDED
 
 #include <vector>
 #include <string>
@@ -8,6 +8,10 @@
 
 #include "../board/board.hpp"
 #include "../util/randomUtils.hpp"
+
+#include "expanders/standardSymmetryExpander.hpp"
+#include "expanders/identitySymmetryExpander.hpp"
+#include "expanders/symmetryUtils.hpp"
 
 using namespace std;
 

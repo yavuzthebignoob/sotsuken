@@ -53,7 +53,7 @@ vector<int> NTupleUtils::getTuplesForPositions(NTuples tuples, int numBoardPosit
     tupleForPosition.push_back(foo);
   }
   for (int idx=0; idx<tuples.size(); idx++) {
-    NTuple tuple = tuples.getTuple(idx);
+    NTuple tuple = tuples->getTuple(idx);
     vector<int> loc = tuple.getLocations();
     for (int j=0; j<loc.size(); j++) {
       tuplesForPosition[loc[j]].add(idx);

@@ -9,7 +9,7 @@ deserializerの型ってなに？
 ビット演算も練習・理解しておく
 
 * 次回MTG
-8/25 10:00~
+9/6 10:00~
 
 * このC++の実装について
 - NTuplePlayer2048.cppがメインファイル（になる予定）
@@ -37,21 +37,21 @@ put/ci/cevo/
 			$$$RectSize.java*
 		encodings/ntuple/
 			eval/
-				DefaultNTupleEvaluator.java
-				NTupleBoardEvaluator.java
+				DefaultNTupleEvaluator.java*
+				NTupleBoardEvaluator.java*
 			expanders/
-				IdentitySymmetryExpander.java
-				StandardSymmetryExpander.java
-				SymmetryExpander.java
-				SymmetryUtils.java
+				IdentitySymmetryExpander.java*
+				StandardSymmetryExpander.java*
+				SymmetryExpander.java*
+				SymmetryUtils.java*
 			factories/
-				NTuplesAllRectanglesFactory.java
-				NTuplesAllStraightFactory.java
-				NTuplesGenericFactory.java
-			NTuple.java
-			NTuples.java
-			NTuplesBuilder.java
-			NTupleUtils.java
+				NTuplesAllRectanglesFactory.java*
+				NTuplesAllStraightFactory.java*
+				NTuplesGenericFactory.java*
+			NTuple.java*
+			NTuples.java*
+			NTuplesBuilder.java*
+			NTupleUtils.java*
 		experiments/
 			CIG2048ExperimentTDL.java
 		game2048/

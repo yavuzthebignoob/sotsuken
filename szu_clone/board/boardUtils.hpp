@@ -1,3 +1,6 @@
+#ifndef boardUtils_INCLUDED
+#define boardUtils_INCLUDED
+
 #include "rectSize.hpp"
 
 class BoardUtils {
@@ -17,3 +20,5 @@ private:
   BoardUtils() {};
   
 };
+
+#endi

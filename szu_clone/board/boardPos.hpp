@@ -1,3 +1,6 @@
+#ifndef boardPos_INCLUDED
+#define boardPos_INCLUDED
+
 #include "board.hpp"
 
 // BoardPos::hashCode() is not implemented because such function
@@ -21,3 +24,4 @@ public:
   }
 };
 
+#endif

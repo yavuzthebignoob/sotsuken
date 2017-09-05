@@ -5,6 +5,9 @@
 // vector<NTuple>を引数に取る形でのみ実装する
 // したがって現時点ではコンパイルできない（NTupleの実装がまだのため）
 
+#ifndef colUtil_INCLUDED
+#define colUtil_INCLUDED
+
 #include <vector>
 #include "../NTuple/NTuple.hpp"
 using namespace std;
@@ -15,3 +18,5 @@ public:
   static vector<vector<int> > flatten(vector<vector<vector<int> > > arr);
   static vector<NTuple> concat(vector<NTuple> arr1, vector<NTuple> arr2);
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef rectSize_INCLUDED
+#define rectSize_INCLUDED
+
 #include <stdlib.h>
 #include "boardPos.hpp"
 
@@ -28,3 +31,5 @@ public:
     this->rows = r;
   }
 };
+
+#endif

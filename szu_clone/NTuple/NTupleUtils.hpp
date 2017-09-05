@@ -5,6 +5,8 @@
 
 using namespace std;
 
+class NTuples;
+
 class NTupleUtils {
 public:
   static vector<NTuple> createSymmetric(NTuple temp, SymmetryExpander expander);
