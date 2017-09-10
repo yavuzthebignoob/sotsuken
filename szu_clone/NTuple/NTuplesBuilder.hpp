@@ -2,6 +2,7 @@
 #include <random>
 
 #include "NTuple.hpp"
+#include "NTuples.hpp"
 #include "../util/arrayUtils.hpp"
 #include "../util/collectionUtils.hpp"
 

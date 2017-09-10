@@ -88,6 +88,52 @@ string NTuple::toString() {
   return res;
 }
 
+vector<vector<int> > NTuple::createSymmetric(vector<int> tuple, SymmetryExpander expander) {
+  int n = expander.numSymmetries();
+  int m = tuple.size();
+
+  vector<vector<int> > tuples(n);
+  for (int j=0; j<n; j++) {
+    for (int k=0; k<m; k++) {
+      tuples[j].push_back(-1);
+    }
+  }
+  for (int j=0; j<m; j++) {
+    vector<int> symmetries = expander.getSymmetries(tuple[j]);
+    if (symmetries.size()!=n) abort();
+    for (int i=0; i<n; i++) {
+      tuples[i][j] = symmetries[i];
+    }
+  }
+
+  vector<vector<int> > unique;
+  copy(tuples.begin(), tuples.end(), back_inserter(unique));
+  for (int i=0; i<unique.size(); i++) {
+    for (int j=unique.size(); j>i; j--) {
+      if (ArrayUtils::sorted(unique[i])==ArrayUtils::sorted(unique[j]))
+	unique.erase(unique.begin()+j);
+    }
+  }
+  if (unique[0]!=tuple) abort();
+  return unique;
+}
+
+vector<NTuple> NTuple::createSymmetric(NTuple temp, SymmetryExpander expander) {
+  vector<vector<int> > symmetric = NTuple::createSymmetric(temp.getLocations(), expander);
+
+  int size = symmetric.size();
+  vector<NTuple> tuples;
+  
+
+  for (int i=0; i<size; i++) {
+    NTuple buf(temp.getNumValues(), symmetric[i], temp.getWeights());
+    tuples.push_back(buf);
+  }
+  if (!tuples[0].equals(temp)) abort();
+  return tuples;
+}
+
+
 
 // temporary implementation
 

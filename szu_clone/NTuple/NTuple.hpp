@@ -8,12 +8,15 @@
 
 #include "../board/board.hpp"
 #include "../util/randomUtils.hpp"
+#include "../util/arrayUtils.hpp"
 
 #include "expanders/standardSymmetryExpander.hpp"
 #include "expanders/identitySymmetryExpander.hpp"
 #include "expanders/symmetryUtils.hpp"
 
 using namespace std;
+
+class NTupleUtils;
 
 class NTuple {
 private:
@@ -38,6 +41,11 @@ public:
   string toString();
   // never called, so not implemented
   // string toStringDetailed();
+
+  // moved from NTupleUtils
+public:
+  static vector<vector<int> > createSymmetric(vector<int> tuple, SymmetryExpander expander);
+  static vector<NTuple> createSymmetric(NTuple temp, SymmetryExpander expander);
   
 public:
   NTuple(int numValues0, vector<int> locations0, vector<double> weights0) {
@@ -47,7 +55,7 @@ public:
     this->locations = locations0;
     this->LUT = weights0;
   }
-  NTuple(NTuple& tuple) {
+  NTuple(const NTuple& tuple) {
     NTuple(tuple.numValues, tuple.locations, tuple.LUT);
   }
 };

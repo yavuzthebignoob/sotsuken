@@ -11,8 +11,11 @@
 #include "../rl/realFunctions.hpp"
 #include "../util/collectionUtils.hpp"
 #include "expanders/symmetryExpander.hpp"
+#include "eval/defaultNTupleEvaluator.hpp"
 
 using namespace std;
+
+class NTupleUtils;
 
 class NTuples : public RealFunction {
 
@@ -64,7 +67,7 @@ public:
       mainNTuples.push_back(buf);
     }
     for (int i=0; i<mainNTuples.size(); i++) {
-      vector<NTuple> symmetric = NTupleUtils::createSymmetric(mainNTuples[i], expander);
+      vector<NTuple> symmetric = NTuple::createSymmetric(mainNTuples[i], expander);
       if (!(symmetric[0].equals(mainNTuples[0]))) abort();
       for (int j=0; j<symmetric.size(); j++) {
 	allNTuples.push_back(symmetric[j]);

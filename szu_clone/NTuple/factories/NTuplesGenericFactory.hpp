@@ -6,6 +6,7 @@
 #include "../../board/rectSize.hpp"
 #include "../NTuples.hpp"
 #include "../NTuplesBuilder.hpp"
+#include "../NTupleUtils.hpp"
 #include "../expanders/symmetryExpander.hpp"
 
 using namespace std;

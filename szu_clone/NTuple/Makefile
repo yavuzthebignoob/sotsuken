@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -g -std=c++11
-OBJS = NTuple.o
+OBJS = NTuple.o NTuples.o NTuplesBuilder.o NTupleUtils.o
 
 all: clean program
 

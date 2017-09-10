@@ -9,7 +9,7 @@ void NTuplesBuilder::addTuple(vector<int> locations) {
   vector<int> sortedLocations = ArrayUtils::sorted(locations);
   vector<vector<int> > flattened = CollectionUtils::flatten(all);
   for (int i=0; i<flattened.size(); i++) {
-    if (flattend[i]==sorteLocations) return 0;
+    if (flattened[i]==sortedLocations) return;
   }
   
   vector<vector<int> > tmp;
@@ -17,12 +17,12 @@ void NTuplesBuilder::addTuple(vector<int> locations) {
   for (int i=0; i<symLoc.size(); i++) {
     tmp.push_back(ArrayUtils::sorted(symLoc[i]));
   }
-  all.add(tmp);
-  main.add(ArrayUtils::sorted(locations));
+  all.push_back(tmp);
+  main.push_back(ArrayUtils::sorted(locations));
 }
 
 NTuples NTuplesBuilder::buildNTuples() {
-  vector<vector<int> > newMain(main);
+  vector<vector<int> > newMain = main;
   if (removeSubtuples)
     newMain = getMainWithoutDuplicates();
 
@@ -34,7 +34,7 @@ NTuples NTuplesBuilder::buildNTuples() {
 vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > newMain) {
   vector<NTuple> mainNTuples;
   for (int i=0; i<newMain.size(); i++) {
-    mainNTuples.add(NTuple::newWithRandomWeights(numValues, mainNTuples[i], minWeight, maxWeight, random));
+    mainNTuples.push_back(NTuple::newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random));
   }
   // sorting is omitted because Szubert says 'sorting is not obligatory'
   return mainNTuples;
@@ -46,12 +46,12 @@ vector<vector<int> > NTuplesBuilder::getMainWithoutDuplicates() {
   for (int a=0; a<n; a++) {
     bool isSubtuple = false;
     for (int b=0; b<n && !isSubtuple; b++) {
-      if (a==b || main.get(a).size() > main.get(b).size())
+      if (a==b || main[a].size() > main[b].size())
 	continue;
-      isSubtuple = containsAll(all.get(b), all.get(a));
+      isSubtuple = containsAll(all[b], all[a]);
     }
     if (!isSubtuple)
-      newMain.add(main.get(a));
+      newMain.push_back(main[a]);
   }
   return newMain;
 }
