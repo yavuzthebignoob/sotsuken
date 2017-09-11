@@ -70,8 +70,8 @@ void State2048::addRandomTile(mt19937 random) {
     if (getValue(loc)==0)
       emptyLoc.push_back(loc);
   }
-  int randomEmptyLoc = randomUtils::pickRandom(emptyLoc, random);
-  bool isFour = (randomUtils::nextUniform(0, 1, random) < RANDOM_FOUR_PROB); // underconstruction
+  int randomEmptyLoc = RandomUtils::pickRandom(emptyLoc, random);
+  bool isFour = (RandomUtils::nextUniform(0, 1, random) < RANDOM_FOUR_PROB); // underconstruction
   if (isFour)
     setValue(randomEmptyLoc, 2);
   else

@@ -375,8 +375,8 @@ int main() {
 
   // testing 'collectionUtils.cpp'
   vector<double> col1;
-  vector<vector<int> > col2;
-  vector<int> col3;
+  vector<vector<vector<int> > > col2;
+  vector<vector<int> > col3;
   double colUtilSum = 0;
   bool colUtilTest[2] = {false, false};
   
@@ -388,24 +388,28 @@ int main() {
   }
 
   for (int i=0; i<10; i++) {
-    vector<int> integerVector;
+    vector<vector<int> > integerVector;
     col2.push_back(integerVector);
     for (int j=0; j<10; j++) {
-      col2[i].push_back(rand()/10);
+      vector<int> subVector;
+      col2[i].push_back(subVector);
+      for (int k=0; k<10; k++) {
+	col2[i][j].push_back(rand()/10);
+      }
     }
   }
   for (int i=0; i<10; i++) {
     for (int j=0; j<10; j++) {
-      col3.push_back(col2[i][j]);
+	col3.push_back(col2[i][j]);
     }
   }
 
   double checkColUtil1 = CollectionUtils::sum(col1);
-  vector<int> checkColUtil2 = CollectionUtils::flatten(col2);
+  vector<vector<int> > checkColUtil2 = CollectionUtils::flatten(col2);
 
   if (colUtilSum == checkColUtil1) colUtilTest[0] = true;
   if (col3.size() == checkColUtil2.size()) {
-    for (int i=0; i<100; i++) {
+    for (int i=0; i<1000; i++) {
       if (col3[i] == checkColUtil2[i])
 	colUtilTest[1] = true;
       else
@@ -452,10 +456,10 @@ int main() {
 
   for (int i=0; i<400000; i++) {
     random();
-    randomIntegerVector.push_back(randomUtils::nextInt(0, 9, random));
-    randomDoubleVector.push_back(randomUtils::nextUniform(0, 10, random));
-    randomActionVector.push_back(randomUtils::pickRandom(ActionItems, random));
-    randomPickVector.push_back(randomUtils::pickRandom(intItems, random));
+    randomIntegerVector.push_back(RandomUtils::nextInt(0, 9, random));
+    randomDoubleVector.push_back(RandomUtils::nextUniform(0, 10, random));
+    randomActionVector.push_back(RandomUtils::pickRandom(ActionItems, random));
+    randomPickVector.push_back(RandomUtils::pickRandom(intItems, random));
   }
 
   int randIntDist[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

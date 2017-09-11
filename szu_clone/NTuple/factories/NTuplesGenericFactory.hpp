@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <random>
 
+#include "../NTuplesBuilder.hpp"
 #include "../../board/boardPosList.hpp"
 #include "../../board/rectSize.hpp"
 #include "../NTuples.hpp"
-#include "../NTuplesBuilder.hpp"
 #include "../NTupleUtils.hpp"
 #include "../expanders/symmetryExpander.hpp"
 

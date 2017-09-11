@@ -10,6 +10,8 @@
 #include <string>
 #include "game2048.hpp"
 #include "../NTuple/NTuple.hpp"
+#include "../NTuple/NTuples.hpp"
+
 using namespace std;
 
 class Game2048;
@@ -18,10 +20,10 @@ class NTuplePlayer2048 : public Player2048 {
 private:
   // SerializationManager serializer = SerializationManagaerFactory.create();
   Game2048 *game;
-  NTuples ntuples;
+  static NTuples ntuples;
 
 public:
-  NTuplePlayer2048(NTuples ntuples1) {
+  NTuplePlayer2048(const NTuples& ntuples1) {
     ntuples = ntuples1;
   }
   ~NTuplePlayer2048() {};

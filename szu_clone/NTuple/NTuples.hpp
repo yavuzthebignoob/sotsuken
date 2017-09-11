@@ -47,17 +47,19 @@ private:
   static SymmetryExpander symmetryExpander;
 
 public:
+  /*
   // temporary definition of constructor: delete later
   NTuples() {
   }
   // temporary definition ends here
+  */
   
   NTuples(vector<NTuple> tuples) {
     SymmetryExpander exp = IdentitySymmetryExpander();
     NTuples(tuples, exp);
   }
 
-  NTuples(NTuples& ntuples) {    
+  NTuples(const NTuples& ntuples) {    
     NTuples(ntuples.mainNTuples, ntuples.symmetryExpander);
   }
 

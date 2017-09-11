@@ -6,7 +6,6 @@
 using namespace std;
 
 NTuples NTuplesAllStraightFactory::createRandomIndividual(mt19937 random) {
-  NTuples res;
-  res = genericFactory.createRandomIndividual(random);
+  NTuples res = genericFactory.createRandomIndividual(random);
   return res;
 }

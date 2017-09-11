@@ -25,7 +25,7 @@ Action2048* NTuplePlayer2048::chooseAction(State2048 state, vector<Action2048*> 
 }
 
 NTuplePlayer2048 NTuplePlayer2048::readPlayer(string file) {
-  NTuples ntuples = NTuples::deserializeWrapExceptions(file);
+  NTuples ntuples = NTuples::deserializerWrapException(file);
   NTuplePlayer2048 res = NTuplePlayer2048(ntuples);
   return res;
 }

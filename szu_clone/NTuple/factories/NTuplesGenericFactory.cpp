@@ -17,6 +17,7 @@ NTuples NTuplesGenericFactory::createRandomIndividual(mt19937 random) {
       }
     }
   }
-  NTuples foo = builder.buildNTuples();
+  // NTuples foo = new builder.buildNTuples();
+  NTuples foo(builder.buildNTuples());
   return foo;
 }

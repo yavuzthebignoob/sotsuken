@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -g -std=c++11
-OBJS = NTuple.o NTuples.o NTuplesBuilder.o NTupleUtils.o eval/defaultNTupleEvaluator.o
+OBJS = NTuplesAllRectanglesFactory.o NTuplesAllStraightFactory.o NTuplesGenericFactory.o
 
 all: clean program
 
