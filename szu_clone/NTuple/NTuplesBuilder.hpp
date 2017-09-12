@@ -9,16 +9,16 @@
 using namespace std;
 
 class NTuplesBuilder {
-private:
-  static mt19937 random;
-  static vector<vector<vector<int> > > all;
-  static vector<vector<int> > main;
-  static SymmetryExpander expander;
-  static int numValues;
-  static double minWeight;
-  static double maxWeight;
-  static bool removeSubtuples;
-
+public:
+  mt19937 random;
+  vector<vector<vector<int> > > all;
+  vector<vector<int> > main;
+  SymmetryExpander expander;
+  int numValues;
+  double minWeight;
+  double maxWeight;
+  bool removeSubtuples;
+  
 public:
   NTuplesBuilder(int num, double min, double max, SymmetryExpander exp, mt19937 rand, bool rm) {
     this->maxWeight = max;

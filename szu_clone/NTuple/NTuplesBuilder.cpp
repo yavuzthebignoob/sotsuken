@@ -23,7 +23,7 @@ void NTuplesBuilder::addTuple(vector<int> locations) {
 
 NTuples NTuplesBuilder::buildNTuples() {
   vector<vector<int> > newMain = main;
-  if (removeSubtuples)
+  if (this->removeSubtuples)
     newMain = getMainWithoutDuplicates();
 
   vector<NTuple> mainSorted = createNTuplesFromLocations(newMain);

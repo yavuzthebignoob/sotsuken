@@ -20,11 +20,12 @@ class NTuplePlayer2048 : public Player2048 {
 private:
   // SerializationManager serializer = SerializationManagaerFactory.create();
   Game2048 *game;
-  static NTuples ntuples;
+  NTuples *ntuples;
 
 public:
   NTuplePlayer2048(const NTuples& ntuples1) {
-    ntuples = ntuples1;
+  // NTuplePlayer2048(const NTuples& ntuples1) {
+    this->ntuples = *ntuples1;
   }
   ~NTuplePlayer2048() {};
 
