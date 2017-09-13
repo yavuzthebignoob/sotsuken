@@ -88,6 +88,7 @@ string NTuple::toString() {
   return res;
 }
 
+// these 'createSymmetric' functions are originally implemented in 'NTupleUtils' class
 vector<vector<int> > NTuple::createSymmetric(vector<int> tuple, SymmetryExpander expander) {
   int n = expander.numSymmetries();
   int m = tuple.size();

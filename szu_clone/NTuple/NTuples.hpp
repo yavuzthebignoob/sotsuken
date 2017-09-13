@@ -18,7 +18,6 @@ using namespace std;
 class NTupleUtils;
 
 class NTuples : public RealFunction {
-
   // class 'Builder' is implemented as static class in Java 
   class Builder {
   private:
