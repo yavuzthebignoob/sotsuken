@@ -41,6 +41,11 @@ pair<int, int> Game2048::playGame(NTuplePlayer2048 *plyr, mt19937 random) {
   State2048 state = sampleInitialStateDistribution(random);
   vector<Action2048*> actions = getPossibleActions(state);
 
+  int c = 0;
+
+  state.printHumanReadable();
+
+  /*
   while (!actions.empty()) {
     Action2048* action = plyr->chooseAction(state, actions);
     Transition<State2048, Action2048*> transition = computeTransition(state, action);
@@ -48,7 +53,11 @@ pair<int, int> Game2048::playGame(NTuplePlayer2048 *plyr, mt19937 random) {
 
     state = getNextState(transition.getAfterState(), random);
     actions = getPossibleActions(state);
+
+    state.printHumanReadable();
+    cout << endl;
   }
+  */
   
   pair<int, int> res = make_pair(sumRewards, state.getMaxTile());
   return res;
