@@ -22,10 +22,12 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
   SummaryStatistics stats;
   NTuplePlayer2048 obj(random);
   for (int j=0; j<numGames; j++) {
+    random();
     pair<int, int> res = game->playGame(&obj,random);
+    cout << "Sum rewards: " << res.first << " Max tile: " << res.second << endl;
     if (res.second > State2048::REWARDS[10])
       wonGames += 1.0;
-    stats.addValue(res.first);
+    stats.addValue(res.first*1.0);
   }
   cout << "Average score     : " << stats.getMean() << endl;
   cout << "Standard deviation: " << stats.getStandardDeviation() << endl;
@@ -33,13 +35,18 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
 }
 
 int main(int argc, char* argv[]) {
+  random_device seed;
+  int seed_value = seed();
+  // int seed_value = 1497270178;
+  cout << "random seed: " << seed_value << endl;
+  mt19937 random(seed_value);
+  
   int numGames = atoi(argv[1]);
   if (numGames < 1) {
     cout << "Input the number of trials more than 0" << endl;
     return -1;
   }
 
-  mt19937 random;
   NTuplePlayer2048 player(random);
   player.evaluate(numGames, random);
 }

@@ -6,7 +6,7 @@ public:
   vector<double> data;
 
 public:
-  void addValue(int v);
+  void addValue(double v);
   double getMean();
   double getStandardDeviation();
 };

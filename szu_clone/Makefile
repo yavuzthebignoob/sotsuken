@@ -1,13 +1,27 @@
 CXX = g++
 CXXFLAGS = -g -std=c++11
-OBJS = board/boardPos.o board/boardPosList.o board/boardUtils.o board/rectSize.o game2048/action2048.o game2048/game2048Board.o util/arrayUtils.o util/collectionUtils.o util/randomUtils.o util/summaryStatistics.o game2048/game2048.o NTuplePlayer2048.o game2048/state2048.o  game2048/player2048.o 
+INCLUDE = ./rl
+SRCS :=
+REL := board/
+include $(REL)Makefile
+REL := game2048/
+include $(REL)Makefile
+REL := util/
+include $(REL)Makefile
+SRCS+=NTuplePlayer2048.cpp
+TARGET = a.out
+OBJS = $(SRCS:.cpp=.o)
+TILDE = $(SRCS:.cpp=.cpp~)
 
-all:
-	cd board; make; cd ..; \
-	clean program
+.cpp.o:
+	$(CXX) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE)
 
-program:$(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS)
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $+
+
+default:clean program
+
+program:$(OBJS) $(TARGET)
 
 clean:
-	\rm -f *.o
+	\rm -f $(OBJS) $(TILDE)

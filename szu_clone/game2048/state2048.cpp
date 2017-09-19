@@ -10,7 +10,7 @@ const double State2048::RANDOM_FOUR_PROB = 0.1;
 const int State2048::NUM_INITIAL_LOCATIONS = 2;
 const int State2048::SIZE_OF_REWARDS = 17;
 int State2048::REWARDS[] = {0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536};
-int State2048::boards[State2048::SIZE][State2048::SIZE] = {{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0}};
+// int State2048::boards[State2048::SIZE][State2048::SIZE] = {{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0}};
 
 int State2048::getNumValues() {
   return SIZE_OF_REWARDS;
@@ -91,7 +91,7 @@ int State2048::moveUP() {
 	continue;
       if (freeRow > 0 && !isMerged &&
 	  boards[freeRow-1][col] == boards[row][col]) {
-	boards[freeRow-1][col] *= 2;
+	boards[freeRow-1][col] += 1;
 	boards[row][col] = 0;
 	reward += REWARDS[boards[freeRow-1][col]];
 	isMerged = true;
@@ -279,7 +279,7 @@ void State2048::printHumanReadable() {
   for (int row=0; row<SIZE; row++) {
     cout << "|";
     for (int col=0; col<SIZE; col++) {
-      printf("%5d", REWARDS[boards[row][col]]);
+      printf("%6d", REWARDS[boards[row][col]]);
       cout << "|";
       if (col==3) cout << endl;
     }
@@ -289,13 +289,31 @@ void State2048::printHumanReadable() {
 
 State2048 State2048::getInitialState(int numLoc, mt19937 random) {
   State2048 state;
-
-  for (int i = 0; i < numLoc; i++)
+  for (int i=0; i<numLoc; i++) {
+    random();
     state.addRandomTile(random);
-
+  }
   return state;
 }
 
 State2048 State2048::getInitialState(mt19937 random) {
   return getInitialState(State2048::NUM_INITIAL_LOCATIONS, random);
 }
+
+/*
+void State2048::addInitialRandomTiles(mt19937 random) {
+  vector<int> emptyLoc;
+  for (int loc=0; loc<SIZE*SIZE; loc++) {
+    if (getValue(loc)==0)
+      emptyLoc.push_back(loc);
+  }
+  int randomEmptyLoc = RandomUtils::pickRandom(emptyLoc, random);
+  
+  bool isFour = (RandomUtils::nextUniform(0, 1, random) < RANDOM_FOUR_PROB);
+
+  if (isFour1)
+    setValue(randomEmptyLoc1, 2);
+  else
+    setValue(randomEmptyLoc1, 1);
+}
+*/

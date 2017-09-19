@@ -3,7 +3,9 @@
 #include "summaryStatistics.hpp"
 using namespace std;
 
-void SummaryStatistics::addValue(int v) {
+#include <iostream>
+
+void SummaryStatistics::addValue(double v) {
   data.push_back(v);
 }
 
@@ -18,9 +20,9 @@ double SummaryStatistics::getMean() {
 double SummaryStatistics::getStandardDeviation() {
   double sum = 0;
   int size = data.size();
-  double mean = this->getMean();
+  double devmean = this->getMean();
   for (int i=0; i<size; i++)
-    sum += pow(data[i]-mean, 2);
+    sum += pow(data[i]-devmean, 2);
   sum /= size;
   return sqrt(sum);
 }

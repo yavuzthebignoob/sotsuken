@@ -23,7 +23,7 @@ public:
   static int REWARDS[];
 
 public:
-  static int boards[State2048::SIZE][State2048::SIZE];
+  int boards[State2048::SIZE][State2048::SIZE];
   
 public:
   static int getNumValues();
@@ -39,6 +39,7 @@ public:
   void printHumanReadable();
   static State2048 getInitialState(int numLoc, mt19937 random);
   static State2048 getInitialState(mt19937 random);
+  // void addInitialRandomTiles(mt19937 ranom);
 
 private:
   int getValue(int flatlocation);

@@ -7,10 +7,11 @@
 #include "game2048.hpp"
 using namespace std;
 
-Transition<State2048, Action2048*> Game2048::computeTransition(State2048 state, Action2048* action) {
-  State2048 afterState;
+Transition Game2048::computeTransition(State2048 state, Action2048* action) {
+  State2048 afterState(state);
+  State2048 hoge(state);
   int reward = afterState.makeMove(action);
-  Transition<State2048, Action2048*> res(state, action, afterState, reward);
+  Transition res(state, action, afterState, reward);
   return res;
 }
 
@@ -43,21 +44,28 @@ pair<int, int> Game2048::playGame(NTuplePlayer2048 *plyr, mt19937 random) {
 
   int c = 0;
 
-  state.printHumanReadable();
+  // state.printHumanReadable();
 
+  // temporal coding for debug
   /*
+  Action2048* action = plyr->chooseAction(state, actions);
+  Transition transition = computeTransition(state, action);
+  sumRewards += transition.getReward();
+  */
+  
+  // temporal coding ends here
+
   while (!actions.empty()) {
     Action2048* action = plyr->chooseAction(state, actions);
-    Transition<State2048, Action2048*> transition = computeTransition(state, action);
-    sumRewards += transition.getReward();
+    Transition transition = computeTransition(state, action);
+    sumRewards += transition.reward;
 
-    state = getNextState(transition.getAfterState(), random);
+    state = getNextState(transition.afterState, random);
     actions = getPossibleActions(state);
 
-    state.printHumanReadable();
-    cout << endl;
+    // state.printHumanReadable();
+    // cout << endl;
   }
-  */
   
   pair<int, int> res = make_pair(sumRewards, state.getMaxTile());
   return res;

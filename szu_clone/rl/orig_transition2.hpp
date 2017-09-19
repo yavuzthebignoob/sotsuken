@@ -1,8 +1,5 @@
-#ifndef TRANSIT_INCLUDE
-#define TRANSIT_INCLUDE
-
-#include "../game2048/action2048.hpp"
 #include "../game2048/state2048.hpp"
+#include "../game2048/action2048.hpp"
 
 class Transition {
 public:
@@ -10,7 +7,7 @@ public:
   Action2048* action;
   State2048 afterState;
 
-public:
+private:
   double reward;
   bool isTerminal;
 
@@ -30,23 +27,16 @@ public:
     isTerminal = false;
   }
 
-  /*
 public:
   State2048 getState();
   Action2048* getAction();
   State2048 getAfterState();
   double getReward();
   bool getIfTerminal();
-  */
 };
 
-/*
 State2048 Transition::getState() { return state; }
 Action2048* Transition::getAction() { return action; }
 State2048 Transition::getAfterState() { return afterState; }
-
 double Transition::getReward() { return reward; }
 bool Transition::getIfTerminal() { return isTerminal; }
-*/
-
-#endif
