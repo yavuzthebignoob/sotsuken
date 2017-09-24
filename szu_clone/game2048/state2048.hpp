@@ -21,6 +21,8 @@ public:
   static const double RANDOM_FOUR_PROB;
   static const int SIZE_OF_REWARDS;
   static int REWARDS[];
+  static int Second_ctr;
+  static int Four_ctr;
 
 public:
   int boards[State2048::SIZE][State2048::SIZE];
@@ -40,6 +42,7 @@ public:
   static State2048 getInitialState(int numLoc, mt19937 random);
   static State2048 getInitialState(mt19937 random);
   // void addInitialRandomTiles(mt19937 ranom);
+  bool isEqual(State2048 state);
 
 private:
   int getValue(int flatlocation);

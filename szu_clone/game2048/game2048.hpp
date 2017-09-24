@@ -17,6 +17,9 @@ class NTuplePlayer2048;
 
 class Game2048 {
 public:
+  static int act_ctr[4];
+
+public:
   Transition computeTransition(State2048 state, Action2048* action);
   State2048 getNextState(State2048 state, mt19937 random);
   vector<pair<double, State2048> > getPossibleNextStates(State2048 state);

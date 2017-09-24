@@ -4,8 +4,11 @@
 #include <utility>
 #include <vector>
 #include <random>
+#include <algorithm>
 #include "game2048.hpp"
 using namespace std;
+
+int Game2048::act_ctr[] = {0, 0, 0, 0};
 
 Transition Game2048::computeTransition(State2048 state, Action2048* action) {
   State2048 afterState(state);
@@ -56,8 +59,15 @@ pair<int, int> Game2048::playGame(NTuplePlayer2048 *plyr, mt19937 random) {
   // temporal coding ends here
 
   while (!actions.empty()) {
-    Action2048* action = plyr->chooseAction(state, actions);
+    random();
+    Action2048* action = plyr->chooseAction(state, actions, random);
+    act_ctr[action->id]++;
     Transition transition = computeTransition(state, action);
+    if (transition.state.isEqual(transition.afterState)) {
+      transition.afterState.printHumanReadable();
+      cout << "error: irregal action was selected" << endl;
+      abort();
+    }
     sumRewards += transition.reward;
 
     state = getNextState(transition.afterState, random);
@@ -70,3 +80,4 @@ pair<int, int> Game2048::playGame(NTuplePlayer2048 *plyr, mt19937 random) {
   pair<int, int> res = make_pair(sumRewards, state.getMaxTile());
   return res;
 }
+

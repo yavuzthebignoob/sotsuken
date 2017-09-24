@@ -27,7 +27,7 @@ public:
   ~NTuplePlayer2048() {};
 
 public:
-  Action2048* chooseAction(State2048 state, vector<Action2048*> actions);
+  Action2048* chooseAction(State2048 state, vector<Action2048*> actions, mt19937 random);
   void evaluate(int numGames, mt19937 random);
 };
 

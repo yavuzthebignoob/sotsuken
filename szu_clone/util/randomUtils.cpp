@@ -13,6 +13,7 @@ int RandomUtils::nextInt(int lower, int upper, mt19937 random) {
 
 double RandomUtils::nextUniform(int lower, int upper, mt19937 random) {
   uniform_real_distribution<> randomDouble(lower, upper);
+  random();
   return lower == upper ? lower : randomDouble(random);
 }
 

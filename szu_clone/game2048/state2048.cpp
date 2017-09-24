@@ -6,6 +6,9 @@
 #include "state2048.hpp"
 using namespace std;
 
+int State2048::Second_ctr = 0;
+int State2048::Four_ctr = 0;
+
 const double State2048::RANDOM_FOUR_PROB = 0.1;
 const int State2048::NUM_INITIAL_LOCATIONS = 2;
 const int State2048::SIZE_OF_REWARDS = 17;
@@ -72,10 +75,14 @@ void State2048::addRandomTile(mt19937 random) {
   }
   int randomEmptyLoc = RandomUtils::pickRandom(emptyLoc, random);
   bool isFour = (RandomUtils::nextUniform(0, 1, random) < RANDOM_FOUR_PROB); // underconstruction
-  if (isFour)
+  if (isFour) {
+    Four_ctr++;
     setValue(randomEmptyLoc, 2);
-  else
+  }
+  else {
+    Second_ctr++;
     setValue(randomEmptyLoc, 1);
+  }
 }
 
 int State2048::moveUP() {
@@ -174,7 +181,7 @@ vector<Action2048*> State2048::getPossibleMoves() {
       }
       
       if (!canMove[Action2048::LEFT->id]) {
-	for (int col2 = 0; col2 < col; col2++) {
+	for (int col2 = col + 1; col2 < SIZE; col2++) {
 	  if (boards[row][col2] > 0) {
 	    canMove[Action2048::LEFT->id] = true;
 	    moves.push_back(Action2048::LEFT);
@@ -194,7 +201,7 @@ vector<Action2048*> State2048::getPossibleMoves() {
       }
 
       if (!canMove[Action2048::UP->id]) {
-	for (int row2 = row+1; row2 < SIZE; row2++) {
+	for (int row2 = row + 1; row2 < SIZE; row2++) {
 	  if (boards[row2][col] > 0) {
 	    canMove[Action2048::UP->id] = true;
 	    moves.push_back(Action2048::UP);
@@ -210,8 +217,8 @@ vector<Action2048*> State2048::getPossibleMoves() {
 
   if (!canMove[Action2048::RIGHT->id] || !canMove[Action2048::LEFT->id]) {
     for (int row = 0; row < SIZE; row++) {
-      for (int col = 0; col < SIZE-1; col++) {
-	if (boards[row][col] > 0 && boards[row][col] == boards[row][col+1]) {
+      for (int col = 0; col < SIZE - 1; col++) {
+	if (boards[row][col] > 0 && boards[row][col] == boards[row][col + 1]) {
 	  canMove[Action2048::LEFT->id] = true;
 	  canMove[Action2048::RIGHT->id] = true;
 	  moves.push_back(Action2048::LEFT);
@@ -299,6 +306,16 @@ State2048 State2048::getInitialState(int numLoc, mt19937 random) {
 State2048 State2048::getInitialState(mt19937 random) {
   return getInitialState(State2048::NUM_INITIAL_LOCATIONS, random);
 }
+
+bool State2048::isEqual(State2048 state) {
+  // int board1[4][4] = this->boards;
+  // int board2[4][4] = state.boards;
+  for (int i=0; i<16; i++) {
+    if (this->boards[i/4][i%4] != state.boards[i/4][i%4]) return false;
+  }
+  return true;
+}
+
 
 /*
 void State2048::addInitialRandomTiles(mt19937 random) {
