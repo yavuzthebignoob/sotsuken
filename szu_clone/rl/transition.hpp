@@ -29,6 +29,8 @@ public:
     reward = reward1;
     isTerminal = false;
   }
+  Transition() {
+  }
 
   /*
 public:

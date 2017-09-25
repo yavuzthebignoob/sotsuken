@@ -1,8 +1,6 @@
 
-/*
 #ifndef PLR_INCLUDE
 #define PLR_INCLUDE
-*/
 
 #include <vector>
 
@@ -22,4 +20,4 @@ public:
   virtual Action2048* chooseAction(State2048 state, vector<Action2048*> actions);
 };
 
-// #endif
+#endif

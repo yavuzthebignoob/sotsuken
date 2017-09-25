@@ -3,14 +3,18 @@
 #include <vector>
 #include <random>
 #include "../rl/realFunctions.hpp"
+#include "../NTuple/NTuples.hpp"
 #include "player2048.hpp"
+#include "../rl/transition.hpp"
+#include "game2048.hpp"
+
 using namespace std;
 
 class TDLGame2048 {
   class Game2048Outcome {
   private:
-    static int score;
-    static int maxTile;
+    int score;
+    int maxTile;
 
   public:
     Game2048Outcome(int s, int m) {
@@ -28,7 +32,7 @@ private:
 
 private:
   double getBestValueAction(State2048 state, RealFunction function);
-  Transition<State2048, Action2048> chooseBestTransitionAfterstate(State2048 state, RealFunction function);
+  Transition chooseBestTransitionAfterstate(State2048 state, RealFunction function);
 
 public:
   Game2048Outcome playByAfterstates(RealFunction vfunction, mt19937 random);
