@@ -1,10 +1,14 @@
-CXX = g++
-CXXFLAGS = -g -std=c++11
-OBJS = NTuple.o NTuples.o NTuplesBuilder.o NTupleUtils.o eval/defaultNTupleEvaluator.o
+SRCS+=\
+	$(REL)NTuple.cpp\
+	$(REL)NTuples.cpp\
+	$(REL)NTuplesBuilder.cpp\
+	$(REL)NTupleUtils.cpp\
 
-all: clean program
+REL := NTuple/eval/
+include $(REL)Makefile
 
-program: $(OBJS)
+REL := NTuple/expanders/
+include $(REL)Makefile
 
-clean:
-	\rm -f *.o
+REL := NTuple/factories/
+include $(REL)Makefile

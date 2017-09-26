@@ -1,3 +1,6 @@
+#ifndef ISE_INCLUDED
+#define ISE_INCLUDED
+
 #include <vector>
 
 #include "symmetryExpander.hpp"
@@ -10,3 +13,5 @@ public:
   // string toString();
   int numSymmetries();
 };
+
+#endif

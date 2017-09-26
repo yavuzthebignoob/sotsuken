@@ -1,3 +1,6 @@
+#ifndef NTGF_INCLUDED
+#define NTGF_INCLUDED
+
 #include <vector>
 #include <stdlib.h>
 #include <random>
@@ -39,3 +42,5 @@ public:
   NTuples createRandomIndividual(mt19937 random);
   // string toString
 };
+
+#endif

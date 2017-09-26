@@ -1,10 +1,4 @@
-CXX = g++
-CXXFLAGS = -g -std=c++11
-OBJS = identitySymmetryExpander.o standardSymmetryExpander.o symmetryUtils.o
-
-all: clean program
-
-program: $(OBJS)
-
-clean:
-	\rm -f *.o
+SRCS+=\
+	$(REL)identitySymmetryExpander.cpp\
+	$(REL)standardSymmetryExpander.cpp\
+	$(REL)symmetryUtils.cpp\

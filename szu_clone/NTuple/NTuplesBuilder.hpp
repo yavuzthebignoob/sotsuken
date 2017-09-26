@@ -1,3 +1,6 @@
+#ifndef NTB_INCLUDED
+#define NTB_INCLUDED
+
 #include <vector>
 #include <random>
 
@@ -39,3 +42,5 @@ private:
   bool containsAll(vector<vector<int> > container, vector<vector<int> > containee);
 
 };
+
+#endif

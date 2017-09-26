@@ -23,7 +23,6 @@ vector<vector<int> > CollectionUtils::flatten(vector<vector<vector<int > > > arr
 }
 
 // comment-out for temporal random player
-/*
 vector<NTuple> CollectionUtils::concat(vector<NTuple> arr1, vector<NTuple> arr2) {
   vector<NTuple> res;
   copy(arr1.begin(), arr1.end(), back_inserter(res));
@@ -32,7 +31,6 @@ vector<NTuple> CollectionUtils::concat(vector<NTuple> arr1, vector<NTuple> arr2)
   }
   return res;
 }
-*/
 
 /*
 int main() {
