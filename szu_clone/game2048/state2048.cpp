@@ -13,7 +13,9 @@ const double State2048::RANDOM_FOUR_PROB = 0.1;
 const int State2048::NUM_INITIAL_LOCATIONS = 2;
 const int State2048::SIZE_OF_REWARDS = 17;
 int State2048::REWARDS[] = {0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536};
-// int State2048::boards[State2048::SIZE][State2048::SIZE] = {{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0}};
+
+RectSize cop(4);
+RectSize State2048::BOARD_SIZE = cop;
 
 int State2048::getNumValues() {
   return SIZE_OF_REWARDS;

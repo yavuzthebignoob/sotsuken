@@ -5,9 +5,11 @@
 
 using namespace std;
 
+int StandardSymmetryExpander::boardSize = State2048::SIZE;
+
 vector<int> StandardSymmetryExpander::getSymmetries(int location) {
   if (!BoardUtils::isValidPosition(location, boardSize)) abort();
-  int M = boardSize -1;
+  int M = StandardSymmetryExpander::boardSize -1;
   int c = BoardUtils::colFromPos(location, boardSize);
   int r = BoardUtils::rowFromPos(location, boardSize);
 
@@ -30,7 +32,7 @@ int StandardSymmetryExpander::flat(int c, int r) {
 }
 
 int StandardSymmetryExpander::getBoardSize() {
-  return boardSize;
+  return StandardSymmetryExpander::boardSize;
 }
 
 int StandardSymmetryExpander::numSymmetries() {

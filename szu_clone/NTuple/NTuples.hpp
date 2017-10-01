@@ -40,10 +40,10 @@ class NTuples : public RealFunction {
   };
 
 private:
-  static const long serialVersionUID = -3843856387088040436L;
-  static vector<NTuple> allNTuples;
-  static vector<NTuple> mainNTuples;
-  static SymmetryExpander symmetryExpander;
+  static const long serialVersionUID = -3843856387088040436L; // what is this for?
+  vector<NTuple> allNTuples;
+  vector<NTuple> mainNTuples;
+  SymmetryExpander symmetryExpander;
 
 public:
   /*

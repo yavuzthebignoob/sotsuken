@@ -18,7 +18,7 @@ class NTuplesGenericFactory {
 private:
   double maxWeight;
   double minWeight;
-  RectSize boardSize;
+  RectSize boardSize = State2048::BOARD_SIZE;
   int numValues;
   SymmetryExpander expander;
   vector<BoardPosList> positionsList;

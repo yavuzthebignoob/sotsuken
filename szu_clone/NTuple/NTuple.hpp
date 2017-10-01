@@ -21,8 +21,8 @@ class NTupleUtils;
 
 class NTuple {
 private:
-  static int numValues;
-  static vector<int> locations;
+  int numValues;
+  vector<int> locations;
   vector<double> LUT;
 
 public:

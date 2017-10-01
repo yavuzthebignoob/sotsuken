@@ -1,6 +1,7 @@
 #include <vector>
 
 #include "symmetryExpander.hpp"
+#include "../../game2048/state2048.hpp"
 #include "../../board/boardUtils.hpp"
 
 using namespace std;

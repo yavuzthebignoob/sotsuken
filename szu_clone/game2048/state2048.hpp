@@ -16,7 +16,7 @@ class Player2048;
 class State2048 : public State {
 public:
   static constexpr int SIZE = 4;
-  static const RectSize BOARD_SIZE;
+  static RectSize BOARD_SIZE;
   static const int NUM_INITIAL_LOCATIONS;
   static const double RANDOM_FOUR_PROB;
   static const int SIZE_OF_REWARDS;

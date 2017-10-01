@@ -1,3 +1,4 @@
+#include <vector>
 #include "defaultNTupleEvaluator.hpp"
 
 using namespace std;
