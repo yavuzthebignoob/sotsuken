@@ -18,11 +18,11 @@ NTuple NTuple::newWithRandomWeights(int numValues, vector<int> locations, double
   return res;
 }
 
-double NTuple::valueFor(Board board) {
+double NTuple::valueFor(Game2048Board board) {
   return LUT[address(board)];
 }
 
-int NTuple::address(Board board) {
+int NTuple::address(Game2048Board board) {
   int address = 0;
   for (int i=0; i<locations.size(); i++) {
     address *= numValues;

@@ -24,8 +24,12 @@ public:
     }
 
   public:
-    int scoreIs();
-    int maxTileIs();
+    int scoreIs() {
+      return score;
+    };
+    int maxTileIs() {
+      return maxTile;
+    };
   };
 
 private:

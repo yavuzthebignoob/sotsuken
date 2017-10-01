@@ -10,7 +10,7 @@ class NTuples;
 
 class NTupleBoardEvaluator {
 public:
-  virtual double evaluate(NTuples* tuples, Board board) = 0;
+  virtual double evaluate(NTuples* tuples, Board board);
 };
 
 #endif

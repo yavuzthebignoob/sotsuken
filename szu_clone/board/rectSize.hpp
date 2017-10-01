@@ -30,6 +30,7 @@ public:
     this->columns = c;
     this->rows = r;
   }
+  RectSize();
 };
 
 #endif

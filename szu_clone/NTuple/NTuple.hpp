@@ -9,6 +9,7 @@
 #include "../board/board.hpp"
 #include "../util/randomUtils.hpp"
 #include "../util/arrayUtils.hpp"
+#include "../game2048/game2048Board.hpp"
 
 #include "expanders/standardSymmetryExpander.hpp"
 #include "expanders/identitySymmetryExpander.hpp"
@@ -22,12 +23,12 @@ class NTuple {
 private:
   static int numValues;
   static vector<int> locations;
-  static vector<double> LUT;
+  vector<double> LUT;
 
 public:
   static NTuple newWithRandomWeights(int numValues, vector<int> locations, double minWeight, double maxWeight, mt19937 random);
-  double valueFor(Board board);
-  int address(Board board);
+  double valueFor(Game2048Board board);
+  int address(Game2048Board board);
   vector<int> valuesFromAddress(int address);
   vector<double> getWeights();
   int getNumWeights();

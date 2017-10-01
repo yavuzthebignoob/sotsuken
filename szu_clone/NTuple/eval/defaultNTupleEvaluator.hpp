@@ -3,13 +3,14 @@
 
 #include "../NTuples.hpp"
 #include "../../board/board.hpp"
+#include "../../game2048/game2048Board.hpp"
 #include "NTupleBoardEvaluator.hpp"
 
 using namespace std;
 
 class DefaultNTupleEvaluator : public NTupleBoardEvaluator {
 public:
-  double evaluate(NTuples* tuples, Board board);
+  double evaluate(NTuples* tuples, Game2048Board board);
 };
 
 #endif

@@ -10,8 +10,8 @@
 using namespace std;
 
 class NTuplesAllRectanglesFactory {
-private:
-  static NTuplesGenericFactory genericFactory;
+public:
+  NTuplesGenericFactory genericFactory;
 
 public:
   NTuplesAllRectanglesFactory(RectSize rect, RectSize board, int num, double min, double max, SymmetryExpander exp) {

@@ -1,3 +1,6 @@
+#ifndef G2B_INCLUDED
+#define G2B_INCLUDED
+
 // didn't implement not used methods
 // (Game2048Board::equals, Game2048Board::hashCode)
 
@@ -51,3 +54,5 @@ public:
     }
   }
 };
+
+#endif

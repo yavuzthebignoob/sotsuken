@@ -29,9 +29,11 @@ int main() {
   RectSize two(2);
   
   random();
-  NTuples lines = NTuplesAllStraightFactory(4, State2048::BOARD_SIZE, 15, 0, 0, exp).createRandomIndividual(random);
+  NTuplesAllStraightFactory straight = NTuplesAllStraightFactory(4, State2048::BOARD_SIZE, 15, 0, 0, exp);
+  NTuples lines = straight.genericFactory.createRandomIndividual(random);
   random();
-  NTuples squares = NTuplesAllRectanglesFactory(two, State2048::BOARD_SIZE, 15, 0, 0, exp).createRandomIndividual(random);
+  NTuplesAllRectanglesFactory rectangle = NTuplesAllRectanglesFactory(two, State2048::BOARD_SIZE, 15, 0, 0, exp);
+  NTuples squares = rectangle.genericFactory.createRandomIndividual(random);
   NTuples vFunction = lines.add(squares);
 
   for (int i = 0; i < 100000; i++) {

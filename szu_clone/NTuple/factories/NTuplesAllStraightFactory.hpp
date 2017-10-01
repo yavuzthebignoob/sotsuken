@@ -10,9 +10,9 @@
 using namespace std;
 
 class NTuplesAllStraightFactory {
-private:
-  static NTuplesGenericFactory genericFactory;
-
+public:
+  NTuplesGenericFactory genericFactory;
+  
 public:
   NTuplesAllStraightFactory(int tupleLength, RectSize board, int num, double min, double max, SymmetryExpander exp) {
     vector<vector<BoardPos> > positions;
