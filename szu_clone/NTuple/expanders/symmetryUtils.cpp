@@ -5,7 +5,7 @@
 
 using namespace std;
 
-vector<vector<int> > SymmetryUtils::createSymmetric(vector<int> locations, SymmetryExpander expander) {
+vector<vector<int> > SymmetryUtils::createSymmetric(vector<int> locations, IdentitySymmetryExpander expander) {
   int n = expander.numSymmetries();
   int m = locations.size();
 

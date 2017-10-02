@@ -1,5 +1,6 @@
 #include <vector>
 #include <random>
+#include <iostream>
 
 #include "NTuplesGenericFactory.hpp"
 
@@ -12,12 +13,15 @@ NTuples NTuplesGenericFactory::createRandomIndividual(mt19937 random) {
     for (int r=0; r<boardSize.rows; r++) {
       for (int c=0; c<boardSize.columns; c++) {
 	BoardPosList nextPositions = positionsList[i].getAligned().getShifted(r, c);
-	if (nextPositions.fitOnBoard(boardSize))
+	if (nextPositions.fitOnBoard(boardSize)) {
 	  builder.addTuple(nextPositions.toLocations(boardSize));
+	}
       }
     }
   }
+
   // NTuples foo = new builder.buildNTuples();
   NTuples foo(builder.buildNTuples());
+  cout << "createRandomIndividual finished" << endl;
   return foo;
 }

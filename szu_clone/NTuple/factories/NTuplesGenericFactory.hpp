@@ -11,6 +11,7 @@
 #include "../NTuples.hpp"
 #include "../NTupleUtils.hpp"
 #include "../expanders/symmetryExpander.hpp"
+#include "../expanders/identitySymmetryExpander.hpp"
 
 using namespace std;
 
@@ -20,11 +21,13 @@ private:
   double minWeight;
   RectSize boardSize = State2048::BOARD_SIZE;
   int numValues;
-  SymmetryExpander expander;
+  IdentitySymmetryExpander expander;
   vector<BoardPosList> positionsList;
+  // class modified:
+  // SymmetryExpander -> IdentitySymmetryExpander
 
 public:
-  NTuplesGenericFactory(vector<BoardPosList> list, RectSize bSize, int nValues, double min, double max, SymmetryExpander exp) {
+  NTuplesGenericFactory(vector<BoardPosList> list, RectSize bSize, int nValues, double min, double max, IdentitySymmetryExpander exp) {
     if (list.size() <= 0) abort();
     this->positionsList = list;
     this->expander = exp;
@@ -33,7 +36,7 @@ public:
     this->minWeight = min;
     this->maxWeight = max;
   }
-  NTuplesGenericFactory(BoardPosList positions, RectSize bSize, int nValues, double min, double max, SymmetryExpander exp) {
+  NTuplesGenericFactory(BoardPosList positions, RectSize bSize, int nValues, double min, double max, IdentitySymmetryExpander exp) {
     vector<BoardPosList> list{positions};
     // NTuplesGenericFactory(list, bSize, nValues, min, max, exp);
     this->positionsList = list;

@@ -13,8 +13,8 @@ class NTuple;
 
 class NTupleUtils {
 public:
-  static vector<NTuple> createSymmetric(NTuple temp, SymmetryExpander expander);
-  static vector<vector<int> > createSymmetric(vector<int> tuple, SymmetryExpander expander);
+  static vector<NTuple> createSymmetric(NTuple temp, IdentitySymmetryExpander expander);
+  static vector<vector<int> > createSymmetric(vector<int> tuple, IdentitySymmetryExpander expander);
   static vector<vector<int> > getTuplesForPositions(NTuples tuples, int numBoardPositions);
 };
 

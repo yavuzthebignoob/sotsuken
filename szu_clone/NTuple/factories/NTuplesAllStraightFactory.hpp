@@ -6,6 +6,7 @@
 #include "../NTuples.hpp"
 #include "../expanders/symmetryExpander.hpp"
 #include "NTuplesGenericFactory.hpp"
+#include "../expanders/symmetryExpander.hpp"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ public:
   NTuplesGenericFactory genericFactory;
   
 public:
-  NTuplesAllStraightFactory(int tupleLength, RectSize board, int num, double min, double max, SymmetryExpander exp) {
+  NTuplesAllStraightFactory(int tupleLength, RectSize board, int num, double min, double max, IdentitySymmetryExpander exp) {
     vector<vector<BoardPos> > positions;
     for (int i=0; i<4; i++) {
       vector<BoardPos> con;

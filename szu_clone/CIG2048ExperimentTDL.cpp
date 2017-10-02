@@ -27,6 +27,8 @@ int main() {
 
   IdentitySymmetryExpander exp;
   RectSize two(2);
+
+  
   
   random();
   NTuplesAllStraightFactory straight = NTuplesAllStraightFactory(4, State2048::BOARD_SIZE, 15, 0, 0, exp);
@@ -36,6 +38,8 @@ int main() {
   NTuples squares = rectangle.genericFactory.createRandomIndividual(random);
   NTuples vFunction = lines.add(squares);
 
+  
+  
   for (int i = 0; i < 100000; i++) {
     tdlgame2048.TDAfterstateLearn(vFunction, 0.001, 0.01, random);
     if (i%5000 == 0) {

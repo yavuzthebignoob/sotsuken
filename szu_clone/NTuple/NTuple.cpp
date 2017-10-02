@@ -89,7 +89,7 @@ string NTuple::toString() {
 }
 
 // these 'createSymmetric' functions are originally implemented in 'NTupleUtils' class
-vector<vector<int> > NTuple::createSymmetric(vector<int> tuple, SymmetryExpander expander) {
+vector<vector<int> > NTuple::createSymmetric(vector<int> tuple, IdentitySymmetryExpander expander) {
   int n = expander.numSymmetries();
   int m = tuple.size();
 
@@ -119,7 +119,7 @@ vector<vector<int> > NTuple::createSymmetric(vector<int> tuple, SymmetryExpander
   return unique;
 }
 
-vector<NTuple> NTuple::createSymmetric(NTuple temp, SymmetryExpander expander) {
+vector<NTuple> NTuple::createSymmetric(NTuple temp, IdentitySymmetryExpander expander) {
   vector<vector<int> > symmetric = NTuple::createSymmetric(temp.getLocations(), expander);
 
   int size = symmetric.size();

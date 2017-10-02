@@ -45,8 +45,8 @@ public:
 
   // moved from NTupleUtils
 public:
-  static vector<vector<int> > createSymmetric(vector<int> tuple, SymmetryExpander expander);
-  static vector<NTuple> createSymmetric(NTuple temp, SymmetryExpander expander);
+  static vector<vector<int> > createSymmetric(vector<int> tuple, IdentitySymmetryExpander expander);
+  static vector<NTuple> createSymmetric(NTuple temp, IdentitySymmetryExpander expander);
   
 public:
   NTuple(int numValues0, vector<int> locations0, vector<double> weights0) {

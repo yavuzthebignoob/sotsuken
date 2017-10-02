@@ -23,9 +23,9 @@ void NTuplesBuilder::addTuple(vector<int> locations) {
 
 NTuples NTuplesBuilder::buildNTuples() {
   vector<vector<int> > newMain = main;
-  if (this->removeSubtuples)
+  if (this->removeSubtuples) {
     newMain = getMainWithoutDuplicates();
-
+  }
   vector<NTuple> mainSorted = createNTuplesFromLocations(newMain);
   NTuples res(mainSorted, expander);
   return res;
@@ -33,7 +33,12 @@ NTuples NTuplesBuilder::buildNTuples() {
 
 vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > newMain) {
   vector<NTuple> mainNTuples;
+  cout << "newMain.size() = " << newMain.size() << endl;
+  for (int t=0; t<newMain[2].size(); t++) {
+    cout << newMain[2][t] << endl;
+  }
   for (int i=0; i<newMain.size(); i++) {
+    cout << "yayyay" << endl;
     mainNTuples.push_back(NTuple::newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random));
   }
   // sorting is omitted because Szubert says 'sorting is not obligatory'
@@ -42,13 +47,15 @@ vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > n
 
 vector<vector<int> > NTuplesBuilder::getMainWithoutDuplicates() {
   vector<vector<int> > newMain;
-  int n = main.size();
+  int n = this->main.size();
   for (int a=0; a<n; a++) {
     bool isSubtuple = false;
-    for (int b=0; b<n && !isSubtuple; b++) {
-      if (a==b || main[a].size() > main[b].size())
+    for (int b=0; b<n; b++) {
+      if (a==b) { // || this->main[a].size() > this->main[b].size()) {
 	continue;
+      }
       isSubtuple = containsAll(all[b], all[a]);
+      if (!isSubtuple) break;
     }
     if (!isSubtuple)
       newMain.push_back(main[a]);
@@ -60,12 +67,14 @@ bool NTuplesBuilder::containsAll(vector<vector<int> > container, vector<vector<i
   // implemented as std::unordered_set instead of std::hash_set
   for (int i=0; i<container.size(); i++) {
     unordered_set<int> containerElementSet;
-    for (int j=0; i<container[i].size(); j++) {
+    for (int j=0; j<container[i].size(); j++) {
       containerElementSet.insert(container[i][j]);
     }
+
     bool found = false;
     for (int j=0; j<containee.size(); j++) {
       for (int k=0; k<containee[j].size(); k++) {
+	// auto containerElementSet.find(containee[j][k]);
 	if (containerElementSet.find(containee[j][k]) != containerElementSet.end()) {
 	  found = true;
 	  break;

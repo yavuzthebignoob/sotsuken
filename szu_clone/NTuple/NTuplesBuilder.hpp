@@ -16,14 +16,16 @@ public:
   mt19937 random;
   vector<vector<vector<int> > > all;
   vector<vector<int> > main;
-  SymmetryExpander expander;
+  IdentitySymmetryExpander expander;
   int numValues;
   double minWeight;
   double maxWeight;
   bool removeSubtuples;
   
 public:
-  NTuplesBuilder(int num, double min, double max, SymmetryExpander exp, mt19937 rand, bool rm) {
+  NTuplesBuilder(int num, double min, double max, IdentitySymmetryExpander exp, mt19937 rand, bool rm) {
+    // argument modified:
+    // SymmetryExpander -> IdentitySymmetryExpander
     this->maxWeight = max;
     this->minWeight = min;
     this->numValues = num;

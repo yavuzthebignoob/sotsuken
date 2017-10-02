@@ -23,7 +23,7 @@ vector<NTuple> NTupleUtils::createSymmetric(NTuple temp, SymmetryExpander expand
 }
 */
 
-vector<vector<int> > NTupleUtils::createSymmetric(vector<int> tuple, SymmetryExpander expander) {
+vector<vector<int> > NTupleUtils::createSymmetric(vector<int> tuple, IdentitySymmetryExpander expander) {
   int n = expander.numSymmetries();
   int m = tuple.size();
   

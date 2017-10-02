@@ -6,6 +6,7 @@
 #include "../../board/rectSize.hpp"
 #include "../NTuples.hpp"
 #include "../expanders/symmetryExpander.hpp"
+#include "../expanders/identitySymmetryExpander.hpp"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ public:
   NTuplesGenericFactory genericFactory;
 
 public:
-  NTuplesAllRectanglesFactory(RectSize rect, RectSize board, int num, double min, double max, SymmetryExpander exp) {
+  NTuplesAllRectanglesFactory(RectSize rect, RectSize board, int num, double min, double max, IdentitySymmetryExpander exp) {
     vector<BoardPos> positions1, positions2;
     for (int r=0; r<rect.rows; r++) {
       for (int c=0; c<rect.columns; c++) {

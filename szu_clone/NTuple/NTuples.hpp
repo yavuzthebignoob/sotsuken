@@ -11,6 +11,7 @@
 #include "../rl/realFunctions.hpp"
 #include "../util/collectionUtils.hpp"
 #include "expanders/symmetryExpander.hpp"
+#include "expanders/identitySymmetryExpander.hpp"
 #include "eval/defaultNTupleEvaluator.hpp"
 
 using namespace std;
@@ -24,10 +25,10 @@ class NTuples : public RealFunction {
     static vector<NTuple> tuples;
 
   private:
-    static SymmetryExpander expander;
+    static IdentitySymmetryExpander expander;
 
   public:
-    Builder(SymmetryExpander exp) {
+    Builder(IdentitySymmetryExpander exp) {
       this->expander = exp;
     }
     void add(NTuple tuple) {
@@ -43,7 +44,7 @@ private:
   static const long serialVersionUID = -3843856387088040436L; // what is this for?
   vector<NTuple> allNTuples;
   vector<NTuple> mainNTuples;
-  SymmetryExpander symmetryExpander;
+  IdentitySymmetryExpander symmetryExpander;
 
 public:
   /*
@@ -54,7 +55,7 @@ public:
   */
   
   NTuples(vector<NTuple> tuples) {
-    SymmetryExpander exp = IdentitySymmetryExpander();
+    IdentitySymmetryExpander exp = IdentitySymmetryExpander();
     NTuples(tuples, exp);
   }
 
@@ -62,7 +63,7 @@ public:
     NTuples(ntuples.mainNTuples, ntuples.symmetryExpander);
   }
 
-  NTuples(vector<NTuple> tuples, SymmetryExpander expander) {
+  NTuples(vector<NTuple> tuples, IdentitySymmetryExpander expander) {
     for (int i=0; i<tuples.size(); i++) {
       NTuple buf(tuples[i]);
       mainNTuples.push_back(buf);
