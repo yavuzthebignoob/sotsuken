@@ -1,0 +1,18 @@
+CXX = g++
+CXXFLAGS = -g -std=c++11
+INCLUDE = ./rl
+SRCS = board/boardPos.cpp board/boardPosList.cpp board/boardUtils.cpp board/rectSize.cpp game2048/action2048.cpp game2048/game2048Board.cpp util/arrayUtils.cpp util/collectionUtils.cpp util/randomUtils.cpp util/summaryStatistics.cpp game2048/game2048.cpp NTuplePlayer2048.cpp game2048/state2048.cpp game2048/player2048.cpp
+TARGET = NTuplePlayer2048
+OBJS = $(SRCS:.cpp=.o)
+TILDE = $(SRCS:.cpp=.cpp~)
+
+.cpp.o:
+	$(CXX) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $+
+
+default:$(OBJS) $(TARGET)
+
+clean:
+	\rm -f $(OBJS) $(TILDE)

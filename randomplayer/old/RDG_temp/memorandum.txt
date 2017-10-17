@@ -1,0 +1,45 @@
+乱数生成の流れについてメモ：
+Szubertの場合：
+上流ソース（State2048.javaなど）がRandomUtilsのメンバメソッドを呼び出す
+*nextUniformやpickRandomなど
+↓
+RandomUtilsのクラスはRandomDataGenerator randomを引数に取っている
+↓
+org.apache.commons.math3.random.RandomDataGenerator
+を呼び出す
+http://commons.apache.org/proper/commons-math/javadocs/api-3.6/src-html/org/apache/commons/math3/random/RandomDataGenerator.html
+↓
+コンストラクタRandomDataGeneratorはrandomGenerator randをデフォルトのrandom generatorとして使っている
+↓
+randomGeneratorの初期化をgetRandomGeneratorで行う
+↓
+initRanの呼び出し
+↓
+メソッドWell19937cに現在のミリ時間とこのクラスのハッシュ値の和をシードとして渡してrandを生成
+↓
+クラスWell19937cを呼び出す
+http://commons.apache.org/proper/commons-math/javadocs/api-3.6/src-html/org/apache/commons/math3/random/Well19937c.html
+↓
+コンストラクタWell19937c(int seed)を呼び出す
+↓
+super(K, M1, M2, M3, seed)
+super＝AbstractWell
+↓
+AbstractWell.java
+http://home.apache.org/~luc/commons-math-3.6-RC2-site/jacoco/org.apache.commons.math3.random/AbstractWell.java.html
+↓
+コンストラクタAbstractWellに値を渡してシード値を作って終了
+
+必要なコードのまとめ：
+RandomUtils.java
+RandomDataGenerator.java
+Well19937c.java
+AbstractWell.java
+
+C++で必要なコードのまとめ：
+randomUtils.cpp <- DIY
+randomDataGenerator <- std::random?
+well.cpp <- もうある
+abstractWell.cpp <- well.cppに機能が組み込まれているのでいらないように見える
+
+randomUtilsの中で乱数を生成する時にstd::randomで定義されている関数にwell.cppで作ったシード値を渡すようにすればよい？
