@@ -32,17 +32,25 @@ NTuples NTuplesBuilder::buildNTuples() {
 }
 
 vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > newMain) {
-  vector<NTuple> mainNTuples;
+  vector<NTuple> createdNTuples;
+  NTuple hoge[];
   cout << "newMain.size() = " << newMain.size() << endl;
   for (int t=0; t<newMain[2].size(); t++) {
-    cout << newMain[2][t] << endl;
+    cout << newMain[1][t] << endl;
   }
+  cout << "newMain size = " << newMain.size() << endl;
+  NTuple buf = NTuple::newWithRandomWeights(numValues, newMain[0], minWeight, maxWeight, random);
+  createdNTuples.push_back(buf);
   for (int i=0; i<newMain.size(); i++) {
-    cout << "yayyay" << endl;
-    mainNTuples.push_back(NTuple::newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random));
+    cout << "mainNTuples push_back: " << i << endl;
+    cout << "bufgen" << endl;
+    // createdNTuples.push_back(buf);
+    hoge[i] = buf;
+    cout << createdNTuples.size() << endl;
+    cout << "push_back finished: " << i << endl;
   }
   // sorting is omitted because Szubert says 'sorting is not obligatory'
-  return mainNTuples;
+  return createdNTuples;
 }
 
 vector<vector<int> > NTuplesBuilder::getMainWithoutDuplicates() {

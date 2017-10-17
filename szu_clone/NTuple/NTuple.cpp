@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iterator>
 #include <cmath>
+#include <iostream>
 
 #include "NTuple.hpp"
 #include "NTuples.hpp"
@@ -11,7 +12,10 @@ using namespace std;
 
 NTuple NTuple::newWithRandomWeights(int numValues, vector<int> locations, double minWeight, double maxWeight,
 				    mt19937 random) {
-  if (locations.size() <= 0) abort();
+  if (locations.size() <= 0) {
+    cout << "abort in newWithRandomWeights" << endl;
+    abort();
+  }
   int weightSize = NTuple::computeNumWeights(numValues, locations.size());
   vector<double> weights = RandomUtils::randomDoubleVector(weightSize, minWeight, maxWeight, random);
   NTuple res(numValues, locations, weights);
