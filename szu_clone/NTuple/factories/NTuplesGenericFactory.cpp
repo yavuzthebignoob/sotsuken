@@ -22,6 +22,6 @@ NTuples NTuplesGenericFactory::createRandomIndividual(mt19937 random) {
 
   // NTuples foo = new builder.buildNTuples();
   NTuples foo(builder.buildNTuples());
-  cout << "createRandomIndividual finished" << endl;
+
   return foo;
 }

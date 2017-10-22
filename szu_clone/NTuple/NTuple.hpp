@@ -5,6 +5,7 @@
 #include <string>
 #include <random>
 #include <stdlib.h>
+#include <iostream>
 
 #include "../board/board.hpp"
 #include "../util/randomUtils.hpp"
@@ -58,6 +59,9 @@ public:
   }
   NTuple(const NTuple& tuple) {
     NTuple(tuple.numValues, tuple.locations, tuple.LUT);
+  }
+  ~NTuple() {
+    cout << "Destructed. locations[0] = " << locations[0] << endl;
   }
 };
 

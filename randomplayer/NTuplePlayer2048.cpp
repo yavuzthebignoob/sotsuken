@@ -48,7 +48,6 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
   cout << "Max Tile in total : " << maxTile << endl;
 }
 
-/*
 int main(int argc, char* argv[]) {
   cout << "** 2048 Player **" << endl;
 
@@ -67,4 +66,3 @@ int main(int argc, char* argv[]) {
   NTuplePlayer2048 player(random);
   player.evaluate(numGames, random);
 }
-*/

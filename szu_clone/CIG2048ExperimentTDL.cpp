@@ -17,10 +17,12 @@ using namespace std;
 static void evaluatePerformance(TDLGame2048 game, NTuples vFunction, int numEpisodes, mt19937 random, int e);
 
 int main() {
+  cout << "+++ 2048 N-tuple Network Player trainer +++" << endl;
+
   random_device seed;
   // int seed_value = seed()
   int seed_value = 1497270178;
-  cout << "* random seed: " << seed_value << endl;
+  cout << "* random seed: " << seed_value << endl << endl << "* Training Performance" << endl;
   mt19937 random;
 
   TDLGame2048 tdlgame2048;
