@@ -38,6 +38,19 @@ vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > n
   // createdNTuples.push_back(buf);
   // cout << "mark 1" << endl;
 
+  cout << "Checking if newMain[][] valid" << endl;
+  for (int i=0; i<newMain.size(); i++) {
+    cout << "newMain[" << i << "] :" << endl;
+    for (int j=0; j<newMain[i].size(); j++) {
+      if (BoardUtils::isValidPosition(newMain[i][j], 4)) {
+	cout << "true" << endl;
+      }
+      else {
+	cout << "false" << endl;
+      }
+    }
+  }
+
   for (int i=0; i<newMain.size(); i++) {
     cout << "mark " << i+2 << endl;
     NTuple buf = NTuple::newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
