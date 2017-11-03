@@ -12,48 +12,56 @@ public:
   vector<double> LUT;
 
 public:
+public:
+  NTuple newWithRandomWeights(int num, vector<int> main, int min, int max, mt19937 random);
+  
   NTuple(int num, vector<int> loc, vector<double> wgt) {
     this->numValues = num;
     this->locations = loc;
     this->LUT = wgt;
   }
+  NTuple() {
+    this->numValues = 0;
+    this->locations.push_back(0);
+    this->LUT.push_back(0);
+  }
 };
 
 class Builder {
 public:
-  int numValues;
-  double minWeight;
-  double maxWeight;
+  int numValues = 15;
+  double minWeight = 0;
+  double maxWeight = 0;
   mt19937 random;
 
 public:
-  static vector<NTuple> createNTuples(vector<vector<int> > newMain);
+  vector<NTuple> createNTuples(vector<vector<int> > newMain);
   // originally implemented in "NTuple.cpp" functions below
-  NTuple newWithRandomWeights(int num, vector<int> main, int min, int max, mt19937 random);
-  int computeNumWeights(int num, int fields);
+  static int computeNumWeights(int num, int fields);
   // originally implemented in "randomUtils.cpp" functions below
-  vector<double> randomDoubleVector(int n, double minValue, double maxValue, mt19937 random);
-  double nextUniform(int lower, int upper, mt19937 random);
+  static vector<double> randomDoubleVector(int n, double minValue, double maxValue, mt19937 random);
+  static double nextUniform(int lower, int upper, mt19937 random);
 };
 
 
 vector<NTuple> Builder::createNTuples(vector<vector<int> > newMain) {
   vector<NTuple> createdNTuples;
+  NTuple obj;
 
   for (int i=0; i<newMain.size(); i++) {
-    NTuple buf = Builder::newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
+    NTuple buf = obj.newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
     createdNTuples.push_back(buf);
   }
   
   return createdNTuples;
 }
 
-NTuple Builder::newWithRandomWeights(int num, vector<int> main, int min, int max, mt19937 random) {
+NTuple NTuple::newWithRandomWeights(int num, vector<int> main, int min, int max, mt19937 random) {
   if (main.size() <= 0) {
     abort();
   }
-  int weightSize = Builder::computeNumWeights(numValues, main.size());
-  vector<double> weights = Builder::randomDoubleVector(weightSize, minWeight, maxWeight, random);
+  int weightSize = Builder::computeNumWeights(num, main.size());
+  vector<double> weights = Builder::randomDoubleVector(weightSize, min, max, random);
   NTuple res(numValues, main, weights);
   return res;
 }
@@ -78,6 +86,8 @@ double Builder::nextUniform(int lower, int upper, mt19937 random) {
 
 int main() {
   vector<vector<int> > arr;
+  Builder builder;
+
   for (int i=0; i<16; i++) {
     vector<int> buf;
     arr.push_back(buf);
@@ -86,7 +96,7 @@ int main() {
     }
   }
 
-  vector<NTuple> res = Builder::createNTuples(arr);
+  vector<NTuple> res = builder.createNTuples(arr);
 
   return 0;
 }

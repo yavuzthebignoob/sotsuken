@@ -38,6 +38,11 @@ vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > n
   // createdNTuples.push_back(buf);
   // cout << "mark 1" << endl;
 
+  cout << "Checking args: " << endl;
+  cout << "numValues: " << numValues
+       << "minWeight: " << minWeight
+       << "maxWeight: " << maxWeight << endl;
+
   cout << "Checking if newMain[][] valid" << endl;
   for (int i=0; i<newMain.size(); i++) {
     cout << "newMain[" << i << "] :" << endl;
