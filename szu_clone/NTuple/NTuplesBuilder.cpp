@@ -42,15 +42,18 @@ NTuples NTuplesBuilder::buildNTuples() {
 
 vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > newMain) {
   vector<NTuple> createdNTuples;
+  NTuple obj;
 
   // NTuple buf = NTuple::newWithRandomWeights(numValues, newMain[0], minWeight, maxWeight, random);
   // createdNTuples.push_back(buf);
   // cout << "mark 1" << endl;
 
+  /*
   cout << "Checking args: " << endl;
   cout << "numValues: " << numValues << endl
        << "minWeight: " << minWeight << endl
        << "maxWeight: " << maxWeight << endl;
+  */
 
   /*
   cout << "Checking if newMain[][] valid" << endl;
@@ -68,11 +71,13 @@ vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > n
   */
 
   for (int i=0; i<newMain.size(); i++) {
-    cout << "mark " << i+2 << endl;
-    NTuple buf = NTuple::newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
-    cout << "mark " << i+2.5 << endl;
+    NTuple buf = obj.newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
+    cerr << "num: " << buf.numValues << endl
+	 << "loc's size: " << buf.locations.size() << endl
+	 << "LUT's size: " << buf.LUT.size() << endl;
+    cout << &buf << endl;
     createdNTuples.push_back(buf);
-    cout << "mark " << i+2.75 << endl;
+    cout << &(createdNTuples[i]) << endl;
   }
   // sorting is omitted because Szubert says 'sorting is not obligatory'
   

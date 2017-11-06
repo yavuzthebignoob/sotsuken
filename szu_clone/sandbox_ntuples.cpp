@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include <cmath>
 // #include "NTuple/NTuple.hpp"
 
 using namespace std;
@@ -55,6 +56,7 @@ vector<NTuple> Builder::createNTuples(vector<vector<int> > newMain) {
   for (int i=0; i<newMain.size(); i++) {
     NTuple buf = obj.newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
     createdNTuples.push_back(buf);
+    cerr << &(createdNTuples[i]) << endl;
   }
   
   return createdNTuples;
@@ -66,10 +68,8 @@ NTuple NTuple::newWithRandomWeights(int num, vector<int> main, int min, int max,
   }
   int weightSize = Builder::computeNumWeights(num, main.size());
   vector<double> weights = Builder::randomDoubleVector(weightSize, min, max, random);
-  for (int i=0; i<4; i++) {
-    cout << weights[i] << endl;
-  }
-  NTuple res(numValues, main, weights);
+
+  NTuple res(num, main, weights);
   return res;
 }
 

@@ -21,13 +21,13 @@ using namespace std;
 class NTupleUtils;
 
 class NTuple {
-private:
+public:
   int numValues;
   vector<int> locations;
   vector<double> LUT;
 
 public:
-  static NTuple newWithRandomWeights(int numValues, vector<int> locations, double minWeight, double maxWeight, mt19937 random);
+  NTuple newWithRandomWeights(int numValues, vector<int> locations, double minWeight, double maxWeight, mt19937 random);
   double valueFor(Game2048Board board);
   int address(Game2048Board board);
   vector<int> valuesFromAddress(int address);
@@ -64,6 +64,11 @@ public:
   }
   NTuple(const NTuple& tuple) {
     NTuple(tuple.numValues, tuple.locations, tuple.LUT);
+  }
+  NTuple() {
+    numValues = 0;
+    locations.push_back(0);
+    LUT.push_back(0);
   }
   ~NTuple() {
     // cout << "Destructed. locations[0] = " << locations[0] << endl;
