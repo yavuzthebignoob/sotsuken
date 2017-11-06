@@ -54,14 +54,19 @@ public:
     if (locations0.size() <= 0) abort();
     if (weights0.size()!=computeNumWeights(numValues0, locations0.size())) abort();
     this->numValues = numValues0;
-    this->locations = locations0;
-    this->LUT = weights0;
+    
+    for (int i=0; i<locations0.size(); i++) {
+      locations.push_back(locations0[i]);
+    }
+    for (int i=0; i<weights0.size(); i++) {
+      LUT.push_back(weights0[i]);
+    }
   }
   NTuple(const NTuple& tuple) {
     NTuple(tuple.numValues, tuple.locations, tuple.LUT);
   }
   ~NTuple() {
-    cout << "Destructed. locations[0] = " << locations[0] << endl;
+    // cout << "Destructed. locations[0] = " << locations[0] << endl;
   }
 };
 

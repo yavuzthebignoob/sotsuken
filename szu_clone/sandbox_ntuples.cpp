@@ -17,8 +17,12 @@ public:
   
   NTuple(int num, vector<int> loc, vector<double> wgt) {
     this->numValues = num;
-    this->locations = loc;
-    this->LUT = wgt;
+    for (int i=0; i<loc.size(); i++) {
+      locations.push_back(loc[i]);
+    }
+    for (int i=0; i<wgt.size(); i++) {
+      LUT.push_back(wgt[i]);
+    }
   }
   NTuple() {
     this->numValues = 0;
@@ -62,6 +66,9 @@ NTuple NTuple::newWithRandomWeights(int num, vector<int> main, int min, int max,
   }
   int weightSize = Builder::computeNumWeights(num, main.size());
   vector<double> weights = Builder::randomDoubleVector(weightSize, min, max, random);
+  for (int i=0; i<4; i++) {
+    cout << weights[i] << endl;
+  }
   NTuple res(numValues, main, weights);
   return res;
 }
@@ -97,6 +104,14 @@ int main() {
   }
 
   vector<NTuple> res = builder.createNTuples(arr);
+  int size = res.size();
 
-  return 0;
+  cout << "res's size: " << size << endl;
+
+  for (int j=0; j<size; j++) {
+    cout << "res[" << j << "]'s parameter" << endl
+	 << "numValues: " << res[j].numValues << endl
+	 << "locations'size:" << res[j].locations.size() << endl
+	 << "LUT'size: " << res[j].LUT.size() << endl;
+  }
 }

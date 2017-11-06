@@ -22,11 +22,20 @@ void NTuplesBuilder::addTuple(vector<int> locations) {
 }
 
 NTuples NTuplesBuilder::buildNTuples() {
-  vector<vector<int> > newMain = main;
+  vector<vector<int> > newMain;
+  for (int i=0; i<main.size(); i++) {
+    vector<int> buf;
+    newMain.push_back(buf);
+    for (int j=0; j<main[i].size(); j++) {
+      newMain[i].push_back(main[i][j]);
+    }
+  }
   if (this->removeSubtuples) {
     newMain = getMainWithoutDuplicates();
   }
+  cerr << "hoge" << endl;
   vector<NTuple> mainSorted = createNTuplesFromLocations(newMain);
+  cerr << "fuga" << endl;
   NTuples res(mainSorted, expander);
   return res;
 }
@@ -39,10 +48,11 @@ vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > n
   // cout << "mark 1" << endl;
 
   cout << "Checking args: " << endl;
-  cout << "numValues: " << numValues
-       << "minWeight: " << minWeight
+  cout << "numValues: " << numValues << endl
+       << "minWeight: " << minWeight << endl
        << "maxWeight: " << maxWeight << endl;
 
+  /*
   cout << "Checking if newMain[][] valid" << endl;
   for (int i=0; i<newMain.size(); i++) {
     cout << "newMain[" << i << "] :" << endl;
@@ -55,6 +65,7 @@ vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > n
       }
     }
   }
+  */
 
   for (int i=0; i<newMain.size(); i++) {
     cout << "mark " << i+2 << endl;
