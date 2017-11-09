@@ -13,7 +13,6 @@ public:
   vector<double> LUT;
 
 public:
-public:
   NTuple newWithRandomWeights(int num, vector<int> main, int min, int max, mt19937 random);
   
   NTuple(int num, vector<int> loc, vector<double> wgt) {
@@ -54,9 +53,21 @@ vector<NTuple> Builder::createNTuples(vector<vector<int> > newMain) {
   NTuple obj;
 
   for (int i=0; i<newMain.size(); i++) {
+    cerr << "newMain[" << i << "]" << endl;
+    for (int j=0; j<newMain[i].size(); j++) {
+      cerr << newMain[i][j] << endl;
+    }
+  }
+
+  cerr << "parameters" << endl
+       << "numValues = " << numValues << endl
+       << "minWeight = " << minWeight << endl
+       << "maxWeight = " << maxWeight << endl;
+
+  for (int i=0; i<newMain.size(); i++) {
     NTuple buf = obj.newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
     createdNTuples.push_back(buf);
-    cerr << &(createdNTuples[i]) << endl;
+    // cerr << &(createdNTuples[i]) << endl;
   }
   
   return createdNTuples;

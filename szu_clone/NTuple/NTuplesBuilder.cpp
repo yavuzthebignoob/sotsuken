@@ -30,10 +30,12 @@ NTuples NTuplesBuilder::buildNTuples() {
       newMain[i].push_back(main[i][j]);
     }
   }
+  /*
   if (this->removeSubtuples) {
+    cerr << "removeSubtuples = true" << endl;
     newMain = getMainWithoutDuplicates();
   }
-  cerr << "hoge" << endl;
+  */
   vector<NTuple> mainSorted = createNTuplesFromLocations(newMain);
   cerr << "fuga" << endl;
   NTuples res(mainSorted, expander);
@@ -55,29 +57,36 @@ vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > n
        << "maxWeight: " << maxWeight << endl;
   */
 
-  /*
   cout << "Checking if newMain[][] valid" << endl;
   for (int i=0; i<newMain.size(); i++) {
     cout << "newMain[" << i << "] :" << endl;
     for (int j=0; j<newMain[i].size(); j++) {
+      /*
       if (BoardUtils::isValidPosition(newMain[i][j], 4)) {
 	cout << "true" << endl;
       }
       else {
 	cout << "false" << endl;
       }
+      */
+      newMain[i][j] = 8;
+      cerr << newMain[i][j] << endl;
     }
   }
-  */
+
+    cerr << "parameters" << endl
+       << "numValues = " << numValues << endl
+       << "minWeight = " << minWeight << endl
+       << "maxWeight = " << maxWeight << endl;
 
   for (int i=0; i<newMain.size(); i++) {
     NTuple buf = obj.newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
-    cerr << "num: " << buf.numValues << endl
+    cerr << "buf's parameter" << endl
+	 << "num: " << buf.numValues << endl
 	 << "loc's size: " << buf.locations.size() << endl
 	 << "LUT's size: " << buf.LUT.size() << endl;
-    cout << &buf << endl;
     createdNTuples.push_back(buf);
-    cout << &(createdNTuples[i]) << endl;
+    cerr << "createdNTuples[i]'s address: " << &(createdNTuples[i]) << endl;
   }
   // sorting is omitted because Szubert says 'sorting is not obligatory'
   
