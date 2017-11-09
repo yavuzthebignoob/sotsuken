@@ -46,45 +46,15 @@ vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > n
   vector<NTuple> createdNTuples;
   NTuple obj;
 
-  // NTuple buf = NTuple::newWithRandomWeights(numValues, newMain[0], minWeight, maxWeight, random);
-  // createdNTuples.push_back(buf);
-  // cout << "mark 1" << endl;
-
   /*
-  cout << "Checking args: " << endl;
-  cout << "numValues: " << numValues << endl
+  cerr << "Checking args: " << endl
+       << "numValues: " << numValues << endl
        << "minWeight: " << minWeight << endl
        << "maxWeight: " << maxWeight << endl;
   */
-
-  cout << "Checking if newMain[][] valid" << endl;
-  for (int i=0; i<newMain.size(); i++) {
-    cout << "newMain[" << i << "] :" << endl;
-    for (int j=0; j<newMain[i].size(); j++) {
-      /*
-      if (BoardUtils::isValidPosition(newMain[i][j], 4)) {
-	cout << "true" << endl;
-      }
-      else {
-	cout << "false" << endl;
-      }
-      */
-      newMain[i][j] = 8;
-      cerr << newMain[i][j] << endl;
-    }
-  }
-
-    cerr << "parameters" << endl
-       << "numValues = " << numValues << endl
-       << "minWeight = " << minWeight << endl
-       << "maxWeight = " << maxWeight << endl;
-
+  
   for (int i=0; i<newMain.size(); i++) {
     NTuple buf = obj.newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
-    cerr << "buf's parameter" << endl
-	 << "num: " << buf.numValues << endl
-	 << "loc's size: " << buf.locations.size() << endl
-	 << "LUT's size: " << buf.LUT.size() << endl;
     createdNTuples.push_back(buf);
     cerr << "createdNTuples[i]'s address: " << &(createdNTuples[i]) << endl;
   }

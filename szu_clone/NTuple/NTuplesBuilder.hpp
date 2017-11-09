@@ -33,12 +33,18 @@ public:
     this->random = rand;
     this->removeSubtuples = rm;
   }
+  NTuplesBuilder() {
+    numValues = 15;
+    minWeight = 0;
+    maxWeight = 0;
+  }
 
 public:
   void addTuple(vector<int> locations);
   NTuples buildNTuples();
 
-private:
+  // make methods below PRIVATE after testing
+public:
   vector<NTuple> createNTuplesFromLocations(vector<vector<int> > newMain);
   vector<vector<int> > getMainWithoutDuplicates();
   bool containsAll(vector<vector<int> > container, vector<vector<int> > containee);

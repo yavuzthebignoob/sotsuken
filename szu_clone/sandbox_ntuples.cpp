@@ -2,7 +2,14 @@
 #include <vector>
 #include <random>
 #include <cmath>
-// #include "NTuple/NTuple.hpp"
+
+#include "NTuple/NTuples.hpp"
+#include "NTuple/expanders/identitySymmetryExpander.hpp"
+#include "NTuple/factories/NTuplesAllRectanglesFactory.hpp"
+#include "NTuple/factories/NTuplesAllStraightFactory.hpp"
+#include "game2048/state2048.hpp"
+#include "game2048/TDLGame2048.hpp"
+#include "rl/realFunctions.hpp"
 
 using namespace std;
 
@@ -104,7 +111,8 @@ double Builder::nextUniform(int lower, int upper, mt19937 random) {
 
 int main() {
   vector<vector<int> > arr;
-  Builder builder;
+  IdentitySymmetryExpander exp;
+  NTuplesBuilder builder(15, 0, 0, exp, random, true);
 
   for (int i=0; i<16; i++) {
     vector<int> buf;
@@ -114,7 +122,7 @@ int main() {
     }
   }
 
-  vector<NTuple> res = builder.createNTuples(arr);
+  vector<NTuple> res = builder.createNTuplesFromLocations(arr);
   int size = res.size();
 
   cout << "res's size: " << size << endl;

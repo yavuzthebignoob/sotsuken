@@ -16,6 +16,7 @@ using namespace std;
 
 static void evaluatePerformance(TDLGame2048 game, NTuples vFunction, int numEpisodes, mt19937 random, int e);
 
+/*
 int main() {
   cout << "+++ 2048 N-tuple Network Player trainer +++" << endl;
 
@@ -49,6 +50,7 @@ int main() {
     }
   }
 }
+*/
 
 void evaluatePerformance(TDLGame2048 game, NTuples vFunction, int numEpisodes, mt19937 random, int e) {
   double performance = 0;

@@ -12,6 +12,7 @@ REL := NTuple/
 include $(REL)Makefile
 SRCS+=NTuplePlayer2048.cpp
 SRCS+=CIG2048ExperimentTDL.cpp
+SRCS+=2_sandbox_ntuple.cpp
 TARGET = a.out
 OBJS = $(SRCS:.cpp=.o)
 TILDE = $(SRCS:.cpp=.cpp~)
