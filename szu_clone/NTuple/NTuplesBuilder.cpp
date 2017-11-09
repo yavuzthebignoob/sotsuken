@@ -43,23 +43,17 @@ NTuples NTuplesBuilder::buildNTuples() {
 }
 
 vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > newMain) {
-  vector<NTuple> createdNTuples;
+  vector<NTuple> createdNTuples(16);
   NTuple obj;
-
-  /*
-  cerr << "Checking args: " << endl
-       << "numValues: " << numValues << endl
-       << "minWeight: " << minWeight << endl
-       << "maxWeight: " << maxWeight << endl;
-  */
   
   for (int i=0; i<newMain.size(); i++) {
     NTuple buf = obj.newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
-    createdNTuples.push_back(buf);
+    createdNTuples[i] = buf;
+    cerr << "foobar" << endl;
     cerr << "createdNTuples[i]'s address: " << &(createdNTuples[i]) << endl;
   }
   // sorting is omitted because Szubert says 'sorting is not obligatory'
-  
+  cerr << "NTuples creation done" << endl;
   return createdNTuples;
 }
 

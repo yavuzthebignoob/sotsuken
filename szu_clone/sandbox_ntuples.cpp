@@ -3,14 +3,6 @@
 #include <random>
 #include <cmath>
 
-#include "NTuple/NTuples.hpp"
-#include "NTuple/expanders/identitySymmetryExpander.hpp"
-#include "NTuple/factories/NTuplesAllRectanglesFactory.hpp"
-#include "NTuple/factories/NTuplesAllStraightFactory.hpp"
-#include "game2048/state2048.hpp"
-#include "game2048/TDLGame2048.hpp"
-#include "rl/realFunctions.hpp"
-
 using namespace std;
 
 class NTuple {
@@ -38,7 +30,7 @@ public:
   }
 };
 
-class Builder {
+class NTuplesBuilder {
 public:
   int numValues = 15;
   double minWeight = 0;
@@ -46,7 +38,7 @@ public:
   mt19937 random;
 
 public:
-  vector<NTuple> createNTuples(vector<vector<int> > newMain);
+  vector<NTuple> createNTuplesFromLocations(vector<vector<int> > newMain);
   // originally implemented in "NTuple.cpp" functions below
   static int computeNumWeights(int num, int fields);
   // originally implemented in "randomUtils.cpp" functions below
@@ -55,26 +47,14 @@ public:
 };
 
 
-vector<NTuple> Builder::createNTuples(vector<vector<int> > newMain) {
-  vector<NTuple> createdNTuples;
+vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > newMain) {
+  vector<NTuple> createdNTuples(16);
   NTuple obj;
-
-  for (int i=0; i<newMain.size(); i++) {
-    cerr << "newMain[" << i << "]" << endl;
-    for (int j=0; j<newMain[i].size(); j++) {
-      cerr << newMain[i][j] << endl;
-    }
-  }
-
-  cerr << "parameters" << endl
-       << "numValues = " << numValues << endl
-       << "minWeight = " << minWeight << endl
-       << "maxWeight = " << maxWeight << endl;
 
   for (int i=0; i<newMain.size(); i++) {
     NTuple buf = obj.newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
     createdNTuples.push_back(buf);
-    // cerr << &(createdNTuples[i]) << endl;
+    cerr << &(createdNTuples[i]) << endl;
   }
   
   return createdNTuples;
@@ -84,18 +64,18 @@ NTuple NTuple::newWithRandomWeights(int num, vector<int> main, int min, int max,
   if (main.size() <= 0) {
     abort();
   }
-  int weightSize = Builder::computeNumWeights(num, main.size());
-  vector<double> weights = Builder::randomDoubleVector(weightSize, min, max, random);
+  int weightSize = NTuplesBuilder::computeNumWeights(num, main.size());
+  vector<double> weights = NTuplesBuilder::randomDoubleVector(weightSize, min, max, random);
 
   NTuple res(num, main, weights);
   return res;
 }
 
-int Builder::computeNumWeights(int num, int fields) {
+int NTuplesBuilder::computeNumWeights(int num, int fields) {
   return (int) (pow(num, fields) + 0.5);
 }
 
-vector<double> Builder::randomDoubleVector(int n, double minValue, double maxValue, mt19937 random) {
+vector<double> NTuplesBuilder::randomDoubleVector(int n, double minValue, double maxValue, mt19937 random) {
   vector<double> vec;
   for (int i=0; i<n; i++) {
     vec.push_back(nextUniform(minValue, maxValue, random));
@@ -103,16 +83,16 @@ vector<double> Builder::randomDoubleVector(int n, double minValue, double maxVal
   return vec;
 }
 
-double Builder::nextUniform(int lower, int upper, mt19937 random) {
+double NTuplesBuilder::nextUniform(int lower, int upper, mt19937 random) {
   uniform_real_distribution<> randomDouble(lower, upper);
   random();
   return lower == upper ? lower : randomDouble(random);
 }
 
 int main() {
+  mt19937 random;
   vector<vector<int> > arr;
-  IdentitySymmetryExpander exp;
-  NTuplesBuilder builder(15, 0, 0, exp, random, true);
+  NTuplesBuilder builder;
 
   for (int i=0; i<16; i++) {
     vector<int> buf;
@@ -127,10 +107,12 @@ int main() {
 
   cout << "res's size: " << size << endl;
 
+  /*
   for (int j=0; j<size; j++) {
     cout << "res[" << j << "]'s parameter" << endl
 	 << "numValues: " << res[j].numValues << endl
 	 << "locations'size:" << res[j].locations.size() << endl
 	 << "LUT'size: " << res[j].LUT.size() << endl;
   }
+  */
 }
