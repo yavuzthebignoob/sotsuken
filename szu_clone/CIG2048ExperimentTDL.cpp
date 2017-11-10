@@ -16,7 +16,6 @@ using namespace std;
 
 static void evaluatePerformance(TDLGame2048 game, NTuples vFunction, int numEpisodes, mt19937 random, int e);
 
-/*
 int main() {
   cout << "+++ 2048 N-tuple Network Player trainer +++" << endl;
 
@@ -36,6 +35,7 @@ int main() {
   random();
   NTuplesAllStraightFactory straight = NTuplesAllStraightFactory(4, State2048::BOARD_SIZE, 15, 0, 0, exp);
   NTuples lines = straight.genericFactory.createRandomIndividual(random);
+  cerr << "lines done" << endl;
   random();
   NTuplesAllRectanglesFactory rectangle = NTuplesAllRectanglesFactory(two, State2048::BOARD_SIZE, 15, 0, 0, exp);
   NTuples squares = rectangle.genericFactory.createRandomIndividual(random);
@@ -50,7 +50,6 @@ int main() {
     }
   }
 }
-*/
 
 void evaluatePerformance(TDLGame2048 game, NTuples vFunction, int numEpisodes, mt19937 random, int e) {
   double performance = 0;

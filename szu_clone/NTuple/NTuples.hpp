@@ -68,13 +68,18 @@ public:
       NTuple buf(tuples[i]);
       mainNTuples.push_back(buf);
     }
+
     for (int i=0; i<mainNTuples.size(); i++) {
       vector<NTuple> symmetric = NTuple::createSymmetric(mainNTuples[i], expander);
-      if (!(symmetric[0].equals(mainNTuples[0]))) abort();
+      if (!(symmetric[0].equals(mainNTuples[i]))) {
+	abort();
+      }
+
       for (int j=0; j<symmetric.size(); j++) {
 	allNTuples.push_back(symmetric[j]);
       }
     }
+    cerr << "cnst mark 2" << endl;
     this->symmetryExpander = expander;
   }
 

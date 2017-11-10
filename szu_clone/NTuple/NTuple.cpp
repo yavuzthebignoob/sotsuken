@@ -94,15 +94,18 @@ string NTuple::toString() {
 
 // these 'createSymmetric' functions are originally implemented in 'NTupleUtils' class
 vector<vector<int> > NTuple::createSymmetric(vector<int> tuple, IdentitySymmetryExpander expander) {
-  int n = expander.numSymmetries();
-  int m = tuple.size();
+  const int n = expander.numSymmetries();
+  const int m = tuple.size();
 
   vector<vector<int> > tuples(n);
   for (int j=0; j<n; j++) {
+    vector<int> buf;
+    tuples.push_back(buf);
     for (int k=0; k<m; k++) {
       tuples[j].push_back(-1);
     }
   }
+
   for (int j=0; j<m; j++) {
     vector<int> symmetries = expander.getSymmetries(tuple[j]);
     if (symmetries.size()!=n) abort();
@@ -113,27 +116,41 @@ vector<vector<int> > NTuple::createSymmetric(vector<int> tuple, IdentitySymmetry
 
   vector<vector<int> > unique;
   copy(tuples.begin(), tuples.end(), back_inserter(unique));
+
+  // comment-outed below: unnecessary due to unique.size() = 1;
+  // if unique.size() != 1 (i.e. SymmetryExpander != Identity) loop below is necessary
+  /*
   for (int i=0; i<unique.size(); i++) {
-    for (int j=unique.size(); j>i; j--) {
+    for (int j=(unique.size()-1); j>i; j--) {
       if (ArrayUtils::sorted(unique[i])==ArrayUtils::sorted(unique[j]))
 	unique.erase(unique.begin()+j);
     }
   }
+  */
+  
   if (unique[0]!=tuple) abort();
+
   return unique;
 }
 
 vector<NTuple> NTuple::createSymmetric(NTuple temp, IdentitySymmetryExpander expander) {
   vector<vector<int> > symmetric = NTuple::createSymmetric(temp.getLocations(), expander);
-
-  int size = symmetric.size();
-  vector<NTuple> tuples;
+  int counter = 0;
   
-
-  for (int i=0; i<size; i++) {
-    NTuple buf(temp.getNumValues(), symmetric[i], temp.getWeights());
-    tuples.push_back(buf);
+  for (int i=0; i<symmetric.size(); i++) {
+    for (int j=0; j<symmetric[i].size(); j++) {
+      counter++;
+    }
   }
+  
+  const int symsize = counter/symmetric[0].size();
+  vector<NTuple> tuples(symsize);
+
+  for (int i=0; i<symsize; i++) {
+    NTuple buf(temp.getNumValues(), symmetric[i], temp.getWeights());
+    tuples[i] = buf;
+  }
+
   if (!tuples[0].equals(temp)) abort();
   return tuples;
 }

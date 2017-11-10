@@ -63,7 +63,13 @@ public:
     }
   }
   NTuple(const NTuple& tuple) {
-    NTuple(tuple.numValues, tuple.locations, tuple.LUT);
+    numValues = tuple.numValues;
+    for (int i=0; i<tuple.locations.size(); i++) {
+      locations.push_back(tuple.locations[i]);
+    }
+    for (int i=0; i<tuple.LUT.size(); i++) {
+      LUT.push_back(tuple.LUT[i]);
+    }
   }
   NTuple() {
     numValues = 0;
