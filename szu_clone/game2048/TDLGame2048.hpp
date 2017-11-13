@@ -37,14 +37,14 @@ private:
 
 private:
   // double getBestValueAction(State2048 state, RealFunction function);
-  double getBestValueAction(State2048 state, NTuples function);
+  double getBestValueAction(State2048 state, NTuples* function);
   // Transition chooseBestTransitionAfterstate(State2048 state, RealFunction function);
-  Transition chooseBestTransitionAfterstate(State2048 state, NTuples function);
+  Transition chooseBestTransitionAfterstate(State2048 state, NTuples* function);
 
 public:
   // Game2048Outcome playByAfterstates(RealFunction vfunction, mt19937 random);
-  Game2048Outcome playByAfterstates(NTuples vfunction, mt19937 random);
-  void TDAfterstateLearn(NTuples vFunction, double explorationRate, double learningRate, mt19937 random);
+  Game2048Outcome playByAfterstates(NTuples* vfunction, mt19937 random);
+  void TDAfterstateLearn(NTuples* vFunction, double explorationRate, double learningRate, mt19937 random);
   
 public:
   TDLGame2048() {};  

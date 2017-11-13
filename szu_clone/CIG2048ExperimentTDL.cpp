@@ -39,12 +39,13 @@ int main() {
   random();
   NTuplesAllRectanglesFactory rectangle = NTuplesAllRectanglesFactory(two, State2048::BOARD_SIZE, 15, 0, 0, exp);
   NTuples squares = rectangle.genericFactory.createRandomIndividual(random);
-  NTuples vFunction = lines.add(squares);
-
-  
-  
+  cerr << "squares done" << endl;
+  NTuples vFunction = NTuples::add(&lines, &squares);
+  cerr << "vFunction done" << endl;
+   
   for (int i = 0; i < 100000; i++) {
-    tdlgame2048.TDAfterstateLearn(vFunction, 0.001, 0.01, random);
+    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
+    cerr << "learn check" << endl;
     if (i%5000 == 0) {
       evaluatePerformance(tdlgame2048, vFunction, 1000, random, i);
     }
@@ -56,7 +57,7 @@ void evaluatePerformance(TDLGame2048 game, NTuples vFunction, int numEpisodes, m
   double ratio = 0;
   int maxTile = 0;
   for (int i = 0; i < numEpisodes; i++) {
-    TDLGame2048::Game2048Outcome res = game.playByAfterstates(vFunction, random);
+    TDLGame2048::Game2048Outcome res = game.playByAfterstates(&vFunction, random);
     performance += res.scoreIs();
     ratio += (res.maxTileIs() >= 2048) ? 1 : 0;
     maxTile = max(maxTile, res.maxTileIs());

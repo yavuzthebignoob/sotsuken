@@ -45,10 +45,14 @@ private:
   }
 public:
   Game2048Board(vector<double> input) {
-    if (input.size() != SIZE * SIZE) abort();
+    if (input.size() != SIZE * SIZE) {
+      abort();
+    }
     initMargins();
+    cerr << "init" << endl;
     for (int r = 0; r < SIZE; r++) {
       for (int c = 0; c < SIZE; c++) {
+	cerr << "setValue" << endl;
 	setValue(r, c, inputToBoardValue(input, r, c));
       }
     }

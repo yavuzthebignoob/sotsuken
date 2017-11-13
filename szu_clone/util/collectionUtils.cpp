@@ -30,6 +30,27 @@ vector<NTuple> CollectionUtils::concat(vector<NTuple> arr1, vector<NTuple> arr2)
     res.push_back(arr2[i]);
   }
   return res;
+
+  /*
+  const int size1 = arr1.size();
+  const int size2 = arr2.size();
+  const int sizesum = size1 + size2;
+  cerr << "size1   = " << size1 << endl
+       << "size2   = " << size2 << endl;
+  cerr << "sizesum = " << sizesum << endl;
+  vector<NTuple> res(sizesum);
+
+  for (int i=0; i<size1; i++) {
+    res[i] = arr1[i];
+  }
+  cerr << "arr1 copy done" << endl;
+  for (int i=0; i<size2; i++) {
+    res[size1+i] = arr2[i];
+  }
+  cerr << "res's size = " << res.size() << endl;
+  cerr << "concat check" << endl;
+  return res;
+  */
 }
 
 /*

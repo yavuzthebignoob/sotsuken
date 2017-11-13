@@ -5,8 +5,10 @@
 
 using namespace std;
 
-NTuples NTuples::add(NTuples other) {
-  NTuples res(CollectionUtils::concat(this->getAll(), other.getAll()));
+NTuples NTuples::add(NTuples* one, NTuples* other) {
+  cerr << "add check" << endl;
+  cerr << "one.getAll()'s size = " << one->allNTuples.size() << endl;
+  NTuples res(CollectionUtils::concat(one->getAll(), other->getAll()));
   return res;  
 }
 
@@ -76,7 +78,9 @@ string NTuples::toString() {
 
 double NTuples::getValue(vector<double> input) {
   DefaultNTupleEvaluator evaluator;
+  cerr << "getValue called" << endl;
   Game2048Board board(input);
+  cerr << "board input" << endl;
   return evaluator.evaluate(this, board);
 }
 

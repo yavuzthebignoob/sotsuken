@@ -38,12 +38,12 @@ NTuples NTuplesBuilder::buildNTuples() {
   */
   vector<NTuple> mainSorted = createNTuplesFromLocations(newMain);
   NTuples res(mainSorted, expander);
-  cerr << "buildNTuples done" << endl;
   return res;
 }
 
 vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > newMain) {
-  vector<NTuple> createdNTuples(16);
+  const int tuplesize = newMain.size();
+  vector<NTuple> createdNTuples(tuplesize);
   NTuple obj;
   
   for (int i=0; i<newMain.size(); i++) {

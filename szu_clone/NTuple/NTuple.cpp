@@ -142,11 +142,19 @@ vector<NTuple> NTuple::createSymmetric(NTuple temp, IdentitySymmetryExpander exp
       counter++;
     }
   }
-  
+
   const int symsize = counter/symmetric[0].size();
   vector<NTuple> tuples(symsize);
 
   for (int i=0; i<symsize; i++) {
+    /*
+    cerr << "numv = " << temp.getNumValues() << endl;
+    for (int j=0; j<symmetric[i].size(); j++) {
+      cerr << "sym[" << j << "] = " << symmetric[i][j] << endl;
+    }
+    cerr << "wgt'size = " << temp.LUT.size() << endl;
+    */
+    
     NTuple buf(temp.getNumValues(), symmetric[i], temp.getWeights());
     tuples[i] = buf;
   }
