@@ -1,3 +1,10 @@
+// original parameters:
+// NUM_EPISODES   = 100000
+// CHECK_INTERVAL = 5000
+
+#define NUM_EPISODES 100000
+#define CHECK_INTERVAL 50
+
 #include <vector>
 #include <random>
 #include <math.h>
@@ -29,8 +36,6 @@ int main() {
 
   IdentitySymmetryExpander exp;
   RectSize two(2);
-
-  
   
   random();
   NTuplesAllStraightFactory straight = NTuplesAllStraightFactory(4, State2048::BOARD_SIZE, 15, 0, 0, exp);
@@ -43,13 +48,17 @@ int main() {
   NTuples vFunction = NTuples::add(&lines, &squares);
   cerr << "vFunction done" << endl;
    
-  for (int i = 0; i < 100000; i++) {
-    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
-    cerr << "learn check" << endl;
-    if (i%5000 == 0) {
-      evaluatePerformance(tdlgame2048, vFunction, 1000, random, i);
+  for (int i = 1; i <= NUM_EPISODES; i++) {
+    random();
+    // original parameter: 0.001, 0.01
+    tdlgame2048.TDAfterstateLearn(&vFunction, 0.5, 0.01, random);
+
+    if (i%CHECK_INTERVAL == 0) {
+      evaluatePerformance(tdlgame2048, vFunction, NUM_EPISODES, random, i);
     }
   }
+
+  cout << "+++ trainer program terminated +++" << endl;
 }
 
 void evaluatePerformance(TDLGame2048 game, NTuples vFunction, int numEpisodes, mt19937 random, int e) {
@@ -57,12 +66,13 @@ void evaluatePerformance(TDLGame2048 game, NTuples vFunction, int numEpisodes, m
   double ratio = 0;
   int maxTile = 0;
   for (int i = 0; i < numEpisodes; i++) {
+    random();
     TDLGame2048::Game2048Outcome res = game.playByAfterstates(&vFunction, random);
     performance += res.scoreIs();
     ratio += (res.maxTileIs() >= 2048) ? 1 : 0;
     maxTile = max(maxTile, res.maxTileIs());
   }
-
+  
   cout << "After " << e << " games:" << endl;
   cout << "avg score = " << performance/numEpisodes << endl;
   cout << "avg ratio = " << ratio/numEpisodes << endl;

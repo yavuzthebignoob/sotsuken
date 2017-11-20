@@ -26,7 +26,6 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
 
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
-    cerr << "choose check" << endl;
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
     if (value > bestValue) {
       bestTransition = transition;
@@ -54,13 +53,10 @@ TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, 
 void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, double learningRate, mt19937 random) {
   State2048 state = game.sampleInitialStateDistribution(random);
   Transition transition = game.computeTransition(state, Action2048::UP);
-  cerr << "TDLG check" << endl;
   
   while (!game.isTerminalState(state)) {
     random();
     vector<Action2048*> actions = game.getPossibleActions(state);
-
-    cerr << "loop check" << endl;
     
     if (RandomUtils::nextUniform(0, 1, random) < explorationRate) {
       Action2048* randomAction = RandomUtils::pickRandom(actions, random);
@@ -70,14 +66,8 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
       transition = chooseBestTransitionAfterstate(state, vFunction);
     }
 
-    abort();
-
-    cerr << "loop check 2" << endl;
-
     State2048 nextState = game.getNextState(transition.afterState, random);
     double correctActionValue = 0;
-
-    cerr << "loop check 3" << endl;
     
     if (!game.isTerminalState(state)) {
       correctActionValue += getBestValueAction(nextState, vFunction);

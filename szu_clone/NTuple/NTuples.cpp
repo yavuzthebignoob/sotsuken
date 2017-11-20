@@ -78,9 +78,7 @@ string NTuples::toString() {
 
 double NTuples::getValue(vector<double> input) {
   DefaultNTupleEvaluator evaluator;
-  cerr << "getValue called" << endl;
   Game2048Board board(input);
-  cerr << "board input" << endl;
   return evaluator.evaluate(this, board);
 }
 

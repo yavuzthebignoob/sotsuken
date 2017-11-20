@@ -60,18 +60,14 @@ public:
   }
 
   NTuples(const NTuples& ntuples) {
-    cerr << "copy constructer called" << endl;
     NTuples(ntuples.mainNTuples, ntuples.symmetryExpander);
   }
 
   NTuples(vector<NTuple> tuples, IdentitySymmetryExpander expander) {
-    cerr << "tuples' size = " << tuples.size() << endl;
     for (int i=0; i<tuples.size(); i++) {
       NTuple buf(tuples[i]);
       mainNTuples.push_back(buf);
     }
-
-    cerr << "mainNTuples' size = " << mainNTuples.size() << endl;
     
     for (int i=0; i<mainNTuples.size(); i++) {
       vector<NTuple> symmetric = NTuple::createSymmetric(mainNTuples[i], expander);

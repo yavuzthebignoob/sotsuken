@@ -17,11 +17,8 @@ void Game2048Board::initMargins() {
   for (int i=0; i<WIDTH; i++) {
 
     setValueInternal(0, i, WALL);
-    cerr << "initMargin" << endl;
     setValueInternal(WIDTH-1, i, WALL);
-    cerr << "initMargin" << endl;
     setValueInternal(i, 0, WALL);
-    cerr << "initMargin" << endl;
     setValueInternal(i, WIDTH-1, WALL);
   }
 }
