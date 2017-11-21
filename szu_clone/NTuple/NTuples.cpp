@@ -8,7 +8,9 @@ using namespace std;
 NTuples NTuples::add(NTuples* one, NTuples* other) {
   cerr << "add check" << endl;
   cerr << "one.getAll()'s size = " << one->allNTuples.size() << endl;
-  NTuples res(CollectionUtils::concat(one->getAll(), other->getAll()));
+  vector<NTuple> buf = CollectionUtils::concat(one->allNTuples, other->allNTuples);
+  NTuples res(buf);
+  cerr << "res's getAll()'s size = " << res.allNTuples.size() << endl;
   return res;  
 }
 

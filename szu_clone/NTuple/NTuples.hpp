@@ -40,7 +40,7 @@ class NTuples : public RealFunction {
     }
   };
 
-private:
+public:
   static const long serialVersionUID = -3843856387088040436L; // what is this for?
   vector<NTuple> allNTuples;
   vector<NTuple> mainNTuples;
