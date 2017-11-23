@@ -75,9 +75,12 @@ public:
 	abort();
       }
 
+      /*
       cerr << "i = " << i << ", address = " <<  &(allNTuples[i])
 	   << ", sym[0]'s numv = " << symmetric[0].numValues << endl;
 	// << ", sym.size = " << symmetric.size() <<  endl;
+	*/
+
       for (int j=0; j<symmetric.size(); j++) {
 	allNTuples.push_back(symmetric[j]);
       }
@@ -85,6 +88,10 @@ public:
 
     }
     this->symmetryExpander = expander;
+  }
+
+  ~NTuples() {
+    cerr << "destructer called" << endl;
   }
 
   static NTuples add(NTuples* one, NTuples* other);

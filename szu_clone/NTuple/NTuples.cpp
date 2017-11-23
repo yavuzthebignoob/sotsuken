@@ -6,11 +6,23 @@
 using namespace std;
 
 NTuples NTuples::add(NTuples* one, NTuples* other) {
-  cerr << "add check" << endl;
-  cerr << "one.getAll()'s size = " << one->allNTuples.size() << endl;
+  // cerr << "add check" << endl;
+  // cerr << "one.getAll()'s size = " << one->allNTuples.size() << endl;
   vector<NTuple> buf = CollectionUtils::concat(one->allNTuples, other->allNTuples);
-  NTuples res(buf);
-  cerr << "res's getAll()'s size = " << res.allNTuples.size() << endl;
+
+  /*
+  if (one->allNTuples[0].equals(buf[0])) {
+    cerr << "concat check 1: true" << endl;
+  }
+  if (other->allNTuples[0].equals(buf[16])) {
+    cerr << "concat check 2: true" << endl;
+  }
+  */
+
+  IdentitySymmetryExpander expr = IdentitySymmetryExpander();
+  NTuples res(buf, expr);
+  // cerr << res.allNTuples[0].equals(buf[0]) << endl;
+  // cerr << "res's getAll()'s size = " << res.allNTuples.size() << endl;
   return res;  
 }
 

@@ -78,4 +78,5 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
     vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
     state = nextState;
   }
+  cerr << "training-game terminated" << endl;
 }
