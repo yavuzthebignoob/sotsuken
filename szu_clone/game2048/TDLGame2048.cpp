@@ -32,7 +32,6 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
       bestValue = value;
     }
   }
-  
   return bestTransition;
 }
 

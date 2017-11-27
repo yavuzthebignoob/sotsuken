@@ -3,9 +3,9 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = NUM_EPISODES
 
-#define NUM_EPISODES 5
-#define CHECK_INTERVAL 1
-#define EVAL_EPISODES 1
+#define NUM_EPISODES 10000
+#define CHECK_INTERVAL 50
+#define EVAL_EPISODES 50
 
 #include <vector>
 #include <random>
@@ -49,8 +49,8 @@ int main() {
   NTuplesAllRectanglesFactory rectangle = NTuplesAllRectanglesFactory(two, State2048::BOARD_SIZE, 15, 0, 0, exp);
   NTuples squares = rectangle.genericFactory.createRandomIndividual(random);
   // cerr << "squares done" << endl;
-  // NTuples vFunction = NTuples::add(&lines, &squares);
-  NTuples vFunction(lines);
+  NTuples vFunction = NTuples::add(&lines, &squares);
+  // NTuples vFunction(lines);
   // cerr << "vFunction done" << endl;
   // cerr << lines.allNTuples[0].equals(vFunction.allNTuples[0]) << endl;
 
