@@ -51,6 +51,11 @@ public:
   
 public:
   NTuple(int numValues0, vector<int> locations0, vector<double> weights0) {
+    int wSize = weights0.size();
+    for (int i=0; i<wSize; i++) {
+      LUT.push_back(-1);
+    }
+
     if (locations0.size() <= 0) abort();
     if (weights0.size()!=computeNumWeights(numValues0, locations0.size())) abort();
     this->numValues = numValues0;
@@ -58,8 +63,8 @@ public:
     for (int i=0; i<locations0.size(); i++) {
       locations.push_back(locations0[i]);
     }
-    for (int i=0; i<weights0.size(); i++) {
-      LUT.push_back(weights0[i]);
+    for (int i=0; i<wSize; i++) {
+      LUT[i] = weights0[i];
     }
   }
   NTuple(const NTuple& tuple) {

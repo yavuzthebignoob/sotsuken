@@ -3,14 +3,15 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = NUM_EPISODES
 
-#define NUM_EPISODES 100000
-#define CHECK_INTERVAL 5
-#define EVAL_EPISODES 5
+#define NUM_EPISODES 5
+#define CHECK_INTERVAL 1
+#define EVAL_EPISODES 1
 
 #include <vector>
 #include <random>
 #include <math.h>
 #include <iostream>
+#include <time.h>
 
 #include "board/rectSize.hpp"
 #include "NTuple/NTuples.hpp"
@@ -24,13 +25,14 @@
 using namespace std;
 
 static void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, mt19937 random, int e);
+void check();
 
 int main() {
   cout << "+++ 2048 N-tuple Network Player trainer +++" << endl;
 
   random_device seed;
-  int seed_value = seed();
-  // int seed_value = 1497270178;
+  // int seed_value = seed();
+  int seed_value = -1054999174;
   cout << "* random seed: " << seed_value << endl << endl << "* Training Performance" << endl;
   mt19937 random;
 
@@ -47,7 +49,8 @@ int main() {
   NTuplesAllRectanglesFactory rectangle = NTuplesAllRectanglesFactory(two, State2048::BOARD_SIZE, 15, 0, 0, exp);
   NTuples squares = rectangle.genericFactory.createRandomIndividual(random);
   // cerr << "squares done" << endl;
-  NTuples vFunction = NTuples::add(&lines, &squares);
+  // NTuples vFunction = NTuples::add(&lines, &squares);
+  NTuples vFunction(lines);
   // cerr << "vFunction done" << endl;
   // cerr << lines.allNTuples[0].equals(vFunction.allNTuples[0]) << endl;
 
@@ -58,6 +61,8 @@ int main() {
        << "NUM_EPISODES   = " << NUM_EPISODES << endl
        << "CHECK_INTERVAL = " << CHECK_INTERVAL << endl
        << "EVAL_EPISODES  = " << EVAL_EPISODES << endl;
+
+  clock_t start = clock();
    
   for (int i = 1; i <= NUM_EPISODES; i++) {
     random();
@@ -66,6 +71,8 @@ int main() {
 
     if (i%CHECK_INTERVAL == 0) {
       evaluatePerformance(tdlgame2048, &vFunction, NUM_EPISODES, random, i);
+      clock_t now = clock();
+      cout << "calc time = " << (double)(now-start) << endl;
     }
   }
 
@@ -76,6 +83,7 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
   double performance = 0;
   double ratio = 0;
   int maxTile = 0;
+
   for (int i = 0; i < EVAL_EPISODES; i++) {
     random();
     TDLGame2048::Game2048Outcome res = game.playByAfterstates(vFunction, random);
@@ -88,4 +96,8 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
   cout << "avg score = " << performance/EVAL_EPISODES << endl;
   cout << "avg ratio = " << ratio/EVAL_EPISODES << endl;
   cout << "maxTile   = " << maxTile << endl << endl;
+}
+
+void check() {
+  cerr << "check" << endl;
 }

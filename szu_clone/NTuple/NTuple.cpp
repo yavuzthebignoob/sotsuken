@@ -18,6 +18,7 @@ NTuple NTuple::newWithRandomWeights(int numValues, vector<int> locations, double
   }
   int weightSize = NTuple::computeNumWeights(numValues, locations.size());
   vector<double> weights = RandomUtils::randomDoubleVector(weightSize, minWeight, maxWeight, random);
+
   NTuple res(numValues, locations, weights);
   return res;
 }
