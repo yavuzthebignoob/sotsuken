@@ -12,6 +12,8 @@
 #include <math.h>
 #include <iostream>
 #include <time.h>
+#include <thread>
+#include <mutex>
 
 #include "board/rectSize.hpp"
 #include "NTuple/NTuples.hpp"
@@ -26,6 +28,11 @@ using namespace std;
 
 static void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, mt19937 random, int e);
 void check();
+void TDLearning(NTuples* vFunction, TDLGame2048 tdlgame2048, mt19937 random, clock_t start);
+
+int CNTR = 0;
+int CNTR_MASTER = 0;
+mutex mtx;
 
 int main() {
   cout << "+++ 2048 N-tuple Network Player trainer +++" << endl;
@@ -60,23 +67,38 @@ int main() {
   cerr << "** training parameter" << endl
        << "NUM_EPISODES   = " << NUM_EPISODES << endl
        << "CHECK_INTERVAL = " << CHECK_INTERVAL << endl
-       << "EVAL_EPISODES  = " << EVAL_EPISODES << endl;
+       << "EVAL_EPISODES  = " << EVAL_EPISODES << endl
+       << "CONCURRENCY    = " << thread::hardware_concurrency() << endl;
 
   clock_t start = clock();
    
-  for (int i = 1; i <= NUM_EPISODES; i++) {
-    random();
-    // original parameter: 0.001, 0.01
-    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
-
-    if (i%CHECK_INTERVAL == 0) {
-      evaluatePerformance(tdlgame2048, &vFunction, NUM_EPISODES, random, i);
-      clock_t now = clock();
-      cout << "calc time = " << (double)(now-start) << endl;
-    }
-  }
+  thread t1(TDLearning, &vFunction, tdlgame2048, random, start);
+  thread t2(TDLearning, &vFunction, tdlgame2048, random, start);
+  t1.join();
+  t2.join();
 
   cout << "+++ trainer program terminated +++" << endl;
+}
+
+void TDLearning(NTuples* vFunction, TDLGame2048 tdlgame2048, mt19937 random, clock_t start) {
+  while (true) {
+    CNTR++;
+    CNTR_MASTER++;
+    if (CNTR_MASTER>=NUM_EPISODES) {
+      break;
+    }
+    random();
+    // original parameter: 0.001, 0.01
+    tdlgame2048.TDAfterstateLearn(vFunction, 0.001, 0.01, random);
+
+    if (CNTR%CHECK_INTERVAL == 0) {
+      lock_guard<mutex> lock(mtx);
+      evaluatePerformance(tdlgame2048, vFunction, NUM_EPISODES, random, CNTR_MASTER);
+      clock_t now = clock();
+      cout << "calc time = " << (double)(now-start) << endl;
+      CNTR = 0;
+    }
+  }
 }
 
 void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, mt19937 random, int e) {
