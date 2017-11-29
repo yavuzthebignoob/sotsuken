@@ -11,7 +11,7 @@ include $(REL)Makefile
 REL := NTuple/
 include $(REL)Makefile
 SRCS+=NTuplePlayer2048.cpp
-SRCS+=EXPERIMENT_THREAD.cpp
+SRCS+=CIG2048ExperimentTDL.cpp
 TARGET = a.out
 OBJS = $(SRCS:.cpp=.o)
 TILDE = $(SRCS:.cpp=.cpp~)

@@ -30,7 +30,7 @@ public:
       BoardPos buf1(i, 0);
       BoardPos buf2(0, i);
       positions[0][i] = buf1;
-      positions[i][0] = buf2;
+      positions[1][i] = buf2;
     }
     BoardPosList bufList1(positions[0]);
     BoardPosList bufList2(positions[1]);

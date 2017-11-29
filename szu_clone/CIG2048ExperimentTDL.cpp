@@ -3,9 +3,9 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = NUM_EPISODES
 
-#define NUM_EPISODES 10
-#define CHECK_INTERVAL 1
-#define EVAL_EPISODES 1
+#define NUM_EPISODES 100000
+#define CHECK_INTERVAL 5000
+#define EVAL_EPISODES 1000
 
 #include <vector>
 #include <random>
@@ -57,6 +57,15 @@ int main() {
   // cerr << "squares' address: " << &(squares.allNTuples) << endl;
   // cerr << "vFunction's address: " << &(vFunction.allNTuples) << endl;
 
+  cerr << "** vFunction's mainNTuples" << endl;
+  for (int i=0; i<vFunction.allNTuples.size(); i++) {
+    cerr << "loc =";
+    for (int j=0; j<vFunction.allNTuples[i].locations.size(); j++) {
+      cerr << " " << vFunction.allNTuples[i].locations[j];
+    }
+    cerr << endl;
+  }
+
   cerr << "** training parameter" << endl
        << "NUM_EPISODES   = " << NUM_EPISODES << endl
        << "CHECK_INTERVAL = " << CHECK_INTERVAL << endl
@@ -70,7 +79,7 @@ int main() {
     tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
 
     if (i%CHECK_INTERVAL == 0) {
-      evaluatePerformance(tdlgame2048, &vFunction, NUM_EPISODES, random, i);
+      evaluatePerformance(tdlgame2048, &vFunction, EVAL_EPISODES, random, i);
       clock_t now = clock();
       cout << "calc time = " << (double)(now-start) << endl;
     }
@@ -84,7 +93,7 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
   double ratio = 0;
   int maxTile = 0;
 
-  for (int i = 0; i < EVAL_EPISODES; i++) {
+  for (int i = 0; i < numEpisodes; i++) {
     random();
     TDLGame2048::Game2048Outcome res = game.playByAfterstates(vFunction, random);
     performance += res.scoreIs();
