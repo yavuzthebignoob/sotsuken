@@ -1,0 +1,11 @@
+After     0 games: avg score =  3056.92, avg ratio = 0.00, maxTile =   512
+After    50 games: avg score =  4193.44, avg ratio = 0.00, maxTile =  1024
+After   100 games: avg score =  5964.30, avg ratio = 0.00, maxTile =  1024
+After   150 games: avg score =  7182.84, avg ratio = 0.00, maxTile =  1024
+After   200 games: avg score =  7811.56, avg ratio = 0.00, maxTile =  1024
+After   250 games: avg score =  8294.63, avg ratio = 0.00, maxTile =  1024
+After   300 games: avg score =  8726.15, avg ratio = 0.00, maxTile =  1024
+After   350 games: avg score =  9053.88, avg ratio = 0.00, maxTile =  2048
+After   400 games: avg score =  9237.53, avg ratio = 0.00, maxTile =  2048
+After   450 games: avg score =  9545.93, avg ratio = 0.00, maxTile =  2048
+After   500 games: avg score =  9576.31, avg ratio = 0.01, maxTile =  2048
