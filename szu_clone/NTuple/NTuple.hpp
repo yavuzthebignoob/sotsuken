@@ -66,6 +66,7 @@ public:
     for (int i=0; i<wSize; i++) {
       LUT[i] = weights0[i];
     }
+    // cerr << "NTuple constructer called" << endl;
   }
   NTuple(const NTuple& tuple) {
     numValues = tuple.numValues;
@@ -75,6 +76,7 @@ public:
     for (int i=0; i<tuple.LUT.size(); i++) {
       LUT.push_back(tuple.LUT[i]);
     }
+    // cerr << "NTuple constructer called" << endl;
   }
   NTuple() {
     numValues = 0;
@@ -82,7 +84,7 @@ public:
     LUT.push_back(0);
   }
   ~NTuple() {
-    // cout << "Destructed. locations[0] = " << locations[0] << endl;
+    // cerr << "NTuple destructed" << endl;
   }
 };
 

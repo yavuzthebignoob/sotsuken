@@ -71,6 +71,7 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
     if (!game.isTerminalState(state)) {
       correctActionValue += getBestValueAction(nextState, vFunction);
     }
+    // cerr << "correctActionValue = " << correctActionValue << endl;
     
     // cerr << "updating" <<endl;
     vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);

@@ -44,10 +44,10 @@ NTuples NTuplesBuilder::buildNTuples() {
 vector<NTuple> NTuplesBuilder::createNTuplesFromLocations(vector<vector<int> > newMain) {
   const int tuplesize = newMain.size();
   vector<NTuple> createdNTuples(tuplesize);
-  NTuple obj;
+  NTuple* obj;
   
   for (int i=0; i<newMain.size(); i++) {
-    NTuple buf = obj.newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
+    NTuple buf = obj->newWithRandomWeights(numValues, newMain[i], minWeight, maxWeight, random);
     createdNTuples[i] = buf;
   }
   // sorting is omitted because Szubert says 'sorting is not obligatory'

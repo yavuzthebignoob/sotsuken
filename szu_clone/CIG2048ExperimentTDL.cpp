@@ -44,18 +44,18 @@ int main() {
   random();
   NTuplesAllStraightFactory straight = NTuplesAllStraightFactory(4, State2048::BOARD_SIZE, 15, 0, 0, exp);
   NTuples lines = straight.genericFactory.createRandomIndividual(random);
-  // cerr << "lines done" << endl;
+  cerr << "lines done" << endl;
   random();
   NTuplesAllRectanglesFactory rectangle = NTuplesAllRectanglesFactory(two, State2048::BOARD_SIZE, 15, 0, 0, exp);
   NTuples squares = rectangle.genericFactory.createRandomIndividual(random);
-  // cerr << "squares done" << endl;
+  cerr << "squares done" << endl;
   NTuples vFunction = NTuples::add(&lines, &squares);
   // NTuples vFunction(lines);
   // cerr << "vFunction done" << endl;
   // cerr << lines.allNTuples[0].equals(vFunction.allNTuples[0]) << endl;
 
   // cerr << "squares' address: " << &(squares.allNTuples) << endl;
-  // cerr << "vFunction's address: " << &(vFunction.allNTuples) << endl;
+  cerr << "vFunction's address: " << &(vFunction.allNTuples) << endl;
 
   cerr << "** vFunction's mainNTuples" << endl;
   for (int i=0; i<vFunction.allNTuples.size(); i++) {
@@ -65,6 +65,7 @@ int main() {
     }
     cerr << endl;
   }
+  cerr << "** vFunction's total weights = " << vFunction.totalWeights() << endl;
 
   cerr << "** training parameter" << endl
        << "NUM_EPISODES   = " << NUM_EPISODES << endl
@@ -73,7 +74,7 @@ int main() {
 
   clock_t start = clock();
    
-  for (int i = 1; i <= NUM_EPISODES; i++) {
+  for (int i = 0; i < NUM_EPISODES; i++) {
     random();
     // original parameter: 0.001, 0.01
     tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
