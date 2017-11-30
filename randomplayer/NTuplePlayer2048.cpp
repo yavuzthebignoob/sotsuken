@@ -25,7 +25,7 @@ void NTuplePlayer2048::evaluate(int numGames, mt19937 random) {
   for (int j=0; j<numGames; j++) {
     random();
     pair<int, int> res = game->playGame(&obj,random);
-    cout << "Sum rewards: " << res.first << " Max tile: " << res.second << endl;
+    // cout << "Sum rewards: " << res.first << " Max tile: " << res.second << endl;
     if (res.second > State2048::REWARDS[10])
       wonGames += 1.0;
     stats.addValue(res.first*1.0);
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
   mt19937 random(seed_value);
   
   int numGames = atoi(argv[1]);
-  if (numGames < 1) {
+  if (!(numGames > 1)) {
     cout << "Input the number of trials more than 0" << endl;
     return -1;
   }
