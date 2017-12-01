@@ -31,8 +31,8 @@ int main() {
   cout << "+++ 2048 N-tuple Network Player trainer +++" << endl;
 
   random_device seed;
-  // int seed_value = seed();
-  int seed_value = -1054999174;
+  int seed_value = seed();
+  // int seed_value = -1054999174;
   cout << "* random seed: " << seed_value << endl << endl << "* Training Performance" << endl;
   mt19937 random;
 
@@ -74,7 +74,7 @@ int main() {
 
   clock_t start = clock();
    
-  for (int i = 0; i < NUM_EPISODES; i++) {
+  for (int i = 0; i <= NUM_EPISODES; i++) {
     random();
     // original parameter: 0.001, 0.01
     tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);

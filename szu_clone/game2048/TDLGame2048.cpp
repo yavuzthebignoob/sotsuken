@@ -10,7 +10,7 @@ double TDLGame2048::getBestValueAction(State2048 state, NTuples* function) {
   
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
-    double value = transition.reward; // + function->getValue(transition.afterState.getFeatures());
+    double value = transition.reward + function->getValue(transition.afterState.getFeatures());
     if (value > bestValue) {
       bestValue = value;
     }
@@ -27,7 +27,7 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
 
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
-    double value = transition.reward; //  + function->getValue(transition.afterState.getFeatures());
+    double value = transition.reward + function->getValue(transition.afterState.getFeatures());
     if (value > bestValue) {
       bestTransition = transition;
       bestValue = value;
@@ -46,13 +46,16 @@ TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, 
     sumRewards += transition.reward;
     state = game.getNextState(transition.afterState, random);
   }
-
+  
+  // state.printHumanReadable();
   TDLGame2048::Game2048Outcome res(sumRewards, state.getMaxTile());
   return res;
 }
 
 void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, double learningRate, mt19937 random) {
   State2048 state = game.sampleInitialStateDistribution(random);
+  vector<double> f = state.getFeatures();
+  // NTuples valueF(vFunction->mainNTuples, vFunction->symmetryExpander);
   
   while (!game.isTerminalState(state)) {
     random();
@@ -77,7 +80,8 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
     // cerr << "correctActionValue = " << correctActionValue << endl;
     
     // cerr << "updating" <<endl;
-    // vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
+    vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
+    // vFunction->update(f, correctActionValue, learningRate);
     state = nextState;
   }
   // cerr << "training-game terminated" << endl;

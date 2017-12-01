@@ -100,16 +100,16 @@ void NTuples::update(vector<double> input, double expectedValue, double learning
   DefaultNTupleEvaluator evaluator;
   Game2048Board board(input);
   double val = evaluator.evaluate(this, board);
+  // double val = 0;
   // cerr << "val = " << val << endl;
   // cerr << "expectedV = " << expectedValue << endl;
   double error = expectedValue - val;
   double delta = error * learningRate;
   // cerr << "delta = " << delta << endl;
 
-  Game2048Board buf(input);
   // cerr << "weight = " << allNTuples[0].getWeights()[allNTuples[0].address(buf)] << endl;
   for (int i=0; i<allNTuples.size(); i++) {
-    allNTuples[i].LUT[allNTuples[i].address(buf)] += delta;
+    allNTuples[i].LUT[allNTuples[i].address(board)] += delta;
   }
   // cerr << "modified weight = " << allNTuples[0].getWeights()[allNTuples[0].address(buf)] << endl;
 }
