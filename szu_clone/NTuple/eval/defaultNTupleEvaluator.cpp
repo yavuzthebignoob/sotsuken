@@ -18,11 +18,12 @@ double DefaultNTupleEvaluator::evaluate(NTuples* tuples, Game2048Board board) {
   }
   // copy(tuples->allNTuples.begin(), tuples->allNTuples.end(), back_inserter(all));
   */
-
+  
   for (int i=0; i<tuples->allNTuples.size(); i++) {
     double buf = tuples->allNTuples[i].valueFor(board);
-    result += buf;
+    result += buf;    
   }
+
   // abort();
   return result;
 }

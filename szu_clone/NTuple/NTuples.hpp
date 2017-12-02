@@ -57,12 +57,12 @@ public:
   NTuples(vector<NTuple> tuples) {
     IdentitySymmetryExpander exp = IdentitySymmetryExpander();
     NTuples(tuples, exp);
-    cerr << "NTuples constructer called" << endl;
+    // cerr << "NTuples constructer called" << endl;
   }
 
   NTuples(const NTuples& ntuples) {
     NTuples(ntuples.mainNTuples, ntuples.symmetryExpander);
-    cerr << "NTuples constructer called" << endl;
+    // cerr << "NTuples constructer called" << endl;
   }
 
   NTuples(vector<NTuple> tuples, IdentitySymmetryExpander expander) {
@@ -90,11 +90,11 @@ public:
 
     }
     this->symmetryExpander = expander;
-    cerr << "NTuples constructer called" << endl;
+    // cerr << "NTuples constructer called" << endl;
   }
 
   ~NTuples() {
-    cerr << "destructer called" << endl;
+    // cerr << "destructer called" << endl;
   }
 
   static NTuples add(NTuples* one, NTuples* other);

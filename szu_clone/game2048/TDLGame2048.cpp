@@ -75,6 +75,9 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
     
     if (!game.isTerminalState(state)) {
       correctActionValue += getBestValueAction(nextState, vFunction);
+      if (correctActionValue==(-1*INFINITY)) {
+	correctActionValue = 0;
+      }
     }
     
     // cerr << "correctActionValue = " << correctActionValue << endl;
