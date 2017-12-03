@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -g -std=c++11
+CXXFLAGS = -pg -std=c++11
 INCLUDE = ./rl
 SRCS :=
 REL := board/

@@ -5,6 +5,9 @@
 #include "randomUtils.hpp"
 using namespace std;
 
+const uniform_real_distribution<> bar(0,1);
+uniform_real_distribution<> RandomUtils::randomDouble_0_1 = bar;
+
 int RandomUtils::nextInt(int lower, int upper, mt19937 random) {
   uniform_int_distribution<> randomInteger(lower, upper);
   random();
@@ -15,6 +18,11 @@ double RandomUtils::nextUniform(int lower, int upper, mt19937 random) {
   uniform_real_distribution<> randomDouble(lower, upper);
   random();
   return lower == upper ? lower : randomDouble(random);
+}
+
+double RandomUtils::nextUniform_0_1(mt19937 random) {
+  random();
+  return RandomUtils::randomDouble_0_1(random);
 }
 
 Action2048* RandomUtils::pickRandom(vector<Action2048*> items, mt19937 random) {

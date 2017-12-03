@@ -60,9 +60,10 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
   while (!game.isTerminalState(state)) {
     random();
     vector<Action2048*> actions = game.getPossibleActions(state);
-
+    
     Transition transition = game.computeTransition(state, Action2048::UP);
-    if (RandomUtils::nextUniform(0, 1, random) < explorationRate) {
+    // if (RandomUtils::nextUniform(0, 1, random) < explorationRate) {
+    if (RandomUtils::nextUniform_0_1(random) < explorationRate) {
       Action2048* randomAction = RandomUtils::pickRandom(actions, random);
       transition = game.computeTransition(state, randomAction);
     }

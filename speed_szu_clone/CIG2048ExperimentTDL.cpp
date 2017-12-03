@@ -3,9 +3,9 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 100000
-#define CHECK_INTERVAL 1000
-#define EVAL_EPISODES 1000
+#define NUM_EPISODES 10
+#define CHECK_INTERVAL 10
+#define EVAL_EPISODES 10
 
 #include <vector>
 #include <random>
@@ -32,7 +32,7 @@ int main() {
 
   random_device seed;
   int seed_value = seed();
-  // int seed_value = -1054999174;
+  // int seed_value = 1680331231;
   cout << "* random seed = " << seed_value << endl << endl << "* Training Performance" << endl;
   mt19937 random(seed_value);
 
