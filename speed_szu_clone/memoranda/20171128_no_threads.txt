@@ -1,0 +1,84 @@
+pc190032m:szu_clone 5743163246$ ./a.out
++++ 2048 N-tuple Network Player trainer +++
+* random seed: -1054999174
+
+* Training Performance
+** training parameter
+NUM_EPISODES   = 10
+CHECK_INTERVAL = 1
+EVAL_EPISODES  = 1
+training-game terminated
+After 1 games:
+avg score = 3192
+avg ratio = 0
+maxTile   = 256
+
+calc time = 3.08234e+07
+training-game terminated
+After 2 games:
+avg score = 2608
+avg ratio = 0
+maxTile   = 256
+
+calc time = 6.69371e+07
+training-game terminated
+After 3 games:
+avg score = 840
+avg ratio = 0
+maxTile   = 64
+
+calc time = 8.54349e+07
+training-game terminated
+After 4 games:
+avg score = 632
+avg ratio = 0
+maxTile   = 64
+
+calc time = 1.01648e+08
+training-game terminated
+After 5 games:
+avg score = 1484
+avg ratio = 0
+maxTile   = 128
+
+calc time = 1.17084e+08
+training-game terminated
+After 6 games:
+avg score = 908
+avg ratio = 0
+maxTile   = 64
+
+calc time = 1.43368e+08
+training-game terminated
+After 7 games:
+avg score = 624
+avg ratio = 0
+maxTile   = 64
+
+calc time = 1.5452e+08
+training-game terminated
+After 8 games:
+avg score = 1400
+avg ratio = 0
+maxTile   = 128
+
+calc time = 1.72902e+08
+training-game terminated
+After 9 games:
+avg score = 988
+avg ratio = 0
+maxTile   = 64
+
+calc time = 1.93349e+08
+training-game terminated
+After 10 games:
+avg score = 2912
+avg ratio = 0
+maxTile   = 256
+
+calc time = 2.14034e+08
++++ trainer program terminated +++
+destructer called
+destructer called
+destructer called
+pc190032m:szu_clone 5743163246$ 

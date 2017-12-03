@@ -1,0 +1,2 @@
+SRCS+=\
+	$(REL)defaultNTupleEvaluator.cpp\
