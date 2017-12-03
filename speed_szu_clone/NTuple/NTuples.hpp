@@ -103,7 +103,7 @@ public:
   NTuple getTuple(int idx);
   int totalWeights();
   vector<double> weights();
-  SymmetryExpander getSymmetryExpander();
+  IdentitySymmetryExpander getSymmetryExpander();
   // Iterator<NTuple> iterator();
   int size();
   // int hashCode();

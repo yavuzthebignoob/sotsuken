@@ -1,4 +1,4 @@
-a.out
+BBa.out
 *~
 *#
 sandbox.cpp
@@ -7,3 +7,5 @@ sandbox/
 *gch
 *.o
 a.dtps/
+gmon.out
+a.out

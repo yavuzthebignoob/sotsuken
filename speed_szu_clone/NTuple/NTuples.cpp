@@ -53,7 +53,7 @@ vector<double> NTuples::weights() {
   return res;
 }
 
-SymmetryExpander NTuples::getSymmetryExpander() {
+IdentitySymmetryExpander NTuples::getSymmetryExpander() {
   return symmetryExpander;
 }
 
