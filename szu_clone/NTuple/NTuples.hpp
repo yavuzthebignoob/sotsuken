@@ -1,4 +1,4 @@
-B#ifndef NTuples_INCLUDED
+#ifndef NTuples_INCLUDED
 #define NTuples_INCLUDED
 
 #include <vector>
