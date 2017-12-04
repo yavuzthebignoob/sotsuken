@@ -3,15 +3,17 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 1000
-#define CHECK_INTERVAL 200
-#define EVAL_EPISODES 1000
+#define NUM_EPISODES 100
+#define CHECK_INTERVAL 10
+#define EVAL_EPISODES 10
 
 #include <vector>
 #include <random>
 #include <math.h>
 #include <iostream>
 #include <time.h>
+#include <fstream>
+#include <string>
 
 #include "board/rectSize.hpp"
 #include "NTuple/NTuples.hpp"
@@ -27,13 +29,18 @@ using namespace std;
 static void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, mt19937 random, int e);
 void check();
 
+time_t Timecheck = time(NULL);
+struct tm *PN = localtime(&Timecheck);
+string date = "./log/" + to_string(PN->tm_year+1900) + to_string(PN->tm_mon+1) + to_string(PN->tm_mday) + to_string(PN->tm_hour) + to_string(PN->tm_min) + ".txt";
+ofstream output(date);
+
 int main() {
-  cout << "+++ 2048 N-tuple Network Player trainer +++" << endl;
+  cerr << "+++ 2048 N-tuple Network Player trainer +++" << endl;
 
   random_device seed;
   // int seed_value = seed();
   int seed_value = 1680331231;
-  cout << "* random seed = " << seed_value << endl << endl << "* Training Performance" << endl;
+  output << "* random seed = " << seed_value << endl << endl << "* Training Performance" << endl;
   mt19937 random(seed_value);
 
   TDLGame2048 tdlgame2048;
@@ -57,26 +64,26 @@ int main() {
   // cerr << "squares' address: " << &(squares.allNTuples) << endl;
   // cerr << "vFunction's address: " << &(vFunction.allNTuples) << endl;
 
-  cerr << "** vFunction's mainNTuples" << endl;
+  output << "** vFunction's mainNTuples" << endl;
   for (int i=0; i<vFunction.allNTuples.size(); i++) {
-    cerr << "loc =";
+    output << "loc =";
     for (int j=0; j<vFunction.allNTuples[i].locations.size(); j++) {
-      cerr << " " << vFunction.allNTuples[i].locations[j];
+      output << " " << vFunction.allNTuples[i].locations[j];
     }
-    cerr << endl;
+    output << endl;
   }
-  cerr << endl << "** vFunction's total weights = " << vFunction.totalWeights() << endl << endl;
+  output << endl << "** vFunction's total weights = " << vFunction.totalWeights() << endl << endl;
 
-  cerr << "** training parameter" << endl
-       << "NUM_EPISODES   = " << NUM_EPISODES << endl
-       << "CHECK_INTERVAL = " << CHECK_INTERVAL << endl
-       << "EVAL_EPISODES  = " << EVAL_EPISODES << endl << endl;
-
+  output << "** training parameter" << endl
+	 << "NUM_EPISODES   = " << NUM_EPISODES << endl
+	 << "CHECK_INTERVAL = " << CHECK_INTERVAL << endl
+	 << "EVAL_EPISODES  = " << EVAL_EPISODES << endl << endl;
+  
   clock_t start = clock();
   time_t now = time(NULL);
   struct tm *pnow = localtime(&now);
 
-  cout << "Learning start: " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec << endl << endl;
+  output << "Learning start: " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec << endl << endl;
   
   for (int i = 0; i <= NUM_EPISODES; i++) {
     random();
@@ -88,17 +95,17 @@ int main() {
       clock_t lapse = clock();
       now = time(NULL);
       pnow = localtime(&now);
-      cout << "TIME      = " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec;
+      output << "TIME      = " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec;
       int sec = (int)((double)(lapse-start)/1000000);
       int min = sec/60;
       sec = sec%60;
       int hour = min/60;
       min = min%60;
-      cout << " (" << hour << ":" << min << ":" << sec << ")" << endl << endl;
+      output << " (" << hour << ":" << min << ":" << sec << ")" << endl << endl;
     }
   }
 
-  cout << "+++ trainer program terminated +++" << endl;
+  cerr << "+++ trainer program terminated +++" << endl;
 }
 
 void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, mt19937 random, int e) {
@@ -114,10 +121,11 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
     maxTile = max(maxTile, res.maxTileIs());
   }
   
-  cout << "After " << e << " games:" << endl;
-  cout << "avg score = " << performance/EVAL_EPISODES << endl;
-  cout << "avg ratio = " << ratio/EVAL_EPISODES << endl;
-  cout << "maxTile   = " << maxTile << endl;
+  output << "After " << e << " games:" << endl;
+  cerr << e << " games done" << endl;
+  output << "avg score = " << performance/EVAL_EPISODES << endl;
+  output << "avg ratio = " << ratio/EVAL_EPISODES << endl;
+  output << "maxTile   = " << maxTile << endl;
 }
 
 void check() {
