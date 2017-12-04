@@ -3,9 +3,9 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 100
-#define CHECK_INTERVAL 10
-#define EVAL_EPISODES 10
+#define NUM_EPISODES 1000
+#define CHECK_INTERVAL 200
+#define EVAL_EPISODES 1000
 
 #include <vector>
 #include <random>
@@ -31,8 +31,8 @@ int main() {
   cout << "+++ 2048 N-tuple Network Player trainer +++" << endl;
 
   random_device seed;
-  int seed_value = seed();
-  // int seed_value = 1680331231;
+  // int seed_value = seed();
+  int seed_value = 1680331231;
   cout << "* random seed = " << seed_value << endl << endl << "* Training Performance" << endl;
   mt19937 random(seed_value);
 
@@ -76,7 +76,7 @@ int main() {
   time_t now = time(NULL);
   struct tm *pnow = localtime(&now);
 
-  cout << "Learning start: " << pnow->tm_hour << ":" << pnow->tm_min << endl << endl;
+  cout << "Learning start: " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec << endl << endl;
   
   for (int i = 0; i <= NUM_EPISODES; i++) {
     random();
@@ -88,11 +88,13 @@ int main() {
       clock_t lapse = clock();
       now = time(NULL);
       pnow = localtime(&now);
-      cout << "TIME      = " << pnow->tm_hour << ":" << pnow->tm_min;
-      int min = (int)((double)(lapse-start)/1000000)/60;
+      cout << "TIME      = " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec;
+      int sec = (int)((double)(lapse-start)/1000000);
+      int min = sec/60;
+      sec = sec%60;
       int hour = min/60;
       min = min%60;
-      cout << " (" << hour << ":" << min << ")" << endl << endl;
+      cout << " (" << hour << ":" << min << ":" << sec << ")" << endl << endl;
     }
   }
 

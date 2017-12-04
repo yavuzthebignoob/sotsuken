@@ -7,7 +7,8 @@ using namespace std;
 
 double CollectionUtils::sum(vector<double> arr) {
   double s = 0;
-  for (int i=0; i<arr.size(); i++)
+  int size = arr.size();
+  for (int i=0; i<size; i++)
     s += arr[i];
   return s;
 }

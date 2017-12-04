@@ -26,13 +26,15 @@ double RandomUtils::nextUniform_0_1(mt19937 random) {
 }
 
 Action2048* RandomUtils::pickRandom(vector<Action2048*> items, mt19937 random) {
-  if (items.size() <= 0) abort();
-  return items[nextInt(0, items.size() -1, random)];
+  int s = items.size();
+  if (s <= 0) abort();
+  return items[nextInt(0, s-1, random)];
 }
 
 int RandomUtils::pickRandom(vector<int> items, mt19937 random) {
-  if (items.size() <= 0) abort();
-  return items[nextInt(0, items.size() -1, random)];
+  int s = items.size();
+  if (s <= 0) abort();
+  return items[nextInt(0, s-1, random)];
 }
 
 vector<double> RandomUtils::randomDoubleVector(int n, double minValue, double maxValue, mt19937 random) {
