@@ -1,0 +1,81 @@
+* 最近のタスク
+NTuple関係以外のテスト用プログラムの実装
+NTuple関係のコードの実装
+! collectionUtil::concat はNTuple型のベクタのconcatenationを行うので、テスト用のプログラムはまだ実装していない（NTupleを実装したらテストも実装する）
+
+* その他のタスク
+C++のシリアライザを練習・理解しておく
+deserializerの型ってなに？
+ビット演算も練習・理解しておく
+
+* 次回MTG
+9/6 10:00~
+
+* このC++の実装について
+- NTuplePlayer2048.cppがメインファイル（になる予定）
+- それ以外のコードはおおむねSzubertと同様にディレクトリに分けて収納してある
+
+* Javaのプログラムの構造とC++で実装済みのコード一覧
+
+- とりあえずserializer/deserializerのことは考えないことにする
+- javaのコードにつけた印の意味は以下の通り:
+  *: C++で実装した
+  !: C++で実装しなくてよい（C++の標準ライブラリや機能で代用できる）
+  ?: C++で実装しなくてよい気がする（本当に実装しなくてよいのか未確認）
+  #: C++では別の手段で実装するのでとりあえず無視してよい（serializer）
+- C++に転写したコードのテスト用のコードも書けたやつはファイル名の頭に「$$$」をつけた
+- C++に転写したコードのテスト用のコードが必要ないやつ（ヘッダファイルのみの実装など）はファイル名の頭に「!!!」をつけた
+
+java:
+put/ci/cevo/
+	games/
+		board/
+			$$$Board.java*
+			$$$BoardPos.java*
+			$$$BoardPosList.java*
+			$$$BoardUtils.java*
+			$$$RectSize.java*
+		encodings/ntuple/
+			eval/
+				DefaultNTupleEvaluator.java*
+				NTupleBoardEvaluator.java*
+			expanders/
+				IdentitySymmetryExpander.java*
+				StandardSymmetryExpander.java*
+				SymmetryExpander.java*
+				SymmetryUtils.java*
+			factories/
+				NTuplesAllRectanglesFactory.java*
+				NTuplesAllStraightFactory.java*
+				NTuplesGenericFactory.java*
+			NTuple.java*
+			NTuples.java*
+			NTuplesBuilder.java*
+			NTupleUtils.java*
+		experiments/
+			CIG2048ExperimentTDL.java
+		game2048/
+			Action2048.java*
+			Game2048.java*
+			Game2048Board.java*
+			NTuplePlayer2048.java*
+			Player2048.java*
+			State2048.java*
+			TDLGame2048.java
+		serializers/#
+	rl/
+		agent/functions/
+			!!!RealFunctions.java*
+		environment/
+			!!!Action.java*
+			!!!Environment.java*
+			!!!State.java*
+			!!!Transition.java*
+	util/
+		serialization/#
+		$$$ArrayUtils.java*
+		$$$CollectionUtils.java*
+		!!!Pair.java!（C++では標準ライブラリで実装されている機能のため）
+		!!!RandomFactory.java*
+		$$$RandomUtils.java*
+		$$$SummaryStatistics.cpp（必要になったのでC++で初めて実装）

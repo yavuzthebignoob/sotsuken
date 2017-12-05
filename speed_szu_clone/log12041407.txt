@@ -1,0 +1,105 @@
+Script started on Mon Dec  4 14:11:41 2017
+[?1034hbash-3.2$ ./a.out
++++ 2048 N-tuple Network Player trainer +++
+* random seed = 1680331231
+
+* Training Performance
+** vFunction's mainNTuples
+loc = 7 13 19 25
+loc = 8 14 20 26
+loc = 9 15 21 27
+loc = 10 16 22 28
+loc = 7 8 9 10
+loc = 13 14 15 16
+loc = 19 20 21 22
+loc = 25 26 27 28
+loc = 7 8 13 14
+loc = 8 9 14 15
+loc = 9 10 15 16
+loc = 13 14 19 20
+loc = 14 15 20 21
+loc = 15 16 21 22
+loc = 19 20 25 26
+loc = 20 21 26 27
+loc = 21 22 27 28
+
+** vFunction's total weights = 860625
+
+** training parameter
+NUM_EPISODES   = 100
+CHECK_INTERVAL = 10
+EVAL_EPISODES  = 100
+
+Learning start: 14:11:45
+
+After 0 games:
+avg score = 2868.88
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:11:47 (0:0:2)
+
+After 10 games:
+avg score = 2490.6
+avg ratio = 0
+maxTile   = 512
+TIME      = 14:11:50 (0:0:4)
+
+After 20 games:
+avg score = 2506.32
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:11:52 (0:0:6)
+
+After 30 games:
+avg score = 3523.24
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:11:56 (0:0:10)
+
+After 40 games:
+avg score = 4074.16
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:11:59 (0:0:13)
+
+After 50 games:
+avg score = 5482.32
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:12:4 (0:0:18)
+
+After 60 games:
+avg score = 5377.56
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:12:9 (0:0:23)
+
+After 70 games:
+avg score = 6135.6
+avg ratio = 0.01
+maxTile   = 2048
+TIME      = 14:12:14 (0:0:28)
+
+After 80 games:
+avg score = 5607.6
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:12:19 (0:0:33)
+
+After 90 games:
+avg score = 5706.96
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:12:24 (0:0:38)
+
+After 100 games:
+avg score = 6557.52
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:12:29 (0:0:43)
+
++++ trainer program terminated +++
+bash-3.2$ ext[Kit
+exit
+
+Script done on Mon Dec  4 14:12:48 2017

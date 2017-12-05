@@ -108,7 +108,9 @@ void NTuples::update(vector<double> input, double expectedValue, double learning
   // cerr << "delta = " << delta << endl;
 
   // cerr << "weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;
-  for (int i=0; i<allNTuples.size(); i++) {
+  int size = allNTuples.size();
+  for (int i=0; i<size; i++) {
+    // for (int i=0; i<allNTuples.size(); i++) {
     allNTuples[i].LUT[allNTuples[i].address(board)] += delta;
   }
   // cerr << "modified weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;

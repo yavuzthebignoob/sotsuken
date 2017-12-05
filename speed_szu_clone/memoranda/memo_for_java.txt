@@ -1,0 +1,22 @@
+金澤くん
+
+補足ですが、実行は出来たでしょうか。
+README.mdを見ると、
+You need Java 1.7 and Maven
+とありますので、
+http://maven.apache.org/download.cgi
+からダウンロードしてインストール(と言ってもパスを設定するだけ)します。
+mvnがインストールできたら、
+mvn package
+と実行すると、コンパイルしてjarファイルを作ってくれるようです。（mvnが見る指示はpom.xmlの中にあります。）
+コンパイルに成功したら、
+java -jar target/2048-1.0-jar-with-dependencies.jar players/best_standard_network.bin 100
+で実行するようです。
+
+山口和紀
+
+
+**** mavenのパス通すやつ
+export M3_HOME=/home/5743163246/Desktop/apache-maven-3.5.0
+M3=$M3_HOME/bin
+export PATH=$M3:$PATH

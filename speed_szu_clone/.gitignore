@@ -1,0 +1,11 @@
+BBa.out
+*~
+*#
+sandbox.cpp
+sandbox2.cpp
+sandbox/
+*gch
+*.o
+a.dtps/
+gmon.out
+a.out
