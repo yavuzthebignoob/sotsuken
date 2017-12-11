@@ -4,12 +4,12 @@
 using namespace std;
 
 // double TDLGame2048::getBestValueAction(State2048 state, RealFunction function) {
-double TDLGame2048::getBestValueAction(State2048 state, NTuples* function) {
-  vector<Action2048*> actions = game.getPossibleActions(state);
+double TDLGame2048::getBestValueAction(State2048* state, NTuples* function) {
+  vector<Action2048*> actions = game.getPossibleActions(*state);
   double bestValue = -1 * INFINITY;
   
   for (int i=0; i<actions.size(); i++) {
-    Transition transition = game.computeTransition(state, actions[i]);
+    Transition transition = game.computeTransition(*state, actions[i]);
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
     if (value > bestValue) {
       bestValue = value;
@@ -72,10 +72,11 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
     }
 
     State2048 nextState = game.getNextState(transition.afterState, random);
+    State2048* nsptr = &nextState;
     double correctActionValue = 0;
     
     if (!game.isTerminalState(state)) {
-      correctActionValue += getBestValueAction(nextState, vFunction);
+      correctActionValue += getBestValueAction(nsptr, vFunction);
       if (correctActionValue==(-1*INFINITY)) {
 	correctActionValue = 0;
       }

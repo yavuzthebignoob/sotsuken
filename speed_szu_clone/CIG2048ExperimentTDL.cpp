@@ -3,7 +3,7 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 1000
+#define NUM_EPISODES 100000
 #define CHECK_INTERVAL 1000
 #define EVAL_EPISODES 1000
 
@@ -39,7 +39,7 @@ int main() {
 
   random_device seed;
   // int seed_value = seed();
-  int seed_value = 1680331231;
+  int seed_value = 679587884;
   output << "* random seed = " << seed_value << endl << endl << "* Training Performance" << endl;
   mt19937 random(seed_value);
   cerr << "* log filename = " << date << endl;
