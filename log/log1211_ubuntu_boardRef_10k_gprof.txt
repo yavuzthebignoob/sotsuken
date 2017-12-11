@@ -1,0 +1,775 @@
+スクリプトは 2017年12月11日 15時27分11秒
+ に開始しました]0;yavuz@kanazawa-ubuntu: ~/sotsuken/speed_szu_clone/log[01;32myavuz@kanazawa-ubuntu[00m:[01;34m~/sotsuken/
+]0;yavuz@kanazawa-ubuntu: ~/sotsuken/speed_szu_clone[01;32myavuz@kanazawa-ubuntu[00m:[01;34m~/sotsuken/speed_szu_clone[00m$ gprof a,.[K[K.out gmon.out 
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 22.56     32.78    32.78 2919400837     0.00     0.00  NTuple::valueFor(Game2048Board&)
+ 19.62     61.30    28.51 161435501     0.00     0.00  NTuples::getValue(std::vector<double, std::allocator<double> >)
+ 13.27     80.57    19.28 3787658036     0.00     0.00  Game2048Board::getValue(int)
+  6.61     90.17     9.60 1202107412     0.00     0.00  void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&)
+  4.74     97.06     6.89 195896236     0.00     0.00  State2048::makeMove(Action2048*)
+  4.73    103.93     6.87 24208777     0.00     0.00  State2048::addRandomTile(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  2.80    108.00     4.07 44746677     0.00     0.00  State2048::getPossibleMoves()
+  2.36    111.43     3.43 2747671376     0.00     0.00  Game2048Board::inputToBoardValue(std::vector<double, std::allocator<double> >, int, int)
+  2.26    114.71     3.28 10293960     0.00     0.00  NTuples::update(std::vector<double, std::allocator<double> >, double, double)
+  2.15    117.84     3.13       60     0.05     1.47  TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  2.11    120.90     3.06 171729461     0.00     0.00  DefaultNTupleEvaluator::evaluate(NTuples*, Game2048Board)
+  2.02    123.84     2.94 24208777     0.00     0.00  RandomUtils::pickRandom(std::vector<int, std::allocator<int> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  1.93    126.64     2.80 171739462     0.00     0.00  State2048::getFeatures()
+  1.85    129.33     2.69 24158757     0.00     0.00  TDLGame2048::chooseBestTransitionAfterstate(State2048, NTuples*)
+  1.72    131.83     2.50 24166775     0.00     0.00  Game2048::getNextState(State2048, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  1.49    133.99     2.17 195896236     0.00     0.00  Game2048::computeTransition(State2048, Action2048*)
+  1.27    135.84     1.85 2747671376     0.00     0.00  Game2048Board::setValue(int, int, int)
+  1.20    137.58     1.74                             TDLGame2048::playByAfterstates(NTuples*, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  0.87    138.85     1.27 151386552     0.00     0.00  void std::vector<Action2048*, std::allocator<Action2048*> >::_M_emplace_back_aux<Action2048* const&>(Action2048* const&)
+  0.63    139.77     0.92 174997320     0.00     0.00  NTuple::address(Game2048Board)
+  0.58    140.62     0.85                             Game2048Board::getValue(int, int)
+  0.52    141.38     0.76                             std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [clone .constprop.125]
+  0.48    142.08     0.70 89943263     0.00     0.00  void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&)
+  0.45    142.74     0.66 10293960     0.00     0.00  TDLGame2048::getBestValueAction(State2048, NTuples*)
+  0.30    143.18     0.44 152541948     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+  0.21    143.48     0.31 171729461     0.00     0.00  Game2048Board::initMargins()
+  0.21    143.78     0.30     3213     0.00     0.00  void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double>(double&&)
+  0.21    144.08     0.30                             std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::~vector()
+  0.14    144.28     0.20 34481736     0.00     0.00  State2048::isTerminal()
+  0.13    144.47     0.19 34502737     0.00     0.00  RandomUtils::nextUniform_0_1(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  0.10    144.62     0.15 44746677     0.00     0.00  Game2048::getPossibleActions(State2048)
+  0.07    144.72     0.10       17     0.01     0.01  RandomUtils::randomDoubleVector(int, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  0.07    144.82     0.10                             std::ctype<char>::do_widen(char) const
+  0.07    144.91     0.10                             Game2048Board::getWidth()
+  0.05    144.98     0.07                             NTupleUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander)
+  0.04    145.04     0.06                             void std::vector<std::pair<double, State2048>, std::allocator<std::pair<double, State2048> > >::_M_emplace_back_aux<std::pair<double, State2048> const&>(std::pair<double, State2048> const&)
+  0.03    145.09     0.05                             RandomUtils::nextUniform(int, int, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  0.03    145.13     0.04       36     0.00     0.00  void std::vector<NTuple, std::allocator<NTuple> >::_M_emplace_back_aux<NTuple const&>(NTuple const&)
+  0.02    145.16     0.03                             NTuples::equals(NTuples)
+  0.01    145.18     0.02                             RandomUtils::nextInt(int, int, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  0.01    145.20     0.02                             NTuples::add(NTuples*, NTuples*)
+  0.01    145.22     0.02                             State2048::isEqual(State2048)
+  0.01    145.24     0.02 34481736     0.00     0.00  Game2048::isTerminalState(State2048)
+  0.01    145.25     0.02                             State2048::rotateBoard()
+  0.01    145.26     0.01    21001     0.00     0.00  State2048::getInitialState(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  0.01    145.27     0.01       34     0.00     0.00  NTuple::createSymmetric(NTuple, IdentitySymmetryExpander)
+  0.01    145.28     0.01       17     0.00     0.01  NTuple::newWithRandomWeights(int, std::vector<int, std::allocator<int> >, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  0.01    145.29     0.01                             Player2048::chooseAction(State2048, std::vector<Action2048*, std::allocator<Action2048*> >)
+  0.01    145.30     0.01                             State2048::getNumValues()
+  0.01    145.31     0.01                             State2048::getPossibleNextStates()
+  0.00    145.32     0.01    21001     0.00     0.00  Game2048::sampleInitialStateDistribution(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  0.00    145.32     0.01                             Game2048::getPossibleNextStates(State2048)
+  0.00    145.32     0.00    11000     0.00     0.00  State2048::getMaxTile()
+  0.00    145.32     0.00     8018     0.00     0.00  RandomUtils::pickRandom(std::vector<Action2048*, std::allocator<Action2048*> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  0.00    145.32     0.00     4968     0.00     0.00  void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&)
+  0.00    145.32     0.00      768     0.00     0.00  void std::vector<BoardPos, std::allocator<BoardPos> >::_M_emplace_back_aux<BoardPos>(BoardPos&&)
+  0.00    145.32     0.00      512     0.00     0.00  BoardPos::add(BoardPos)
+  0.00    145.32     0.00      219     0.00     0.00  void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > const&>(std::vector<int, std::allocator<int> > const&)
+  0.00    145.32     0.00      210     0.00     0.00  RectSize::contains(BoardPos)
+  0.00    145.32     0.00      204     0.00     0.00  IdentitySymmetryExpander::getSymmetries(int)
+  0.00    145.32     0.00      128     0.00     0.00  BoardPosList::getShifted(int, int)
+  0.00    145.32     0.00      104     0.00     0.00  BoardUtils::toMarginPos(RectSize, BoardPos)
+  0.00    145.32     0.00      104     0.00     0.00  RectSize::width()
+  0.00    145.32     0.00       68     0.00     0.00  NTuple::equals(NTuple)
+  0.00    145.32     0.00       64     0.00     0.00  BoardPosList::fitOnBoard(RectSize)
+  0.00    145.32     0.00       64     0.00     0.00  BoardPosList::getAligned()
+  0.00    145.32     0.00       60     0.00     1.47  ArrayUtils::sorted(std::vector<int, std::allocator<int> >)
+  0.00    145.32     0.00       60     0.00     1.47  ArrayUtils::sorted(std::vector<int, std::allocator<int> >, int)
+  0.00    145.32     0.00       51     0.00     0.00  IdentitySymmetryExpander::numSymmetries()
+  0.00    145.32     0.00       34     0.00     0.00  NTuple::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander)
+  0.00    145.32     0.00       30     0.00     0.00  void std::vector<BoardPos, std::allocator<BoardPos> >::_M_emplace_back_aux<BoardPos const&>(BoardPos const&)
+  0.00    145.32     0.00       26     0.00     0.00  BoardPosList::toLocations(RectSize)
+  0.00    145.32     0.00       26     0.00     3.39  NTuplesBuilder::addTuple(std::vector<int, std::allocator<int> >)
+  0.00    145.32     0.00       26     0.00     0.00  CollectionUtils::flatten(std::vector<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >, std::allocator<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > > >)
+  0.00    145.32     0.00       26     0.00     0.00  void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > >(std::vector<int, std::allocator<int> >&&)
+  0.00    145.32     0.00       17     0.00     0.00  SymmetryUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander)
+  0.00    145.32     0.00       17     0.00     0.00  NTuple::getWeights()
+  0.00    145.32     0.00        9     0.00     0.00  void std::vector<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >, std::allocator<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > > >::_M_emplace_back_aux<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&>(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&)
+  0.00    145.32     0.00        6     0.00     0.00  std::vector<BoardPosList, std::allocator<BoardPosList> >::operator=(std::vector<BoardPosList, std::allocator<BoardPosList> > const&)
+  0.00    145.32     0.00        3     0.00     0.00  void std::vector<std::vector<BoardPos, std::allocator<BoardPos> >, std::allocator<std::vector<BoardPos, std::allocator<BoardPos> > > >::_M_emplace_back_aux<std::vector<BoardPos, std::allocator<BoardPos> > const&>(std::vector<BoardPos, std::allocator<BoardPos> > const&)
+  0.00    145.32     0.00        2     0.00     0.19  NTuplesBuilder::buildNTuples()
+  0.00    145.32     0.00        2     0.00     0.08  NTuplesBuilder::createNTuplesFromLocations(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >)
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I_Timecheck
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10Action204814getDescriptionEv
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10ArrayUtils6sortedESt6vectorIiSaIiEEi
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10Player204812chooseActionE9State2048St6vectorIP10Action2048SaIS3_EE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN11NTupleUtils15createSymmetricESt6vectorIiSaIiEE24IdentitySymmetryExpander
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN11RandomUtils16randomDouble_0_1E
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN11TDLGame204818getBestValueActionE9State2048P7NTuples
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN13Game2048Board4SIZEE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN14NTuplesBuilder8addTupleESt6vectorIiSaIiEE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN15CollectionUtils3sumESt6vectorIdSaIdEE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN16NTuplePlayer204812chooseActionE9State2048St6vectorIP10Action2048SaIS3_EESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN17SummaryStatistics8addValueEd
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN21NTuplesGenericFactory22createRandomIndividualESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN22DefaultNTupleEvaluator8evaluateEP7NTuples13Game2048Board
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN24StandardSymmetryExpander9boardSizeE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN25NTuplesAllStraightFactory22createRandomIndividualESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN27NTuplesAllRectanglesFactory22createRandomIndividualESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6NTuple20newWithRandomWeightsEiSt6vectorIiSaIiEEddSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN7NTuples3addEPS_S0_
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN8Game20487act_ctrE
+  0.00    145.32     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9State204810Second_ctrE
+  0.00    145.32     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.129]
+  0.00    145.32     0.00        1     0.00     0.01  CollectionUtils::concat(std::vector<NTuple, std::allocator<NTuple> >, std::vector<NTuple, std::allocator<NTuple> >)
+  0.00    145.32     0.00        1     0.00     0.00  NTuples::weights()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.01% of 145.32 seconds
+
+index % time    self  children    called     name
+                8.47   18.65 47979883/161435501     TDLGame2048::getBestValueAction(State2048, NTuples*) [11]
+               20.04   44.09 113455618/161435501     TDLGame2048::chooseBestTransitionAfterstate(State2048, NTuples*) [7]
+[1]     62.8   28.51   62.74 161435501         NTuples::getValue(std::vector<double, std::allocator<double> >) [1]
+                2.88   45.59 161435501/171729461     DefaultNTupleEvaluator::evaluate(NTuples*, Game2048Board) [9]
+                9.03    0.00 1130048507/1202107412     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+                3.22    0.00 2582968016/2747671376     Game2048Board::inputToBoardValue(std::vector<double, std::allocator<double> >, int, int) [22]
+                1.74    0.00 2582968016/2747671376     Game2048Board::setValue(int, int, int) [25]
+                0.29    0.00 161435501/171729461     Game2048Board::initMargins() [33]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     60.9    0.00   88.46                 NTuplesGenericFactory::createRandomIndividual(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [2]
+                0.00   88.08      26/26          NTuplesBuilder::addTuple(std::vector<int, std::allocator<int> >) [3]
+                0.00    0.38       2/2           NTuplesBuilder::buildNTuples() [32]
+                0.00    0.00      64/64          BoardPosList::getAligned() [82]
+                0.00    0.00      64/128         BoardPosList::getShifted(int, int) [77]
+                0.00    0.00      64/64          BoardPosList::fitOnBoard(RectSize) [81]
+                0.00    0.00      26/26          BoardPosList::toLocations(RectSize) [85]
+-----------------------------------------------
+                0.00   88.08      26/26          NTuplesGenericFactory::createRandomIndividual(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [2]
+[3]     60.6    0.00   88.08      26         NTuplesBuilder::addTuple(std::vector<int, std::allocator<int> >) [3]
+                0.00   88.08      60/60          ArrayUtils::sorted(std::vector<int, std::allocator<int> >) [4]
+                0.00    0.00      17/17          SymmetryUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [62]
+                0.00    0.00      26/26          CollectionUtils::flatten(std::vector<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >, std::allocator<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > > >) [86]
+                0.00    0.00      26/26          void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > >(std::vector<int, std::allocator<int> >&&) [87]
+                0.00    0.00       9/9           void std::vector<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >, std::allocator<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > > >::_M_emplace_back_aux<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&>(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&) [89]
+-----------------------------------------------
+                0.00   88.08      60/60          NTuplesBuilder::addTuple(std::vector<int, std::allocator<int> >) [3]
+[4]     60.6    0.00   88.08      60         ArrayUtils::sorted(std::vector<int, std::allocator<int> >) [4]
+                0.00   88.08      60/60          ArrayUtils::sorted(std::vector<int, std::allocator<int> >, int) [5]
+-----------------------------------------------
+                0.00   88.08      60/60          ArrayUtils::sorted(std::vector<int, std::allocator<int> >) [4]
+[5]     60.6    0.00   88.08      60         ArrayUtils::sorted(std::vector<int, std::allocator<int> >, int) [5]
+                3.13   84.95      60/60          TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+                0.00    0.00     180/89943263     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&) [29]
+-----------------------------------------------
+                3.13   84.95      60/60          ArrayUtils::sorted(std::vector<int, std::allocator<int> >, int) [5]
+[6]     60.6    3.13   84.95      60         TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+                1.15   32.06 10285942/24158757     TDLGame2048::chooseBestTransitionAfterstate(State2048, NTuples*) [7]
+                0.66   31.38 10293960/10293960     TDLGame2048::getBestValueAction(State2048, NTuples*) [11]
+                3.28    8.48 10293960/10293960     NTuples::update(std::vector<double, std::allocator<double> >, double, double) [14]
+                1.06    4.67 10293960/24166775     Game2048::getNextState(State2048, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [13]
+                0.03    1.23 10293960/44746677     Game2048::getPossibleActions(State2048) [19]
+                0.11    0.36 10301978/195896236     Game2048::computeTransition(State2048, Action2048*) [17]
+                0.17    0.00 10303961/171739462     State2048::getFeatures() [24]
+                0.06    0.09 10293960/34502737     RandomUtils::nextUniform_0_1(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [30]
+                0.12    0.00 20597921/34481736     State2048::isTerminal() [36]
+                0.00    0.01   10001/21001       Game2048::sampleInitialStateDistribution(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [48]
+                0.01    0.00 20597921/34481736     Game2048::isTerminalState(State2048) [53]
+                0.00    0.00    8018/8018        RandomUtils::pickRandom(std::vector<Action2048*, std::allocator<Action2048*> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [60]
+-----------------------------------------------
+                1.15   32.06 10285942/24158757     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+                1.54   43.24 13872815/24158757     TDLGame2048::playByAfterstates(NTuples*, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [8]
+[7]     53.7    2.69   75.30 24158757         TDLGame2048::chooseBestTransitionAfterstate(State2048, NTuples*) [7]
+               20.04   44.09 113455618/161435501     NTuples::getValue(std::vector<double, std::allocator<double> >) [1]
+                1.52    4.84 137614375/195896236     Game2048::computeTransition(State2048, Action2048*) [17]
+                0.08    2.88 24158757/44746677     Game2048::getPossibleActions(State2048) [19]
+                1.85    0.00 113455618/171739462     State2048::getFeatures() [24]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]     37.4    1.74   52.62                 TDLGame2048::playByAfterstates(NTuples*, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [8]
+                1.54   43.24 13872815/24158757     TDLGame2048::chooseBestTransitionAfterstate(State2048, NTuples*) [7]
+                1.43    6.30 13872815/24166775     Game2048::getNextState(State2048, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [13]
+                0.08    0.00 13883815/34481736     State2048::isTerminal() [36]
+                0.00    0.02   11000/21001       Game2048::sampleInitialStateDistribution(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [48]
+                0.01    0.00 13883815/34481736     Game2048::isTerminalState(State2048) [53]
+                0.00    0.00   11000/11000       State2048::getMaxTile() [70]
+-----------------------------------------------
+                0.18    2.91 10293960/171729461     NTuples::update(std::vector<double, std::allocator<double> >, double, double) [14]
+                2.88   45.59 161435501/171729461     NTuples::getValue(std::vector<double, std::allocator<double> >) [1]
+[9]     35.5    3.06   48.50 171729461         DefaultNTupleEvaluator::evaluate(NTuples*, Game2048Board) [9]
+               32.78   15.71 2919400837/2919400837     NTuple::valueFor(Game2048Board&) [10]
+-----------------------------------------------
+               32.78   15.71 2919400837/2919400837     DefaultNTupleEvaluator::evaluate(NTuples*, Game2048Board) [9]
+[10]    33.4   32.78   15.71 2919400837         NTuple::valueFor(Game2048Board&) [10]
+               15.71    0.00 3087668756/3787658036     Game2048Board::getValue(int) [12]
+-----------------------------------------------
+                0.66   31.38 10293960/10293960     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+[11]    22.0    0.66   31.38 10293960         TDLGame2048::getBestValueAction(State2048, NTuples*) [11]
+                8.47   18.65 47979883/161435501     NTuples::getValue(std::vector<double, std::allocator<double> >) [1]
+                0.53    1.69 47979883/195896236     Game2048::computeTransition(State2048, Action2048*) [17]
+                0.03    1.23 10293960/44746677     Game2048::getPossibleActions(State2048) [19]
+                0.78    0.00 47979883/171739462     State2048::getFeatures() [24]
+-----------------------------------------------
+                3.56    0.00 699989280/3787658036     NTuple::address(Game2048Board) [21]
+               15.71    0.00 3087668756/3787658036     NTuple::valueFor(Game2048Board&) [10]
+[12]    13.3   19.28    0.00 3787658036         Game2048Board::getValue(int) [12]
+-----------------------------------------------
+                1.06    4.67 10293960/24166775     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+                1.43    6.30 13872815/24166775     TDLGame2048::playByAfterstates(NTuples*, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [8]
+[13]     9.3    2.50   10.97 24166775         Game2048::getNextState(State2048, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [13]
+                6.86    4.11 24166775/24208777     State2048::addRandomTile(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [15]
+-----------------------------------------------
+                3.28    8.48 10293960/10293960     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+[14]     8.1    3.28    8.48 10293960         NTuples::update(std::vector<double, std::allocator<double> >, double, double) [14]
+                0.92    3.56 174997320/174997320     NTuple::address(Game2048Board) [21]
+                0.18    2.91 10293960/171729461     DefaultNTupleEvaluator::evaluate(NTuples*, Game2048Board) [9]
+                0.58    0.00 72057720/1202107412     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+                0.21    0.00 164703360/2747671376     Game2048Board::inputToBoardValue(std::vector<double, std::allocator<double> >, int, int) [22]
+                0.11    0.00 164703360/2747671376     Game2048Board::setValue(int, int, int) [25]
+                0.02    0.00 10293960/171729461     Game2048Board::initMargins() [33]
+-----------------------------------------------
+                0.01    0.01   42002/24208777     State2048::getInitialState(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [50]
+                6.86    4.11 24166775/24208777     Game2048::getNextState(State2048, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [13]
+[15]     7.6    6.87    4.12 24208777         State2048::addRandomTile(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [15]
+                2.94    0.14 24208777/24208777     RandomUtils::pickRandom(std::vector<int, std::allocator<int> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [23]
+                0.70    0.00 89942531/89943263     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&) [29]
+                0.13    0.21 24208777/34502737     RandomUtils::nextUniform_0_1(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [30]
+-----------------------------------------------
+                0.00    0.00      17/1202107412     NTuplesBuilder::createNTuplesFromLocations(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >) [37]
+                0.00    0.00      51/1202107412     NTuple::newWithRandomWeights(int, std::vector<int, std::allocator<int> >, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [38]
+                0.00    0.00      51/1202107412     SymmetryUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [62]
+                0.00    0.00     102/1202107412     NTuple::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [61]
+                0.00    0.00     303/1202107412     NTuplesBuilder::buildNTuples() [32]
+                0.00    0.00     321/1202107412     NTuples::add(NTuples*, NTuples*) [41]
+                0.00    0.00     340/1202107412     NTuple::createSymmetric(NTuple, IdentitySymmetryExpander) [40]
+                0.58    0.00 72057720/1202107412     NTuples::update(std::vector<double, std::allocator<double> >, double, double) [14]
+                9.03    0.00 1130048507/1202107412     NTuples::getValue(std::vector<double, std::allocator<double> >) [1]
+[16]     6.6    9.60    0.00 1202107412         void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+-----------------------------------------------
+                0.11    0.36 10301978/195896236     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+                0.53    1.69 47979883/195896236     TDLGame2048::getBestValueAction(State2048, NTuples*) [11]
+                1.52    4.84 137614375/195896236     TDLGame2048::chooseBestTransitionAfterstate(State2048, NTuples*) [7]
+[17]     6.2    2.17    6.89 195896236         Game2048::computeTransition(State2048, Action2048*) [17]
+                6.89    0.00 195896236/195896236     State2048::makeMove(Action2048*) [18]
+-----------------------------------------------
+                6.89    0.00 195896236/195896236     Game2048::computeTransition(State2048, Action2048*) [17]
+[18]     4.7    6.89    0.00 195896236         State2048::makeMove(Action2048*) [18]
+-----------------------------------------------
+                0.03    1.23 10293960/44746677     TDLGame2048::getBestValueAction(State2048, NTuples*) [11]
+                0.03    1.23 10293960/44746677     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+                0.08    2.88 24158757/44746677     TDLGame2048::chooseBestTransitionAfterstate(State2048, NTuples*) [7]
+[19]     3.8    0.15    5.34 44746677         Game2048::getPossibleActions(State2048) [19]
+                4.07    1.27 44746677/44746677     State2048::getPossibleMoves() [20]
+-----------------------------------------------
+                4.07    1.27 44746677/44746677     Game2048::getPossibleActions(State2048) [19]
+[20]     3.7    4.07    1.27 44746677         State2048::getPossibleMoves() [20]
+                1.27    0.00 151386552/151386552     void std::vector<Action2048*, std::allocator<Action2048*> >::_M_emplace_back_aux<Action2048* const&>(Action2048* const&) [26]
+-----------------------------------------------
+                0.92    3.56 174997320/174997320     NTuples::update(std::vector<double, std::allocator<double> >, double, double) [14]
+[21]     3.1    0.92    3.56 174997320         NTuple::address(Game2048Board) [21]
+                3.56    0.00 699989280/3787658036     Game2048Board::getValue(int) [12]
+-----------------------------------------------
+                0.21    0.00 164703360/2747671376     NTuples::update(std::vector<double, std::allocator<double> >, double, double) [14]
+                3.22    0.00 2582968016/2747671376     NTuples::getValue(std::vector<double, std::allocator<double> >) [1]
+[22]     2.4    3.43    0.00 2747671376         Game2048Board::inputToBoardValue(std::vector<double, std::allocator<double> >, int, int) [22]
+-----------------------------------------------
+                2.94    0.14 24208777/24208777     State2048::addRandomTile(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [15]
+[23]     2.1    2.94    0.14 24208777         RandomUtils::pickRandom(std::vector<int, std::allocator<int> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [23]
+                0.14    0.00 48115088/152541948     std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [31]
+-----------------------------------------------
+                0.17    0.00 10303961/171739462     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+                0.78    0.00 47979883/171739462     TDLGame2048::getBestValueAction(State2048, NTuples*) [11]
+                1.85    0.00 113455618/171739462     TDLGame2048::chooseBestTransitionAfterstate(State2048, NTuples*) [7]
+[24]     1.9    2.80    0.00 171739462         State2048::getFeatures() [24]
+-----------------------------------------------
+                0.11    0.00 164703360/2747671376     NTuples::update(std::vector<double, std::allocator<double> >, double, double) [14]
+                1.74    0.00 2582968016/2747671376     NTuples::getValue(std::vector<double, std::allocator<double> >) [1]
+[25]     1.3    1.85    0.00 2747671376         Game2048Board::setValue(int, int, int) [25]
+-----------------------------------------------
+                1.27    0.00 151386552/151386552     State2048::getPossibleMoves() [20]
+[26]     0.9    1.27    0.00 151386552         void std::vector<Action2048*, std::allocator<Action2048*> >::_M_emplace_back_aux<Action2048* const&>(Action2048* const&) [26]
+-----------------------------------------------
+                                                 <spontaneous>
+[27]     0.6    0.85    0.00                 Game2048Board::getValue(int, int) [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[28]     0.5    0.76    0.00                 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [clone .constprop.125] [28]
+-----------------------------------------------
+                0.00    0.00      33/89943263     CollectionUtils::concat(std::vector<NTuple, std::allocator<NTuple> >, std::vector<NTuple, std::allocator<NTuple> >) [58]
+                0.00    0.00     180/89943263     ArrayUtils::sorted(std::vector<int, std::allocator<int> >, int) [5]
+                0.00    0.00     519/89943263     void std::vector<NTuple, std::allocator<NTuple> >::_M_emplace_back_aux<NTuple const&>(NTuple const&) [47]
+                0.70    0.00 89942531/89943263     State2048::addRandomTile(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [15]
+[29]     0.5    0.70    0.00 89943263         void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&) [29]
+-----------------------------------------------
+                0.06    0.09 10293960/34502737     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+                0.13    0.21 24208777/34502737     State2048::addRandomTile(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [15]
+[30]     0.3    0.19    0.30 34502737         RandomUtils::nextUniform_0_1(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [30]
+                0.30    0.00 103508211/152541948     std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [31]
+-----------------------------------------------
+                0.00    0.00   16022/152541948     RandomUtils::pickRandom(std::vector<Action2048*, std::allocator<Action2048*> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [60]
+                0.00    0.00   42002/152541948     State2048::getInitialState(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [50]
+                0.00    0.00  860625/152541948     RandomUtils::randomDoubleVector(int, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [39]
+                0.14    0.00 48115088/152541948     RandomUtils::pickRandom(std::vector<int, std::allocator<int> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [23]
+                0.30    0.00 103508211/152541948     RandomUtils::nextUniform_0_1(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [30]
+[31]     0.3    0.44    0.00 152541948         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [31]
+-----------------------------------------------
+                0.00    0.38       2/2           NTuplesGenericFactory::createRandomIndividual(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [2]
+[32]     0.3    0.00    0.38       2         NTuplesBuilder::buildNTuples() [32]
+                0.00    0.17       2/2           NTuplesBuilder::createNTuplesFromLocations(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >) [37]
+                0.13    0.00    1428/3213        void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double>(double&&) [34]
+                0.01    0.06      17/34          NTuple::createSymmetric(NTuple, IdentitySymmetryExpander) [40]
+                0.02    0.00      18/36          void std::vector<NTuple, std::allocator<NTuple> >::_M_emplace_back_aux<NTuple const&>(NTuple const&) [47]
+                0.00    0.00     303/1202107412     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+                0.00    0.00      17/68          NTuple::equals(NTuple) [80]
+                0.00    0.00       9/219         void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > const&>(std::vector<int, std::allocator<int> > const&) [74]
+-----------------------------------------------
+                0.02    0.00 10293960/171729461     NTuples::update(std::vector<double, std::allocator<double> >, double, double) [14]
+                0.29    0.00 161435501/171729461     NTuples::getValue(std::vector<double, std::allocator<double> >) [1]
+[33]     0.2    0.31    0.00 171729461         Game2048Board::initMargins() [33]
+-----------------------------------------------
+                0.00    0.00      17/3213        NTuplesBuilder::createNTuplesFromLocations(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >) [37]
+                0.03    0.00     289/3213        RandomUtils::randomDoubleVector(int, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [39]
+                0.03    0.00     289/3213        NTuple::newWithRandomWeights(int, std::vector<int, std::allocator<int> >, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [38]
+                0.11    0.00    1190/3213        NTuple::createSymmetric(NTuple, IdentitySymmetryExpander) [40]
+                0.13    0.00    1428/3213        NTuplesBuilder::buildNTuples() [32]
+[34]     0.2    0.30    0.00    3213         void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double>(double&&) [34]
+-----------------------------------------------
+                                                 <spontaneous>
+[35]     0.2    0.30    0.00                 std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::~vector() [35]
+-----------------------------------------------
+                0.08    0.00 13883815/34481736     TDLGame2048::playByAfterstates(NTuples*, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [8]
+                0.12    0.00 20597921/34481736     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+[36]     0.1    0.20    0.00 34481736         State2048::isTerminal() [36]
+-----------------------------------------------
+                0.00    0.17       2/2           NTuplesBuilder::buildNTuples() [32]
+[37]     0.1    0.00    0.17       2         NTuplesBuilder::createNTuplesFromLocations(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >) [37]
+                0.01    0.16      17/17          NTuple::newWithRandomWeights(int, std::vector<int, std::allocator<int> >, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [38]
+                0.00    0.00      17/3213        void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double>(double&&) [34]
+                0.00    0.00      17/1202107412     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+-----------------------------------------------
+                0.01    0.16      17/17          NTuplesBuilder::createNTuplesFromLocations(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >) [37]
+[38]     0.1    0.01    0.16      17         NTuple::newWithRandomWeights(int, std::vector<int, std::allocator<int> >, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [38]
+                0.10    0.03      17/17          RandomUtils::randomDoubleVector(int, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [39]
+                0.03    0.00     289/3213        void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double>(double&&) [34]
+                0.00    0.00      51/1202107412     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+-----------------------------------------------
+                0.10    0.03      17/17          NTuple::newWithRandomWeights(int, std::vector<int, std::allocator<int> >, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [38]
+[39]     0.1    0.10    0.03      17         RandomUtils::randomDoubleVector(int, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [39]
+                0.03    0.00     289/3213        void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double>(double&&) [34]
+                0.00    0.00  860625/152541948     std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [31]
+-----------------------------------------------
+                0.01    0.06      17/34          NTuples::add(NTuples*, NTuples*) [41]
+                0.01    0.06      17/34          NTuplesBuilder::buildNTuples() [32]
+[40]     0.1    0.01    0.11      34         NTuple::createSymmetric(NTuple, IdentitySymmetryExpander) [40]
+                0.11    0.00    1190/3213        void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double>(double&&) [34]
+                0.00    0.00     340/1202107412     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+                0.00    0.00      34/34          NTuple::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [61]
+                0.00    0.00      34/68          NTuple::equals(NTuple) [80]
+-----------------------------------------------
+                                                 <spontaneous>
+[41]     0.1    0.02    0.08                 NTuples::add(NTuples*, NTuples*) [41]
+                0.01    0.06      17/34          NTuple::createSymmetric(NTuple, IdentitySymmetryExpander) [40]
+                0.01    0.00      12/36          void std::vector<NTuple, std::allocator<NTuple> >::_M_emplace_back_aux<NTuple const&>(NTuple const&) [47]
+                0.00    0.01       1/1           CollectionUtils::concat(std::vector<NTuple, std::allocator<NTuple> >, std::vector<NTuple, std::allocator<NTuple> >) [58]
+                0.00    0.00     321/1202107412     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+                0.00    0.00    1819/4968        void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&) [71]
+                0.00    0.00      17/68          NTuple::equals(NTuple) [80]
+-----------------------------------------------
+                                                 <spontaneous>
+[42]     0.1    0.10    0.00                 std::ctype<char>::do_widen(char) const [42]
+-----------------------------------------------
+                                                 <spontaneous>
+[43]     0.1    0.10    0.00                 Game2048Board::getWidth() [43]
+-----------------------------------------------
+                                                 <spontaneous>
+[44]     0.0    0.07    0.00                 NTupleUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [44]
+-----------------------------------------------
+                                                 <spontaneous>
+[45]     0.0    0.06    0.00                 void std::vector<std::pair<double, State2048>, std::allocator<std::pair<double, State2048> > >::_M_emplace_back_aux<std::pair<double, State2048> const&>(std::pair<double, State2048> const&) [45]
+-----------------------------------------------
+                                                 <spontaneous>
+[46]     0.0    0.05    0.00                 RandomUtils::nextUniform(int, int, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [46]
+-----------------------------------------------
+                0.01    0.00       6/36          CollectionUtils::concat(std::vector<NTuple, std::allocator<NTuple> >, std::vector<NTuple, std::allocator<NTuple> >) [58]
+                0.01    0.00      12/36          NTuples::add(NTuples*, NTuples*) [41]
+                0.02    0.00      18/36          NTuplesBuilder::buildNTuples() [32]
+[47]     0.0    0.04    0.00      36         void std::vector<NTuple, std::allocator<NTuple> >::_M_emplace_back_aux<NTuple const&>(NTuple const&) [47]
+                0.00    0.00     519/89943263     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&) [29]
+                0.00    0.00    2941/4968        void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&) [71]
+-----------------------------------------------
+                0.00    0.01   10001/21001       TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+                0.00    0.02   11000/21001       TDLGame2048::playByAfterstates(NTuples*, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [8]
+[48]     0.0    0.01    0.03   21001         Game2048::sampleInitialStateDistribution(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [48]
+                0.01    0.02   21001/21001       State2048::getInitialState(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [50]
+-----------------------------------------------
+                                                 <spontaneous>
+[49]     0.0    0.03    0.00                 NTuples::equals(NTuples) [49]
+-----------------------------------------------
+                0.01    0.02   21001/21001       Game2048::sampleInitialStateDistribution(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [48]
+[50]     0.0    0.01    0.02   21001         State2048::getInitialState(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [50]
+                0.01    0.01   42002/24208777     State2048::addRandomTile(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [15]
+                0.00    0.00   42002/152541948     std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [31]
+-----------------------------------------------
+                                                 <spontaneous>
+[51]     0.0    0.02    0.00                 RandomUtils::nextInt(int, int, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [51]
+-----------------------------------------------
+                                                 <spontaneous>
+[52]     0.0    0.02    0.00                 State2048::isEqual(State2048) [52]
+-----------------------------------------------
+                0.01    0.00 13883815/34481736     TDLGame2048::playByAfterstates(NTuples*, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [8]
+                0.01    0.00 20597921/34481736     TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+[53]     0.0    0.02    0.00 34481736         Game2048::isTerminalState(State2048) [53]
+-----------------------------------------------
+                                                 <spontaneous>
+[54]     0.0    0.02    0.00                 State2048::rotateBoard() [54]
+-----------------------------------------------
+                                                 <spontaneous>
+[55]     0.0    0.01    0.00                 Player2048::chooseAction(State2048, std::vector<Action2048*, std::allocator<Action2048*> >) [55]
+-----------------------------------------------
+                                                 <spontaneous>
+[56]     0.0    0.01    0.00                 State2048::getNumValues() [56]
+-----------------------------------------------
+                                                 <spontaneous>
+[57]     0.0    0.01    0.00                 State2048::getPossibleNextStates() [57]
+-----------------------------------------------
+                0.00    0.01       1/1           NTuples::add(NTuples*, NTuples*) [41]
+[58]     0.0    0.00    0.01       1         CollectionUtils::concat(std::vector<NTuple, std::allocator<NTuple> >, std::vector<NTuple, std::allocator<NTuple> >) [58]
+                0.01    0.00       6/36          void std::vector<NTuple, std::allocator<NTuple> >::_M_emplace_back_aux<NTuple const&>(NTuple const&) [47]
+                0.00    0.00      33/89943263     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&) [29]
+                0.00    0.00     187/4968        void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&) [71]
+-----------------------------------------------
+                                                 <spontaneous>
+[59]     0.0    0.01    0.00                 Game2048::getPossibleNextStates(State2048) [59]
+-----------------------------------------------
+                0.00    0.00    8018/8018        TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [6]
+[60]     0.0    0.00    0.00    8018         RandomUtils::pickRandom(std::vector<Action2048*, std::allocator<Action2048*> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [60]
+                0.00    0.00   16022/152541948     std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [31]
+-----------------------------------------------
+                0.00    0.00      34/34          NTuple::createSymmetric(NTuple, IdentitySymmetryExpander) [40]
+[61]     0.0    0.00    0.00      34         NTuple::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [61]
+                0.00    0.00     102/1202107412     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+                0.00    0.00     136/204         IdentitySymmetryExpander::getSymmetries(int) [76]
+                0.00    0.00     102/219         void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > const&>(std::vector<int, std::allocator<int> > const&) [74]
+                0.00    0.00      34/51          IdentitySymmetryExpander::numSymmetries() [83]
+-----------------------------------------------
+                0.00    0.00      17/17          NTuplesBuilder::addTuple(std::vector<int, std::allocator<int> >) [3]
+[62]     0.0    0.00    0.00      17         SymmetryUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [62]
+                0.00    0.00      51/1202107412     void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&) [16]
+                0.00    0.00      68/204         IdentitySymmetryExpander::getSymmetries(int) [76]
+                0.00    0.00      17/51          IdentitySymmetryExpander::numSymmetries() [83]
+                0.00    0.00      17/219         void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > const&>(std::vector<int, std::allocator<int> > const&) [74]
+-----------------------------------------------
+                0.00    0.00   11000/11000       TDLGame2048::playByAfterstates(NTuples*, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [8]
+[70]     0.0    0.00    0.00   11000         State2048::getMaxTile() [70]
+-----------------------------------------------
+                0.00    0.00      21/4968        NTuples::weights() [114]
+                0.00    0.00     187/4968        CollectionUtils::concat(std::vector<NTuple, std::allocator<NTuple> >, std::vector<NTuple, std::allocator<NTuple> >) [58]
+                0.00    0.00    1819/4968        NTuples::add(NTuples*, NTuples*) [41]
+                0.00    0.00    2941/4968        void std::vector<NTuple, std::allocator<NTuple> >::_M_emplace_back_aux<NTuple const&>(NTuple const&) [47]
+[71]     0.0    0.00    0.00    4968         void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&) [71]
+-----------------------------------------------
+                0.00    0.00     768/768         BoardPosList::getShifted(int, int) [77]
+[72]     0.0    0.00    0.00     768         void std::vector<BoardPos, std::allocator<BoardPos> >::_M_emplace_back_aux<BoardPos>(BoardPos&&) [72]
+-----------------------------------------------
+                0.00    0.00     512/512         BoardPosList::getShifted(int, int) [77]
+[73]     0.0    0.00    0.00     512         BoardPos::add(BoardPos) [73]
+-----------------------------------------------
+                0.00    0.00       9/219         NTuplesBuilder::buildNTuples() [32]
+                0.00    0.00      17/219         SymmetryUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [62]
+                0.00    0.00      91/219         CollectionUtils::flatten(std::vector<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >, std::allocator<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > > >) [86]
+                0.00    0.00     102/219         NTuple::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [61]
+[74]     0.0    0.00    0.00     219         void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > const&>(std::vector<int, std::allocator<int> > const&) [74]
+-----------------------------------------------
+                0.00    0.00     210/210         BoardPosList::fitOnBoard(RectSize) [81]
+[75]     0.0    0.00    0.00     210         RectSize::contains(BoardPos) [75]
+-----------------------------------------------
+                0.00    0.00      68/204         SymmetryUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [62]
+                0.00    0.00     136/204         NTuple::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [61]
+[76]     0.0    0.00    0.00     204         IdentitySymmetryExpander::getSymmetries(int) [76]
+-----------------------------------------------
+                0.00    0.00      64/128         BoardPosList::getAligned() [82]
+                0.00    0.00      64/128         NTuplesGenericFactory::createRandomIndividual(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [2]
+[77]     0.0    0.00    0.00     128         BoardPosList::getShifted(int, int) [77]
+                0.00    0.00     768/768         void std::vector<BoardPos, std::allocator<BoardPos> >::_M_emplace_back_aux<BoardPos>(BoardPos&&) [72]
+                0.00    0.00     512/512         BoardPos::add(BoardPos) [73]
+-----------------------------------------------
+                0.00    0.00     104/104         BoardPosList::toLocations(RectSize) [85]
+[78]     0.0    0.00    0.00     104         BoardUtils::toMarginPos(RectSize, BoardPos) [78]
+                0.00    0.00     104/104         RectSize::width() [79]
+-----------------------------------------------
+                0.00    0.00     104/104         BoardUtils::toMarginPos(RectSize, BoardPos) [78]
+[79]     0.0    0.00    0.00     104         RectSize::width() [79]
+-----------------------------------------------
+                0.00    0.00      17/68          NTuples::add(NTuples*, NTuples*) [41]
+                0.00    0.00      17/68          NTuplesBuilder::buildNTuples() [32]
+                0.00    0.00      34/68          NTuple::createSymmetric(NTuple, IdentitySymmetryExpander) [40]
+[80]     0.0    0.00    0.00      68         NTuple::equals(NTuple) [80]
+-----------------------------------------------
+                0.00    0.00      64/64          NTuplesGenericFactory::createRandomIndividual(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [2]
+[81]     0.0    0.00    0.00      64         BoardPosList::fitOnBoard(RectSize) [81]
+                0.00    0.00     210/210         RectSize::contains(BoardPos) [75]
+-----------------------------------------------
+                0.00    0.00      64/64          NTuplesGenericFactory::createRandomIndividual(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [2]
+[82]     0.0    0.00    0.00      64         BoardPosList::getAligned() [82]
+                0.00    0.00      64/128         BoardPosList::getShifted(int, int) [77]
+-----------------------------------------------
+                0.00    0.00      17/51          SymmetryUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [62]
+                0.00    0.00      34/51          NTuple::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [61]
+[83]     0.0    0.00    0.00      51         IdentitySymmetryExpander::numSymmetries() [83]
+-----------------------------------------------
+                0.00    0.00      12/30          NTuplesAllRectanglesFactory::NTuplesAllRectanglesFactory(RectSize, RectSize, int, double, double, IdentitySymmetryExpander) [147]
+                0.00    0.00      18/30          NTuplesAllStraightFactory::NTuplesAllStraightFactory(int, RectSize, int, double, double, IdentitySymmetryExpander) [145]
+[84]     0.0    0.00    0.00      30         void std::vector<BoardPos, std::allocator<BoardPos> >::_M_emplace_back_aux<BoardPos const&>(BoardPos const&) [84]
+-----------------------------------------------
+                0.00    0.00      26/26          NTuplesGenericFactory::createRandomIndividual(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [2]
+[85]     0.0    0.00    0.00      26         BoardPosList::toLocations(RectSize) [85]
+                0.00    0.00     104/104         BoardUtils::toMarginPos(RectSize, BoardPos) [78]
+-----------------------------------------------
+                0.00    0.00      26/26          NTuplesBuilder::addTuple(std::vector<int, std::allocator<int> >) [3]
+[86]     0.0    0.00    0.00      26         CollectionUtils::flatten(std::vector<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >, std::allocator<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > > >) [86]
+                0.00    0.00      91/219         void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > const&>(std::vector<int, std::allocator<int> > const&) [74]
+-----------------------------------------------
+                0.00    0.00      26/26          NTuplesBuilder::addTuple(std::vector<int, std::allocator<int> >) [3]
+[87]     0.0    0.00    0.00      26         void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > >(std::vector<int, std::allocator<int> >&&) [87]
+-----------------------------------------------
+                0.00    0.00      17/17          NTuples::weights() [114]
+[88]     0.0    0.00    0.00      17         NTuple::getWeights() [88]
+-----------------------------------------------
+                0.00    0.00       9/9           NTuplesBuilder::addTuple(std::vector<int, std::allocator<int> >) [3]
+[89]     0.0    0.00    0.00       9         void std::vector<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >, std::allocator<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > > >::_M_emplace_back_aux<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&>(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&) [89]
+-----------------------------------------------
+                0.00    0.00       3/6           NTuplesAllStraightFactory::NTuplesAllStraightFactory(int, RectSize, int, double, double, IdentitySymmetryExpander) [145]
+                0.00    0.00       3/6           NTuplesAllRectanglesFactory::NTuplesAllRectanglesFactory(RectSize, RectSize, int, double, double, IdentitySymmetryExpander) [147]
+[90]     0.0    0.00    0.00       6         std::vector<BoardPosList, std::allocator<BoardPosList> >::operator=(std::vector<BoardPosList, std::allocator<BoardPosList> > const&) [90]
+-----------------------------------------------
+                0.00    0.00       3/3           NTuplesAllStraightFactory::NTuplesAllStraightFactory(int, RectSize, int, double, double, IdentitySymmetryExpander) [145]
+[91]     0.0    0.00    0.00       3         void std::vector<std::vector<BoardPos, std::allocator<BoardPos> >, std::allocator<std::vector<BoardPos, std::allocator<BoardPos> > > >::_M_emplace_back_aux<std::vector<BoardPos, std::allocator<BoardPos> > const&>(std::vector<BoardPos, std::allocator<BoardPos> > const&) [91]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[92]     0.0    0.00    0.00       1         _GLOBAL__sub_I_Timecheck [92]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[93]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10Action204814getDescriptionEv [93]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[94]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10ArrayUtils6sortedESt6vectorIiSaIiEEi [94]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[95]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10Player204812chooseActionE9State2048St6vectorIP10Action2048SaIS3_EE [95]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[96]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN11NTupleUtils15createSymmetricESt6vectorIiSaIiEE24IdentitySymmetryExpander [96]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[97]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN11RandomUtils16randomDouble_0_1E [97]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[98]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN11TDLGame204818getBestValueActionE9State2048P7NTuples [98]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[99]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN13Game2048Board4SIZEE [99]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[100]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN14NTuplesBuilder8addTupleESt6vectorIiSaIiEE [100]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[101]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN15CollectionUtils3sumESt6vectorIdSaIdEE [101]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[102]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN16NTuplePlayer204812chooseActionE9State2048St6vectorIP10Action2048SaIS3_EESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [102]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[103]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN17SummaryStatistics8addValueEd [103]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[104]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN21NTuplesGenericFactory22createRandomIndividualESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [104]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[105]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN22DefaultNTupleEvaluator8evaluateEP7NTuples13Game2048Board [105]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[106]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN24StandardSymmetryExpander9boardSizeE [106]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[107]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN25NTuplesAllStraightFactory22createRandomIndividualESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [107]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[108]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN27NTuplesAllRectanglesFactory22createRandomIndividualESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [108]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[109]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6NTuple20newWithRandomWeightsEiSt6vectorIiSaIiEEddSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [109]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[110]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN7NTuples3addEPS_S0_ [110]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[111]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN8Game20487act_ctrE [111]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[112]    0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9State204810Second_ctrE [112]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [189]
+[113]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.129] [113]
+-----------------------------------------------
+                0.00    0.00       1/1           NTuples::totalWeights() [156]
+[114]    0.0    0.00    0.00       1         NTuples::weights() [114]
+                0.00    0.00      21/4968        void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&) [71]
+                0.00    0.00      17/17          NTuple::getWeights() [88]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [92] _GLOBAL__sub_I_Timecheck [7] TDLGame2048::chooseBestTransitionAfterstate(State2048, NTuples*) [19] Game2048::getPossibleActions(State2048)
+  [93] _GLOBAL__sub_I__ZN10Action204814getDescriptionEv [81] BoardPosList::fitOnBoard(RectSize) [59] Game2048::getPossibleNextStates(State2048)
+  [94] _GLOBAL__sub_I__ZN10ArrayUtils6sortedESt6vectorIiSaIiEEi [82] BoardPosList::getAligned() [48] Game2048::sampleInitialStateDistribution(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+  [95] _GLOBAL__sub_I__ZN10Player204812chooseActionE9State2048St6vectorIP10Action2048SaIS3_EE [77] BoardPosList::getShifted(int, int) [79] RectSize::width()
+  [96] _GLOBAL__sub_I__ZN11NTupleUtils15createSymmetricESt6vectorIiSaIiEE24IdentitySymmetryExpander [85] BoardPosList::toLocations(RectSize) [75] RectSize::contains(BoardPos)
+  [97] _GLOBAL__sub_I__ZN11RandomUtils16randomDouble_0_1E [33] Game2048Board::initMargins() [70] State2048::getMaxTile()
+  [98] _GLOBAL__sub_I__ZN11TDLGame204818getBestValueActionE9State2048P7NTuples [22] Game2048Board::inputToBoardValue(std::vector<double, std::allocator<double> >, int, int) [36] State2048::isTerminal()
+  [99] _GLOBAL__sub_I__ZN13Game2048Board4SIZEE [12] Game2048Board::getValue(int) [24] State2048::getFeatures()
+ [100] _GLOBAL__sub_I__ZN14NTuplesBuilder8addTupleESt6vectorIiSaIiEE [27] Game2048Board::getValue(int, int) [54] State2048::rotateBoard()
+ [101] _GLOBAL__sub_I__ZN15CollectionUtils3sumESt6vectorIdSaIdEE [43] Game2048Board::getWidth() [56] State2048::getNumValues()
+ [102] _GLOBAL__sub_I__ZN16NTuplePlayer204812chooseActionE9State2048St6vectorIP10Action2048SaIS3_EESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [25] Game2048Board::setValue(int, int, int) [15] State2048::addRandomTile(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+ [103] _GLOBAL__sub_I__ZN17SummaryStatistics8addValueEd [62] SymmetryUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [50] State2048::getInitialState(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>)
+ [104] _GLOBAL__sub_I__ZN21NTuplesGenericFactory22createRandomIndividualESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [32] NTuplesBuilder::buildNTuples() [20] State2048::getPossibleMoves()
+ [105] _GLOBAL__sub_I__ZN22DefaultNTupleEvaluator8evaluateEP7NTuples13Game2048Board [37] NTuplesBuilder::createNTuplesFromLocations(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >) [57] State2048::getPossibleNextStates()
+ [106] _GLOBAL__sub_I__ZN24StandardSymmetryExpander9boardSizeE [3] NTuplesBuilder::addTuple(std::vector<int, std::allocator<int> >) [52] State2048::isEqual(State2048)
+ [107] _GLOBAL__sub_I__ZN25NTuplesAllStraightFactory22createRandomIndividualESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [58] CollectionUtils::concat(std::vector<NTuple, std::allocator<NTuple> >, std::vector<NTuple, std::allocator<NTuple> >) [18] State2048::makeMove(Action2048*)
+ [108] _GLOBAL__sub_I__ZN27NTuplesAllRectanglesFactory22createRandomIndividualESt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [86] CollectionUtils::flatten(std::vector<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >, std::allocator<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > > >) [28] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [clone .constprop.125]
+ [109] _GLOBAL__sub_I__ZN6NTuple20newWithRandomWeightsEiSt6vectorIiSaIiEEddSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE [9] DefaultNTupleEvaluator::evaluate(NTuples*, Game2048Board) [42] std::ctype<char>::do_widen(char) const
+ [110] _GLOBAL__sub_I__ZN7NTuples3addEPS_S0_ [76] IdentitySymmetryExpander::getSymmetries(int) [31] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+ [111] _GLOBAL__sub_I__ZN8Game20487act_ctrE [83] IdentitySymmetryExpander::numSymmetries() [90] std::vector<BoardPosList, std::allocator<BoardPosList> >::operator=(std::vector<BoardPosList, std::allocator<BoardPosList> > const&)
+ [112] _GLOBAL__sub_I__ZN9State204810Second_ctrE [88] NTuple::getWeights() [47] void std::vector<NTuple, std::allocator<NTuple> >::_M_emplace_back_aux<NTuple const&>(NTuple const&)
+ [113] __static_initialization_and_destruction_0(int, int) [clone .constprop.129] [40] NTuple::createSymmetric(NTuple, IdentitySymmetryExpander) [84] void std::vector<BoardPos, std::allocator<BoardPos> >::_M_emplace_back_aux<BoardPos const&>(BoardPos const&)
+   [4] ArrayUtils::sorted(std::vector<int, std::allocator<int> >) [61] NTuple::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [72] void std::vector<BoardPos, std::allocator<BoardPos> >::_M_emplace_back_aux<BoardPos>(BoardPos&&)
+   [5] ArrayUtils::sorted(std::vector<int, std::allocator<int> >, int) [38] NTuple::newWithRandomWeights(int, std::vector<int, std::allocator<int> >, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [26] void std::vector<Action2048*, std::allocator<Action2048*> >::_M_emplace_back_aux<Action2048* const&>(Action2048* const&)
+  [78] BoardUtils::toMarginPos(RectSize, BoardPos) [80] NTuple::equals(NTuple) [91] void std::vector<std::vector<BoardPos, std::allocator<BoardPos> >, std::allocator<std::vector<BoardPos, std::allocator<BoardPos> > > >::_M_emplace_back_aux<std::vector<BoardPos, std::allocator<BoardPos> > const&>(std::vector<BoardPos, std::allocator<BoardPos> > const&)
+  [55] Player2048::chooseAction(State2048, std::vector<Action2048*, std::allocator<Action2048*> >) [21] NTuple::address(Game2048Board) [89] void std::vector<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >, std::allocator<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > > >::_M_emplace_back_aux<std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&>(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&)
+  [44] NTupleUtils::createSymmetric(std::vector<int, std::allocator<int> >, IdentitySymmetryExpander) [10] NTuple::valueFor(Game2048Board&) [74] void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > const&>(std::vector<int, std::allocator<int> > const&)
+  [60] RandomUtils::pickRandom(std::vector<Action2048*, std::allocator<Action2048*> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [41] NTuples::add(NTuples*, NTuples*) [87] void std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::_M_emplace_back_aux<std::vector<int, std::allocator<int> > >(std::vector<int, std::allocator<int> >&&)
+  [23] RandomUtils::pickRandom(std::vector<int, std::allocator<int> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [49] NTuples::equals(NTuples) [35] std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::~vector()
+  [46] RandomUtils::nextUniform(int, int, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [14] NTuples::update(std::vector<double, std::allocator<double> >, double, double) [45] void std::vector<std::pair<double, State2048>, std::allocator<std::pair<double, State2048> > >::_M_emplace_back_aux<std::pair<double, State2048> const&>(std::pair<double, State2048> const&)
+  [30] RandomUtils::nextUniform_0_1(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [114] NTuples::weights() [71] void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&)
+  [39] RandomUtils::randomDoubleVector(int, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [1] NTuples::getValue(std::vector<double, std::allocator<double> >) [34] void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double>(double&&)
+  [51] RandomUtils::nextInt(int, int, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [73] BoardPos::add(BoardPos) [29] void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&)
+   [6] TDLGame2048::TDAfterstateLearn(NTuples*, double, double, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [13] Game2048::getNextState(State2048, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [16] void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int>(int&&)
+   [8] TDLGame2048::playByAfterstates(NTuples*, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>) [53] Game2048::isTerminalState(State2048)
+  [11] TDLGame2048::getBestValueAction(State2048, NTuples*) [17] Game2048::computeTransition(State2048, Action2048*)
+]0;yavuz@kanazawa-ubuntu: ~/sotsuken/speed_szu_clone[01;32myavuz@kanazawa-ubuntu[00m:[01;34m~/sotsuken/speed_szu_clone[00m$ exit
+exit
+
+スクリプトは 2017年12月11日 15時27分39秒
+ に終了しました

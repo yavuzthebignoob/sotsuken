@@ -27,71 +27,71 @@ NUM_EPISODES   = 10000
 CHECK_INTERVAL = 1000
 EVAL_EPISODES  = 1000
 
-Learning start: 16:54:12
+Learning start: 17:14:12
 
 After 0 games:
 avg score = 2421.36
 avg ratio = 0
 maxTile   = 1024
-TIME      = 16:54:15 (0:0:2)
+TIME      = 17:14:14 (0:0:2)
 
 After 1000 games:
 avg score = 15022.7
 avg ratio = 0.135
 maxTile   = 4096
-TIME      = 16:54:40 (0:0:27)
+TIME      = 17:14:39 (0:0:26)
 
 After 2000 games:
 avg score = 17911.2
 avg ratio = 0.231
 maxTile   = 4096
-TIME      = 16:55:11 (0:0:57)
+TIME      = 17:15:9 (0:0:56)
 
 After 3000 games:
 avg score = 22769.1
 avg ratio = 0.425
 maxTile   = 4096
-TIME      = 16:55:49 (0:1:35)
+TIME      = 17:15:46 (0:1:33)
 
 After 4000 games:
 avg score = 24480.9
 avg ratio = 0.455
 maxTile   = 4096
-TIME      = 16:56:30 (0:2:16)
+TIME      = 17:16:25 (0:2:13)
 
 After 5000 games:
 avg score = 24962.9
 avg ratio = 0.43
 maxTile   = 4096
-TIME      = 16:57:14 (0:3:0)
+TIME      = 17:17:8 (0:2:55)
 
 After 6000 games:
 avg score = 25137.2
 avg ratio = 0.333
 maxTile   = 8192
-TIME      = 16:58:1 (0:3:47)
+TIME      = 17:17:56 (0:3:43)
 
 After 7000 games:
 avg score = 28661.4
 avg ratio = 0.519
 maxTile   = 4096
-TIME      = 16:58:49 (0:4:34)
+TIME      = 17:18:43 (0:4:31)
 
 After 8000 games:
 avg score = 23661.9
 avg ratio = 0.47
 maxTile   = 8192
-TIME      = 16:59:31 (0:5:16)
+TIME      = 17:19:26 (0:5:14)
 
 After 9000 games:
 avg score = 27154.8
 avg ratio = 0.433
 maxTile   = 8192
-TIME      = 17:0:18 (0:6:4)
+TIME      = 17:20:15 (0:6:3)
 
 After 10000 games:
 avg score = 30982.5
 avg ratio = 0.63
 maxTile   = 4096
-TIME      = 17:1:10 (0:6:55)
+TIME      = 17:21:8 (0:6:56)
 
