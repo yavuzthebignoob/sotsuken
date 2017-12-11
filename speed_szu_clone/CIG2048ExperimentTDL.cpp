@@ -97,6 +97,7 @@ int main() {
       now = time(NULL);
       pnow = localtime(&now);
       output << "TIME      = " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec;
+      cerr << "TIME      = " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec;
       int sec = (int)((double)(lapse-start)/1000000);
       int min = sec/60;
       sec = sec%60;
