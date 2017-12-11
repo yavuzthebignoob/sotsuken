@@ -37,7 +37,7 @@ private:
 
 private:
   // double getBestValueAction(State2048 state, RealFunction function);
-  double getBestValueAction(State2048* state, NTuples* function);
+  double getBestValueAction(State2048 state, NTuples* function);
   // Transition chooseBestTransitionAfterstate(State2048 state, RealFunction function);
   Transition chooseBestTransitionAfterstate(State2048 state, NTuples* function);
 

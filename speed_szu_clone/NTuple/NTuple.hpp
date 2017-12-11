@@ -28,8 +28,8 @@ public:
 
 public:
   NTuple newWithRandomWeights(int numValues, vector<int> locations, double minWeight, double maxWeight, mt19937 random);
-  double valueFor(Game2048Board board);
-  int address(Game2048Board board);
+  double valueFor(Game2048Board &board);
+  int address(Game2048Board &board);
   vector<int> valuesFromAddress(int address);
   vector<double> getWeights();
   int getNumWeights();

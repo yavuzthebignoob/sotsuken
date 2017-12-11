@@ -3,7 +3,7 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 100000
+#define NUM_EPISODES 10000
 #define CHECK_INTERVAL 1000
 #define EVAL_EPISODES 1000
 
@@ -97,7 +97,7 @@ int main() {
       now = time(NULL);
       pnow = localtime(&now);
       output << "TIME      = " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec;
-      cerr << "TIME      = " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec;
+      cerr << "TIME      = " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec << endl;
       int sec = (int)((double)(lapse-start)/1000000);
       int min = sec/60;
       sec = sec%60;

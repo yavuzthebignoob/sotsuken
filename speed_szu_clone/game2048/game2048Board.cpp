@@ -43,7 +43,7 @@ int Game2048Board::getValue(int row, int col) {
   return buffer[toPos(row, col)];
 }
 
-int Game2048Board::getValue(int pos) {
+int Game2048Board::getValue(int &pos) {
   return buffer[pos];
 }
 

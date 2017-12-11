@@ -31,7 +31,7 @@ public:
   int getSize();
   void setValue(int row, int col, int color);
   int getValue(int row, int col);
-  int getValue(int pos);
+  int getValue(int &pos);
   static int toPos(int row, int col);
   string toString();
   Game2048Board clone();
