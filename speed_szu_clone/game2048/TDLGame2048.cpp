@@ -87,6 +87,58 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
     vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
     // vFunction->update(f, correctActionValue, learningRate);
     state = nextState;
+    double foo = calculateGradationScore(state);
   }
   // cerr << "training-game terminated" << endl;
+}
+
+double TDLGame2048::calculateGradationScore(State2048 &state) {
+  vector<double> score(8);
+  double sumscore = 0;
+  
+  // calc horizontal gradation score
+  for (int i=0; i<4; i++) {
+    int largePoint = 0;
+    double temp = 0;
+    if (state.boards[i][0]<state.boards[i][3]) {
+      largePoint = 3;
+    }
+    if (largePoint==0) {
+      for (int k=0; k<3; k++) {
+	temp += 1.0/(state.boards[i][k]-state.boards[i][k+1]+0.5);
+      }
+    }
+    if (largePoint==3) {
+      for (int k=3; k>0; k++) {
+	temp += 1.0/(state.boards[i][k]-state.boards[i][k-1]+0.5);
+      }
+    }
+    score[i] = temp;
+  }
+
+  // calc vertical gradation score
+  for (int i=0; i<4; i++) {
+    int largePoint = 0;
+    double temp = 0;
+    if (state.boards[0][i]<state.boards[3][i]) {
+      largePoint = 3;
+    }
+    if (largePoint==0) {
+      for (int k=0; k<3; k++) {
+	temp += 1.0/(state.boards[k][i]-state.boards[k+1][i]+0.5);
+      }
+    }
+    if (largePoint==3) {
+      for (int k=3; k>0; k++) {
+	temp += 1.0/(state.boards[k][i]-state.boards[k-1][i]+0.5);
+      }
+    }
+    score[i+4] = temp;
+  }
+
+  for (int i=0; i<8; i++) {
+    sumscore += score[i];
+  }
+
+  return sumscore;
 }

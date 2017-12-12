@@ -45,6 +45,7 @@ public:
   // Game2048Outcome playByAfterstates(RealFunction vfunction, mt19937 random);
   Game2048Outcome playByAfterstates(NTuples* vfunction, mt19937 random);
   void TDAfterstateLearn(NTuples* vFunction, double explorationRate, double learningRate, mt19937 random);
+  static double calculateGradationScore(State2048 &state);
   
 public:
   TDLGame2048() {};  
