@@ -1,0 +1,157 @@
+* random seed = 679587884
+
+* Training Performance
+** vFunction's mainNTuples
+loc = 7 13 19 25
+loc = 8 14 20 26
+loc = 9 15 21 27
+loc = 10 16 22 28
+loc = 7 8 9 10
+loc = 13 14 15 16
+loc = 19 20 21 22
+loc = 25 26 27 28
+loc = 7 8 13 14
+loc = 8 9 14 15
+loc = 9 10 15 16
+loc = 13 14 19 20
+loc = 14 15 20 21
+loc = 15 16 21 22
+loc = 19 20 25 26
+loc = 20 21 26 27
+loc = 21 22 27 28
+
+** vFunction's total weights = 860625
+
+** training parameter
+NUM_EPISODES   = 100000
+CHECK_INTERVAL = 5000
+EVAL_EPISODES  = 1000
+
+Learning start: 16:19:9
+
+After 0 games:
+avg score = 2421.36
+avg ratio = 0
+maxTile   = 1024
+TIME      = 16:19:10 (0:0:1)
+
+After 5000 games:
+avg score = 24962.9
+avg ratio = 0.43
+maxTile   = 4096
+TIME      = 16:20:35 (0:1:26)
+
+After 10000 games:
+avg score = 30982.5
+avg ratio = 0.63
+maxTile   = 4096
+TIME      = 16:22:32 (0:3:22)
+
+After 15000 games:
+avg score = 29039.3
+avg ratio = 0.64
+maxTile   = 4096
+TIME      = 16:24:39 (0:5:30)
+
+After 20000 games:
+avg score = 37890.8
+avg ratio = 0.793
+maxTile   = 4096
+TIME      = 16:27:12 (0:8:2)
+
+After 25000 games:
+avg score = 34095.3
+avg ratio = 0.719
+maxTile   = 4096
+TIME      = 16:29:46 (0:10:36)
+
+After 30000 games:
+avg score = 35296.8
+avg ratio = 0.791
+maxTile   = 4096
+TIME      = 16:32:24 (0:13:14)
+
+After 35000 games:
+avg score = 37218.4
+avg ratio = 0.891
+maxTile   = 8192
+TIME      = 16:34:58 (0:15:49)
+
+After 40000 games:
+avg score = 38332.8
+avg ratio = 0.811
+maxTile   = 4096
+TIME      = 16:37:19 (0:18:10)
+
+After 45000 games:
+avg score = 38710.2
+avg ratio = 0.769
+maxTile   = 8192
+TIME      = 16:39:46 (0:20:37)
+
+After 50000 games:
+avg score = 34793.8
+avg ratio = 0.784
+maxTile   = 8192
+TIME      = 16:42:18 (0:23:8)
+
+After 55000 games:
+avg score = 40081.2
+avg ratio = 0.696
+maxTile   = 8192
+TIME      = 16:44:58 (0:25:49)
+
+After 60000 games:
+avg score = 42362.2
+avg ratio = 0.876
+maxTile   = 4096
+TIME      = 16:47:49 (0:28:40)
+
+After 65000 games:
+avg score = 45104
+avg ratio = 0.836
+maxTile   = 8192
+TIME      = 16:50:35 (0:31:26)
+
+After 70000 games:
+avg score = 42866
+avg ratio = 0.833
+maxTile   = 4096
+TIME      = 16:53:22 (0:34:13)
+
+After 75000 games:
+avg score = 45902.4
+avg ratio = 0.787
+maxTile   = 8192
+TIME      = 16:56:21 (0:37:12)
+
+After 80000 games:
+avg score = 41955.1
+avg ratio = 0.854
+maxTile   = 8192
+TIME      = 16:59:20 (0:40:10)
+
+After 85000 games:
+avg score = 45032.6
+avg ratio = 0.828
+maxTile   = 8192
+TIME      = 17:2:26 (0:43:17)
+
+After 90000 games:
+avg score = 46543.9
+avg ratio = 0.821
+maxTile   = 4096
+TIME      = 17:5:28 (0:46:19)
+
+After 95000 games:
+avg score = 42651.1
+avg ratio = 0.811
+maxTile   = 4096
+TIME      = 17:8:25 (0:49:16)
+
+After 100000 games:
+avg score = 47281.8
+avg ratio = 0.92
+maxTile   = 8192
+TIME      = 17:11:36 (0:52:27)
+
