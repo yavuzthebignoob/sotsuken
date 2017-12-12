@@ -4,7 +4,7 @@
 // EVAL_EPISODES  = 1000
 
 #define NUM_EPISODES 100000
-#define CHECK_INTERVAL 1000
+#define CHECK_INTERVAL 5000
 #define EVAL_EPISODES 1000
 
 #include <vector>

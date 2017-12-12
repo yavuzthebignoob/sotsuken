@@ -1,0 +1,9 @@
+when a log file is generated, rename like below:
+
+log1212_ubuntu_speedings_10k.txt
+~~~~~~~ ~~~~~~ ~~~~~~~~  ~~~
+date    envir- log's     number of games
+        onment attribute
+
+then move the log file to the directory below:
+sotsuken/log/
