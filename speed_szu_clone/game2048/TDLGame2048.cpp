@@ -1,7 +1,10 @@
 #include <vector>
 #include <math.h>
+#include <fstream>
 #include "TDLGame2048.hpp"
 using namespace std;
+
+// ofstream hoge("gradation_result.txt");
 
 // double TDLGame2048::getBestValueAction(State2048 state, RealFunction function) {
 double TDLGame2048::getBestValueAction(State2048 state, NTuples* function) {
@@ -39,16 +42,18 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
 
 TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, mt19937 random) {
   int sumRewards = 0;
+  vector<double> gradation;
   
   State2048 state = game.sampleInitialStateDistribution(random);
   while (!game.isTerminalState(state)) {
     Transition transition = chooseBestTransitionAfterstate(state, vFunction);
     sumRewards += transition.reward;
+    gradation.push_back(TDLGame2048::calculateGradationScore(state));
     state = game.getNextState(transition.afterState, random);
   }
   
   // state.printHumanReadable();
-  TDLGame2048::Game2048Outcome res(sumRewards, state.getMaxTile());
+  TDLGame2048::Game2048Outcome res(sumRewards, state.getMaxTile(), gradation);
   return res;
 }
 
@@ -87,12 +92,13 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
     vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
     // vFunction->update(f, correctActionValue, learningRate);
     state = nextState;
-    double foo = calculateGradationScore(state);
+    // double foo = calculateGradationScore(state);
+    // hoge << foo << endl;
   }
   // cerr << "training-game terminated" << endl;
 }
 
-double TDLGame2048::calculateGradationScore(State2048 &state) {
+double TDLGame2048::calculateGradationScore(State2048 state) {
   vector<double> score(8);
   double sumscore = 0;
   
@@ -109,7 +115,7 @@ double TDLGame2048::calculateGradationScore(State2048 &state) {
       }
     }
     if (largePoint==3) {
-      for (int k=3; k>0; k++) {
+      for (int k=3; k>0; k--) {
 	temp += 1.0/(state.boards[i][k]-state.boards[i][k-1]+0.5);
       }
     }
@@ -129,7 +135,7 @@ double TDLGame2048::calculateGradationScore(State2048 &state) {
       }
     }
     if (largePoint==3) {
-      for (int k=3; k>0; k++) {
+      for (int k=3; k>0; k--) {
 	temp += 1.0/(state.boards[k][i]-state.boards[k-1][i]+0.5);
       }
     }

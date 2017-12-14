@@ -3,9 +3,10 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 100000
-#define CHECK_INTERVAL 1000
+#define NUM_EPISODES 10000
+#define CHECK_INTERVAL 5000
 #define EVAL_EPISODES 1000
+#define GRADATION_EVAL_POINT 10000
 
 #include <vector>
 #include <random>
@@ -14,6 +15,8 @@
 #include <time.h>
 #include <fstream>
 #include <string>
+#include <algorithm>
+#include <iterator>
 
 #include "board/rectSize.hpp"
 #include "NTuple/NTuples.hpp"
@@ -31,8 +34,11 @@ void check();
 
 time_t Timecheck = time(NULL);
 struct tm *PN = localtime(&Timecheck);
-string date = "./log/" + to_string(PN->tm_year+1900) + to_string(PN->tm_mon+1) + to_string(PN->tm_mday) + to_string(PN->tm_hour) + to_string(PN->tm_min) + ".txt";
-ofstream output(date);
+string date = to_string(PN->tm_year+1900) + to_string(PN->tm_mon+1) + to_string(PN->tm_mday) + to_string(PN->tm_hour) + to_string(PN->tm_min) + ".txt";
+ofstream output("./log/"+date);
+ofstream grad1024out("./log/grad1024_"+date);
+ofstream grad2048out("./log/grad2048_"+date);
+ofstream grad4096out("./log/grad4096_"+date);
 
 int main() {
   cerr << "+++ 2048 N-tuple Network Player trainer +++" << endl;
@@ -115,12 +121,135 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
   double ratio = 0;
   int maxTile = 0;
 
+  vector<vector<double> > grad1024;
+  vector<vector<double> > grad2048;
+  vector<vector<double> > grad4096;
+
   for (int i = 0; i < numEpisodes; i++) {
     random();
     TDLGame2048::Game2048Outcome res = game.playByAfterstates(vFunction, random);
+    vector<double> gradContainer;
+    
     performance += res.scoreIs();
     ratio += (res.maxTileIs() >= 2048) ? 1 : 0;
     maxTile = max(maxTile, res.maxTileIs());
+    copy(res.grad.begin(), res.grad.end(), back_inserter(gradContainer));
+    
+    switch (res.maxTileIs()) {
+    case 1024:
+      grad1024.push_back(gradContainer);
+      break;
+    case 2048:
+      grad2048.push_back(gradContainer);
+      break;
+    case 4096:
+      grad4096.push_back(gradContainer);
+      break;
+    default:
+      break;
+    }
+  }
+
+  if (e==GRADATION_EVAL_POINT) {
+    // 1024
+    int max1024size = 0;
+    vector<double> container1024;
+    for (int i=0; i<grad1024.size(); i++) {
+      if (grad1024[i].size()>max1024size) {
+	max1024size = grad1024[i].size();
+      }
+    }
+    for (int i=0; i<grad1024.size(); i++) {
+      int vectsize = grad1024[i].size();
+      if (vectsize!=max1024size) {
+	for (int j=vectsize; j<max1024size; j++) {
+	  grad1024[i].push_back(-15);
+	}
+      }  
+    }
+  
+    for (int i=0; i<max1024size; i++) {
+      double temp = 0;
+      int cntr = 0;
+      for (int j=0; j<grad1024.size(); j++) {
+	if (grad1024[j][i]!=-15) {
+	  temp += grad1024[j][i];
+	  cntr++;
+	}
+      }
+      temp /= cntr*1.0;
+      container1024.push_back(temp);
+    }
+    for (int i=0; i<container1024.size(); i++) {
+      grad1024out << container1024[i] << endl;
+    }
+
+    // 2048
+    int max2048size = 0;
+    vector<double> container2048;
+    for (int i=0; i<grad2048.size(); i++) {
+      if (grad2048[i].size()>max2048size) {
+	max2048size = grad2048[i].size();
+      }
+    }
+    for (int i=0; i<grad2048.size(); i++) {
+      int vectsize = grad2048[i].size();
+      if (vectsize!=max2048size) {
+	for (int j=vectsize; j<max2048size; j++) {
+	  grad2048[i].push_back(-15);
+	}
+      }  
+    }  
+    for (int i=0; i<max2048size; i++) {
+      double temp = 0;
+      int cntr = 0;
+      for (int j=0; j<grad2048.size(); j++) {
+	if (grad2048[j][i]!=-15) {
+	  temp += grad2048[j][i];
+	  cntr++;
+	}
+      }
+      temp /= cntr*1.0;
+      container2048.push_back(temp);
+    }
+    for (int i=0; i<container2048.size(); i++) {
+      grad2048out << container2048[i] << endl;
+    }
+
+    // 4096
+    cerr << "4096 = " << grad4096.size() << endl;
+    int max4096size = 0;
+    vector<double> container4096;
+    for (int i=0; i<grad4096.size(); i++) {
+      if (grad4096[i].size()>max4096size) {
+	max4096size = grad4096[i].size();
+      }
+    }
+    for (int i=0; i<grad4096.size(); i++) {
+      int vectsize = grad4096[i].size();
+      if (vectsize!=max4096size) {
+	for (int j=vectsize; j<max4096size; j++) {
+	  grad4096[i].push_back(-15);
+	}
+      }  
+    }
+  
+    for (int i=0; i<max4096size; i++) {
+      double temp = 0;
+      int cntr = 0;
+      for (int j=0; j<grad4096.size(); j++) {
+	if (grad4096[j][i]!=-15) {
+	  temp += grad4096[j][i];
+	  cntr++;
+	}
+      }
+      temp /= cntr*1.0;
+      container4096.push_back(temp);
+    }
+
+    for (int i=0; i<container4096.size(); i++) {
+      grad4096out << container4096[i] << endl;
+    }
   }
   
   output << "After " << e << " games:" << endl;
