@@ -19,12 +19,14 @@ public:
     int score;
     int maxTile;
     vector<double> grad;
+    vector<double> eval;
 
   public:
-    Game2048Outcome(int s, int m, vector<double> &g) {
+    Game2048Outcome(int s, int m, vector<double> &g, vector<double> &e) {
       this->score = s;
       this->maxTile = m;
       copy(g.begin(), g.end(), back_inserter(grad));
+      copy(e.begin(), e.end(), back_inserter(eval));
     }
 
   public:

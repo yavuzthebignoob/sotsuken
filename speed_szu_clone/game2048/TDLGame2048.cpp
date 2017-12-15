@@ -43,17 +43,19 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
 TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, mt19937 random) {
   int sumRewards = 0;
   vector<double> gradation;
+  vector<double> evalweights;
   
   State2048 state = game.sampleInitialStateDistribution(random);
   while (!game.isTerminalState(state)) {
     Transition transition = chooseBestTransitionAfterstate(state, vFunction);
     sumRewards += transition.reward;
     gradation.push_back(TDLGame2048::calculateGradationScore(state));
+    evalweights.push_back(transition.reward + vFunction->getValue(transition.afterState.getFeatures()));
     state = game.getNextState(transition.afterState, random);
   }
   
   // state.printHumanReadable();
-  TDLGame2048::Game2048Outcome res(sumRewards, state.getMaxTile(), gradation);
+  TDLGame2048::Game2048Outcome res(sumRewards, state.getMaxTile(), gradation, evalweights);
   return res;
 }
 
@@ -85,15 +87,8 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
 	correctActionValue = 0;
       }
     }
-    
-    // cerr << "correctActionValue = " << correctActionValue << endl;
-    
-    // cerr << "updating" <<endl;
     vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
-    // vFunction->update(f, correctActionValue, learningRate);
     state = nextState;
-    // double foo = calculateGradationScore(state);
-    // hoge << foo << endl;
   }
   // cerr << "training-game terminated" << endl;
 }
