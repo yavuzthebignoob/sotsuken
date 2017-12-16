@@ -31,6 +31,8 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
+    // double gradValue = calculateGradationScore(transition.afterState);
+    // value *= gradValue;
     if (value > bestValue) {
       bestTransition = transition;
       bestValue = value;
@@ -94,52 +96,204 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
 }
 
 double TDLGame2048::calculateGradationScore(State2048 state) {
-  vector<double> score(8);
+  vector<double> score(5);
   double sumscore = 0;
+
+  /* baseline illustration
+     1 2 3 4
+     1 2 3 4
+     1 2 3 4
+     1 2 3 4
+
+     5 5 5 5
+     6 6 6 6
+     7 7 7 7
+     8 8 8 8
+   */
+
+  // identify baseline
+  int baseline = 0;
+  int maxTilePosition = 0;
+  int maxTileArticle = 0;
+  for (int i=0; i<16; i++) {
+    if (i==5 || i==6 || i==9 || i==10) continue;
+    if (state.boards[i/4][i%4]>maxTileArticle) {
+      maxTilePosition = i;
+      maxTileArticle = state.boards[i/4][i%4];
+    }
+  }
+
+  if (maxTilePosition==1 || maxTilePosition==2)
+    baseline = 5;
+  else if (maxTilePosition==4 || maxTilePosition==8)
+    baseline = 1;
+  else if (maxTilePosition==7 || maxTilePosition==11)
+    baseline = 4;
+  else if (maxTilePosition==13 || maxTilePosition==14)
+    baseline = 8;
+  else if (maxTilePosition==0) {
+    int weight0 = 0;
+    int weight1 = 0;
+    for (int i=0; i<4; i++) {
+      weight0 += state.boards[0][i];
+    }
+    for (int i=0; i<4; i++) {
+      weight1 += state.boards[i][0];
+    }
+    if (weight0>weight1) {
+      baseline = 5;
+    }
+    else {
+      baseline = 1;
+    }
+  }
+  else if (maxTilePosition==3) {
+    int weight0 = 0;
+    int weight1 = 0;
+    for (int i=0; i<4; i++) {
+      weight0 += state.boards[0][i];
+    }
+    for (int i=0; i<4; i++) {
+      weight1 += state.boards[i][3];
+    }
+    if (weight0>weight1) {
+      baseline = 5;
+    }
+    else {
+      baseline = 4;
+    }
+  }
+  else if (maxTilePosition==12) {
+    int weight0 = 0;
+    int weight1 = 0;
+    for (int i=0; i<4; i++) {
+      weight0 += state.boards[3][i];
+    }
+    for (int i=0; i<4; i++) {
+      weight1 += state.boards[i][0];
+    }
+    if (weight0>weight1) {
+      baseline = 8;
+    }
+    else {
+      baseline = 1;
+    }
+  }
+  else if (maxTilePosition==15) {
+    int weight0 = 0;
+    int weight1 = 0;
+    for (int i=0; i<4; i++) {
+      weight0 += state.boards[3][i];
+    }
+    for (int i=0; i<4; i++) {
+      weight1 += state.boards[i][3];
+    }
+    if (weight0>weight1) {
+      baseline = 8;
+    }
+    else {
+      baseline = 4;
+    }
+  }
+  
+  vector<int> maxTileVec;
   
   // calc horizontal gradation score
-  for (int i=0; i<4; i++) {
+  if (baseline>4) {
+    for (int i=0; i<4; i++) {
+      // int i = baseline;
+      int largePoint = 0;
+      double temp = 0;
+      int maxTemp = 0;
+      if (state.boards[i][0]<state.boards[i][3]) {
+	largePoint = 3;
+      }
+      if (largePoint==0) {
+	for (int k=0; k<3; k++) {
+	  temp += 1.0/(state.boards[i][k]-state.boards[i][k+1]+0.5);
+	}
+      }
+      if (largePoint==3) {
+	for (int k=3; k>0; k--) {
+	  temp += 1.0/(state.boards[i][k]-state.boards[i][k-1]+0.5);
+	}
+      }
+      for (int j=0; j<4; j++) {
+	if (state.boards[i][j]>maxTemp) {
+	  maxTemp = state.boards[i][j];
+	}
+      }
+      score[i] = temp;
+      maxTileVec.push_back(maxTemp);
+    }
     int largePoint = 0;
     double temp = 0;
-    if (state.boards[i][0]<state.boards[i][3]) {
+    if (maxTileVec[0]<maxTileVec[3]) {
       largePoint = 3;
     }
     if (largePoint==0) {
       for (int k=0; k<3; k++) {
-	temp += 1.0/(state.boards[i][k]-state.boards[i][k+1]+0.5);
+	temp += 1.0/(maxTileVec[k]-maxTileVec[k+1]+0.5);
       }
     }
     if (largePoint==3) {
       for (int k=3; k>0; k--) {
-	temp += 1.0/(state.boards[i][k]-state.boards[i][k-1]+0.5);
+	temp += 1.0/(maxTileVec[k]-maxTileVec[k-1]+0.5);
       }
     }
-    score[i] = temp;
+    score[4] = temp;
   }
-
+  
   // calc vertical gradation score
-  for (int i=0; i<4; i++) {
+  if (baseline<5) {
+    for (int i=0; i<4; i++) {
+      int largePoint = 0;
+      double temp = 0;
+      int maxTemp = 0;
+      if (state.boards[0][i]<state.boards[3][i]) {
+	largePoint = 3;
+      }
+      if (largePoint==0) {
+	for (int k=0; k<3; k++) {
+	  temp += 1.0/(state.boards[k][i]-state.boards[k+1][i]+0.5);
+	}
+      }
+      if (largePoint==3) {
+	for (int k=3; k>0; k--) {
+	  temp += 1.0/(state.boards[k][i]-state.boards[k-1][i]+0.5);
+	}
+      }
+      for (int j=0; j<4; j++) {
+	if (state.boards[j][i]>maxTemp) {
+	  maxTemp = state.boards[j][i];
+	}
+      }
+      score[i] = temp;
+      maxTileVec.push_back(maxTemp);
+    }
     int largePoint = 0;
     double temp = 0;
-    if (state.boards[0][i]<state.boards[3][i]) {
+    if (maxTileVec[0]<maxTileVec[3]) {
       largePoint = 3;
     }
     if (largePoint==0) {
       for (int k=0; k<3; k++) {
-	temp += 1.0/(state.boards[k][i]-state.boards[k+1][i]+0.5);
+	temp += 1.0/(maxTileVec[k]-maxTileVec[k+1]+0.5);
       }
     }
     if (largePoint==3) {
       for (int k=3; k>0; k--) {
-	temp += 1.0/(state.boards[k][i]-state.boards[k-1][i]+0.5);
+	temp += 1.0/(maxTileVec[k]-maxTileVec[k-1]+0.5);
       }
     }
-    score[i+4] = temp;
+    score[4] = temp;
   }
 
-  for (int i=0; i<8; i++) {
+  for (int i=0; i<score.size(); i++) {
     sumscore += score[i];
   }
+
+  // 
 
   return sumscore;
 }

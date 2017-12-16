@@ -4,7 +4,7 @@
 // EVAL_EPISODES  = 1000
 
 #define NUM_EPISODES 10000
-#define CHECK_INTERVAL 5000
+#define CHECK_INTERVAL 10000
 #define EVAL_EPISODES 1000
 #define GRADATION_EVAL_POINT 10000
 
@@ -141,11 +141,20 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
     evaluations.push_back(ves);
   }
 
+  bool isMoreThan9500 = false;
   for (int i = 0; i < numEpisodes; i++) {
     random();
     TDLGame2048::Game2048Outcome res = game.playByAfterstates(vFunction, random);
     registerGradations(res, gradations, e);
     registerEvaluations(res, evaluations, e);
+    /*
+    if (isMoreThan9500==false && res.score>9500) {
+      cerr << "i=" << i << endl;
+      cerr << "score=" << res.score << endl;
+      cerr << "number of steps=" << res.eval.size() << endl;
+      isMoreThan9500 = true;
+    }
+    */
     
     performance += res.scoreIs();
     ratio += (res.maxTileIs() >= 2048) ? 1 : 0;
