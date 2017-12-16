@@ -1,3 +1,5 @@
+#define CORNER_BONUS_RATIO 1.5;
+
 #include <vector>
 #include <math.h>
 #include <fstream>
@@ -23,7 +25,7 @@ double TDLGame2048::getBestValueAction(State2048 state, NTuples* function) {
 }
 
 // Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, RealFunction function) {
-Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples* function) {
+Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples* function, int step) {
   vector<Action2048*> actions = game.getPossibleActions(state);
   double bestValue = -1 * INFINITY;
   Transition bestTransition = game.computeTransition(state, actions[0]);
@@ -31,8 +33,14 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
-    // double gradValue = calculateGradationScore(transition.afterState);
-    // value *= gradValue;
+    /*
+    if (step>1500 && step<2000) {
+      double gradValue = calculateGradationScore(transition.afterState);
+      value *= gradValue;
+    }
+    */
+    if (isMaxtileInCorner(transition.afterState) && step<2000)
+      value *= CORNER_BONUS_RATIO;
     if (value > bestValue) {
       bestTransition = transition;
       bestValue = value;
@@ -46,14 +54,21 @@ TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, 
   int sumRewards = 0;
   vector<double> gradation;
   vector<double> evalweights;
+  int stepcntr = 0;
   
   State2048 state = game.sampleInitialStateDistribution(random);
   while (!game.isTerminalState(state)) {
-    Transition transition = chooseBestTransitionAfterstate(state, vFunction);
+    Transition transition = chooseBestTransitionAfterstate(state, vFunction, stepcntr);
     sumRewards += transition.reward;
     gradation.push_back(TDLGame2048::calculateGradationScore(state));
     evalweights.push_back(transition.reward + vFunction->getValue(transition.afterState.getFeatures()));
     state = game.getNextState(transition.afterState, random);
+    /*
+    if (stepcntr==1094) {
+      state.printHumanReadable();
+    }
+    */
+    stepcntr++;
   }
   
   // state.printHumanReadable();
@@ -65,6 +80,7 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
   State2048 state = game.sampleInitialStateDistribution(random);
   vector<double> f = state.getFeatures();
   // NTuples valueF(vFunction->mainNTuples, vFunction->symmetryExpander);
+  int step = 0;
   
   while (!game.isTerminalState(state)) {
     random();
@@ -77,7 +93,7 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
       transition = game.computeTransition(state, randomAction);
     }
     else {
-      transition = chooseBestTransitionAfterstate(state, vFunction);
+      transition = chooseBestTransitionAfterstate(state, vFunction, step);
     }
 
     State2048 nextState = game.getNextState(transition.afterState, random);
@@ -296,4 +312,21 @@ double TDLGame2048::calculateGradationScore(State2048 state) {
   // 
 
   return sumscore;
+}
+
+bool TDLGame2048::isMaxtileInCorner(State2048 &state) {
+  int maxTilePos = 0;
+  int maxTileValue = 0;
+
+  for (int i=0; i<16; i++) {
+    if (state.boards[i/4][i%4]>maxTileValue) {
+      maxTilePos = i;
+      maxTileValue = state.boards[i/4][i%4];
+    }
+  }
+
+  if (maxTilePos==0 || maxTilePos==3 || maxTilePos==12 || maxTilePos==15)
+    return true;
+  else
+    return false;
 }

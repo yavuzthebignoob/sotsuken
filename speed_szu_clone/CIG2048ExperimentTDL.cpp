@@ -3,10 +3,10 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 10000
-#define CHECK_INTERVAL 10000
+#define NUM_EPISODES 20000
+#define CHECK_INTERVAL 5000
 #define EVAL_EPISODES 1000
-#define GRADATION_EVAL_POINT 10000
+#define GRADATION_EVAL_POINT -1
 
 #include <vector>
 #include <random>
@@ -44,6 +44,7 @@ ofstream grad4096out("./log/grad4096_"+date);
 ofstream eval1024out("./log/eval1024_"+date);
 ofstream eval2048out("./log/eval2048_"+date);
 ofstream eval4096out("./log/eval4096_"+date);
+ofstream scoreout("./log/score_"+date);
 
 int main() {
   cerr << "+++ 2048 N-tuple Network Player trainer +++" << endl;
@@ -125,6 +126,7 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
   double performance = 0;
   double ratio = 0;
   int maxTile = 0;
+  vector<int> scoreVec;
 
   vector<vector<double> > gradAvgContainer(3);
   vector<int> maxsize(3, 0);
@@ -155,8 +157,9 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
       isMoreThan9500 = true;
     }
     */
-    
+
     performance += res.scoreIs();
+    scoreout << res.scoreIs() << endl;
     ratio += (res.maxTileIs() >= 2048) ? 1 : 0;
     maxTile = max(maxTile, res.maxTileIs());
   }
