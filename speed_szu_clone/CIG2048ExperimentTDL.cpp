@@ -3,7 +3,7 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 20000
+#define NUM_EPISODES 50000
 #define CHECK_INTERVAL 5000
 #define EVAL_EPISODES 1000
 #define GRADATION_EVAL_POINT -1
@@ -32,6 +32,8 @@ using namespace std;
 static void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, mt19937 random, int e);
 void registerGradations(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &gradations, int e);
 void registerEvaluations(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &evaluations, int e);
+void registerScores(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &scores, int e);
+void registerMaxTiles(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &maxTiles, int e);
 void check();
 
 time_t Timecheck = time(NULL);
@@ -44,7 +46,12 @@ ofstream grad4096out("./log/grad4096_"+date);
 ofstream eval1024out("./log/eval1024_"+date);
 ofstream eval2048out("./log/eval2048_"+date);
 ofstream eval4096out("./log/eval4096_"+date);
-ofstream scoreout("./log/score_"+date);
+ofstream score1024out("./log/score1024_"+date);
+ofstream score2048out("./log/score2048_"+date);
+ofstream score4096out("./log/score4096_"+date);
+ofstream mt1024out("./log/mt1024_"+date);
+ofstream mt2048out("./log/mt2048_"+date);
+ofstream mt4096out("./log/mt4096_"+date);
 
 int main() {
   cerr << "+++ 2048 N-tuple Network Player trainer +++" << endl;
@@ -143,12 +150,28 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
     evaluations.push_back(ves);
   }
 
+  vector<vector<double> > scoreAvgContainer(3);
+  vector<int> scoremaxsize(3, 0);
+  vector<vector<vector<double> > > scores;
+  for (int i=0; i<3; i++) {
+    scores.push_back(ves);
+  }
+
+  vector<vector<double> > maxTileAvgContainer(3);
+  vector<int> maxtilemaxsize(3, 0);
+  vector<vector<vector<double> > > maxTileVec;
+  for (int i=0; i<3; i++) {
+    maxTileVec.push_back(ves);
+  }
+
   bool isMoreThan9500 = false;
   for (int i = 0; i < numEpisodes; i++) {
     random();
     TDLGame2048::Game2048Outcome res = game.playByAfterstates(vFunction, random);
     registerGradations(res, gradations, e);
     registerEvaluations(res, evaluations, e);
+    registerScores(res, scores, e);
+    registerMaxTiles(res, maxTileVec, e);
     /*
     if (isMoreThan9500==false && res.score>9500) {
       cerr << "i=" << i << endl;
@@ -159,13 +182,12 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
     */
 
     performance += res.scoreIs();
-    scoreout << res.scoreIs() << endl;
     ratio += (res.maxTileIs() >= 2048) ? 1 : 0;
     maxTile = max(maxTile, res.maxTileIs());
   }
 
-  if (e==GRADATION_EVAL_POINT) {
-    // calc gradations
+  if (true) {
+  // calc gradations
     // 3 times -- for 1024, 2048, 4096
     for (int i=0; i<3; i++) {
       // check gradations[0][i]'s max size
@@ -213,7 +235,7 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
     // 3 times -- for 1024, 2048, 4096
     for (int i=0; i<3; i++) {
       // check gradations[0][i]'s max size
-      for (int j=0; j<gradations[i].size(); j++) {
+      for (int j=0; j<evaluations[i].size(); j++) {
 	if (evaluations[i][j].size()>evalmaxsize[i]) {
 	  evalmaxsize[i] = evaluations[i][j].size();
 	}
@@ -227,7 +249,6 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
 	  }
 	}  
       }
-      cerr << evalmaxsize[i] << endl;
       // sum of gradations[i]'s all vector into gradAvgContainer
       for (int j=0; j<evalmaxsize[i]; j++) {
 	double temp = 0;
@@ -252,8 +273,109 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
     for (int i=0; i<evalAvgContainer[2].size(); i++) {
       eval4096out << evalAvgContainer[2][i] << endl;
     }
-  }
+
+    // calc scores
+    // 3 times -- for 1024, 2048, 4096
+    for (int i=0; i<3; i++) {
+      // check score[0][i]'s max size
+      for (int j=0; j<scores[i].size(); j++) {
+	if (scores[i][j].size()>scoremaxsize[i]) {
+	  scoremaxsize[i] = scores[i][j].size();
+	}
+      }
+      // fill gradation score's empty place with -15
+      for (int j=0; j<scores[i].size(); j++) {
+	int vectsize = scores[i][j].size();
+	if (vectsize!=scoremaxsize[i]) {
+	  for (int k=vectsize; k<scoremaxsize[i]; k++) {
+	    scores[i][j].push_back(-15);
+	  }
+	}
+      }
+      cerr << "hello" << endl;
+      // sum of gradations[i]'s all vector into gradAvgContainer
+      for (int j=0; j<scoremaxsize[i]; j++) {
+	double temp = 0;
+	int cntr = 0;
+	for (int k=0; k<scores[i].size(); k++) {
+	  if (scores[i][k][j]!=-15) {
+	    temp += scores[i][k][j];
+	    cntr++;
+	  }
+	}
+	temp /= cntr*1.0;
+	scoreAvgContainer[i].push_back(temp);
+      }
+    }
     
+    for (int i=0; i<scoreAvgContainer[0].size(); i++) {
+      score1024out << scoreAvgContainer[0][i] << endl;
+    }
+    for (int i=0; i<scoreAvgContainer[1].size(); i++) {
+      score2048out << scoreAvgContainer[1][i] << endl;
+    }
+    for (int i=0; i<evalAvgContainer[2].size(); i++) {
+      score4096out << scoreAvgContainer[2][i] << endl;
+    }
+
+    // calc maxtiles
+    // 3 times -- for 1024, 2048, 4096
+    for (int i=0; i<3; i++) {
+      // check score[0][i]'s max size
+      for (int j=0; j<maxTileVec[i].size(); j++) {
+	if (maxTileVec[i][j].size()>maxtilemaxsize[i]) {
+	  maxtilemaxsize[i] = maxTileVec[i][j].size();
+	}
+      }
+      // fill gradation score's empty place with -15
+      for (int j=0; j<maxTileVec[i].size(); j++) {
+	int vectsize = maxTileVec[i][j].size();
+	if (vectsize!=maxtilemaxsize[i]) {
+	  for (int k=vectsize; k<maxtilemaxsize[i]; k++) {
+	    maxTileVec[i][j].push_back(-15);
+	  }
+	}
+      }
+      // sum of gradations[i]'s all vector into gradAvgContainer
+      for (int j=0; j<maxtilemaxsize[i]; j++) {
+	double temp = 0;
+	int cntr = 0;
+	for (int k=0; k<maxTileVec[i].size(); k++) {
+	  if (maxTileVec[i][k][j]!=-15) {
+	    temp += maxTileVec[i][k][j];
+	    cntr++;
+	  }
+	}
+	temp /= cntr*1.0;
+	maxTileAvgContainer[i].push_back(temp);
+      }
+    }
+    
+    for (int i=0; i<maxTileAvgContainer[0].size(); i++) {
+      mt1024out << maxTileAvgContainer[0][i] << endl;
+    }
+    for (int i=0; i<maxTileAvgContainer[1].size(); i++) {
+      mt2048out << maxTileAvgContainer[1][i] << endl;
+    }
+    for (int i=0; i<maxTileAvgContainer[2].size(); i++) {
+      mt4096out << maxTileAvgContainer[2][i] << endl;
+    }
+
+    grad1024out << "---------------------------------" << endl;
+    grad2048out << "---------------------------------" << endl;
+    grad4096out << "---------------------------------" << endl;
+    eval1024out << "---------------------------------" << endl;
+    eval2048out << "---------------------------------" << endl;
+    eval4096out << "---------------------------------" << endl;
+    score1024out << "---------------------------------" << endl;
+    score2048out << "---------------------------------" << endl;
+    score4096out << "---------------------------------" << endl;
+    mt1024out << "---------------------------------" << endl;
+    mt2048out << "---------------------------------" << endl;
+    mt4096out << "---------------------------------" << endl;
+    
+  }
+  
   output << "After " << e << " games:" << endl;
   cerr << e << " games done" << endl;
   output << "avg score = " << performance/EVAL_EPISODES << endl;
@@ -262,9 +384,11 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
 }
 
 void registerGradations(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &gradations, int e) {
+  /*
   if (e!=GRADATION_EVAL_POINT) {
     return;
   }
+  */
 
   vector<double> gradContainer;
   copy(res.grad.begin(), res.grad.end(), back_inserter(gradContainer));
@@ -285,9 +409,11 @@ void registerGradations(TDLGame2048::Game2048Outcome res, vector<vector<vector<d
 }
 
 void registerEvaluations(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &evaluations, int e) {
+  /*
   if (e!=GRADATION_EVAL_POINT) {
     return;
   }
+  */
 
   vector<double> evalContainer;
   copy(res.eval.begin(), res.eval.end(), back_inserter(evalContainer));
@@ -301,6 +427,56 @@ void registerEvaluations(TDLGame2048::Game2048Outcome res, vector<vector<vector<
     break;
   case 4096:
     evaluations[2].push_back(evalContainer);
+    break;
+  default:
+    break;
+  }
+}
+
+void registerScores(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &scores, int e) {
+  /*
+  if (e!=GRADATION_EVAL_POINT) {
+    return;
+  }
+  */
+  
+  vector<double> scoreContainer;
+  copy(res.scorevec.begin(), res.scorevec.end(), back_inserter(scoreContainer));
+  
+  switch (res.maxTileIs()) {
+  case 1024:
+    scores[0].push_back(scoreContainer);
+    break;
+  case 2048:
+    scores[1].push_back(scoreContainer);
+    break;
+  case 4096:
+    scores[2].push_back(scoreContainer);
+    break;
+  default:
+    break;
+  }
+}
+
+void registerMaxTiles(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &maxTiles, int e) {
+  /*
+  if (e!=GRADATION_EVAL_POINT) {
+    return;
+  }
+  */
+  
+  vector<double> scoreContainer;
+  copy(res.maxtilevessel.begin(), res.maxtilevessel.end(), back_inserter(scoreContainer));
+  
+  switch (res.maxTileIs()) {
+  case 1024:
+    maxTiles[0].push_back(scoreContainer);
+    break;
+  case 2048:
+    maxTiles[1].push_back(scoreContainer);
+    break;
+  case 4096:
+    maxTiles[2].push_back(scoreContainer);
     break;
   default:
     break;
