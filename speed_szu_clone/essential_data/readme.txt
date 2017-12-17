@@ -3,6 +3,7 @@ essential data contain the records of following conditions:
 learned games=30000
 interval=5000
 evaluation games=1000/per5000games
+no any other heuristics
 
 recorded data:
 learner's basic record (avg score, win ratio, max tile)

@@ -1,4 +1,4 @@
-#define CORNER_BONUS_RATIO 1.5;
+#define CORNER_BONUS_RATIO 1.1;
 
 #include <vector>
 #include <math.h>
@@ -33,14 +33,11 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
-    /*
-    if (step>1500 && step<2000) {
-      double gradValue = calculateGradationScore(transition.afterState);
-      value *= gradValue;
+    double gradValue = calculateGradationScore(transition.afterState);
+    // value *= gradValue;
+    if (isMaxtileInCorner(transition.afterState)) {
+      value *= CORNER_BONUS_RATIO;
     }
-    */
-    // if (isMaxtileInCorner(transition.afterState) && step<2000)
-    // value *= CORNER_BONUS_RATIO;
     if (value > bestValue) {
       bestTransition = transition;
       bestValue = value;
@@ -246,22 +243,6 @@ double TDLGame2048::calculateGradationScore(State2048 state) {
       score[i] = temp;
       maxTileVec.push_back(maxTemp);
     }
-    int largePoint = 0;
-    double temp = 0;
-    if (maxTileVec[0]<maxTileVec[3]) {
-      largePoint = 3;
-    }
-    if (largePoint==0) {
-      for (int k=0; k<3; k++) {
-	temp += 1.0/(maxTileVec[k]-maxTileVec[k+1]+0.5);
-      }
-    }
-    if (largePoint==3) {
-      for (int k=3; k>0; k--) {
-	temp += 1.0/(maxTileVec[k]-maxTileVec[k-1]+0.5);
-      }
-    }
-    score[4] = temp;
   }
   
   // calc vertical gradation score
@@ -291,24 +272,73 @@ double TDLGame2048::calculateGradationScore(State2048 state) {
       score[i] = temp;
       maxTileVec.push_back(maxTemp);
     }
-    int largePoint = 0;
-    double temp = 0;
-    if (maxTileVec[0]<maxTileVec[3]) {
-      largePoint = 3;
-    }
-    if (largePoint==0) {
-      for (int k=0; k<3; k++) {
-	temp += 1.0/(maxTileVec[k]-maxTileVec[k+1]+0.5);
-      }
-    }
-    if (largePoint==3) {
-      for (int k=3; k>0; k--) {
-	temp += 1.0/(maxTileVec[k]-maxTileVec[k-1]+0.5);
-      }
-    }
-    score[4] = temp;
   }
 
+  // calc minimum-chain grad score
+  double minchain = 0;
+  if (baseline==5) {
+    int minPoint = 0;
+    int minTemp = 65535;
+    for (int j=0; j<4; j++) {
+      if (state.boards[0][j]<minTemp) {
+	minPoint = j;
+	minTemp = state.boards[0][j];
+      }
+    }
+      
+    for (int j=0; j<3; j++) {
+      minchain += 2.0/(state.boards[j][minPoint]-state.boards[j+1][minPoint]+0.5);
+    }
+  }
+
+  if (baseline==8) {
+    int minPoint = 0;
+    int minTemp = 65535;
+    for (int j=0; j<4; j++) {
+      if (state.boards[3][j]<minTemp) {
+	minPoint = j;
+	minTemp = state.boards[3][j];
+      }
+    }
+      
+    for (int j=3; j>0; j--) {
+      minchain += 2.0/(state.boards[j][minPoint]-state.boards[j-1][minPoint]+0.5);
+    }
+  }
+
+  if (baseline==1) {
+    int minPoint = 0;
+    int minTemp = 65535;
+    for (int j=0; j<4; j++) {
+      if (state.boards[j][0]<minTemp) {
+	minPoint = j;
+	minTemp = state.boards[j][0];
+      }
+    }
+      
+    for (int j=0; j<3; j++) {
+      minchain += 2.0/(state.boards[minPoint][j]-state.boards[minPoint][j+1]+0.5);
+    }
+  }
+
+  if (baseline==4) {
+    int minPoint = 0;
+    int minTemp = 65535;
+    for (int j=0; j<4; j++) {
+      if (state.boards[j][3]<minTemp) {
+	minPoint = j;
+	minTemp = state.boards[3][j];
+      }
+    }
+    
+    for (int j=3; j>0; j--) {
+      minchain += 2.0/(state.boards[minPoint][j]-state.boards[minPoint][j-1]+0.5);
+    }
+  }
+  
+    
+  score[4] = minchain;
+  
   for (int i=0; i<score.size(); i++) {
     sumscore += score[i];
   }

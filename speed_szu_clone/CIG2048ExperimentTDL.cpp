@@ -205,7 +205,6 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
 	  }
 	}  
       }
-      cerr << maxsize[i] << endl;
       // sum of gradations[i]'s all vector into gradAvgContainer
       for (int j=0; j<maxsize[i]; j++) {
 	double temp = 0;
@@ -292,7 +291,6 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
 	  }
 	}
       }
-      cerr << "hello" << endl;
       // sum of gradations[i]'s all vector into gradAvgContainer
       for (int j=0; j<scoremaxsize[i]; j++) {
 	double temp = 0;
