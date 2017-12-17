@@ -27,17 +27,17 @@ NUM_EPISODES   = 5000
 CHECK_INTERVAL = 5000
 EVAL_EPISODES  = 1000
 
-Learning start: 19:27:41
+Learning start: 14:23:17
 
 After 0 games:
-avg score = 3279.3
+avg score = 2421.36
 avg ratio = 0
 maxTile   = 1024
-TIME      = 19:27:44 (0:0:2)
+TIME      = 14:23:19 (0:0:1)
 
 After 5000 games:
-avg score = 30039.2
-avg ratio = 0.485
+avg score = 24962.9
+avg ratio = 0.43
 maxTile   = 4096
-TIME      = 19:29:26 (0:1:45)
+TIME      = 14:24:52 (0:1:35)
 

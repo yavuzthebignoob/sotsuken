@@ -23,39 +23,27 @@ loc = 21 22 27 28
 ** vFunction's total weights = 860625
 
 ** training parameter
-NUM_EPISODES   = 20000
+NUM_EPISODES   = 10000
 CHECK_INTERVAL = 5000
 EVAL_EPISODES  = 1000
 
-Learning start: 19:33:51
+Learning start: 14:29:23
 
 After 0 games:
-avg score = 3279.3
+avg score = 2421.36
 avg ratio = 0
 maxTile   = 1024
-TIME      = 19:33:54 (0:0:2)
+TIME      = 14:29:25 (0:0:1)
 
 After 5000 games:
-avg score = 30039.2
-avg ratio = 0.485
+avg score = 24962.9
+avg ratio = 0.43
 maxTile   = 4096
-TIME      = 19:35:38 (0:1:47)
+TIME      = 14:30:54 (0:1:31)
 
 After 10000 games:
-avg score = 40419.6
-avg ratio = 0.708
+avg score = 30982.5
+avg ratio = 0.63
 maxTile   = 4096
-TIME      = 19:38:1 (0:4:10)
-
-After 15000 games:
-avg score = 30007.2
-avg ratio = 0.589
-maxTile   = 4096
-TIME      = 19:40:26 (0:6:34)
-
-After 20000 games:
-avg score = 34775.9
-avg ratio = 0.651
-maxTile   = 8192
-TIME      = 19:42:52 (0:9:1)
+TIME      = 14:33:0 (0:3:37)
 
