@@ -3,7 +3,7 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 50000
+#define NUM_EPISODES 100000
 #define CHECK_INTERVAL 5000
 #define EVAL_EPISODES 1000
 #define GRADATION_EVAL_POINT -1
@@ -165,6 +165,8 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
   }
 
   bool isMoreThan9500 = false;
+  int maxScore = 0;
+  
   for (int i = 0; i < numEpisodes; i++) {
     random();
     TDLGame2048::Game2048Outcome res = game.playByAfterstates(vFunction, random);
@@ -181,6 +183,9 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
     }
     */
 
+    if (res.score>maxScore) {
+      maxScore = res.score;
+    }
     performance += res.scoreIs();
     ratio += (res.maxTileIs() >= 2048) ? 1 : 0;
     maxTile = max(maxTile, res.maxTileIs());
@@ -377,6 +382,7 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
   output << "After " << e << " games:" << endl;
   cerr << e << " games done" << endl;
   output << "avg score = " << performance/EVAL_EPISODES << endl;
+  output << "max score = " << maxScore << endl;
   output << "avg ratio = " << ratio/EVAL_EPISODES << endl;
   output << "maxTile   = " << maxTile << endl;
 }
