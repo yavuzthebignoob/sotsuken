@@ -24,7 +24,6 @@ double TDLGame2048::getBestValueAction(State2048 state, NTuples* function) {
   return bestValue;
 }
 
-// Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, RealFunction function) {
 Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples* function, int step) {
   vector<Action2048*> actions = game.getPossibleActions(state);
   double bestValue = -1 * INFINITY;
@@ -33,8 +32,25 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
-    double gradValue = calculateGradationScore(transition.afterState);
-    // value *= gradValue;
+    if (value > bestValue) {
+      bestTransition = transition;
+      bestValue = value;
+    }
+  }
+  
+  return bestTransition;
+}
+
+Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTuples* function, int step) {
+  vector<Action2048*> actions = game.getPossibleActions(state);
+  double bestValue = -1 * INFINITY;
+  Transition bestTransition = game.computeTransition(state, actions[0]);
+
+  for (int i=0; i<actions.size(); i++) {
+    Transition transition = game.computeTransition(state, actions[i]);
+    double value = transition.reward + function->getValue(transition.afterState.getFeatures());
+    // double gradValue = calculateGradationScore(transition.afterState);
+    // value *= (gradValue*0.005+1);
     if (isMaxtileInCorner(transition.afterState)) {
       value *= CORNER_BONUS_RATIO;
     }
@@ -57,18 +73,15 @@ TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, 
   
   State2048 state = game.sampleInitialStateDistribution(random);
   while (!game.isTerminalState(state)) {
-    Transition transition = chooseBestTransitionAfterstate(state, vFunction, stepcntr);
+    Transition transition = chooseBestTransitionAfterstatePlay(state, vFunction, stepcntr);
     sumRewards += transition.reward;
+
     gradation.push_back(TDLGame2048::calculateGradationScore(state));
     evalweights.push_back(transition.reward + vFunction->getValue(transition.afterState.getFeatures()));
     scorevessel.push_back(sumRewards);
     maxtilevessel.push_back(transition.afterState.getMaxTile());
+
     state = game.getNextState(transition.afterState, random);
-    /*
-    if (stepcntr==1094) {
-      state.printHumanReadable();
-    }
-    */
     stepcntr++;
   }
   
@@ -127,7 +140,7 @@ double TDLGame2048::calculateGradationScore(State2048 state) {
      7 7 7 7
      8 8 8 8
    */
-
+  
   // identify baseline
   int baseline = 0;
   int maxTilePosition = 0;
@@ -342,8 +355,6 @@ double TDLGame2048::calculateGradationScore(State2048 state) {
   for (int i=0; i<score.size(); i++) {
     sumscore += score[i];
   }
-
-  // 
 
   return sumscore;
 }

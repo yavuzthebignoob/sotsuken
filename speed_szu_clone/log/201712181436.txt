@@ -1,0 +1,68 @@
+* corner bonus is applied when playing
+
+* random seed = 679587884
+
+* Training Performance
+** vFunction's mainNTuples
+loc = 7 13 19 25
+loc = 8 14 20 26
+loc = 9 15 21 27
+loc = 10 16 22 28
+loc = 7 8 9 10
+loc = 13 14 15 16
+loc = 19 20 21 22
+loc = 25 26 27 28
+loc = 7 8 13 14
+loc = 8 9 14 15
+loc = 9 10 15 16
+loc = 13 14 19 20
+loc = 14 15 20 21
+loc = 15 16 21 22
+loc = 19 20 25 26
+loc = 20 21 26 27
+loc = 21 22 27 28
+
+** vFunction's total weights = 860625
+
+** training parameter
+NUM_EPISODES   = 20000
+CHECK_INTERVAL = 5000
+EVAL_EPISODES  = 1000
+
+Learning start: 14:36:59
+
+After 0 games:
+avg score = 2556
+max score = 14904
+avg ratio = 0
+maxTile   = 1024
+TIME      = 14:37:2 (0:0:2)
+
+After 5000 games:
+avg score = 35204.9
+max score = 76836
+avg ratio = 0.714
+maxTile   = 4096
+TIME      = 14:38:45 (0:1:45)
+
+After 10000 games:
+avg score = 41333
+max score = 102292
+avg ratio = 0.754
+maxTile   = 8192
+TIME      = 14:41:8 (0:4:8)
+
+After 15000 games:
+avg score = 43146.8
+max score = 121660
+avg ratio = 0.785
+maxTile   = 8192
+TIME      = 14:43:46 (0:6:46)
+
+After 20000 games:
+avg score = 57369.6
+max score = 134124
+avg ratio = 0.871
+maxTile   = 8192
+TIME      = 14:46:51 (0:9:51)
+

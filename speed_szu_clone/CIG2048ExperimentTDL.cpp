@@ -5,7 +5,7 @@
 
 #define NUM_EPISODES 100000
 #define CHECK_INTERVAL 5000
-#define EVAL_EPISODES 1000
+#define EVAL_EPISODES 5000
 #define GRADATION_EVAL_POINT -1
 
 #include <vector>

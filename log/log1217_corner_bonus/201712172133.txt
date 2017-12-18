@@ -1,3 +1,5 @@
+* corner bonus is applied when learning and playing (not reflected onto NTuples)
+
 * random seed = 679587884
 
 * Training Performance
