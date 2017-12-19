@@ -8,3 +8,4 @@ sandbox/
 a.dtps/
 gmon.out
 a.out
+*.out
