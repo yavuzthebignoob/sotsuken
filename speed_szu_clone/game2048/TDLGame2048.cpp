@@ -1,4 +1,4 @@
-#define CORNER_BONUS_RATIO 1.1;
+#define CORNER_BONUS_RATIO 1.2
 
 #include <vector>
 #include <math.h>
