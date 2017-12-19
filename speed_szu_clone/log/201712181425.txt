@@ -1,3 +1,6 @@
+* corner bonus and gradation score are applied when playing
+gradation ratio = 0.005
+
 * random seed = 679587884
 
 * Training Performance
@@ -23,51 +26,44 @@ loc = 21 22 27 28
 ** vFunction's total weights = 860625
 
 ** training parameter
-NUM_EPISODES   = 50000
+NUM_EPISODES   = 20000
 CHECK_INTERVAL = 5000
 EVAL_EPISODES  = 1000
 
-Learning start: 21:8:37
+Learning start: 14:25:22
 
 After 0 games:
-avg score = 2942.87
+avg score = 2711.51
+max score = 14200
 avg ratio = 0
 maxTile   = 1024
-TIME      = 21:8:40 (0:0:2)
+TIME      = 14:25:24 (0:0:2)
 
 After 5000 games:
-avg score = 28632.1
-avg ratio = 0.576
+avg score = 33099
+max score = 82392
+avg ratio = 0.681
 maxTile   = 4096
-TIME      = 21:10:43 (0:2:5)
+TIME      = 14:27:8 (0:1:46)
 
 After 10000 games:
-avg score = 43134.7
-avg ratio = 0.837
+avg score = 48681.3
+max score = 138208
+avg ratio = 0.777
 maxTile   = 8192
-TIME      = 21:13:51 (0:5:13)
+TIME      = 14:29:37 (0:4:15)
 
 After 15000 games:
-avg score = 39752.9
-avg ratio = 0.914
-maxTile   = 4096
-TIME      = 21:17:6 (0:8:28)
+avg score = 42123.3
+max score = 135948
+avg ratio = 0.759
+maxTile   = 8192
+TIME      = 14:32:22 (0:7:0)
 
 After 20000 games:
-avg score = 43281.6
-avg ratio = 0.886
+avg score = 46623.3
+max score = 123020
+avg ratio = 0.822
 maxTile   = 8192
-TIME      = 21:20:32 (0:11:54)
-
-After 25000 games:
-avg score = 40362.7
-avg ratio = 0.84
-maxTile   = 8192
-TIME      = 21:23:55 (0:15:18)
-
-After 30000 games:
-avg score = 43761.3
-avg ratio = 0.91
-maxTile   = 4096
-TIME      = 21:27:28 (0:18:51)
+TIME      = 14:35:25 (0:10:3)
 
