@@ -37,6 +37,7 @@ void registerEvaluations(TDLGame2048::Game2048Outcome res, vector<vector<vector<
 void registerScores(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &scores, int e);
 void registerMaxTiles(TDLGame2048::Game2048Outcome res, vector<vector<vector<double> > > &maxTiles, int e);
 void check();
+bool simpleEvaluation(NTuples* one, NTuples* another, mt19937 random);
 
 time_t Timecheck = time(NULL);
 struct tm *PN = localtime(&Timecheck);
@@ -110,11 +111,30 @@ int main() {
   struct tm *pnow = localtime(&now);
 
   output << "Learning start: " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec << endl << endl;
-  
-  for (int i = 0; i <= NUM_EPISODES; i++) {
+
+  int i = 0;
+  while (i<=NUM_EPISODES) {
     random();
     // original parameter: 0.001, 0.01
-    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
+    int learnedGames = 0;
+    while (learnedGames < 5000) {
+      NTuples vF_copy(vFunction);
+      // cerr << "vFunction.allNTuples=" << &(vFunction.allNTuples) << endl;
+      // cerr << "vF_copy.allNTuples  =" << &(vF_copy.allNTuples) << endl;
+      for (int j = i; j<i+1000; j++) {
+	tdlgame2048.TDAfterstateLearn(&vF_copy, 0.001, 0.01, random);
+      }
+      if (simpleEvaluation(&vF_copy, &vFunction, random)) {
+	i += 1000;
+	cerr << "GOOD LEARNING COMFIRMED (i=" << i << ")" << endl;
+	vFunction = vF_copy;
+	learnedGames += 1000;
+      }
+      else {
+	cerr << "BAD LEARNING COMFIRMED (i=" << i << ")" << endl;
+	random();
+      }
+    }
 
     if (i%CHECK_INTERVAL == 0) {
       evaluatePerformance(tdlgame2048, &vFunction, EVAL_EPISODES, random, i);
@@ -133,6 +153,24 @@ int main() {
   }
 
   cerr << "+++ trainer program terminated +++" << endl;
+}
+
+bool simpleEvaluation(NTuples* one, NTuples* another, mt19937 random) {
+  int oneScore = 0;
+  int anotherScore = 0;
+  TDLGame2048 g;
+  for (int i=0; i<1000; i++) {
+    random();
+    TDLGame2048::Game2048Outcome res1 = g.playByAfterstates(one, random);
+    TDLGame2048::Game2048Outcome res2 = g.playByAfterstates(another, random);
+    oneScore += res1.scoreIs();
+    anotherScore += res2.scoreIs();
+  }
+
+  cerr << "Avg. score 1 = " << oneScore/1000 << endl
+       << "Avg. score 2 = " << anotherScore/1000 << endl;
+
+  return (oneScore>anotherScore);
 }
 
 void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, mt19937 random, int e) {
