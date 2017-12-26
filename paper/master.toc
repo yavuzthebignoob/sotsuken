@@ -1,9 +1,12 @@
 \contentsline {chapter}{\numberline {第1章}導入}{1}
 \contentsline {chapter}{\numberline {第2章}先行研究の紹介}{2}
-\contentsline {chapter}{\numberline {第3章}本研究のアイディア}{3}
-\contentsline {chapter}{\numberline {第4章}提案と実装}{4}
-\contentsline {chapter}{\numberline {第5章}実験}{5}
-\contentsline {chapter}{\numberline {第6章}考察と結論}{6}
-\contentsline {chapter}{謝辞}{7}
-\contentsline {chapter}{参考文献}{8}
-\contentsline {chapter}{\numberline {付録A}}{9}
+\contentsline {section}{\numberline {2.1}Szubert \& Jaskowski (2014)}{2}
+\contentsline {subsection}{\numberline {2.1.1}TD学習}{2}
+\contentsline {subsection}{\numberline {2.1.2}nタプルネットワーク}{2}
+\contentsline {chapter}{\numberline {第3章}本研究のアイディア}{4}
+\contentsline {chapter}{\numberline {第4章}提案と実装}{5}
+\contentsline {chapter}{\numberline {第5章}実験}{6}
+\contentsline {chapter}{\numberline {第6章}考察と結論}{7}
+\contentsline {chapter}{謝辞}{8}
+\contentsline {chapter}{参考文献}{9}
+\contentsline {chapter}{\numberline {付録A}}{10}

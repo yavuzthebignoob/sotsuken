@@ -112,6 +112,9 @@ int main() {
 
   output << "Learning start: " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec << endl << endl;
 
+
+  // code for mini-batch learning comment-outed below
+  /*
   int i = 0;
   while (i<=NUM_EPISODES) {
     random();
@@ -135,7 +138,13 @@ int main() {
 	random();
       }
     }
+  */
 
+  for (int i = 0; i <= NUM_EPISODES; i++) {
+    random();
+    // original parameter: 0.001, 0.01
+    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
+    
     if (i%CHECK_INTERVAL == 0) {
       evaluatePerformance(tdlgame2048, &vFunction, EVAL_EPISODES, random, i);
       clock_t lapse = clock();
