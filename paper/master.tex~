@@ -1,0 +1,13 @@
+\documentclass[a4paper]{jsarticle}
+\title{卒業論文}
+\author{金澤望生}
+
+\begin{document}
+\maketitle
+
+このドキュメントは，卒業論文です。
+
+\section{第1章 イントロ}
+セクションのテストです。
+
+\end{document}
