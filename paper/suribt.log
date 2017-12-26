@@ -1,0 +1,106 @@
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  26 DEC 2017 16:51
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**suribt.ins
+(./suribt.ins
+pLaTeX2e <2006/11/10> (based on LaTeX2e <2016/02/01> patch level 0)
+Babel <3.9n> and hyphenation patterns for 11 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/docstrip.tex
+\blockLevel=\count81
+\emptyLines=\count82
+\processedLines=\count83
+\commentsRemoved=\count84
+\commentsPassed=\count85
+\codeLinesPassed=\count86
+\TotalprocessedLines=\count87
+\TotalcommentsRemoved=\count88
+\TotalcommentsPassed=\count89
+\TotalcodeLinesPassed=\count90
+\NumberOfFiles=\count91
+\inFile=\read1
+\inputcheck=\read2
+\off@0=\count92
+\off@1=\count93
+\off@2=\count94
+\off@3=\count95
+\off@4=\count96
+\off@5=\count97
+\off@6=\count98
+\off@7=\count99
+\off@8=\count100
+\off@9=\count101
+\off@10=\count102
+\off@11=\count103
+\off@12=\count104
+\off@13=\count105
+\off@14=\count106
+\off@15=\count107
+\@maxfiles=\count108
+\@maxoutfiles=\count109
+
+Utility: `docstrip' 2.5e <2014/09/29>
+English documentation    <2014/09/29>
+
+**********************************************************
+* This program converts documented macro-files into fast *
+* loadable files by stripping off (nearly) all comments! *
+**********************************************************
+
+********************************************************
+* No Configuration file found, using default settings. *
+********************************************************
+
+(./suribt.ins
+
+Generating file(s) ./suribt.cls 
+\openout0 = `./suribt.cls'.
+
+
+Processing file suribt.dtx (suribt) -> suribt.cls
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % <suribt . >
+<suribt . > <*driver . > . <*driver . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . % . . . . . . > % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % . . . % % % % % % % % % % % % .
+. . . . . % % % % % % % % . . . . . . . . . % % % % % % % % % . . % % % % % %
+% % . . . % % % % % % % % . . . % % % % % % % % % % % % % % % . . . % % % % %
+% % % % . . . . . % % % % % % % % % . . . . . % % % % % % . . % % % % % % % .
+. . . . . . . % % % % % % % % % % % % % . . . . . . . . . . . . % % % % % % %
+% . . . . . . . . % . . . . . . . . . % % % % % % % % % % % . . . . . . . . .
+. . . . % % % % % % % % . . . . . . . . . . . . . . . . . . . . . . . . % % %
+% % % % % % . . . . . . . % % % % % % % % % % % % % % % % % % % % % % % % % .
+. . % . . . % % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . % % % % % % % % % % % % %
+% % % . . . . % % % . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . % % % % % % % % % % %
+% % % . . . . . . . . % % % % % % % % . . . . . . . . . % % % % % % % % . . .
+. % % % % % % % % % % . . . . . . . % % % % % % % % % % % % % % . . . . . . .
+. . . . . . . . . . . . . . . % % % % % % % % . . . . % . . % . . . . . . . .
+. . . . . . . . . . % % % % % % % % . . . . . . . . . . . . . . % % % % % % %
+% % % . . . . % % % % % % % % % % . % % % % % % % % . . . . . . . . . . . . .
+. . . . % % % % % % % % % % % % % . . . . . . . . . . . . . . . . . . . . % %
+% % % % % % % % % % . . . . . . . . . . . . . . . . . . . . . . . % % % % % %
+% % % . . . . . . . . . . . . . . . . . . % % % % % % % % . . . . % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % %
+File suribt.dtx ended by \endinput.
+Lines  processed: 1113
+Comments removed: 620
+Comments  passed: 17
+Codelines passed: 470
+
+) ) ) 
+Here is how much of TeX's memory you used:
+ 311 strings out of 494865
+ 3058 string characters out of 6179768
+ 58072 words of memory out of 5000000
+ 3826 multiletter control sequences out of 15000+600000
+ 7511 words of font info for 31 fonts, out of 8000000 for 9000
+ 264 hyphenation exceptions out of 8191
+ 16i,0n,18p,215b,121s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+No pages of output.

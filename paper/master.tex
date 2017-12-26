@@ -1,15 +1,58 @@
-\documentclass[a4paper]{jsarticle}
-\title{2048の機械学習によるプレイヤについて}
-\author{08-152021　金澤望生}
-\
+\documentclass{suribt}
+\newif\ifjisfont
+\jisfonttrue
+\DeclareOption{mingoth}{\jisfontfalse}
+\newif\ifwinjis
+\winjisfalse
+\DeclareOption{winjis}{\winjistrue}
+\title{ゲーム「2048」のプレイヤについて}
+\author{金澤望生}
+\eauthor{Kanazawa Nozomu}
+\studentid{08-152021}
+\supervisor{山口和紀 教授}
+\handin{2018}{1}
+\keywords{ゲームAI，機械学習}
 
 \begin{document}
 \maketitle
 
-このドキュメントは，卒業論文です。
+\frontmatter
+\begin{abstract}
+インターネットブラウザやスマートフォン上で遊ぶことのできるパズルゲーム「2048」をプレイするAIの改良を行った．改良には盤面上で最も大きな数のタイルが隅にあることを重視する独自のヒューリスティック「corner bonus」を使用した．(仮)
+\end{abstract}
 
-\part{イントロダクション}
-\section{イントロ}
-セクションのテストです。
+\tableofcontents
+
+\mainmatter
+\chapter{導入}
+モチベーションや2048の基本ルール・指標について説明します．
+
+\chapter{先行研究の紹介}
+既存研究が使用している手法とプレイヤの成績について説明します．
+
+\chapter{本研究のアイディア}
+本研究で導入しようとしている手法のアイディアについて説明します．
+
+\chapter{提案と実装}
+前章で説明したアイディアの具体的な提案とその実装方法を説明します．
+
+\chapter{実験}
+提案したアイディアの実験結果と既存研究の実験結果を比較します．
+
+\chapter{考察と結論}
+実験結果をもとに，結果の考察を行い，本研究をまとめます．
+
+\backmatter
+\chapter{謝辞}
+謝辞を書きます．
+
+\begin{thebibliography}{}
+ \bibitem{}
+ \bibitem{}
+\end{thebibliography}
+
+\appendix
+\chapter{}
+表やプログラムリストの掲載が必要になったらここに掲載します．
 
 \end{document}
