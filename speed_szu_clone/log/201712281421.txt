@@ -1,0 +1,55 @@
+* random seed = 679587884
+
+* Training Performance
+** vFunction's mainNTuples
+loc = 7 13 19 25
+loc = 8 14 20 26
+loc = 9 15 21 27
+loc = 10 16 22 28
+loc = 7 8 9 10
+loc = 13 14 15 16
+loc = 19 20 21 22
+loc = 25 26 27 28
+loc = 7 8 13 14 19 20
+loc = 8 9 14 15 20 21
+loc = 9 10 15 16 21 22
+loc = 13 14 19 20 25 26
+loc = 14 15 20 21 26 27
+loc = 15 16 21 22 27 28
+loc = 7 8 9 13 14 15
+loc = 13 14 15 19 20 21
+loc = 19 20 21 25 26 27
+loc = 8 9 10 14 15 16
+loc = 14 15 16 20 21 22
+loc = 20 21 22 26 27 28
+
+** vFunction's total weights = 137092500
+
+** training parameter
+NUM_EPISODES   = 500000
+CHECK_INTERVAL = 5000
+EVAL_EPISODES  = 1000
+
+Learning start: 14:22:24
+
+After 0 games:
+avg score = 3102.83
+max score = 23236
+avg ratio = 0.001
+maxTile   = 2048
+TIME      = 14:22:26 (0:0:2)
+
+After 5000 games:
+avg score = 16197.3
+max score = 58420
+avg ratio = 0.263
+maxTile   = 4096
+TIME      = 14:23:30 (0:1:5)
+
+After 10000 games:
+avg score = 28510.8
+max score = 73224
+avg ratio = 0.579
+maxTile   = 4096
+TIME      = 14:24:59 (0:2:34)
+

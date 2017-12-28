@@ -43,6 +43,8 @@ time_t Timecheck = time(NULL);
 struct tm *PN = localtime(&Timecheck);
 string date = to_string(PN->tm_year+1900) + to_string(PN->tm_mon+1) + to_string(PN->tm_mday) + to_string(PN->tm_hour) + to_string(PN->tm_min) + ".txt";
 ofstream output("./log/"+date);
+
+/*
 ofstream grad1024out("./log/grad1024_"+date);
 ofstream grad2048out("./log/grad2048_"+date);
 ofstream grad4096out("./log/grad4096_"+date);
@@ -59,6 +61,7 @@ ofstream mt4096out("./log/mt4096_"+date);
 ofstream gradScoreRel1024("./log/gs1024_"+date);
 ofstream gradScoreRel2048("./log/gs2048_"+date);
 ofstream gradScoreRel4096("./log/gs4096_"+date);
+*/
 
 int main() {
   cerr << "+++ 2048 N-tuple Network Player trainer +++" << endl;
@@ -247,6 +250,8 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
     maxTile = max(maxTile, res.maxTileIs());
   }
 
+  // detail data output below
+  /*
   if (GRADATION_EVAL_POINT==e) {
   //if (true) {
   // calc gradations
@@ -455,6 +460,7 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
 
     
   }
+  */
   
   output << "After " << e << " games:" << endl;
   cerr << e << " games done" << endl;

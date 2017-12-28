@@ -1,3 +1,0 @@
-* random seed = 679587884
-
-* Training Performance
