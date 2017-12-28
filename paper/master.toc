@@ -3,14 +3,16 @@
 \contentsline {section}{\numberline {2.1}Szubert \& Jaskowski (2014)}{2}
 \contentsline {subsection}{\numberline {2.1.1}TD学習}{2}
 \contentsline {subsection}{\numberline {2.1.2}nタプルネットワーク}{2}
-\contentsline {subsection}{\numberline {2.1.3}本手法の結果と課題}{3}
+\contentsline {subsection}{\numberline {2.1.3}結果と課題}{3}
 \contentsline {section}{\numberline {2.2}Wu et al. (2014)}{3}
 \contentsline {subsection}{\numberline {2.2.1}nタプルネットワークの配置の改善}{4}
 \contentsline {subsection}{\numberline {2.2.2}Multi-Stage TD学習の導入}{4}
-\contentsline {chapter}{\numberline {第3章}本研究のアイディア}{6}
-\contentsline {chapter}{\numberline {第4章}提案と実装}{7}
-\contentsline {chapter}{\numberline {第5章}実験}{8}
-\contentsline {chapter}{\numberline {第6章}考察と結論}{9}
-\contentsline {chapter}{謝辞}{10}
-\contentsline {chapter}{参考文献}{11}
-\contentsline {chapter}{\numberline {付録A}}{12}
+\contentsline {subsection}{\numberline {2.2.3}Expectimax木探索}{5}
+\contentsline {subsection}{\numberline {2.2.4}結果と課題}{6}
+\contentsline {chapter}{\numberline {第3章}本研究のアイディア}{7}
+\contentsline {chapter}{\numberline {第4章}提案と実装}{8}
+\contentsline {chapter}{\numberline {第5章}実験}{9}
+\contentsline {chapter}{\numberline {第6章}考察と結論}{10}
+\contentsline {chapter}{謝辞}{11}
+\contentsline {chapter}{参考文献}{12}
+\contentsline {chapter}{\numberline {付録A}}{13}

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  28 DEC 2017 16:58
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  28 DEC 2017 19:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -223,30 +223,43 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 File: figure_001.png Graphic file (type bmp)
  <figure_001.png> [3]
 File: figure_002.png Graphic file (type bmp)
- <figure_002.png> [4] [5]
+ <figure_002.png> [4]
+File: figure_003.png Graphic file (type bmp)
+ <figure_003.png> [5]
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 105.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 105.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 105.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 105.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 105.
+ [6]
 第3章
-[6
-
-]
-第4章
 [7
 
 ]
-第5章
+第4章
 [8
 
 ]
-第6章
+第5章
 [9
 
-] [10
-
+]
+第6章
+[10
 
 ] [11
 
+
+] [12
+
 ]
 付録A
-[12
+[13
 
 ] (./master.aux)
 
@@ -254,12 +267,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1142 strings out of 494865
- 13992 string characters out of 6179768
- 68631 words of memory out of 5000000
- 4592 multiletter control sequences out of 15000+600000
- 19017 words of font info for 86 fonts, out of 8000000 for 9000
+ 1160 strings out of 494865
+ 14223 string characters out of 6179768
+ 69631 words of memory out of 5000000
+ 4603 multiletter control sequences out of 15000+600000
+ 21011 words of font info for 94 fonts, out of 8000000 for 9000
  269 hyphenation exceptions out of 8191
- 29i,7n,21p,423b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,8n,21p,664b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on master.dvi (18 pages, 15624 bytes).
+Output written on master.dvi (19 pages, 21496 bytes).
