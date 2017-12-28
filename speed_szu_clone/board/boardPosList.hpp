@@ -2,6 +2,7 @@
 #define bPL_INCLUDED
 
 #include <vector>
+#include <iostream>
 #include "boardUtils.hpp"
 using namespace std;
 

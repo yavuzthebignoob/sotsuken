@@ -60,6 +60,8 @@ public:
   
 public:
   NTuples createRandomIndividual(mt19937 random);
+  NTuples createGoodLines(mt19937 random);
+  NTuples createGoodRects(mt19937 random);
   // string toString
 };
 

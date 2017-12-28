@@ -3,10 +3,10 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 100000
+#define NUM_EPISODES 500000
 #define CHECK_INTERVAL 5000
 #define EVAL_EPISODES 1000
-#define GRADATION_EVAL_POINT 120000
+#define GRADATION_EVAL_POINT -1
 
 #define STEP_EVAL_POINT 900
 
@@ -78,10 +78,12 @@ int main() {
   random();
   NTuplesAllStraightFactory straight = NTuplesAllStraightFactory(4, State2048::BOARD_SIZE, 15, 0, 0, exp);
   NTuples lines = straight.genericFactory.createRandomIndividual(random);
+  // NTuples lines = straight.genericFactory.createGoodLines(random);
   // cerr << "lines done" << endl;
   random();
   NTuplesAllRectanglesFactory rectangle = NTuplesAllRectanglesFactory(two, State2048::BOARD_SIZE, 15, 0, 0, exp);
-  NTuples squares = rectangle.genericFactory.createRandomIndividual(random);
+  // NTuples squares = rectangle.genericFactory.createRandomIndividual(random);
+  NTuples squares = rectangle.genericFactory.createGoodRects(random);
   // cerr << "squares done" << endl;
   NTuples vFunction = NTuples::add(&lines, &squares);
   // NTuples vFunction(lines);
@@ -112,10 +114,16 @@ int main() {
 
   output << "Learning start: " << pnow->tm_hour << ":" << pnow->tm_min << ":" << pnow->tm_sec << endl << endl;
 
-
+  // double features[16] = {0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
+  // State2048 posConfirmState(features);
+  // posConfirmState.printHumanReadable();
+  // int posrow = BoardUtils::rowFromPos(15, 4);
+  // int poscol = BoardUtils::colFromPos(15, 4);
+  // cerr << "State2048[6]'s value = " << State2048::REWARDS[posConfirmState.getValue(posrow*4+poscol)] << endl;
+  
   // code for mini-batch learning comment-outed below
   /*
-  int i = 0;
+    int i = 0;
   while (i<=NUM_EPISODES) {
     random();
     // original parameter: 0.001, 0.01

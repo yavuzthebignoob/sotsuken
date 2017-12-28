@@ -44,7 +44,7 @@ public:
   // void addInitialRandomTiles(mt19937 ranom);
   bool isEqual(State2048 state);
 
-private:
+public:
   int getValue(int flatlocation);
   void setValue(int flatlocation, int value);
   bool hasEqualNeighbor(const int row, const int col);
