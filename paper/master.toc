@@ -9,10 +9,15 @@
 \contentsline {subsection}{\numberline {2.2.2}Multi-Stage TD学習の導入}{4}
 \contentsline {subsection}{\numberline {2.2.3}Expectimax木探索}{5}
 \contentsline {subsection}{\numberline {2.2.4}結果と課題}{6}
-\contentsline {chapter}{\numberline {第3章}本研究のアイディア}{7}
-\contentsline {chapter}{\numberline {第4章}提案と実装}{8}
-\contentsline {chapter}{\numberline {第5章}実験}{9}
-\contentsline {chapter}{\numberline {第6章}考察と結論}{10}
-\contentsline {chapter}{謝辞}{11}
-\contentsline {chapter}{参考文献}{12}
-\contentsline {chapter}{\numberline {付録A}}{13}
+\contentsline {section}{\numberline {2.3}Oka \& Matsuzaki (2016)}{6}
+\contentsline {subsection}{\numberline {2.3.1}nタプル単体の性能の評価}{7}
+\contentsline {subsection}{\numberline {2.3.2}nタプルネットワークに組み込むnタプルの数の検討}{7}
+\contentsline {subsection}{\numberline {2.3.3}結果と課題}{9}
+\contentsline {section}{\numberline {2.4}Yeh et al. (2016)}{9}
+\contentsline {chapter}{\numberline {第3章}本研究のアイディア}{10}
+\contentsline {chapter}{\numberline {第4章}提案と実装}{11}
+\contentsline {chapter}{\numberline {第5章}実験}{12}
+\contentsline {chapter}{\numberline {第6章}考察と結論}{13}
+\contentsline {chapter}{謝辞}{14}
+\contentsline {chapter}{参考文献}{15}
+\contentsline {chapter}{\numberline {付録A}}{16}
