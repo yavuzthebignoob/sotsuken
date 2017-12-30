@@ -1,4 +1,4 @@
-#define CORNER_BONUS_RATIO 1
+#define CORNER_BONUS_RATIO 1.2
 
 #include <vector>
 #include <math.h>
@@ -52,14 +52,12 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
     // double gradValue = calculateGradationScore(transition.afterState);
     // value *= (gradValue*0.005+1);
     if (isMaxtileInCorner(transition.afterState)) {
-      /*
-      if ((transition.afterState).getMaxTile()==4096) {
-	value *= 1.1;
-      }
-      else {
-      */
-	value *= CORNER_BONUS_RATIO;
-	// }
+      // if ((transition.afterState).getMaxTile()==4096) {
+      // value *= 1.1;
+      // }
+      // else {
+      value *= CORNER_BONUS_RATIO;
+      // }
     }
     if (value > bestValue) {
       bestTransition = transition;

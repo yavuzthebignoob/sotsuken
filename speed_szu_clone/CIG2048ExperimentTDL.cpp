@@ -80,8 +80,8 @@ int main() {
   
   random();
   NTuplesAllStraightFactory straight = NTuplesAllStraightFactory(4, State2048::BOARD_SIZE, 15, 0, 0, exp);
-  NTuples lines = straight.genericFactory.createRandomIndividual(random);
-  // NTuples lines = straight.genericFactory.createGoodLines(random);
+  // NTuples lines = straight.genericFactory.createRandomIndividual(random);
+  NTuples lines = straight.genericFactory.createGoodLines(random);
   // cerr << "lines done" << endl;
   random();
   NTuplesAllRectanglesFactory rectangle = NTuplesAllRectanglesFactory(two, State2048::BOARD_SIZE, 15, 0, 0, exp);
