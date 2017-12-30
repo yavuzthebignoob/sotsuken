@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  29 DEC 2017 20:48
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  30 DEC 2017 22:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -242,29 +242,32 @@ File: figure_004.png Graphic file (type bmp)
 <figure_004.png> [7]
 File: figure_005.png Graphic file (type bmp)
  <figure_005.png> [8] [9]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 200.
+ [10]
 第3章
-[10
-
-]
-第4章
 [11
 
 ]
-第5章
+第4章
 [12
 
 ]
-第6章
+第5章
 [13
 
-] [14
-
+]
+第6章
+[14
 
 ] [15
 
+
+] [16
+
 ]
 付録A
-[16
+[17
 
 ] (./master.aux)
 
@@ -272,12 +275,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1174 strings out of 494865
- 14478 string characters out of 6179768
+ 1177 strings out of 494865
+ 14523 string characters out of 6179768
  71631 words of memory out of 5000000
- 4613 multiletter control sequences out of 15000+600000
- 21011 words of font info for 94 fonts, out of 8000000 for 9000
+ 4616 multiletter control sequences out of 15000+600000
+ 21626 words of font info for 96 fonts, out of 8000000 for 9000
  269 hyphenation exceptions out of 8191
  29i,8n,21p,776b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on master.dvi (22 pages, 32908 bytes).
+Output written on master.dvi (23 pages, 39344 bytes).
