@@ -71,13 +71,13 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
       // maxTile end here
       */
 
-      /*
+      
       // criteria: sumScore
       if (step==1) {
-	value *= 1.1;
+	value *= 1.2;
       }
       else if (step==2) {
-	value *= 1.1;
+	value *= 1.2;
       }
       else if (step==3) {
 	value *= 1.1;
@@ -89,7 +89,7 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
 	value *= 1.2;
       }
       // sumScore end here
-      */
+      
     }
     
     if (value > bestValue) {
@@ -158,7 +158,7 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
       transition = game.computeTransition(state, randomAction);
     }
     else {
-      transition = chooseBestTransitionAfterstatePlay(state, vFunction, stepcntr);
+      transition = chooseBestTransitionAfterstate(state, vFunction, stepcntr);
     }
     sumRewards += transition.reward;
     if (sumRewards>=60000 && sumRewards<70000) {
