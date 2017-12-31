@@ -51,17 +51,47 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
     // double gradValue = calculateGradationScore(transition.afterState);
     // value *= (gradValue*0.005+1);
+    
     if (isMaxtileInCorner(transition.afterState)) {
-      //if ((transition.afterState).getMaxTile()>=4096) {
-      //value *= 1.1;
-      //}
+      int mtValue = transition.afterState.getMaxTile();
+      /*
+      // criteria: maxTile
+      if (mtValue>=4096 && mtValue<8192) {
+	value *= 1.1;
+      }
+      else if (mtValue>=8192 && mtValue<16384) {
+	value *= 1.05;
+      }
+      else if (mtValue>=16384) {
+	value *= 1.025;
+      }
+      else {
+	value *= 1.2;
+      }
+      // maxTile end here
+      */
+
+      /*
+      // criteria: sumScore
       if (step==1) {
 	value *= 1.1;
       }
-      else {
-	value *= CORNER_BONUS_RATIO;
+      else if (step==2) {
+	value *= 1.1;
       }
+      else if (step==3) {
+	value *= 1.1;
+      }
+      else if (step==4) {
+	value *= 1.1;
+      }
+      else {
+	value *= 1.2;
+      }
+      // sumScore end here
+      */
     }
+    
     if (value > bestValue) {
       bestTransition = transition;
       bestValue = value;
@@ -83,8 +113,17 @@ TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, 
   while (!game.isTerminalState(state)) {
     Transition transition = chooseBestTransitionAfterstatePlay(state, vFunction, stepcntr);
     sumRewards += transition.reward;
-    if (sumRewards>70000) {
+    if (sumRewards>=60000 && sumRewards<70000) {
       stepcntr = 1;
+    }
+    else if (sumRewards>=70000 && sumRewards<80000) {
+      stepcntr = 2;
+    }
+    else if (sumRewards>=80000 && sumRewards<100000) {
+      stepcntr = 3;
+    }
+    else if (sumRewards>=100000) {
+      stepcntr = 4;
     }
 
     gradation.push_back(TDLGame2048::calculateGradationScore(state));
@@ -105,6 +144,7 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
   State2048 state = game.sampleInitialStateDistribution(random);
   vector<double> f = state.getFeatures();
   // NTuples valueF(vFunction->mainNTuples, vFunction->symmetryExpander);
+  int sumRewards = 0;
   int step = 0;
   
   while (!game.isTerminalState(state)) {
@@ -120,6 +160,7 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
     else {
       transition = chooseBestTransitionAfterstatePlay(state, vFunction, step);
     }
+    sumRewards += transition.reward;
 
     State2048 nextState = game.getNextState(transition.afterState, random);
     double correctActionValue = 0;

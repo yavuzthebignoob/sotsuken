@@ -3,7 +3,7 @@
 // CHECK_INTERVAL = 5000
 // EVAL_EPISODES  = 1000
 
-#define NUM_EPISODES 500000
+#define NUM_EPISODES 1000000
 #define CHECK_INTERVAL 5000
 #define EVAL_EPISODES 1000
 #define GRADATION_EVAL_POINT -1
@@ -68,7 +68,10 @@ int main() {
 
   random_device seed;
   // int seed_value = seed();
-  int seed_value = 679587884;
+
+  // int seed_value = 679587884;
+  // int seed_value = 1336453322;
+  int seed_value = 1114695550;
   output << "* random seed = " << seed_value << endl << endl << "* Training Performance" << endl;
   mt19937 random(seed_value);
   cerr << "* log filename = " << date << endl;
@@ -154,7 +157,7 @@ int main() {
   for (int i = 0; i <= NUM_EPISODES; i++) {
     random();
     // original parameter: 0.001, 0.01
-    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
+    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.0025, random);
     
     if (i%CHECK_INTERVAL == 0) {
       evaluatePerformance(tdlgame2048, &vFunction, EVAL_EPISODES, random, i);
