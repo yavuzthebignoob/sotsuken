@@ -1,0 +1,73 @@
+- learn 1000 games
+- evaluate 500 games for each vFunctions
+- then update/discard, and if updated increment i +1000
+- evaluate 1000 games per 5000 games learned
+
+- no random shuffle -- evaluation to decide whether learn or not may be inaprropiriate
+
+* random seed = 679587884
+
+* Training Performance
+** vFunction's mainNTuples
+loc = 7 13 19 25
+loc = 8 14 20 26
+loc = 9 15 21 27
+loc = 10 16 22 28
+loc = 7 8 9 10
+loc = 13 14 15 16
+loc = 19 20 21 22
+loc = 25 26 27 28
+loc = 7 8 13 14
+loc = 8 9 14 15
+loc = 9 10 15 16
+loc = 13 14 19 20
+loc = 14 15 20 21
+loc = 15 16 21 22
+loc = 19 20 25 26
+loc = 20 21 26 27
+loc = 21 22 27 28
+
+** vFunction's total weights = 860625
+
+** training parameter
+NUM_EPISODES   = 100000
+CHECK_INTERVAL = 5000
+EVAL_EPISODES  = 1000
+
+Learning start: 19:32:45
+
+After 5000 games:
+avg score = 45560.9
+max score = 152404
+avg ratio = 0.786
+maxTile   = 8192
+TIME      = 19:38:0 (0:5:14)
+
+After 10000 games:
+avg score = 44785.7
+max score = 129244
+avg ratio = 0.824
+maxTile   = 8192
+TIME      = 19:46:48 (0:14:2)
+
+After 15000 games:
+avg score = 55073.1
+max score = 140776
+avg ratio = 0.883
+maxTile   = 8192
+TIME      = 19:57:5 (0:24:19)
+
+After 20000 games:
+avg score = 54692.8
+max score = 136080
+avg ratio = 0.751
+maxTile   = 8192
+TIME      = 20:8:47 (0:36:1)
+
+After 25000 games:
+avg score = 50411.1
+max score = 132200
+avg ratio = 0.819
+maxTile   = 8192
+TIME      = 20:23:36 (0:50:50)
+
