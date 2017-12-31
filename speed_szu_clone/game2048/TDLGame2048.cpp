@@ -145,7 +145,7 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
   vector<double> f = state.getFeatures();
   // NTuples valueF(vFunction->mainNTuples, vFunction->symmetryExpander);
   int sumRewards = 0;
-  int step = 0;
+  int stepcntr = 0;
   
   while (!game.isTerminalState(state)) {
     random();
@@ -158,9 +158,21 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
       transition = game.computeTransition(state, randomAction);
     }
     else {
-      transition = chooseBestTransitionAfterstatePlay(state, vFunction, step);
+      transition = chooseBestTransitionAfterstatePlay(state, vFunction, stepcntr);
     }
     sumRewards += transition.reward;
+    if (sumRewards>=60000 && sumRewards<70000) {
+      stepcntr = 1;
+    }
+    else if (sumRewards>=70000 && sumRewards<80000) {
+      stepcntr = 2;
+    }
+    else if (sumRewards>=80000 && sumRewards<100000) {
+      stepcntr = 3;
+    }
+    else if (sumRewards>=100000) {
+      stepcntr = 4;
+    }
 
     State2048 nextState = game.getNextState(transition.afterState, random);
     double correctActionValue = 0;
