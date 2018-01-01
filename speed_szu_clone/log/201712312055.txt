@@ -1,0 +1,98 @@
+* random seed = 1336453322
+
+* Training Performance
+** vFunction's mainNTuples
+loc = 7 13 19 20 25 26
+loc = 8 14 20 21 26 27
+loc = 10 16 21 22 27 28
+loc = 9 15 20 21 26 27
+loc = 7 8 13 14 19 25
+loc = 8 9 14 15 20 26
+loc = 9 10 15 16 22 28
+loc = 8 9 14 15 21 27
+loc = 7 8 9 10 15 16
+loc = 13 14 15 16 21 22
+loc = 7 8 9 10 13 14
+loc = 13 14 15 16 19 20
+loc = 21 22 25 26 27 28
+loc = 15 16 19 20 21 22
+loc = 19 20 25 26 27 28
+loc = 13 14 19 20 21 22
+loc = 7 8 13 14 19 20
+loc = 8 9 14 15 20 21
+loc = 9 10 15 16 21 22
+loc = 13 14 19 20 25 26
+loc = 14 15 20 21 26 27
+loc = 15 16 21 22 27 28
+loc = 7 8 9 13 14 15
+loc = 13 14 15 19 20 21
+loc = 19 20 21 25 26 27
+loc = 8 9 10 14 15 16
+loc = 14 15 16 20 21 22
+loc = 20 21 22 26 27 28
+
+** vFunction's total weights = 318937500
+
+** training parameter
+NUM_EPISODES   = 1000000
+CHECK_INTERVAL = 5000
+EVAL_EPISODES  = 1000
+
+Learning start: 21:0:30
+
+After 0 games:
+avg score = 3218.76
+max score = 18588
+avg ratio = 0
+maxTile   = 1024
+TIME      = 21:0:37 (0:0:6)
+
+After 5000 games:
+avg score = 18297.4
+max score = 36232
+avg ratio = 0.285
+maxTile   = 2048
+TIME      = 21:3:23 (0:2:52)
+
+After 10000 games:
+avg score = 20860.1
+max score = 61668
+avg ratio = 0.3
+maxTile   = 4096
+TIME      = 21:7:6 (0:6:35)
+
+After 15000 games:
+avg score = 22202
+max score = 61304
+avg ratio = 0.421
+maxTile   = 4096
+TIME      = 21:11:8 (0:10:37)
+
+After 20000 games:
+avg score = 22855.7
+max score = 47964
+avg ratio = 0.48
+maxTile   = 4096
+TIME      = 21:15:32 (0:15:1)
+
+After 25000 games:
+avg score = 25743.8
+max score = 61132
+avg ratio = 0.549
+maxTile   = 4096
+TIME      = 21:20:22 (0:19:51)
+
+After 30000 games:
+avg score = 27307.9
+max score = 42472
+avg ratio = 0.644
+maxTile   = 2048
+TIME      = 21:25:31 (0:25:0)
+
+After 35000 games:
+avg score = 34821.3
+max score = 79416
+avg ratio = 0.741
+maxTile   = 4096
+TIME      = 21:30:38 (0:30:7)
+
