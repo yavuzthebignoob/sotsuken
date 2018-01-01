@@ -128,6 +128,16 @@ void State2048::rotateBoard() {
   }
 }
 
+void State2048::reflectBoard() {
+  for (int i=0; i<SIZE; i++) {
+    for (int j=0; j<2; j++) {
+      int buf = boards[i][j];
+      boards[i][j] = boards[i][3-j];
+      boards[i][3-j] = buf;
+    }
+  }
+}
+
 int State2048::makeMove(Action2048 *action) {
   int reward = 0;
   

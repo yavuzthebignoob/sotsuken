@@ -93,7 +93,9 @@ string NTuples::toString() {
 double NTuples::getValue(vector<double> input) {
   DefaultNTupleEvaluator evaluator;
   Game2048Board board(input);
-  return evaluator.evaluate(this, board);
+  double temp = evaluator.evaluate(this, board);
+  // cerr << "v=" << temp << endl;
+  return temp;
 }
 
 void NTuples::update(vector<double> input, double expectedValue, double learningRate) {

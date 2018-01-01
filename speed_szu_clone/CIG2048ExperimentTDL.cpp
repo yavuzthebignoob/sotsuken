@@ -69,9 +69,9 @@ int main() {
   random_device seed;
   // int seed_value = seed();
 
-  // int seed_value = 679587884;
+  int seed_value = 679587884;
   // int seed_value = 1336453322;
-  int seed_value = 1114695550;
+  // int seed_value = 1114695550;
   output << "* random seed = " << seed_value << endl << endl << "* Training Performance" << endl;
   mt19937 random(seed_value);
   cerr << "* log filename = " << date << endl;

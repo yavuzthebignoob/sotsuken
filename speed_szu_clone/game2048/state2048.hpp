@@ -34,6 +34,7 @@ public:
   void addRandomTile(mt19937 random);
   int moveUP();
   void rotateBoard();
+  void reflectBoard();
   int makeMove(Action2048 *action);
   vector<Action2048*> getPossibleMoves();
   bool isTerminal();
