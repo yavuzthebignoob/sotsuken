@@ -22,6 +22,7 @@ double DefaultNTupleEvaluator::evaluate(NTuples* tuples, Game2048Board board) {
   for (int i=0; i<size; i++) {
     // for (int i=0; i<tuples->allNTuples.size(); i++) {
     double buf = tuples->allNTuples[i].valueFor(board);
+    // cerr << buf << endl;
     result += buf;    
   }
 

@@ -16,11 +16,16 @@ double TDLGame2048::getBestValueAction(State2048 state, NTuples* function) {
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
+    
     if (value > bestValue) {
       bestValue = value;
     }
   }
 
+  if (bestValue==-1*INFINITY) {
+    bestValue = 0;
+  }
+  
   return bestValue;
 }
 
@@ -32,6 +37,7 @@ Transition TDLGame2048::chooseBestTransitionAfterstate(State2048 state, NTuples*
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
+    
     if (value > bestValue) {
       bestTransition = transition;
       bestValue = value;
@@ -49,11 +55,12 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
+    
     // double gradValue = calculateGradationScore(transition.afterState);
     // value *= (gradValue*0.005+1);
-    
-    if (isMaxtileInCorner(transition.afterState)) {
-      int mtValue = transition.afterState.getMaxTile();
+
+    //if (isMaxtileInCorner(transition.afterState)) {
+    //int mtValue = transition.afterState.getMaxTile();
       /*
       // criteria: maxTile
       if (mtValue>=4096 && mtValue<8192) {
@@ -71,7 +78,7 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
       // maxTile end here
       */
 
-      
+      /*
       // criteria: sumScore
       if (step==1) {
 	value *= 1.2;
@@ -89,8 +96,8 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
 	value *= 1.2;
       }
       // sumScore end here
-      
-    }
+      */
+    //}
     
     if (value > bestValue) {
       bestTransition = transition;
@@ -111,7 +118,7 @@ TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, 
   
   State2048 state = game.sampleInitialStateDistribution(random);
   while (!game.isTerminalState(state)) {
-    Transition transition = chooseBestTransitionAfterstatePlay(state, vFunction, stepcntr);
+    Transition transition = chooseBestTransitionAfterstate(state, vFunction, stepcntr);
     sumRewards += transition.reward;
     if (sumRewards>=60000 && sumRewards<70000) {
       stepcntr = 1;

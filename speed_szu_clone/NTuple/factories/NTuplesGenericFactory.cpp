@@ -31,6 +31,7 @@ NTuples NTuplesGenericFactory::createGoodLines(mt19937 random) {
 
   vector<vector<BoardPos> > positions;
 
+
   // tuple for a
   for (int i=0; i<2; i++) {
     vector<BoardPos> con;
@@ -45,6 +46,7 @@ NTuples NTuplesGenericFactory::createGoodLines(mt19937 random) {
     }
   }
 
+  /*
   // tuple for b
   for (int i=0; i<2; i++) {
     vector<BoardPos> con;
@@ -142,14 +144,17 @@ NTuples NTuplesGenericFactory::createGoodLines(mt19937 random) {
       positions[i+14].push_back(foo);
     }
   }
+  */
+  
 
+  // ### see Fig. 4. (b) in Wu's paper ###
 
   vector<BoardPosList> straights;
-  for (int i=0; i<16; i++) {
+  for (int i=0; i<positions.size(); i++) {
     BoardPosList temp(positions[i]);
     straights.push_back(temp);
   }
-  for (int i=0; i<16; i++) {
+  for (int i=0; i<positions.size(); i++) {
     builder.addTuple(straights[i].toLocations(boardSize));
   }
 
@@ -162,17 +167,22 @@ NTuples NTuplesGenericFactory::createGoodRects(mt19937 random) {
   NTuplesBuilder builder(numValues, minWeight, maxWeight, expander, random, true);
 
   vector<vector<BoardPos> > positions;
-  for (int i=0; i<3; i++) {
+
+  // ### see Fig. 4. (b) in Wu's paper ###
+
+  
+  for (int i=0; i<2; i++) {
     vector<BoardPos> con;
     positions.push_back(con);
     for (int j=0; j<3; j++) {
-      BoardPos foo(j,i);
-      BoardPos bar(j,i+1);
+      BoardPos foo(j,i+1);
+      BoardPos bar(j,i+2);
       positions[i].push_back(foo);
       positions[i].push_back(bar);
     }
   }
 
+  /*
   for (int i=0; i<3; i++) {
     vector<BoardPos> con;
     positions.push_back(con);
@@ -205,19 +215,21 @@ NTuples NTuplesGenericFactory::createGoodRects(mt19937 random) {
       positions[i+9].push_back(bar);
     }
   }
+  */
+  
 
   vector<BoardPosList> rectangles;
-  rectangles.reserve(12);
-  for (int i=0; i<12; i++) {
+
+  for (int i=0; i<positions.size(); i++) {
     BoardPosList temp(positions[i]);
     rectangles.push_back(temp);
   }
 
-  for (int i=0; i<12; i++) {
+  for (int i=0; i<positions.size(); i++) {
     builder.addTuple(rectangles[i].toLocations(boardSize));
   }
 
   NTuples foo(builder.buildNTuples());
-
+  cerr << "foooooo" << endl;
   return foo;
 }

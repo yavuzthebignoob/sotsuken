@@ -92,27 +92,62 @@ string NTuples::toString() {
 
 double NTuples::getValue(vector<double> input) {
   DefaultNTupleEvaluator evaluator;
-  Game2048Board board(input);
-  return evaluator.evaluate(this, board);
+  double v = 0;
+  vector<double> temp;
+  copy(input.begin(), input.end(), back_inserter(temp));
+
+  for (int i=0; i<2; i++) {
+    for (int j=0; j<4; j++) {
+      Game2048Board board(temp);
+      v += evaluator.evaluate(this, board);
+      rotateInputBoard(temp);
+    }
+    reflectInputBoard(temp);
+  }
+  
+  return v;
 }
 
 void NTuples::update(vector<double> input, double expectedValue, double learningRate) {
   DefaultNTupleEvaluator evaluator;
-  Game2048Board board(input);
-  double val = evaluator.evaluate(this, board);
-  // double val = 0;
-  // cerr << "val = " << val << endl;
-  // cerr << "expectedV = " << expectedValue << endl;
-  double error = expectedValue - val;
-  double delta = error * learningRate;
-  // cerr << "delta = " << delta << endl;
+  vector<double> temp;
+  copy(input.begin(), input.end(), back_inserter(temp));
 
-  // cerr << "weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;
-  int size = allNTuples.size();
-  for (int i=0; i<size; i++) {
-    // for (int i=0; i<allNTuples.size(); i++) {
-    allNTuples[i].LUT[allNTuples[i].address(board)] += delta;
+  for (int i=0; i<2; i++) {
+    for (int j=0; j<4; j++) {
+      Game2048Board board(temp);
+      double val = evaluator.evaluate(this, board);
+      double error = expectedValue - val;
+      double delta = error * learningRate;
+      
+      int size = allNTuples.size();
+      for (int i=0; i<size; i++) {
+	allNTuples[i].LUT[allNTuples[i].address(board)] += delta;
+      }
+      rotateInputBoard(temp);
+    }
+    reflectInputBoard(temp);
   }
   // cerr << "modified weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;
-  //   cerr << "updated following NTupls: " << this << endl;
+}
+
+void NTuples::rotateInputBoard(vector<double> input) {
+  vector<double> res(16);
+  for (int i=0; i<4; i++) {
+    for (int j=0; j<4; j++) {
+      res[i*4+j] = input[i+j*4];
+    }
+  }
+  input = res;
+}
+
+void NTuples::reflectInputBoard(vector<double> input) {
+  vector<double> res(16);
+  for (int i=0; i<2; i++) {
+    for (int j=0; j<4; j++) {
+      res[i+j*4] = input[3-i+j*4];
+      res[3-i+j*4] = input[i+j*4];
+    }
+  }
+  input = res;
 }
