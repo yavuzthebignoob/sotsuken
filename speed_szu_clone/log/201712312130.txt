@@ -565,5 +565,19 @@ avg ratio = 0.955
 maxTile   = 16384
 TIME      = 13:36:45 (16:1:39)
 
-  = 13:35:13 (15:59:52)
+After 460000 games:
+avg score = 79901.1
+max score = 170008
+avg ratio = 0.914
+maxTile   = 8192
+TIME      = 13:50:0 (16:14:54)
+
+After 465000 games:
+avg score = 80514.5
+max score = 175832
+avg ratio = 0.954
+maxTile   = 8192
+TIME      = 14:2:57 (16:27:50)
+
+     = 14:2:36 (16:27:14)
 
