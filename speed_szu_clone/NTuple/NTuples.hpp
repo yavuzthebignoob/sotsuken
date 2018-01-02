@@ -120,6 +120,8 @@ public:
   // string toString();
   double getValue(vector<double> input);
   void update(vector<double> input, double expectedValue, double learningRate);
+  void rotateInputBoard(vector<double> input);
+  void reflectInputBoard(vector<double> input);
 
 public:
   // temporary implementation: should be implemented in other code
