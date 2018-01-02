@@ -1,0 +1,34 @@
+this experiment is executed in Ubuntu in 703
+
+* random seed = 679587884
+
+* Training Performance
+** vFunction's mainNTuples
+loc = 7 13 19 20 25 26
+loc = 8 14 20 21 26 27
+loc = 8 9 14 15 20 21
+loc = 9 10 15 16 21 22
+
+** vFunction's total weights = 45562500
+
+** training parameter
+NUM_EPISODES   = 1000000
+CHECK_INTERVAL = 5000
+EVAL_EPISODES  = 1000
+
+Learning start: 19:5:48
+
+After 0 games:
+avg score = 2747.69
+max score = 10956
+avg ratio = 0
+maxTile   = 1024
+TIME      = 19:6:5 (0:0:16)
+
+After 5000 games:
+avg score = 10052.2
+max score = 31520
+avg ratio = 0.022
+maxTile   = 2048
+TIME      = 19:11:28 (0:5:39)
+

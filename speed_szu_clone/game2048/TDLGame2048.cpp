@@ -16,6 +16,7 @@ double TDLGame2048::getBestValueAction(State2048 state, NTuples* function) {
   for (int i=0; i<actions.size(); i++) {
     Transition transition = game.computeTransition(state, actions[i]);
     double value = transition.reward + function->getValue(transition.afterState.getFeatures());
+    // this value includes symmetric 8 board evaluation value
     
     if (value > bestValue) {
       bestValue = value;
@@ -158,7 +159,7 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
     random();
     vector<Action2048*> actions = game.getPossibleActions(state);
     
-    Transition transition = game.computeTransition(state, Action2048::UP);
+    Transition transition = game.computeTransition(state, actions[0]);
     // if (RandomUtils::nextUniform(0, 1, random) < explorationRate) {
     if (RandomUtils::nextUniform_0_1(random) < explorationRate) {
       Action2048* randomAction = RandomUtils::pickRandom(actions, random);
@@ -183,14 +184,20 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
 
     State2048 nextState = game.getNextState(transition.afterState, random);
     double correctActionValue = 0;
+    bool badFlag = false;
     
     if (!game.isTerminalState(state)) {
       correctActionValue += getBestValueAction(nextState, vFunction);
+      // this correctActionValue includes 8 symemtric evaluation value
       if (correctActionValue==(-1*INFINITY)) {
 	correctActionValue = 0;
+	badFlag = true;
       }
     }
-    vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
+
+    if (badFlag==false) {
+      vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
+    }
     state = nextState;
   }
   // cerr << "training-game terminated" << endl;

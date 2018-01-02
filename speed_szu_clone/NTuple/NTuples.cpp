@@ -93,16 +93,16 @@ string NTuples::toString() {
 double NTuples::getValue(vector<double> input) {
   DefaultNTupleEvaluator evaluator;
   double v = 0;
-  vector<double> temp;
-  copy(input.begin(), input.end(), back_inserter(temp));
+  //vector<double> temp;
+  //copy(input.begin(), input.end(), back_inserter(temp));
 
   for (int i=0; i<2; i++) {
     for (int j=0; j<4; j++) {
-      Game2048Board board(temp);
+      Game2048Board board(input);
       v += evaluator.evaluate(this, board);
-      rotateInputBoard(temp);
+      rotateInputBoard(input);
     }
-    reflectInputBoard(temp);
+    reflectInputBoard(input);
   }
   
   return v;
@@ -110,25 +110,33 @@ double NTuples::getValue(vector<double> input) {
 
 void NTuples::update(vector<double> input, double expectedValue, double learningRate) {
   DefaultNTupleEvaluator evaluator;
-  vector<double> temp;
-  copy(input.begin(), input.end(), back_inserter(temp));
+  //vector<double> temp;
+  //copy(input.begin(), input.end(), back_inserter(temp));
+  double val = 0;
+  for (int i=0; i<2; i++) {
+    for (int j=0; j<4; j++) {
+      Game2048Board board(input);
+      val += evaluator.evaluate(this, board);
+      rotateInputBoard(input);
+    }
+    reflectInputBoard(input);
+  }
 
   for (int i=0; i<2; i++) {
     for (int j=0; j<4; j++) {
-      Game2048Board board(temp);
-      double val = evaluator.evaluate(this, board);
+      Game2048Board board(input);
       double error = expectedValue - val;
       double delta = error * learningRate;
       
       int size = allNTuples.size();
       for (int i=0; i<size; i++) {
 	allNTuples[i].LUT[allNTuples[i].address(board)] += delta;
+	//cerr << "modified weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;
       }
-      rotateInputBoard(temp);
+      rotateInputBoard(input);
     }
-    reflectInputBoard(temp);
+    reflectInputBoard(input);
   }
-  // cerr << "modified weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;
 }
 
 void NTuples::rotateInputBoard(vector<double> input) {
