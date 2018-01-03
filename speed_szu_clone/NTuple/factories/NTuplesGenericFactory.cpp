@@ -230,6 +230,5 @@ NTuples NTuplesGenericFactory::createGoodRects(mt19937 random) {
   }
 
   NTuples foo(builder.buildNTuples());
-  cerr << "foooooo" << endl;
   return foo;
 }
