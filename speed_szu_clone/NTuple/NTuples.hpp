@@ -120,9 +120,11 @@ public:
   // string toString();
   double getValue(vector<double> input);
   void update(vector<double> input, double expectedValue, double learningRate);
-  void rotateInputBoard(vector<double> input);
-  void reflectInputBoard(vector<double> input);
-
+  vector<double> rotateInputBoard(vector<double> input);
+  vector<double> reflectInputBoard(vector<double> input);
+  void rotateInputBoardInline(vector<double>& input);
+  void reflectInputBoardInline(vector<double>& input);
+  
 public:
   // temporary implementation: should be implemented in other code
   static NTuples deserializerWrapException(string file);

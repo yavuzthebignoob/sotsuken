@@ -25,10 +25,14 @@ public:
   int numValues;
   vector<int> locations;
   vector<double> LUT;
+  vector<double> aFunc;
+  vector<double> eFunc;
 
 public:
   NTuple newWithRandomWeights(int numValues, vector<int> locations, double minWeight, double maxWeight, mt19937 random);
   double valueFor(Game2048Board &board);
+  double valueForEFunc(Game2048Board &board);
+  double valueForAFunc(Game2048Board &board);
   int address(Game2048Board &board);
   vector<int> valuesFromAddress(int address);
   vector<double> getWeights();
@@ -66,6 +70,11 @@ public:
     for (int i=0; i<wSize; i++) {
       LUT[i] = weights0[i];
     }
+
+    for (int i=0; i<11390625; i++) {
+      aFunc.push_back(0);
+      eFunc.push_back(0);
+    }
     // cerr << "NTuple constructer called" << endl;
   }
   NTuple(const NTuple& tuple) {
@@ -75,6 +84,10 @@ public:
     }
     for (int i=0; i<tuple.LUT.size(); i++) {
       LUT.push_back(tuple.LUT[i]);
+    }
+    for (int i=0; i<11390625; i++) {
+      aFunc.push_back(0);
+      eFunc.push_back(0);
     }
     // cerr << "NTuple constructer called" << endl;
   }

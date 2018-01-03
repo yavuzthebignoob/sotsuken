@@ -142,9 +142,25 @@ TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, 
     state = game.getNextState(transition.afterState, random);
     // stepcntr++;
   }
+
+  vector<double> terminal = state.getFeatures();
+  DefaultNTupleEvaluator evaluator;
+  double ee = 0;
+  double aa = 0;
+
+  for (int i=0; i<2; i++) {
+    for (int j=0; j<4; j++) {
+      Game2048Board board(state.getFeatures());
+      ee += evaluator.eFuncEvaluate(vFunction, board);
+      aa += evaluator.aFuncEvaluate(vFunction, board);
+      vFunction->rotateInputBoard(terminal);
+    }
+    vFunction->reflectInputBoard(terminal);
+  }
   
   // state.printHumanReadable();
-  TDLGame2048::Game2048Outcome res(sumRewards, state.getMaxTile(), gradation, evalweights, scorevessel, maxtilevessel);
+  TDLGame2048::Game2048Outcome res(sumRewards, state.getMaxTile(), gradation, evalweights, scorevessel,
+				   maxtilevessel, ee, aa);
   return res;
 }
 

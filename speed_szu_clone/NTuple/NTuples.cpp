@@ -74,35 +74,19 @@ bool NTuples::equals(NTuples obj) {
   }
 }
 
-/*
-string NTuples::toString() {
-  string str1 = "NTuples [mainNTuples=";
-  string str2 = ", SymmetryExpander=";
-  string str3 = "]";
-  for (int i=0; i<mainNTuples.size(); i++) {
-    string buf = to_string((int) mainNTuples[i]);
-    str1 += buf;
-  }
-  str1 += str2;
-  str1 += to_string((int) symmetryExpander);
-  str1 += str3;
-  return str1;
-}
-*/
-
 double NTuples::getValue(vector<double> input) {
   DefaultNTupleEvaluator evaluator;
   double v = 0;
-  //vector<double> temp;
-  //copy(input.begin(), input.end(), back_inserter(temp));
+  // vector<double> temp;
+  // copy(input.begin(), input.end(), back_inserter(temp));
 
   for (int i=0; i<2; i++) {
     for (int j=0; j<4; j++) {
       Game2048Board board(input);
       v += evaluator.evaluate(this, board);
-      rotateInputBoard(input);
+      rotateInputBoardInline(input);
     }
-    reflectInputBoard(input);
+    reflectInputBoardInline(input);
   }
   
   return v;
@@ -110,18 +94,33 @@ double NTuples::getValue(vector<double> input) {
 
 void NTuples::update(vector<double> input, double expectedValue, double learningRate) {
   DefaultNTupleEvaluator evaluator;
-  //vector<double> temp;
-  //copy(input.begin(), input.end(), back_inserter(temp));
+  // vector<double> temp;
+  // copy(input.begin(), input.end(), back_inserter(temp));
   double val = 0;
+  double eValue = 0;
+  double aValue = 0;
+
   for (int i=0; i<2; i++) {
     for (int j=0; j<4; j++) {
       Game2048Board board(input);
       val += evaluator.evaluate(this, board);
-      rotateInputBoard(input);
+      eValue += evaluator.eFuncEvaluate(this, board);
+      aValue += evaluator.aFuncEvaluate(this, board);
+      rotateInputBoardInline(input);
     }
-    reflectInputBoard(input);
+    reflectInputBoardInline(input);
   }
 
+  /*
+  double ratio = 1;
+  if (aValue!=0) {
+    ratio = abs(eValue)/aValue;
+  }
+  double CB = ratio*1000;
+  if (CB>1.2) CB = 1.2;
+  */
+  // cerr << "eValue=" << eValue << ", aValue=" << aValue << ", ratio=" << ratio << ", CB=" << CB << endl;
+  
   double error = expectedValue - val;
   double delta = error * learningRate;
 
@@ -129,16 +128,40 @@ void NTuples::update(vector<double> input, double expectedValue, double learning
     for (int j=0; j<4; j++) {
       Game2048Board board(input);
       for (int i=0; i<allNTuples.size(); i++) {
+	//cerr << "w=" << allNTuples[i].LUT[allNTuples[i].address(board)] << endl;
 	allNTuples[i].LUT[allNTuples[i].address(board)] += delta;
-	//cerr << "modified weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;
+	// cerr << "modified weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;
+	allNTuples[i].eFunc[allNTuples[i].address(board)] += delta;
+	allNTuples[i].aFunc[allNTuples[i].address(board)] += abs(delta);
       }
-      rotateInputBoard(input);
+      rotateInputBoardInline(input);
     }
-    reflectInputBoard(input);
+    reflectInputBoardInline(input);
   }
 }
 
-void NTuples::rotateInputBoard(vector<double> input) {
+vector<double> NTuples::rotateInputBoard(vector<double> input) {
+  vector<double> res(16);
+  for (int i=0; i<4; i++) {
+    for (int j=0; j<4; j++) {
+      res[i*4+j] = input[i+j*4];
+    }
+  }
+  return res;
+}
+
+vector<double> NTuples::reflectInputBoard(vector<double> input) {
+  vector<double> res(16);
+  for (int i=0; i<2; i++) {
+    for (int j=0; j<4; j++) {
+      res[i+j*4] = input[3-i+j*4];
+      res[3-i+j*4] = input[i+j*4];
+    }
+  }
+  return res;
+}
+
+void NTuples::rotateInputBoardInline(vector<double>& input) {
   vector<double> res(16);
   for (int i=0; i<4; i++) {
     for (int j=0; j<4; j++) {
@@ -148,7 +171,7 @@ void NTuples::rotateInputBoard(vector<double> input) {
   input = res;
 }
 
-void NTuples::reflectInputBoard(vector<double> input) {
+void NTuples::reflectInputBoardInline(vector<double>& input) {
   vector<double> res(16);
   for (int i=0; i<2; i++) {
     for (int j=0; j<4; j++) {

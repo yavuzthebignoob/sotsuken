@@ -27,6 +27,14 @@ double NTuple::valueFor(Game2048Board &board) {
   return LUT[address(board)];
 }
 
+double NTuple::valueForEFunc(Game2048Board &board) {
+  return eFunc[address(board)];
+}
+
+double NTuple::valueForAFunc(Game2048Board &board) {
+  return aFunc[address(board)];
+}
+
 int NTuple::address(Game2048Board &board) {
   int address = 0;
   for (int i=0; i<locations.size(); i++) {

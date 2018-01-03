@@ -29,3 +29,28 @@ double DefaultNTupleEvaluator::evaluate(NTuples* tuples, Game2048Board board) {
   // abort();
   return result;
 }
+
+double DefaultNTupleEvaluator::eFuncEvaluate(NTuples* tuples, Game2048Board board) {
+  double result = 0;
+  int size = tuples->allNTuples.size();
+  NTuple tuple;
+
+  for (int i=0; i<size; i++) {
+    double buf = tuples->allNTuples[i].valueForEFunc(board);
+    result += buf;
+  }
+
+  return result;
+}
+
+double DefaultNTupleEvaluator::aFuncEvaluate(NTuples* tuples, Game2048Board board) {
+  double result = 0;
+  int size = tuples->allNTuples.size();
+
+  for (int i=0; i<size; i++) {
+    double buf = tuples->allNTuples[i].valueForAFunc(board);
+    result += buf;
+  }
+
+  return result;
+}

@@ -7,6 +7,8 @@
 #define CHECK_INTERVAL 5000
 #define EVAL_EPISODES 1000
 #define GRADATION_EVAL_POINT -1
+#define LEARNING_RATE 0.01
+// originally assumed 0.00125 is good
 
 #define STEP_EVAL_POINT 900
 
@@ -63,6 +65,8 @@ ofstream gradScoreRel2048("./log/gs2048_"+date);
 ofstream gradScoreRel4096("./log/gs4096_"+date);
 */
 
+ofstream eaFuncOut("./log/eaFunc_"+date);
+
 int main() {
   cerr << "+++ 2048 N-tuple Network Player trainer +++" << endl;
 
@@ -93,7 +97,7 @@ int main() {
   // cerr << "squares done" << endl;
   NTuples vFunction = NTuples::add(&lines, &squares);
   // NTuples vFunction(lines);
-  // cerr << "vFunction done" << endl;
+  cerr << "NTuples building done" << endl;
   // cerr << lines.allNTuples[0].equals(vFunction.allNTuples[0]) << endl;
 
   // cerr << "squares' address: " << &(squares.allNTuples) << endl;
@@ -112,7 +116,8 @@ int main() {
   output << "** training parameter" << endl
 	 << "NUM_EPISODES   = " << NUM_EPISODES << endl
 	 << "CHECK_INTERVAL = " << CHECK_INTERVAL << endl
-	 << "EVAL_EPISODES  = " << EVAL_EPISODES << endl << endl;
+	 << "EVAL_EPISODES  = " << EVAL_EPISODES << endl
+	 << "LEARNING_RATE  = " << LEARNING_RATE << endl << endl;
   
   clock_t start = clock();
   time_t now = time(NULL);
@@ -157,7 +162,7 @@ int main() {
   for (int i = 0; i <= NUM_EPISODES; i++) {
     random();
     // original parameter: 0.001, 0.01
-    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
+    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, LEARNING_RATE, random);
     
     if (i%CHECK_INTERVAL == 0) {
       evaluatePerformance(tdlgame2048, &vFunction, EVAL_EPISODES, random, i);
@@ -233,10 +238,16 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
 
   bool isMoreThan9500 = false;
   int maxScore = 0;
+
+  eaFuncOut << "After " << numEpisodes << "games:" << endl;
   
   for (int i = 0; i < numEpisodes; i++) {
     random();
     TDLGame2048::Game2048Outcome res = game.playByAfterstates(vFunction, random);
+
+    eaFuncOut << "Score=" << res.score << ", eFunc[terminal]=" << res.eFuncVal
+	      << ", aFunc[terminal]=" << res.aFuncVal << ", ratio=" << abs(res.eFuncVal)/res.aFuncVal << endl;
+    
     if (GRADATION_EVAL_POINT==e) {
       // if (true)
       registerGradations(res, gradations, e);
