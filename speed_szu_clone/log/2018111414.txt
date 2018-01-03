@@ -1041,3 +1041,409 @@ avg ratio = 0.922
 maxTile   = 16384
 TIME      = 19:16:15 (28:53:45)
 
+After 715000 games:
+avg score = 149049
+max score = 299096
+avg ratio = 0.907
+maxTile   = 16384
+TIME      = 19:31:38 (29:9:8)
+
+After 720000 games:
+avg score = 132586
+max score = 298376
+avg ratio = 0.854
+maxTile   = 16384
+TIME      = 19:46:55 (29:24:24)
+
+After 725000 games:
+avg score = 157202
+max score = 296584
+avg ratio = 0.933
+maxTile   = 16384
+TIME      = 20:3:31 (29:41:0)
+
+After 730000 games:
+avg score = 131920
+max score = 286904
+avg ratio = 0.923
+maxTile   = 16384
+TIME      = 20:20:30 (29:57:58)
+
+After 735000 games:
+avg score = 152449
+max score = 299012
+avg ratio = 0.965
+maxTile   = 16384
+TIME      = 20:35:54 (30:13:23)
+
+After 740000 games:
+avg score = 155055
+max score = 303836
+avg ratio = 0.825
+maxTile   = 16384
+TIME      = 20:52:39 (30:30:7)
+
+After 745000 games:
+avg score = 174121
+max score = 341980
+avg ratio = 0.855
+maxTile   = 16384
+TIME      = 21:6:14 (30:43:42)
+
+After 750000 games:
+avg score = 174282
+max score = 359000
+avg ratio = 0.954
+maxTile   = 16384
+TIME      = 21:22:4 (30:59:31)
+
+After 755000 games:
+avg score = 160274
+max score = 348888
+avg ratio = 0.917
+maxTile   = 16384
+TIME      = 21:39:43 (31:17:10)
+
+After 760000 games:
+avg score = 157556
+max score = 303496
+avg ratio = 0.848
+maxTile   = 16384
+TIME      = 21:56:46 (31:34:12)
+
+After 765000 games:
+avg score = 139692
+max score = 295148
+avg ratio = 0.893
+maxTile   = 16384
+TIME      = 22:12:33 (31:49:59)
+
+After 770000 games:
+avg score = 144718
+max score = 349076
+avg ratio = 0.893
+maxTile   = 16384
+TIME      = 22:29:5 (32:6:30)
+
+After 775000 games:
+avg score = 172297
+max score = 393428
+avg ratio = 0.934
+maxTile   = 16384
+TIME      = 22:45:58 (32:23:23)
+
+After 780000 games:
+avg score = 156080
+max score = 344568
+avg ratio = 0.933
+maxTile   = 16384
+TIME      = 23:2:21 (32:39:46)
+
+After 785000 games:
+avg score = 156070
+max score = 339224
+avg ratio = 0.865
+maxTile   = 16384
+TIME      = 23:18:11 (32:55:35)
+
+After 790000 games:
+avg score = 167453
+max score = 294564
+avg ratio = 0.956
+maxTile   = 16384
+TIME      = 23:34:2 (33:11:26)
+
+After 795000 games:
+avg score = 143326
+max score = 295940
+avg ratio = 0.88
+maxTile   = 16384
+TIME      = 23:50:54 (33:28:18)
+
+After 800000 games:
+avg score = 159595
+max score = 366044
+avg ratio = 0.878
+maxTile   = 16384
+TIME      = 0:9:20 (33:46:43)
+
+After 805000 games:
+avg score = 137855
+max score = 296664
+avg ratio = 0.935
+maxTile   = 16384
+TIME      = 0:27:42 (34:5:5)
+
+After 810000 games:
+avg score = 131901
+max score = 298964
+avg ratio = 0.855
+maxTile   = 16384
+TIME      = 0:43:25 (34:20:48)
+
+After 815000 games:
+avg score = 156435
+max score = 348168
+avg ratio = 0.81
+maxTile   = 16384
+TIME      = 0:59:59 (34:37:21)
+
+After 820000 games:
+avg score = 163195
+max score = 294168
+avg ratio = 0.858
+maxTile   = 16384
+TIME      = 1:17:46 (34:55:8)
+
+After 825000 games:
+avg score = 155491
+max score = 295000
+avg ratio = 0.949
+maxTile   = 16384
+TIME      = 1:34:19 (35:11:40)
+
+After 830000 games:
+avg score = 151487
+max score = 297180
+avg ratio = 0.922
+maxTile   = 16384
+TIME      = 1:51:39 (35:29:0)
+
+After 835000 games:
+avg score = 146578
+max score = 301740
+avg ratio = 0.928
+maxTile   = 16384
+TIME      = 2:7:55 (35:45:16)
+
+After 840000 games:
+avg score = 160737
+max score = 305732
+avg ratio = 0.901
+maxTile   = 16384
+TIME      = 2:23:25 (36:0:45)
+
+After 845000 games:
+avg score = 155625
+max score = 300680
+avg ratio = 0.949
+maxTile   = 16384
+TIME      = 2:40:48 (36:18:8)
+
+After 850000 games:
+avg score = 149333
+max score = 347596
+avg ratio = 0.838
+maxTile   = 16384
+TIME      = 2:55:57 (36:33:17)
+
+After 855000 games:
+avg score = 128753
+max score = 293656
+avg ratio = 0.942
+maxTile   = 16384
+TIME      = 3:13:3 (36:50:23)
+
+After 860000 games:
+avg score = 146069
+max score = 293980
+avg ratio = 0.904
+maxTile   = 16384
+TIME      = 3:30:31 (37:7:50)
+
+After 865000 games:
+avg score = 159944
+max score = 299012
+avg ratio = 0.94
+maxTile   = 16384
+TIME      = 3:47:34 (37:24:53)
+
+After 870000 games:
+avg score = 140274
+max score = 298888
+avg ratio = 0.868
+maxTile   = 16384
+TIME      = 4:4:24 (37:41:43)
+
+After 875000 games:
+avg score = 162220
+max score = 356620
+avg ratio = 0.937
+maxTile   = 16384
+TIME      = 4:21:28 (37:58:47)
+
+After 880000 games:
+avg score = 136208
+max score = 301556
+avg ratio = 0.849
+maxTile   = 16384
+TIME      = 4:38:35 (38:15:53)
+
+After 885000 games:
+avg score = 152114
+max score = 296708
+avg ratio = 0.965
+maxTile   = 16384
+TIME      = 4:56:13 (38:33:31)
+
+After 890000 games:
+avg score = 197065
+max score = 344564
+avg ratio = 0.853
+maxTile   = 16384
+TIME      = 5:11:49 (38:49:6)
+
+After 895000 games:
+avg score = 139552
+max score = 296272
+avg ratio = 0.916
+maxTile   = 16384
+TIME      = 5:28:3 (39:5:20)
+
+After 900000 games:
+avg score = 147752
+max score = 360856
+avg ratio = 0.945
+maxTile   = 16384
+TIME      = 5:44:22 (39:21:39)
+
+After 905000 games:
+avg score = 146077
+max score = 298120
+avg ratio = 0.966
+maxTile   = 16384
+TIME      = 6:0:57 (39:38:13)
+
+After 910000 games:
+avg score = 161696
+max score = 349748
+avg ratio = 0.912
+maxTile   = 16384
+TIME      = 6:19:23 (39:56:39)
+
+After 915000 games:
+avg score = 152390
+max score = 349912
+avg ratio = 0.952
+maxTile   = 16384
+TIME      = 6:37:8 (40:14:24)
+
+After 920000 games:
+avg score = 165226
+max score = 296360
+avg ratio = 0.934
+maxTile   = 16384
+TIME      = 6:54:51 (40:32:7)
+
+After 925000 games:
+avg score = 135544
+max score = 294932
+avg ratio = 0.867
+maxTile   = 16384
+TIME      = 7:10:29 (40:47:44)
+
+After 930000 games:
+avg score = 145782
+max score = 299092
+avg ratio = 0.946
+maxTile   = 16384
+TIME      = 7:27:6 (41:4:21)
+
+After 935000 games:
+avg score = 156569
+max score = 348168
+avg ratio = 0.921
+maxTile   = 16384
+TIME      = 7:44:2 (41:21:16)
+
+After 940000 games:
+avg score = 139056
+max score = 340552
+avg ratio = 0.883
+maxTile   = 16384
+TIME      = 8:1:43 (41:38:57)
+
+After 945000 games:
+avg score = 145199
+max score = 253976
+avg ratio = 0.99
+maxTile   = 16384
+TIME      = 8:17:55 (41:55:9)
+
+After 950000 games:
+avg score = 149376
+max score = 297988
+avg ratio = 0.927
+maxTile   = 16384
+TIME      = 8:33:56 (42:11:10)
+
+After 955000 games:
+avg score = 149741
+max score = 294996
+avg ratio = 0.935
+maxTile   = 16384
+TIME      = 8:52:21 (42:29:35)
+
+After 960000 games:
+avg score = 136165
+max score = 292536
+avg ratio = 0.862
+maxTile   = 16384
+TIME      = 9:8:14 (42:45:27)
+
+After 965000 games:
+avg score = 158527
+max score = 294996
+avg ratio = 0.933
+maxTile   = 16384
+TIME      = 9:25:5 (43:2:18)
+
+After 970000 games:
+avg score = 152119
+max score = 298968
+avg ratio = 0.936
+maxTile   = 16384
+TIME      = 9:41:5 (43:18:17)
+
+After 975000 games:
+avg score = 140413
+max score = 298728
+avg ratio = 0.935
+maxTile   = 16384
+TIME      = 9:56:22 (43:33:34)
+
+After 980000 games:
+avg score = 142713
+max score = 308052
+avg ratio = 0.849
+maxTile   = 16384
+TIME      = 10:12:1 (43:49:13)
+
+After 985000 games:
+avg score = 146542
+max score = 294632
+avg ratio = 0.927
+maxTile   = 16384
+TIME      = 10:30:6 (44:7:18)
+
+After 990000 games:
+avg score = 147558
+max score = 296344
+avg ratio = 0.841
+maxTile   = 16384
+TIME      = 10:46:50 (44:24:2)
+
+After 995000 games:
+avg score = 147405
+max score = 294996
+avg ratio = 0.984
+maxTile   = 16384
+TIME      = 11:4:5 (44:41:16)
+
+After 1000000 games:
+avg score = 167763
+max score = 373764
+avg ratio = 0.901
+maxTile   = 16384
+TIME      = 11:22:0 (44:59:11)
+
