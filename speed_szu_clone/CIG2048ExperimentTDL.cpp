@@ -157,7 +157,7 @@ int main() {
   for (int i = 0; i <= NUM_EPISODES; i++) {
     random();
     // original parameter: 0.001, 0.01
-    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.0025, random);
+    tdlgame2048.TDAfterstateLearn(&vFunction, 0.001, 0.01, random);
     
     if (i%CHECK_INTERVAL == 0) {
       evaluatePerformance(tdlgame2048, &vFunction, EVAL_EPISODES, random, i);
