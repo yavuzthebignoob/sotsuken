@@ -8,6 +8,9 @@
 \keywords{ゲームAI，機械学習}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{float}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
 
 \begin{document}
 \maketitle
@@ -24,7 +27,7 @@
 モチベーションや2048の基本ルール・指標について説明します．
 
 \chapter{先行研究の紹介}
-既存研究が使用している手法とプレイヤの成績について説明します．
+既存研究が使用している手法とプレイヤの成績について説明します．（編注・提出原稿では以下は削除）なお，JaskowskiはJa\'{s}kowskiが正しい表記ですが，差し当たりJaskowskiと表記し，最後にまとめて正しい表記に置換します．
 
 \section{Szubert \& Jaskowski (2014)}
 Szubert \& Jaskowskiは，TD学習を用いたプレイヤの訓練とnタプルネットワークを用いた価値関数の表現を組み合わせることによって，人間の知識やゲーム木探索を使用しないで十分強い2048プレイヤを実装することに成功した。
@@ -211,8 +214,106 @@ Szubert \& JaskowskiおよびWuはTD学習においてTD(0)を使用していた
 \section{Jaskowski (2017)}
 Jaskowskiは，Yehまでの2048プレイヤの改良の流れを受け継ぎながら，これまで用いられてきたTD学習や訓練・検証のステージングなどに対して改良を加えつつ，新たな手法を加えることでさらに優秀なプレイヤの実装を目指した．
 
-\subsection{Temporal Coherence(TC)学習}
+\subsection{自動的な学習率決定アルゴリズムの適用}
+JaskowskiはTD(${\lambda}$)を使用する点はYehの研究を継承したが，TD学習で最も重要なパラメタである学習率を決定するにあたり，新たな手法を提案した．すなわち，Yehの研究では手動で学習率が設定されていたのに対して，Jaskowskiはこれまでに提案されてきたオンライン適応学習による学習率決定のアルゴリズムを2048にも適用することを試みた．
 
+Bagheri et al.によるConnect 4への適用の研究において，これらの学習率決定アルゴリズムはいずれも標準的なTD学習よりも良い成績を残すことが明らかとなったが，一方で長期的に見るとアルゴリズム間の差はそこまで大きいものにはならなかった．そこで，Jaskowskiは最もシンプルなTemporal Coherence（TC(${\lambda}$)）と，より先進的でチューニングの必要がないAutostepを選択して実験することにした．
+
+\subsubsection{TC(${\lambda}$)}
+これまでのTD(${\lambda}$)では実験者が学習率${\alpha}$を手動で決定していたが，TC(${\lambda}$)においては，手動で決定される${\alpha}$の代わりに以下のパラメータを用いて学習率${\gamma}$を決定する．
+
+\begin{itemize}
+\item \textbf{メタ学習率${\beta}$}：実験者が手動で設定するパラメータ
+\item \textbf{累積誤差関数$E(s)$}：これまでTD学習で価値関数$V(s)$の更新を行う際に用いてきた誤差${\delta}_t = r_{t+1} + V(s_{t+1}) - V(s_t)$を，$V(s)$の更新を行う際に$E(s)$に対して加算する．盤面$s$は価値関数と同様に，nタプルネットワークを用いて近似される
+\item \textbf{累積絶対誤差関数$A(s)$}：$V(s)$の更新を行う際に，${\delta}_t$の絶対値を$A(s)$に対して加算する．盤面$s$は価値関数と同様に，nタプルネットワークを用いて近似される
+\item \textbf{適応学習率${\alpha}$}：$E(s)$と$A(s)$の値によって自動的に決定されるパラメータ
+\end{itemize}
+
+適応学習率${\alpha}$は以下の式で求められる．
+
+\[
+{\alpha} = 
+\begin{cases}
+\dfrac{|E_i[s'_k]|}{A_i[s'k]}, & \text{if $A_i[s'k] \neq 0$} \\
+1 & \text{otherwise}
+\end{cases}
+\]
+
+また，学習率${\gamma}$は以下の式で求められる．
+
+\[
+{\gamma} = \dfrac{{\alpha} \times {\beta}}{m} \text{（$m$はnタプルネットワークに格納されているタプルの数）}
+\]
+
+このような学習率の求め方をすることによって，累積誤差と累積絶対誤差の値が近い場合は学習率が大きく，逆に累積誤差と累積絶対誤差の差が大きくなると学習率は小さくなる．ある盤面$s$に対して累積誤差$E(s)$と累積絶対誤差$A(s)$の差が大きいということは，$s$に対して負の値の${\delta}_t$が加算されることが多くなっているということであり，すなわちそれはこの盤面に対しての価値関数の評価が上手く行っていないということであるから，学習率を低くして価値関数の更新を穏やかに行うのは理にかなっていると考えられる．
+
+\subsubsection{Autostep}
+AutostepはMahmoodによって提案されたアルゴリズムで，SuttonによるIDBDの拡張にあたる．Autostepでは，ステップサイズの上限を定め，もしステップサイズが大きくなりすぎていることが検知されたらステップサイズ値を小さくするという方法で，IDBDを改良したものである．Autostepでは3種類のパラメータを設定する必要があり，Jaskowskiの研究では，このうち初期ステップサイズ${\alpha}_{init} = 1.0$，割引率${\tau} = 0.0001$は固定され，メタ学習率${\mu}$の値をいくつか選択して実験が行われた．
+
+\subsubsection{結果}
+Jaskowskiは，前述の2つの自動的な学習率決定アルゴリズムに加え，従来のTD学習\footnote{なお，TC(${\lambda}$)およびTD(${\lambda}$)においては，${\lambda}=0.5$とした}を採用した合計3種類の手法で，1手先読み（すなわち，先読みを行わない）と3手先読みの2つの条件で実験を行った．その結果，全ての学習率決定手法のうち，1手先読みの場合はTC(${\lambda}$)で${\beta}=1.0$の時に平均スコアが最も良くなり，3手先読みの場合はTC(${\lambda}$)で${\beta}=0.5$の時に平均スコアが最も良くなった．1手先読み・3手先読みの場合ともに，TD(${\lambda}$)およびAutostepはどのように学習率・メタ学習率を設定してもTC(${\lambda}$)に優る平均スコアを達成することはできなかった．
+
+Jaskowskiは，Autostepは定常的な教師データが存在する作業に特化しているため，訓練データが定常的ではない2048にはあまり適していなかったと考えている．また，TC(${\lambda}$)およびAutostep両者に共通する欠点として，何かしらの近似した盤面に対応する重みを保持する必要があることから，TD(${\lambda}$)よりも多くのnタプルネットワークを保持しなければならないため，計算時間が長くなってしまうことを指摘している．
+
+\subsection{Multi-Stage Weight Promotion}
+JaskowskiはWuが提唱したMS-TD学習の考え方を概ね継承したが，ステージングと重みの選択において細かい改良を加えた．
+
+\subsubsection{新しいステージング}
+Wuでは3ステージ，Yehでは5ステージに分けることが最善であるとされていたステージングについて，Jaskowskiは$2^g$ステージに分け（$g$は正の整数），また各ステージの「長さ」$l$を$l = 2^{15+1-g}$と定義した．例えば$g=4$の時，長さ$l=2^{12}=4096$である．この場合，以下のようなステージングがなされる．
+
+\begin{enumerate}
+\item ステージ1：初期盤面から$T_{4096}$まで
+\item ステージ2：$T_{4096}$から$T_{8192}$まで
+\item ステージ3：$T_{8192}$から$T_{8192+4096}$まで
+\item ステージ4：$T_{8192+4096}$から$T_{16384}$まで
+\item ...
+\item ステージ16：$T_{32768+16384+8192+4096}$から$T_{65536}$まで
+\end{enumerate}
+
+なお，TC(${\lambda}$)で導入した累積誤差関数$E$と累積絶対誤差関数$A$についても同様にステージングを行って重みを保持する．
+
+\subsubsection{Weight Promotion}
+WuおよびYehのステージ分けにおいては，新しいステージの学習を始める際に再び何も学習していない状態からnタプルネットワークの訓練を行わなければならなかったため，汎化性能が著しく損なわれていた．この汎化性能の弱体化はステージ数が多くなればなるほど進むため，Yehはステージを多くすれば多くするほど学習器の性能は悪くなることを指摘しており，その結果5ステージに分けるのが最も良いと考えたのである．この問題を「ステージ数を多くしない」以外の方法で解決するために，Jaskowskiは各ステージの初期状態の評価値を，前のステージの同じ盤面から引き継ぐことにした．Jaskowskiはこの方策をWeight Promotionと呼び，上記の多段ステージ分けとともに提案した．
+
+\subsubsection{結果}
+Jaskowskiは，以下の6つの条件について，1手先読みと3手先読みの2つの条件を掛けあわせて合計12の実験を行った．なお，WPはWeight Promotionを適用したことを示し，6. 以外の5つの実験においては全て共通の5つの6タプルによる実験を行った．
+
+\begin{enumerate}
+\item ステージ分けを行わない（純然たるTC(${\lambda}$)）
+\item $g=4$
+\item $g=3, WP$
+\item $g=4, WP$
+\item $g=5, WP$
+\item 5つの7タプルによるTC(${\lambda}$)で，ステージ分けを行わない
+\end{enumerate}
+
+この結果，1手先読みでは6. の7タプルによるTC(${\lambda}$)が最も良い成績を収め，1. に関しても2. と5. の実験には成績が優るなど，ステージ分けに対しては顕著な効果が見られなかった．一方3手先読みでは4. の実験が最も良い成績を収め，ステージ分けを行わない1. と6. の実験よりも高い平均スコアを得た．また学習プロセスに注目すると，ステージ分けを行う実験では平均スコアが単調増加していたのに対し，ステージ分けを行わない場合は平均スコアが逆に悪くなっていることが確認された．
+
+以上の結果より，Jaskowskiはステージ分けを行わない学習器は1手先読みの条件に対して過学習が起きてしまうが，ステージ分けを行う学習器は過学習に耐性があり，成績の悪化は起こらなくなると結論付けた．なお，Weight Promotionについては1手先読みに対しても3手先読みに対しても適用することでより良い成績が得られることが確認された．
+
+\subsection{Carousel Shapingと余剰タプルの追加}
+\subsubsection{Carousel Shaping}
+前節のステージ分けにおける改良を行った際，従来の学習器は1手先読みの条件の下で過学習を行ってしまい，3手先読みでは学習を重ねるに従って成績を落としてしまうという状況が確認された．これは従来のMulti-Stage学習ではゲームで重要になる終盤のステージでの学習時間が少なくなってしまうことが原因であると考えたJaskowskiは，終盤のステージにおける学習時間を確保するため，Carousel Shapingという新たなMulti-Stage学習の手法を提案した．Carousel Shapingの擬似コードは以下の通りである．
+
+\begin{algorithm}
+\caption{Carousel Shaping}
+\label{alg1}
+\begin{algorithmic}[1]
+\STATE \textbf{function} \textsc{CarouselShaping}
+\STATE 　$stage \leftarrow 1$
+\STATE 　$initstates[x] = \emptyset$ \textbf{for} $x \in \{1...2^g\}$
+\STATE 　\textbf{while not} enough learning \textbf{do}
+\STATE 　　\textbf{if} $stage = 1$ \textbf{then}
+\STATE 　　　$s \leftarrow$ \textsc{InitialState()}
+\STATE 　　\textbf{else}
+\STATE 　　　$s \leftarrow$ \textsc{RandomChoice}$(initstates[stage])$
+\STATE 　　\textsc{LearnFromEpisode}$(s)$ $\triangleright$ Updates $initstates$
+\STATE 　　$stage \leftarrow stage + 1$
+\STATE 　　\textbf{if} $stage > 2^g$ \textbf{or} $initstates[stage] = \emptyset$ \textbf{then}
+\STATE 　　　$stage \leftarrow 1$
+\STATE \textbf{end function}
+\end{algorithmic}
+\end{algorithm}
 
 \chapter{本研究のアイデア}
 本研究で導入しようとしている手法のアイデアについて説明します．

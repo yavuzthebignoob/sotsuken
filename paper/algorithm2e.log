@@ -1,0 +1,29 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2017.12.26)  4 JAN 2018 14:00
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**algorithm2e.sty
+(./algorithm2e.sty
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 12 language(s) loaded.
+
+LaTeX Warning: You have requested package `',
+               but the package provides `algorithm2e'.
+
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+! You can't use `\spacefactor' in vertical mode.
+\@->\spacefactor 
+                 \@m {}
+l.888 \@
+        makeother\*% some package redefined it as a letter (as color.sty)
+? x
+ 
+Here is how much of TeX's memory you used:
+ 7 strings out of 494498
+ 159 string characters out of 6172425
+ 46609 words of memory out of 5000000
+ 3523 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 264 hyphenation exceptions out of 8191
+ 7i,0n,8p,144b,10s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.
