@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  4 JAN 2018 19:38
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  4 JAN 2018 23:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -233,7 +233,7 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 
 (./master.toc
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 3.
+(Font)              scaled to size 4.805pt on input line 2.
 )
 \tf@toc=\write3
 \openout3 = `master.toc'.
@@ -268,82 +268,82 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 19.9311pt on input line 26.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 19.9311pt on input line 26.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 37.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 37.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 37.
 [1
 
-]
+] [2]
 第2章
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 34.
+(Font)              scaled to size 11.53198pt on input line 58.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 34.
+(Font)              scaled to size 11.53198pt on input line 58.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 34.
+(Font)              scaled to size 11.53198pt on input line 58.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 34.
-[2
+(Font)              scaled to size 11.53198pt on input line 58.
+[3
 
 ]
 File: figure_001.png Graphic file (type bmp)
- <figure_001.png> [3]
+ <figure_001.png> [4]
 File: figure_002.png Graphic file (type bmp)
- <figure_002.png> [4]
+ <figure_002.png> [5]
 File: figure_003.png Graphic file (type bmp)
- <figure_003.png> [5]
-LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 117.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 117.
-LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 117.
- [6]
+ <figure_003.png> [6] [7]
 File: figure_004.png Graphic file (type bmp)
 
-<figure_004.png> [7]
+<figure_004.png> [8]
 File: figure_005.png Graphic file (type bmp)
- <figure_005.png> [8] [9] [10]
+ <figure_005.png> [9] [10] [11]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 226.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 250.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 226.
+(Font)              scaled to size 9.60999pt on input line 250.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 226.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 250.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 226.
+(Font)              scaled to size 9.60999pt on input line 250.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 237.
- [11] [12] [13]
+(Font)              scaled to size 4.805pt on input line 261.
+ [12] [13] [14]
 LaTeX Font Info:    Font shape `JT1/mc/m/sc' in size <10> not available
-(Font)              Font shape `JT1/mc/m/n' tried instead on input line 302.
+(Font)              Font shape `JT1/mc/m/n' tried instead on input line 326.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 302.
+(Font)              scaled to size 9.60999pt on input line 326.
 LaTeX Font Info:    Font shape `JY1/mc/m/sc' in size <10> not available
-(Font)              Font shape `JY1/mc/m/n' tried instead on input line 302.
+(Font)              Font shape `JY1/mc/m/n' tried instead on input line 326.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 302.
- [14]
+(Font)              scaled to size 9.60999pt on input line 326.
+ [15]
+[16]
 第3章
-[15
-
-]
-第4章
-[16
-
-]
-第5章
 [17
 
 ]
-第6章
+第4章
 [18
 
-] [19
+]
+第5章
+[19
+
+]
+第6章
+[20
+
+] [21
 
 
-] [20
+] [22
 
 ]
 付録A
-[21
+[23
 
 ] (./master.aux)
 
@@ -353,10 +353,10 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  2013 strings out of 494865
  23923 string characters out of 6179768
- 84447 words of memory out of 5000000
+ 85447 words of memory out of 5000000
  5423 multiletter control sequences out of 15000+600000
  24448 words of font info for 108 fonts, out of 8000000 for 9000
  269 hyphenation exceptions out of 8191
- 29i,12n,21p,776b,412s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,12n,21p,853b,412s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on master.dvi (27 pages, 56240 bytes).
+Output written on master.dvi (29 pages, 72300 bytes).

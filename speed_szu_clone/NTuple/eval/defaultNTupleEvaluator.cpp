@@ -30,6 +30,7 @@ double DefaultNTupleEvaluator::evaluate(NTuples* tuples, Game2048Board board) {
   return result;
 }
 
+/*
 double DefaultNTupleEvaluator::eFuncEvaluate(NTuples* tuples, Game2048Board board) {
   double result = 0;
   int size = tuples->allNTuples.size();
@@ -54,3 +55,4 @@ double DefaultNTupleEvaluator::aFuncEvaluate(NTuples* tuples, Game2048Board boar
 
   return result;
 }
+*/

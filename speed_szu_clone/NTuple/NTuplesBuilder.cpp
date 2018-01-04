@@ -30,6 +30,7 @@ NTuples NTuplesBuilder::buildNTuples() {
       newMain[i].push_back(main[i][j]);
     }
   }
+  cerr << "hehehe" << endl;
   /*
   if (this->removeSubtuples) {
     cerr << "removeSubtuples = true" << endl;
@@ -37,6 +38,7 @@ NTuples NTuplesBuilder::buildNTuples() {
   }
   */
   vector<NTuple> mainSorted = createNTuplesFromLocations(newMain);
+  cerr << "hehehehe" << endl;
   NTuples res(mainSorted, expander);
   return res;
 }

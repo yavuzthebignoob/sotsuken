@@ -22,20 +22,20 @@ public:
     vector<double> eval;
     vector<double> scorevec;
     vector<int> maxtilevessel;
-    double eFuncVal;
-    double aFuncVal;
+    //double eFuncVal;
+    //double aFuncVal;
 
   public:
-    Game2048Outcome(int s, int m, vector<double> &g, vector<double> &e, vector<double> &ss, vector<int> &mt,
-		    double ee, double aa) {
+    Game2048Outcome(int s, int m, vector<double> &g, vector<double> &e, vector<double> &ss, vector<int> &mt) {
+		    //double ee, double aa) {
       this->score = s;
       this->maxTile = m;
       copy(g.begin(), g.end(), back_inserter(grad));
       copy(e.begin(), e.end(), back_inserter(eval));
       copy(ss.begin(), ss.end(), back_inserter(scorevec));
       copy(mt.begin(), mt.end(), back_inserter(maxtilevessel));
-      this->eFuncVal = ee;
-      this->aFuncVal = aa;
+      //this->eFuncVal = ee;
+      //this->aFuncVal = aa;
     }
 
   public:

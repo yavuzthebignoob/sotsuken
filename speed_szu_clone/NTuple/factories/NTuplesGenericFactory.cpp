@@ -158,6 +158,7 @@ NTuples NTuplesGenericFactory::createGoodLines(mt19937 random) {
     builder.addTuple(straights[i].toLocations(boardSize));
   }
 
+  cerr << "here" << endl;
   NTuples foo(builder.buildNTuples());
 
   return foo;
