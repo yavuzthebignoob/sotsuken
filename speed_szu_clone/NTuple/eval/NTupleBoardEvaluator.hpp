@@ -11,7 +11,7 @@ class NTuples;
 
 class NTupleBoardEvaluator {
 public:
-  virtual double evaluate(NTuples* tuples, Game2048Board board) = 0;
+  virtual double evaluate(NTuples* tuples, Game2048Board board, bool flag) = 0;
 };
 
 #endif

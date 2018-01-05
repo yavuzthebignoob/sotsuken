@@ -79,7 +79,7 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
       // maxTile end here
       */
 
-    
+      
       // criteria: sumScore
       if (step==1) {
 	value *= 1.2;
@@ -97,6 +97,7 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
 	value *= 1.2;
       }
       // sumScore end here
+      
       
     }
     
@@ -143,6 +144,7 @@ TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, 
     // stepcntr++;
   }
 
+  /*
   vector<double> terminal = state.getFeatures();
   DefaultNTupleEvaluator evaluator;
   double ee = 0;
@@ -156,7 +158,8 @@ TDLGame2048::Game2048Outcome TDLGame2048::playByAfterstates(NTuples* vFunction, 
       vFunction->rotateInputBoard(terminal);
     }
     vFunction->reflectInputBoard(terminal);
-  }
+    }
+  */
   
   // state.printHumanReadable();
   TDLGame2048::Game2048Outcome res(sumRewards, state.getMaxTile(), gradation, evalweights, scorevessel,
