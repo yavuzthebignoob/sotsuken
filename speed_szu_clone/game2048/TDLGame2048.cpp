@@ -106,7 +106,8 @@ Transition TDLGame2048::chooseBestTransitionAfterstatePlay(State2048 state, NTup
       bestValue = value;
     }
   }
-  
+
+  //   cerr << "bestValue=" << bestValue << endl;
   return bestTransition;
 }
 
@@ -185,7 +186,7 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
       transition = game.computeTransition(state, randomAction);
     }
     else {
-      transition = chooseBestTransitionAfterstatePlay(state, vFunction, stepcntr);
+      transition = chooseBestTransitionAfterstate(state, vFunction, stepcntr);
     }
     sumRewards += transition.reward;
     if (sumRewards>=60000 && sumRewards<70000) {
@@ -214,9 +215,8 @@ void TDLGame2048::TDAfterstateLearn(NTuples* vFunction, double explorationRate, 
       }
     }
 
-    if (badFlag==false) {
-      vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
-    }
+    vFunction->update(transition.afterState.getFeatures(), correctActionValue, learningRate);
+
     state = nextState;
   }
   // cerr << "training-game terminated" << endl;

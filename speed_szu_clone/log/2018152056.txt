@@ -1,0 +1,26 @@
+* random seed = 679587884
+
+* Training Performance
+** vFunction's mainNTuples
+loc = 7 13 19 20 25 26
+loc = 8 14 20 21 26 27
+loc = 8 9 14 15 20 21
+loc = 9 10 15 16 21 22
+
+** vFunction's total weights = 45562500
+
+** training parameter
+NUM_EPISODES   = 1000000
+CHECK_INTERVAL = 5000
+EVAL_EPISODES  = 1000
+LEARNING_RATE  = 0.01
+
+Learning start: 20:57:15
+
+After 0 games:
+avg score = 2786.98
+max score = 12668
+avg ratio = 0
+maxTile   = 1024
+TIME      = 20:57:39 (0:0:23)
+

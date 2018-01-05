@@ -52,15 +52,16 @@
 \contentsline {subsubsection}{余剰タプルの追加}{19}
 \contentsline {subsection}{\numberline {2.5.4}結果}{19}
 \contentsline {chapter}{\numberline {第3章}本研究のアイデア}{20}
-\contentsline {section}{\numberline {3.1}人間による2048の方策}{20}
-\contentsline {section}{\numberline {3.2}corner bonus}{20}
-\contentsline {chapter}{\numberline {第4章}提案と実装}{21}
-\contentsline {section}{\numberline {4.1}corner bonusの2048プレイヤへの導入}{21}
-\contentsline {chapter}{\numberline {第5章}実験}{22}
-\contentsline {section}{\numberline {5.1}予備実験}{22}
-\contentsline {section}{\numberline {5.2}CBを適用する箇所の検討}{22}
-\contentsline {section}{\numberline {5.3}CBを変更する箇所の検討}{22}
-\contentsline {chapter}{\numberline {第6章}考察と結論}{23}
-\contentsline {chapter}{謝辞}{24}
-\contentsline {chapter}{参考文献}{25}
-\contentsline {chapter}{\numberline {付録A}}{26}
+\contentsline {section}{\numberline {3.1}base方策}{20}
+\contentsline {section}{\numberline {3.2}array方策}{21}
+\contentsline {section}{\numberline {3.3}maximum-in-corner方策}{21}
+\contentsline {chapter}{\numberline {第4章}提案と実装}{23}
+\contentsline {section}{\numberline {4.1}corner bonusの2048プレイヤへの導入}{23}
+\contentsline {chapter}{\numberline {第5章}実験}{24}
+\contentsline {section}{\numberline {5.1}予備実験}{24}
+\contentsline {section}{\numberline {5.2}CBを適用する箇所の検討}{24}
+\contentsline {section}{\numberline {5.3}CBを変更する箇所の検討}{24}
+\contentsline {chapter}{\numberline {第6章}考察と結論}{25}
+\contentsline {chapter}{謝辞}{26}
+\contentsline {chapter}{参考文献}{27}
+\contentsline {chapter}{\numberline {付録A}}{28}
