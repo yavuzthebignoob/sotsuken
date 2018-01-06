@@ -16,9 +16,11 @@
 \@writefile{toc}{\contentsline {subsubsection}{ランダムタイル}{3}}
 \@writefile{toc}{\contentsline {subsubsection}{報酬（\textit  {reward}）とスコア}{3}}
 \@writefile{toc}{\contentsline {subsubsection}{プレイ}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{学習ゲーム}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{検証ゲーム}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}ゲームとプレイヤ評価の流れ}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}2048で重要な指標}{4}}
-\@writefile{toc}{\contentsline {subsubsection}{$max tile$}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}2048で重要な指標}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{$max tile$}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{勝率}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{スコア}{5}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {第2章}先行研究の紹介}{6}}
@@ -79,25 +81,38 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {第4章}提案と実装}{23}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}corner bonusの2048プレイヤへの導入}{23}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}実験}{24}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}maximum-in-corner方策の導入}{23}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}実装}{24}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Temporal Difference Learning (TD(0))}}{25}}
+\newlabel{alg2}{{2}{25}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Maximum-in-corner Policy}}{25}}
+\newlabel{alg3}{{3}{25}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}実験}{26}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}予備実験}{24}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}CBを適用する箇所の検討}{24}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}CBを変更する箇所の検討}{24}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}考察と結論}{25}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}実験1：常に${\rho }=1.2$とする}{26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces 実験1の結果}}{27}}
+\newlabel{figure_006}{{5.1}{27}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}実験2：2つの${\rho }$の値を用いる}{27}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces 実験2の結果 - 検証ゲームへのmaximum-in-corner方策の適用}}{28}}
+\newlabel{figure_007}{{5.2}{28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces 実験2の結果 - 学習ゲームへのmaximum-in-corner方策の適用}}{29}}
+\newlabel{figure_008}{{5.3}{29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces 実験2の結果 - 検証・学習ゲームへのmaximum-in-corner方策の適用}}{29}}
+\newlabel{figure_009}{{5.4}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}実験3：学習率および学習ゲーム数を変更する}{29}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}考察と結論}{31}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{謝辞}{26}}
+\@writefile{toc}{\contentsline {chapter}{謝辞}{32}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{}{1}
 \bibcite{}{2}
-\@writefile{toc}{\contentsline {chapter}{参考文献}{27}}
+\@writefile{toc}{\contentsline {chapter}{参考文献}{33}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {付録A}}{28}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {付録A}}{34}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \gdef \@lastoftotalpage{0}

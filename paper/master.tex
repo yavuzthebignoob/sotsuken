@@ -75,6 +75,12 @@ ${\nu}$という数が書かれたタイルのことを${\nu}$-タイルと呼�
 \item プレイヤは，1回のプレイの間，アクション選択を行うことで盤面を操作することができる．なお，プレイヤはアクション選択の結果行われる遷移の後どのような盤面になるのか計算して求めることはできるが，ランダムタイル生成後にどのような盤面になるかを知ることはできない（確率的に予想することはできる）．
 \end{itemize}
 
+\subsubsection{学習ゲーム}
+学習器を訓練するために行うゲームのことで，価値関数などのパラメータの更新を行いながらゲームを進める．ゲームを開始してから終末盤面に到達するまでを1ゲームと数え，1ゲームが終了したら次の学習ゲームに進む．本研究および先行研究においては，1回の実験あたり100,000ゲーム，500,000ゲーム，もしくは1,000,000ゲームの学習ゲームを行うようになっており，$n$ゲーム学習するごとに検証ゲームを$m$ゲーム行うことになっている．本研究では$n=5000$としている．
+
+\subsubsection{検証ゲーム}
+訓練された学習器を用いてゲームを行う．この際，価値関数などのパラメータは参照するだけで更新は行わない．学習中に検証ゲームを行うインターバルと検証ゲームを行う回数$m$は指定されており，本研究では$m=1000$としている．
+
 \subsection{ゲームとプレイヤ評価の流れ}
 2048において，以下の手順を「1ゲーム」と数える．
 
@@ -435,29 +441,217 @@ Jaskowskiが導入した最後の手法が余剰タプルの追加（Redundant E
 base方策およびarray方策については，これに近いものが強化学習のプロセスの中で自然と習得されたことが確認されているが，maximum-in-corner方策については明確に従っているとは言えず，maximum-in-corner方策に反したアクションを選択した結果盤面の状態を非常に悪くしているケースも確認できる．このことから，先行研究の強化学習を使用したプレイヤはmaximum-in-corner方策を明確には習得していないと考え，本研究において方策を明示的に導入することで，強化学習の改良や探索木の導入とは独立に成績の改善が行えると考えた．
 
 \chapter{提案と実装}
-\section{corner bonusの2048プレイヤへの導入}
 corner bonusを2048プレイヤへ導入することを提案します．具体的には評価値にCBを掛け合わせるとか
+\section{maximum-in-corner方策の導入}
+強化学習を用いて盤面ごとに評価値を学習した2048プレイヤにおいて，maximum-in-corner方策に従うこととゲームの展開の関係は，以下の4つの場合が考えられる．
+
+\begin{enumerate}
+\item[(a)] maximum-in-corner方策に従った結果，ゲームの展開が良くなる
+\item[(b)] maximum-in-corner方策に従わなかった結果，ゲームの展開が良くなる
+\item[(c)] maximum-in-corner方策に従った結果，ゲームの展開が悪くなる
+\item[(d)] maximum-in-corner方策に従わなかった結果，ゲームの展開が悪くなる
+\end{enumerate}
+
+このうち，(a)の場合については，maximum-in-corner方策を改めて導入しなくても強化学習によって適切な学習がなされており，なおかつ学習器は既にmaximum-in-corner方策に従っているのだから，特に考慮する必要はない．逆に(d)については学習器がmaximum-in-corner方策を習得することに失敗しており，なおかつそのことによってゲームプレイに対しても悪影響を及ぼしているため，maximum-in-corner方策を導入することによってプレイの内容を修正することが必要になる．
+
+一方で，問題になるのが(b)および(c)の場合である．これらの場合はどちらも「maximum-in-corner方策に従わないほうが良かった」という点が共通している．このような「誤ってmaximum-in-corner方策に従ってしまったが，実際は従わなかった方が良かった」という状況のことを，\textbf{corner誤謬}と呼ぶことにする．corner誤謬の存在は，必ずしもmaximum-in-corner方策を導入することが良い結果に直結しないことを意味する．したがって，maximum-in-corner方策を導入する場合，明らかに方策を適用した方が良い場合にはmaximum-in-corner方策を適用しつつ，そうではない場合はmaximum-in-corner方策を適用しないという調整が必要になる．
+
+このような調整を踏まえてmaximum-in-cornerの実装を実現するために，本研究においては以下のようにmaximum-in-corner方策を適用することとした．
+
+\begin{enumerate}
+\item アクション選択の手順において，選択可能なアクションを$a_n \;\; (0 \leq n < 4)$とする．
+\item 選択可能なアクションを元に，遷移を行った後の盤面$s_{a_n}$を求める．
+\item 求められた盤面に対する評価値$V(s_{a_n})$を求める．
+\begin{itemize}
+\item この時，もし$s_{a_n}$の$maxtile$が盤面の四隅のいずれかのマスにあるならば，$V(s_{a_n}) = {\rho} \times V(s_{a_n})$とする．${\rho}$は実験者が設定する定数であり，この定数のことを\textbf{corner ratio}と呼ぶこととする．
+\end{itemize}
+\item 評価値を全ての有り得る盤面に対して求めた後，最も大きな$V(s_{a_n})$を与えるアクション$a_n$を選択する．
+\end{enumerate}
+
+このような適用の仕方によって，maximum-in-corner方策に従っている盤面をより良く評価することができるため，(a)および(d)の場合にmaximum-in-corner方策に従う盤面を導くアクションを選択できる．また，評価値に対してmaximum-in-corner方策に従っているかどうかで${\rho}$によって割増を行うという形式を取ることで，「評価値の割増を行った盤面よりも評価値が高く，なおかつ割増が行われていない（すなわち，maximum-in-corner方策に従わない）盤面」を導くアクションを選択することが可能になる．すなわち，(b)および(c)の場合にmaximum-in-corner方策に従わない盤面を導くアクションを選択できるようになり，2048のアクション選択の手順で考えられる全ての場合において，適切にmaximum-in-corner方策の適用を行うかどうかのスイッチングができると考えられる．
+
+\section{実装}
+まず，maximum-in-corner方策を採用しない，通常のTD学習の擬似コードを以下に示す．この擬似コードはSzubert \& Jaskowskiの実装に基づく．
+
+\begin{algorithm}
+\caption{Temporal Difference Learning (TD(0))}
+\label{alg2}
+\begin{algorithmic}[1]
+\STATE \textbf{function} \textsc{CarouselShaping}
+\STATE 　$stage \leftarrow 1$
+\STATE 　$initstates[x] = \emptyset$ \textbf{for} $x \in \{1...2^g\}$
+\STATE 　\textbf{while not} enough learning \textbf{do}
+\STATE 　　\textbf{if} $stage = 1$ \textbf{then}
+\STATE 　　　$s \leftarrow$ \textsc{InitialState()}
+\STATE 　　\textbf{else}
+\STATE 　　　$s \leftarrow$ \textsc{RandomChoice}$(initstates[stage])$
+\STATE 　　\textsc{LearnFromEpisode}$(s)$ $\triangleright$ Updates $initstates$
+\STATE 　　$stage \leftarrow stage + 1$
+\STATE 　　\textbf{if} $stage > 2^g$ \textbf{or} $initstates[stage] = \emptyset$ \textbf{then}
+\STATE 　　　$stage \leftarrow 1$
+\STATE \textbf{end function}
+\end{algorithmic}
+\end{algorithm}
+
+本研究においては，上記のコードのうち，関数\textbf{ChooseBestTransitionAfterstate}に数行を加えた下記の関数\textbf{ChooseBestTransitionAfterstateCorner}を実装すると同時に，その盤面の$maxtile$が四隅のマスにあるかどうかを判断する関数\textbf{isMaxtileInCorner}を実装する．
+
+\begin{algorithm}
+\caption{Maximum-in-corner Policy}
+\label{alg3}
+\begin{algorithmic}[1]
+\STATE \textbf{function} \textsc{CarouselShaping}
+\STATE 　$stage \leftarrow 1$
+\STATE 　$initstates[x] = \emptyset$ \textbf{for} $x \in \{1...2^g\}$
+\STATE 　\textbf{while not} enough learning \textbf{do}
+\STATE 　　\textbf{if} $stage = 1$ \textbf{then}
+\STATE 　　　$s \leftarrow$ \textsc{InitialState()}
+\STATE 　　\textbf{else}
+\STATE 　　　$s \leftarrow$ \textsc{RandomChoice}$(initstates[stage])$
+\STATE 　　\textsc{LearnFromEpisode}$(s)$ $\triangleright$ Updates $initstates$
+\STATE 　　$stage \leftarrow stage + 1$
+\STATE 　　\textbf{if} $stage > 2^g$ \textbf{or} $initstates[stage] = \emptyset$ \textbf{then}
+\STATE 　　　$stage \leftarrow 1$
+\STATE \textbf{end function}
+\end{algorithmic}
+\end{algorithm}
+
+なお，\textbf{ChooseBestTransitionAfterstate}は，nタプルネットワークを用いてプレイする\footnote{ここでは検証ゲームを行うという意味である}関数\textbf{PlayByAfterstate}およびnタプルネットワークを訓練する関数\textbf{TDAfterstateLearn}に呼ばれている，nタプルネットワークを参照して最も良い遷移を返す関数である．\textbf{ChooseBestTransitionAfterstate}と\textbf{ChooseBestTransitionAfterstateCorner}を両方実装しておいて，検証ゲームを行う際にどちらかの関数を呼ぶようにすることで，検証ゲームと学習ゲームのどちらか，もしくはそのどちらもにおいてmaximum-in-corner方策を採用することができるようになる．
 
 \chapter{実験}
 提案したアイデアの実験結果と既存研究の実験結果を比較します．比較対象はSzubert？
 
-\section{予備実験}
-CBってホントに意味あるのかというところを明確にするためにCB=1.1〜1.5で適用して実験を行います
-1.5では意味がないけど1.1とか1.2なら意味ありそうだぞということを言いたい
+\section{実験1：常に${\rho}=1.2$とする}
+まず最初に，maximum-in-corner方策を使用することに効果があるのか調べるため，${\rho}=1.2$として実験を行った．詳細な実験のセッティングは以下の通りである．
 
-\section{CBを適用する箇所の検討}
-学習中・検証中・どっちもにCBを適用した結果を比較します
-どっちもが一番意味ありそうということを言いたいです
+\begin{itemize}
+\item 学習ゲーム数：500,000
+\item 学習率：0.01
+\item nタプルネットワークの配置：Szubert \& Jaskowskiのスタイル
+\item \textbf{ChooseBestTransitionAfterstateCorner}を使用するゲーム：
+\begin{itemize}
+\item 使用しない（ベースライン）
+\item 検証ゲーム
+\end{itemize}
+\item 使用するcorner ratio：${\rho}=1.2$
+\end{itemize}
 
-\section{CBを変更する箇所の検討}
-スコア80000ぐらいでCBを1.1に変更するといいぞってことを言いたい
+上記の実験の結果のうち，各検証ゲームにおける平均スコアをグラフにプロットしたのが図\ref{figure_006}である．全体的な傾向としては，約200,000ゲームほどの学習を終えるまでの間はcorner ratioあり，すなわちmaximum-in-corner方策を採用したほうが成績が良い．しかしながら，その後はmaximum-in-corner方策なしの方が全体的に成績が良くなり，一応平均スコアは伸び続けているもののmaximum-in-corner方策ありの方は成績が低調になる．
+
+\begin{figure}[t]
+	\begin{center}
+	\includegraphics[width=10cm]{figure_006.png}
+	\caption{実験1の結果}
+	\label{figure_006}
+	\end{center}
+\end{figure}
+
+実験1の結果より，高い値のcorner ratioを設定することは学習の序盤において効果があることがわかったが，一方で学習が進むと，かえって学習器の性能を弱めてしまうということがわかった．これらの事実に基づき，以下の仮説を立てた．
+
+\begin{itemize}
+\item 一般に，maximum-in-corner方策を採用すること自体は2048プレイヤの性能を高める可能性がある
+\item 学習ゲームを重ねるにつれTD学習による学習器の性能は良くなるので，高いcorner ratioの値はcorner誤謬を引き起こす
+\end{itemize}
+
+この仮説が正しいことを示すために，corner ratioの適用について様々な条件を用意する追加実験を行うことにした．
+
+\section{実験2：2つの${\rho}$の値を用いる}
+実験1においては検証ゲーム中に一貫して${\rho}=1.2$としていたが，学習ゲームが進んだ後にもこの値を使い続けることはあまり良くないということがわかった．そこで，実験2においては，ゲームの状況に応じて異なるcorner ratioの値を使用することとした．また，実験1では検証中のみにmaximum-in-corner方策を採用していたが，実験2においては学習中および検証中と学習中の両方に採用する条件も設定することとした．
+
+なお，ゲームの進行状況を示す指標としては，スコアと$maxtile$を用いることができる．今回の実験ではcorner ratioを変更する指標として，スコアを参照する実験と$maxtile$を参照する実験の両方をそれぞれ行った．詳細な実験のセッティングは以下の通りである．
+
+\begin{itemize}
+\item 学習ゲーム数：500,000
+\item 学習率：0.01
+\item nタプルネットワークの配置：Wuのスタイル\footnote{どのようなnタプルネットワークに対してもmaximum-in-corner方策が適合することを示すために，Szubert \& Jaskowskiの実装よりも高級なWuの実装によるnタプルネットワークを用いた}
+\item \textbf{ChooseBestTransitionAfterstateCorner}を使用するゲーム：
+\begin{itemize}
+\item 使用しない（ベースライン）
+\item 検証ゲーム
+\item 学習ゲーム
+\item 検証ゲームと学習ゲームの両方
+\end{itemize}
+\item 使用するcorner ratio：${\rho}=1.1 \text{もしくは} 1.2$
+\item corner ratioを変更する条件：
+\begin{itemize}
+\item 最初は${\rho}=1.2$とし，スコアが70,000に到達したら${\rho}=1.1$とする
+\item 最初は${\rho}=1.2$とし，$maxtile=4096$が達成されたら${\rho}=1.1$とする
+\end{itemize}
+\end{itemize}
+
+この実験の結果のうち，平均スコアの推移をプロットしたグラフを図\ref{figure_007}から図\ref{figure_009}に示す．実験結果のうち，maximum-in-corner方策を適用しているものについてはいずれもベースラインよりも平均スコアを上回っているが，検証ゲームに適用したものと検証ゲーム・学習ゲームの両方に適用したものについては，顕著にベースラインよりも平均スコアが高くなっている．また全体的な傾向としては，corner ratioを平均する条件にスコアを使用する方が平均スコアが良くなることが多い．
+
+\begin{figure}[t]
+	\begin{center}
+	\includegraphics[width=10cm]{figure_007.png}
+	\caption{実験2の結果 - 検証ゲームへのmaximum-in-corner方策の適用}
+	\label{figure_007}
+	\end{center}
+\end{figure}
+
+\begin{figure}[t]
+	\begin{center}
+	\includegraphics[width=10cm]{figure_008.png}
+	\caption{実験2の結果 - 学習ゲームへのmaximum-in-corner方策の適用}
+	\label{figure_008}
+	\end{center}
+\end{figure}
+
+\begin{figure}[t]
+	\begin{center}
+	\includegraphics[width=10cm]{figure_009.png}
+	\caption{実験2の結果 - 検証・学習ゲームへのmaximum-in-corner方策の適用}
+	\label{figure_009}
+	\end{center}
+\end{figure}
+
+実験2の結果，ゲームの進行に応じてcorner ratioを変更することにより，TD学習によって学習器の性能が良くなった後でも，maximum-in-corner方策を適用することでさらなる成績の向上が行われることがわかった．それと同時に，ゲームの進行に応じてcorner ratioを割り引くことで，corner誤謬の発生を抑制できるということもわかった．最後に，より適切なcorner ratioの変更の条件を求めつつ，さらに2048プレイヤとしての性能を高めるため，学習率と学習ゲーム数を変更する実験を行った．
+
+\section{実験3：学習率および学習ゲーム数を変更する}
+実験3においては，より2048プレイヤとしての性能を高めるために，学習率を0.0025に引き下げ，学習ゲーム数を従来の2倍の1,000,000ゲームに変更した．学習率を引き下げることで価値関数$V$の更新が穏やかになるため，学習の速さは若干遅くなるものの，その分精密な学習がなされて最終的な性能は高くなることが期待される．これに加えて，ゲーム中のスコアに応じてcorner ratioを変更することが有効であると判明した実験2の結果を踏まえて，corner ratioを変更する条件として設定するスコアの境界値をさまざまな値に変動させて実験を行った．その他の条件も含めた実験のセッティングは以下の通り．
+
+\begin{itemize}
+\item 学習ゲーム数：1,000,000
+\item 学習率：0.0025
+\item nタプルネットワークの配置：Wuのスタイル
+\item \textbf{ChooseBestTransitionAfterstateCorner}を使用するゲーム\footnote{実験2において学習ゲームのみにChooseBestTransitionAfterstateCornerを使用することには効果が見られないことがわかったため，実験3の条件からは除外した}：
+\begin{itemize}
+\item 使用しない（ベースライン）
+\item 検証ゲーム
+\item 検証ゲームと学習ゲームの両方
+\end{itemize}
+\item 使用するcorner ratio：${\rho}=1.1 \text{もしくは} 1.2$
+\item corner ratioを変更する条件：
+\begin{itemize}
+\item 最初は${\rho}=1.2$とし，スコアが60,000に到達したら${\rho}=1.1$とする
+\item 最初は${\rho}=1.2$とし，スコアが70,000に到達したら${\rho}=1.1$とする
+\item 最初は${\rho}=1.2$とし，スコアが80,000に到達したら${\rho}=1.1$とする
+\end{itemize}
+\item ランダムシード：3種類
+\end{itemize}
+
+この実験の結果のうち，平均スコアの推移をプロットしたグラフを図hogeから図fugaに示す．ランダムシードによって結果に差があるが，全体的に見て以下の傾向を読み取ることができる．
+
+（図hoge〜fugaがここに入ります）
+
+\begin{itemize}
+\item 学習率0.0025の条件の下においては，検証ゲームのみにmaximum-in-corner方策を適用しても，ベースラインと比べて顕著な差は現れない
+\item 約300,000ゲームほど学習するまでは，どの条件の間にも顕著な差は見られない
+\item 約500,000ゲームほど学習した後は，検証ゲームと学習ゲームの両方でmaximum-in-corner方策を適用したプレイヤの性能が顕著に良くなる
+\item 局所的に他のプレイヤが上回っていることもあるが，全体的に見ると「検証ゲームと学習ゲームの両方」で「最初は${\rho}=1.2$とし，スコアが80,000に到達したら${\rho}=1.1$とする」条件でcorner ratioを変更するプレイヤの成績が最も良い
+\end{itemize}
 
 \chapter{考察と結論}
-実験結果をもとに，結果の考察を行い，本研究をまとめます．
+以上の実験により，maximum-in-corner方策を適用することで，TD学習を用いて訓練した2048プレイヤの成績をさらに改善できるということが示された．このことは「強化学習による訓練ではmaximum-in-corner方策を習得することができない」という2048プレイヤの性質と表裏一体であり，強化学習とは別の観点から2048プレイヤの改良を行えることを示したとも言える．
+
+一方で，maximum-in-corner方策の一面的な導入が必ずしも良い結果をもたらすとは限らないことも示された．常に${\rho}=1.2$としたプレイヤの成績は十分学習されたTD学習のみを用いたプレイヤに劣り，学習が進めば進むほどcorner誤謬が発生する確率も高まることが確認されている．この問題を解決するためにcorner ratioの値を変更することが有効であり，特にゲーム内のスコアに応じてcorner ratioを割引することはプレイヤの成績の改善に大きく貢献した．
+
+しかしながら，本研究において，corner bonusの割引は実験者による手動操作によってのみ行われており，より適切なcorner ratioの選定・決定方法が存在する可能性もある．例えば，Jaskowski (2016)によって提案された$TC({\lambda})$における学習率の自動的な適応のように，ゲーム内のパラメータや指標を参照して，自動的にcorner ratioを決定するといった手法が考えられる．より精密なcorner ratioの追究が不十分であることは，本研究が残した課題の1つである．
+
+maximum-in-corner方策の他にも，2048において人間が経験的に習得しているが，強化学習によるプレイヤが習得できない方策が存在する可能性は少なくないと思われる．強化学習と人間の経験的知識の融合により，2048を始めとするゲームAIエージェントの改良が期待される．
 
 \backmatter
 \chapter{謝辞}
-謝辞を書きます．
+本研究を進めるにあたり，1年間ご指導いただいた指導教員の山口和紀教授に感謝いたします．また，Yゼミにて本研究や発表内容に対してアドバイスをくださった山口和紀研究室の皆様にも感謝いたします．最後になりますが，3年次に履修した実習にて，課題として2048プレイヤの作成というテーマを課していただき，本研究の端緒を開いてくださった金子知適准教授に感謝の意を表させていただきます．
 
 \begin{thebibliography}{}
  \bibitem{}
