@@ -33,41 +33,41 @@
 \contentsline {subsection}{\numberline {2.2.2}Multi-Stage TD学習の導入}{10}
 \contentsline {subsection}{\numberline {2.2.3}Expectimax木探索}{11}
 \contentsline {subsection}{\numberline {2.2.4}結果と課題}{12}
-\contentsline {section}{\numberline {2.3}Oka \& Matsuzaki (2016)}{12}
-\contentsline {subsection}{\numberline {2.3.1}nタプル単体の性能の評価}{12}
-\contentsline {subsection}{\numberline {2.3.2}nタプルネットワークに組み込むnタプルの数の検討}{13}
-\contentsline {subsection}{\numberline {2.3.3}結果と課題}{14}
+\contentsline {section}{\numberline {2.3}Oka \& Matsuzaki (2016)}{13}
+\contentsline {subsection}{\numberline {2.3.1}nタプル単体の性能の評価}{13}
+\contentsline {subsection}{\numberline {2.3.2}nタプルネットワークに組み込むnタプルの数の検討}{14}
+\contentsline {subsection}{\numberline {2.3.3}結果と課題}{15}
 \contentsline {section}{\numberline {2.4}Yeh et al. (2016)}{15}
-\contentsline {subsection}{\numberline {2.4.1}新たな特徴量の追加}{15}
-\contentsline {subsection}{\numberline {2.4.2}MS-TD学習のステージ分けの改良}{15}
+\contentsline {subsection}{\numberline {2.4.1}新たな特徴量の追加}{16}
+\contentsline {subsection}{\numberline {2.4.2}MS-TD学習のステージ分けの改良}{16}
 \contentsline {subsection}{\numberline {2.4.3}学習率の調整}{16}
-\contentsline {subsection}{\numberline {2.4.4}TD(${\lambda }$)の使用}{16}
-\contentsline {subsection}{\numberline {2.4.5}結果と課題}{16}
-\contentsline {section}{\numberline {2.5}Jaskowski (2017)}{17}
-\contentsline {subsection}{\numberline {2.5.1}自動的な学習率決定アルゴリズムの適用}{17}
-\contentsline {subsubsection}{TC(${\lambda }$)}{17}
-\contentsline {subsubsection}{Autostep}{18}
-\contentsline {subsubsection}{結果}{18}
-\contentsline {subsection}{\numberline {2.5.2}Multi-Stage Weight Promotion}{18}
-\contentsline {subsubsection}{新しいステージ分け}{19}
-\contentsline {subsubsection}{Weight Promotion}{19}
+\contentsline {subsection}{\numberline {2.4.4}TD(${\lambda }$)の使用}{17}
+\contentsline {subsection}{\numberline {2.4.5}結果}{17}
+\contentsline {section}{\numberline {2.5}Jaskowski (2017)}{18}
+\contentsline {subsection}{\numberline {2.5.1}自動的な学習率決定アルゴリズムの適用}{18}
+\contentsline {subsubsection}{TC(${\lambda }$)}{18}
+\contentsline {subsubsection}{Autostep}{19}
 \contentsline {subsubsection}{結果}{19}
-\contentsline {subsection}{\numberline {2.5.3}Carousel Shapingと余剰タプルの追加}{20}
-\contentsline {subsubsection}{Carousel Shaping}{20}
-\contentsline {subsubsection}{余剰タプルの追加}{21}
-\contentsline {subsection}{\numberline {2.5.4}結果}{21}
-\contentsline {chapter}{\numberline {第3章}本研究のアイデア}{22}
-\contentsline {section}{\numberline {3.1}base方策}{22}
-\contentsline {section}{\numberline {3.2}array方策}{23}
-\contentsline {section}{\numberline {3.3}maximum-in-corner方策}{23}
-\contentsline {chapter}{\numberline {第4章}提案と実装}{25}
-\contentsline {section}{\numberline {4.1}maximum-in-corner方策の導入}{25}
-\contentsline {section}{\numberline {4.2}実装}{26}
-\contentsline {chapter}{\numberline {第5章}実験}{28}
-\contentsline {section}{\numberline {5.1}実験1：常に${\rho }=1.2$とする}{28}
-\contentsline {section}{\numberline {5.2}実験2：2つの${\rho }$の値を用いる}{29}
-\contentsline {section}{\numberline {5.3}実験3：学習率および学習ゲーム数を変更する}{31}
-\contentsline {chapter}{\numberline {第6章}考察と結論}{33}
-\contentsline {chapter}{謝辞}{34}
-\contentsline {chapter}{参考文献}{35}
-\contentsline {chapter}{\numberline {付録A}}{37}
+\contentsline {subsection}{\numberline {2.5.2}Multi-Stage Weight Promotion}{19}
+\contentsline {subsubsection}{新しいステージ分け}{20}
+\contentsline {subsubsection}{Weight Promotion}{20}
+\contentsline {subsubsection}{結果}{20}
+\contentsline {subsection}{\numberline {2.5.3}Carousel Shapingと余剰タプルの追加}{21}
+\contentsline {subsubsection}{Carousel Shaping}{21}
+\contentsline {subsubsection}{余剰タプルの追加}{22}
+\contentsline {subsection}{\numberline {2.5.4}結果}{22}
+\contentsline {chapter}{\numberline {第3章}本研究のアイデア}{23}
+\contentsline {section}{\numberline {3.1}base方策}{23}
+\contentsline {section}{\numberline {3.2}array方策}{24}
+\contentsline {section}{\numberline {3.3}maximum-in-corner方策}{24}
+\contentsline {chapter}{\numberline {第4章}提案と実装}{26}
+\contentsline {section}{\numberline {4.1}maximum-in-corner方策の導入}{26}
+\contentsline {section}{\numberline {4.2}実装}{27}
+\contentsline {chapter}{\numberline {第5章}実験}{29}
+\contentsline {section}{\numberline {5.1}実験1：常に${\rho }=1.2$とする}{29}
+\contentsline {section}{\numberline {5.2}実験2：2つの${\rho }$の値を用いる}{30}
+\contentsline {section}{\numberline {5.3}実験3：学習率および学習ゲーム数を変更する}{32}
+\contentsline {chapter}{\numberline {第6章}考察と結論}{34}
+\contentsline {chapter}{謝辞}{35}
+\contentsline {chapter}{参考文献}{36}
+\contentsline {chapter}{\numberline {付録A}}{38}

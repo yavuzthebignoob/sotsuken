@@ -514,3 +514,31 @@ avg ratio = 0.945
 maxTile   = 8192
 TIME      = 19:12:28 (45:58:25)
 
+After 355000 games:
+avg score = 64633.7
+max score = 159688
+avg ratio = 0.963
+maxTile   = 8192
+TIME      = 19:51:35 (46:37:32)
+
+After 360000 games:
+avg score = 64912.3
+max score = 167788
+avg ratio = 0.952
+maxTile   = 8192
+TIME      = 20:34:17 (47:20:14)
+
+After 365000 games:
+avg score = 67568.4
+max score = 157908
+avg ratio = 0.955
+maxTile   = 8192
+TIME      = 21:18:36 (48:4:32)
+
+After 370000 games:
+avg score = 65563.7
+max score = 146444
+avg ratio = 0.955
+maxTile   = 8192
+TIME      = 22:3:44 (48:49:39)
+
