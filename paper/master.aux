@@ -38,6 +38,12 @@
 \@writefile{toc}{\contentsline {subsubsection}{$max tile$}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{勝率}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{スコア}{5}}
+\citation{Tesauro}
+\citation{Runarsson}
+\citation{Schraudolph}
+\citation{Dries}
+\citation{SzubertOthello}
+\citation{Baxter}
 \@writefile{toc}{\contentsline {chapter}{\numberline {第2章}先行研究の紹介}{6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -47,84 +53,89 @@
 \citation{Szubert}
 \citation{Sutton}
 \@writefile{toc}{\contentsline {subsubsection}{盤面の評価（TD(0)）}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{遷移後盤面の評価（TD(0)）}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces nタプルネットワークの例}}{8}}
-\newlabel{figure_001}{{2.1}{8}}
+\citation{Bledsoe}
+\citation{Lucas}
+\citation{Szubert}
+\@writefile{toc}{\contentsline {subsubsection}{遷移後盤面の評価（TD(0)）}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}nタプルネットワーク}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}結果と課題}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Szubert \& Jaskowski（a）とWu（b）が提唱したnタプルネットワーク}}{9}}
-\newlabel{figure_002}{{2.2}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces nタプルネットワークの例}}{9}}
+\newlabel{figure_001}{{2.1}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}結果と課題}{9}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Wu et al. (2014)}{9}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}nタプルネットワークの配置の改善}{9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Multi-Stage TD学習の導入}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Expectimax木の例 (Wu et al. (2015))}}{10}}
-\newlabel{figure_003}{{2.3}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Expectimax木探索}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}結果と課題}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Oka \& Matsuzaki (2016)}{11}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces 形成されうるnタプルの数}}{12}}
-\newlabel{tab:ntuplesNumber}{{2.1}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces 最も優れている／劣っている上位4つの6タプル・7タプル (Oka \& Matsuzaki (2016))}}{12}}
-\newlabel{figure_004}{{2.4}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Szubert \& Jaskowski（a）とWu（b）が提唱したnタプルネットワーク}}{10}}
+\newlabel{figure_002}{{2.2}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Multi-Stage TD学習の導入}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Expectimax木の例 (Wu et al.)}}{11}}
+\newlabel{figure_003}{{2.3}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Expectimax木探索}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}結果と課題}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Oka \& Matsuzaki (2016)}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}nタプル単体の性能の評価}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces 成績上位タプルm個を組み合わせたタプルネットワークの実験 (Oka \& Matsuzaki (2016))}}{13}}
-\newlabel{figure_005}{{2.5}{13}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces 形成されうるnタプルの数}}{13}}
+\newlabel{tab:ntuplesNumber}{{2.1}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces 最も優れている／劣っている上位4つの6タプル・7タプル (Oka \& Matsuzaki)}}{13}}
+\newlabel{figure_004}{{2.4}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}nタプルネットワークに組み込むnタプルの数の検討}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces 成績上位タプルm個を組み合わせたタプルネットワークの実験 (Oka \& Matsuzaki)}}{14}}
+\newlabel{figure_005}{{2.5}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}結果と課題}{14}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Yeh et al. (2016)}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}新たな特徴の追加}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}MS-TD学習のステージングの改良}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}学習率の調整}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}$TD(\lambda )$の使用}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.5}結果と課題}{15}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}Jaskowski (2017)}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}自動的な学習率決定アルゴリズムの適用}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{TC(${\lambda }$)}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{Autostep}{17}}
-\@writefile{toc}{\contentsline {subsubsection}{結果}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Multi-Stage Weight Promotion}{17}}
-\@writefile{toc}{\contentsline {subsubsection}{新しいステージング}{18}}
-\@writefile{toc}{\contentsline {subsubsection}{Weight Promotion}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Yeh et al. (2016)}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}新たな特徴量の追加}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}MS-TD学習のステージ分けの改良}{15}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces 戦略1～4のステージ分けによるMS-TD学習で訓練した学習器の成績 (Yeh et al.)}}{16}}
+\newlabel{tab:yehMultistage}{{2.2}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}学習率の調整}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}TD(${\lambda }$)の使用}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.5}結果と課題}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Jaskowski (2017)}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}自動的な学習率決定アルゴリズムの適用}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{TC(${\lambda }$)}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{Autostep}{18}}
 \@writefile{toc}{\contentsline {subsubsection}{結果}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.3}Carousel Shapingと余剰タプルの追加}{19}}
-\@writefile{toc}{\contentsline {subsubsection}{Carousel Shaping}{19}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Carousel Shaping}}{19}}
-\newlabel{alg1}{{1}{19}}
-\@writefile{toc}{\contentsline {subsubsection}{余剰タプルの追加}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}結果}{20}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第3章}本研究のアイデア}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Multi-Stage Weight Promotion}{18}}
+\@writefile{toc}{\contentsline {subsubsection}{新しいステージ分け}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{Weight Promotion}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{結果}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.3}Carousel Shapingと余剰タプルの追加}{20}}
+\@writefile{toc}{\contentsline {subsubsection}{Carousel Shaping}{20}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Carousel Shaping}}{20}}
+\newlabel{alg1}{{1}{20}}
+\@writefile{toc}{\contentsline {subsubsection}{余剰タプルの追加}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}結果}{21}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第3章}本研究のアイデア}{22}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}base方策}{21}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}array方策}{22}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}maximum-in-corner方策}{22}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第4章}提案と実装}{24}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}base方策}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}array方策}{23}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}maximum-in-corner方策}{23}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第4章}提案と実装}{25}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}maximum-in-corner方策の導入}{24}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}実装}{25}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Temporal Difference Learning (TD(0))}}{26}}
-\newlabel{alg2}{{2}{26}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Maximum-in-corner Policy}}{26}}
-\newlabel{alg3}{{3}{26}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}実験}{27}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}maximum-in-corner方策の導入}{25}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}実装}{26}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Temporal Difference Learning (TD(0))}}{27}}
+\newlabel{alg2}{{2}{27}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Maximum-in-corner Policy}}{27}}
+\newlabel{alg3}{{3}{27}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}実験}{28}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}実験1：常に${\rho }=1.2$とする}{27}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces 実験1の結果}}{28}}
-\newlabel{figure_006}{{5.1}{28}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}実験2：2つの${\rho }$の値を用いる}{28}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces 実験2の結果 - 検証ゲームへのmaximum-in-corner方策の適用}}{29}}
-\newlabel{figure_007}{{5.2}{29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces 実験2の結果 - 学習ゲームへのmaximum-in-corner方策の適用}}{30}}
-\newlabel{figure_008}{{5.3}{30}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces 実験2の結果 - 検証・学習ゲームへのmaximum-in-corner方策の適用}}{30}}
-\newlabel{figure_009}{{5.4}{30}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}実験3：学習率および学習ゲーム数を変更する}{30}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}考察と結論}{32}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}実験1：常に${\rho }=1.2$とする}{28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces 実験1の結果}}{29}}
+\newlabel{figure_006}{{5.1}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}実験2：2つの${\rho }$の値を用いる}{29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces 実験2の結果 - 検証ゲームへのmaximum-in-corner方策の適用}}{30}}
+\newlabel{figure_007}{{5.2}{30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces 実験2の結果 - 学習ゲームへのmaximum-in-corner方策の適用}}{31}}
+\newlabel{figure_008}{{5.3}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces 実験2の結果 - 検証・学習ゲームへのmaximum-in-corner方策の適用}}{31}}
+\newlabel{figure_009}{{5.4}{31}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}実験3：学習率および学習ゲーム数を変更する}{31}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}考察と結論}{33}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{謝辞}{33}}
+\@writefile{toc}{\contentsline {chapter}{謝辞}{34}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{2048game}{1}
@@ -136,10 +147,18 @@
 \bibcite{Yeh}{7}
 \bibcite{Jaskowski}{8}
 \bibcite{Sutton}{9}
-\@writefile{toc}{\contentsline {chapter}{参考文献}{34}}
+\bibcite{Tesauro}{10}
+\bibcite{Runarsson}{11}
+\bibcite{Schraudolph}{12}
+\@writefile{toc}{\contentsline {chapter}{参考文献}{35}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {付録A}}{35}}
+\bibcite{Dries}{13}
+\bibcite{SzubertOthello}{14}
+\bibcite{Baxter}{15}
+\bibcite{Bledsoe}{16}
+\bibcite{Lucas}{17}
+\@writefile{toc}{\contentsline {chapter}{\numberline {付録A}}{37}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \gdef \@lastoftotalpage{0}
