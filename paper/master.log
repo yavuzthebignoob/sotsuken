@@ -1,168 +1,169 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  6 JAN 2018 23:45
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.10.17)  7 JAN 2018 15:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **master.tex
 (./master.tex
-pLaTeX2e <2006/11/10> (based on LaTeX2e <2016/02/01> patch level 0)
-Babel <3.9n> and hyphenation patterns for 11 languages loaded.
+pLaTeX2e <2017/05/05> (based on LaTeX2e <2017-04-15>)
+Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (./suribt.cls
 Document Class: suribt 2007/01/18 KUROKI Yusuke
-(/usr/share/texlive/texmf-dist/tex/platex/jsclasses/jsbook.cls
-Document Class: jsbook 2014/02/07 okumura
-LaTeX Info: Redefining \rmfamily on input line 359.
-LaTeX Info: Redefining \sffamily on input line 362.
-LaTeX Info: Redefining \ttfamily on input line 365.
+(/usr/local/texlive/2017/texmf-dist/tex/platex/jsclasses/jsbook.cls
+Document Class: jsbook 2017/03/05 okumura, texjporg
+\jsc@mpt=\dimen118
+\jsc@mmm=\dimen119
+\jsc@smallskipamount=\skip41
+LaTeX Info: Redefining \rmfamily on input line 473.
+LaTeX Info: Redefining \sffamily on input line 476.
+LaTeX Info: Redefining \ttfamily on input line 479.
+LaTeX Info: Redefining \textmc on input line 482.
+LaTeX Info: Redefining \textgt on input line 484.
 \symmincho=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
-(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 430.
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 545.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 620.
+(Font)              scaled to size 9.60999pt on input line 736.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 620.
-\fullwidth=\dimen118
+(Font)              scaled to size 9.60999pt on input line 736.
+\fullwidth=\dimen120
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 775.
+(Font)              scaled to size 7.68799pt on input line 896.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 775.
-\c@part=\count81
-\c@chapter=\count82
-\c@section=\count83
-\c@subsection=\count84
-\c@subsubsection=\count85
-\c@paragraph=\count86
-\c@subparagraph=\count87
-\c@figure=\count88
-\c@table=\count89
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\js@tocl@width=\dimen119
-\@lnumwidth=\dimen120
-\bibindent=\dimen121
-LaTeX Info: Redefining \TeX on input line 1815.
-LaTeX Info: Redefining \LaTeX on input line 1841.
-LaTeX Info: Redefining \LaTeXe on input line 1866.
-\heisei=\count90
+(Font)              scaled to size 7.68799pt on input line 896.
+\c@part=\count82
+\c@chapter=\count83
+\c@section=\count84
+\c@subsection=\count85
+\c@subsubsection=\count86
+\c@paragraph=\count87
+\c@subparagraph=\count88
+\c@figure=\count89
+\c@table=\count90
+\abovecaptionskip=\skip42
+\belowcaptionskip=\skip43
+\jsc@tocl@width=\dimen121
+\@lnumwidth=\dimen122
+\bibindent=\dimen123
+(/usr/local/texlive/2017/texmf-dist/tex/platex/jsclasses/jslogo.sty
+Package: jslogo 2017/02/24 okumura, texjporg
+LaTeX Info: Redefining \TeX on input line 94.
+LaTeX Info: Redefining \LaTeX on input line 147.
+LaTeX Info: Redefining \LaTeXe on input line 200.
 )
-\@totalpage=\count91
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+\heisei=\count91
+)
+\@totalpage=\count92
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvipdfmx.def on input line 95.
+Package graphics Info: Driver file: dvipdfmx.def on input line 99.
 
-(/usr/share/texlive/texmf-dist/tex/latex/dvipdfmx-def/dvipdfmx.def
-File: dvipdfmx.def 2015/11/04 v4.07 LaTeX color/graphics driver for dvipdfmx (T
-eX Live/ChoF)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)))
-\Gin@req@height=\dimen122
-\Gin@req@width=\dimen123
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2016/07/11 v4.12 LaTeX color/graphics driver for dvipdfmx (L
+3/ChoF)
+))
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
 )
 (./float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count92
+\c@float@type=\count93
 \float@exts=\toks16
-\float@box=\box41
+\float@box=\box42
 \@float@everytoks=\toks17
-\@floatcapt=\box42
+\@floatcapt=\box43
 ) (./algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks18
-\c@algorithm=\count93
-) (./algorithmic.sty
-Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count94
-\c@ALC@line=\count95
-\c@ALC@rem=\count96
-\c@ALC@depth=\count97
-\ALC@tlm=\skip43
-\algorithmicindent=\skip44
+\c@algorithm=\count94
 )
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/03 v2.15a AMS math features
-\@mathmargin=\skip45
+(./algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count95
+\c@ALC@line=\count96
+\c@ALC@rem=\count97
+\c@ALC@depth=\count98
+\ALC@tlm=\skip44
+\algorithmicindent=\skip45
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip46
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks19
-\ex@=\dimen124
+\ex@=\dimen126
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen125
+\pmbraise@=\dimen127
 )
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 1999/12/14 v2.01 operator names
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count98
-LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count99
-\leftroot@=\count100
-LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count101
-\DOTSCASE@=\count102
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box43
-\strutbox@=\box44
-\big@size=\dimen126
-LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
-\macc@depth=\count103
-\c@MaxMatrixCols=\count104
+\inf@bad=\count99
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count100
+\leftroot@=\count101
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count102
+\DOTSCASE@=\count103
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box44
+\strutbox@=\box45
+\big@size=\dimen128
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count104
+\c@MaxMatrixCols=\count105
 \dotsspace@=\muskip10
-\c@parentequation=\count105
-\dspbrk@lvl=\count106
+\c@parentequation=\count106
+\dspbrk@lvl=\count107
 \tag@help=\toks20
-\row@=\count107
-\column@=\count108
-\maxfields@=\count109
+\row@=\count108
+\column@=\count109
+\maxfields@=\count110
 \andhelp@=\toks21
-\eqnshift@=\dimen127
-\alignsep@=\dimen128
-\tagshift@=\dimen129
-\tagwidth@=\dimen130
-\totwidth@=\dimen131
-\lineht@=\dimen132
+\eqnshift@=\dimen129
+\alignsep@=\dimen130
+\tagshift@=\dimen131
+\tagwidth@=\dimen132
+\totwidth@=\dimen133
+\lineht@=\dimen134
 \@envbody=\toks22
-\multlinegap=\skip46
-\multlinetaggap=\skip47
+\multlinegap=\skip47
+\multlinetaggap=\skip48
 \mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2735.
-LaTeX Info: Redefining \] on input line 2736.
-) (./master.aux
-
-LaTeX Warning: Label `' multiply defined.
-
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
 )
+(./master.aux)
 \openout1 = `master.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -215,7 +216,7 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 
 ]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 16.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -230,30 +231,29 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 ]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 23.90964pt on input line 23.
-
-(./master.toc
+ (./master.toc
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 2.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 70.
+(Font)              scaled to size 8.64899pt on input line 73.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 70.
+(Font)              scaled to size 8.64899pt on input line 73.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 70.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 70.
+(Font)              scaled to size 8.64899pt on input line 73.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 70.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 70.
+(Font)              scaled to size 8.64899pt on input line 73.
 LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 70.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 70.
+(Font)              scaled to size 8.64899pt on input line 73.
 LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 70.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 70.
+(Font)              scaled to size 8.64899pt on input line 73.
  [3])
 \tf@toc=\write3
 \openout3 = `master.toc'.
@@ -311,74 +311,69 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
 [6
 
 ]
-File: figure_001.png Graphic file (type bmp)
- <figure_001.png> [7]
-File: figure_002.png Graphic file (type bmp)
- <figure_002.png> [8]
-File: figure_003.png Graphic file (type bmp)
- <figure_003.png> [9] [10]
-File: figure_004.png Graphic file (type bmp)
-
-<figure_004.png> [11]
-File: figure_005.png Graphic file (type bmp)
- <figure_005.png> [12] [13] [14]
-LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 320.
- [15] [16] [17]
 LaTeX Font Info:    Font shape `JT1/mc/m/sc' in size <10> not available
-(Font)              Font shape `JT1/mc/m/n' tried instead on input line 385.
+(Font)              Font shape `JT1/mc/m/n' tried instead on input line 129.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 385.
+(Font)              scaled to size 9.60999pt on input line 129.
 LaTeX Font Info:    Font shape `JY1/mc/m/sc' in size <10> not available
-(Font)              Font shape `JY1/mc/m/n' tried instead on input line 385.
+(Font)              Font shape `JY1/mc/m/n' tried instead on input line 129.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 385.
- [18]
-[19]
+(Font)              scaled to size 9.60999pt on input line 129.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 129.
+ [7]
+File: figure_001.png Graphic file (type bmp)
+ <figure_001.png> [8]
+File: figure_002.png Graphic file (type bmp)
+ <figure_002.png> [9]
+File: figure_003.png Graphic file (type bmp)
+ <figure_003.png> [10]
+[11]
+File: figure_004.png Graphic file (type bmp)
+ <figure_004.png> [12]
+File: figure_005.png Graphic file (type bmp)
+ <figure_005.png> [13] [14] [15] [16] [17] [18]
+[19] [20]
 第3章
-[20
+[21
 
-] [21] [22]
+] [22] [23]
 第4章
-[23
+[24
 
-] [24] [25]
+] [25] [26]
 第5章
 File: figure_006.png Graphic file (type bmp)
-<figure_006.png> [26
+<figure_006.png> [27
 
-] [27]
+] [28]
 File: figure_007.png Graphic file (type bmp)
  <figure_007.png>
 File: figure_008.png Graphic file (type bmp)
  <figure_008.png>
 File: figure_009.png Graphic file (type bmp)
  <figure_009.png>
-[28] [29] [30]
+[29] [30] [31]
 第6章
-[31
-
-] [32
-
+[32
 
 ] [33
 
+
+] [34
+
 ]
 付録A
-[34
+[35
 
-] (./master.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+] (./master.aux) ) 
 Here is how much of TeX's memory you used:
- 2046 strings out of 494865
- 24451 string characters out of 6179768
- 88447 words of memory out of 5000000
- 5444 multiletter control sequences out of 15000+600000
- 25642 words of font info for 112 fonts, out of 8000000 for 9000
- 269 hyphenation exceptions out of 8191
- 30i,12n,21p,853b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 1966 strings out of 493653
+ 23322 string characters out of 6148873
+ 92548 words of memory out of 5000000
+ 5530 multiletter control sequences out of 15000+600000
+ 26590 words of font info for 115 fonts, out of 8000000 for 9000
+ 934 hyphenation exceptions out of 8191
+ 30i,12n,21p,917b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on master.dvi (40 pages, 116640 bytes).
+Output written on master.dvi (41 pages, 125248 bytes).

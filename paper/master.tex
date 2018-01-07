@@ -1,4 +1,4 @@
-B\documentclass{suribt}
+\documentclass{suribt}
 \title{ゲーム「2048」のプレイヤについて}
 \author{金澤望生}
 \eauthor{Kanazawa Nozomu}
@@ -34,7 +34,7 @@ B\documentclass{suribt}
 そこで，本研究においては，これまでに発表されてきた強化学習で訓練を行う2048プレイヤに対して，人間による経験的な知識を計算機の強化学習とは独立にトップダウン型で組み込むことにより，計算機によってのみ訓練されたプレイヤよりも強いプレイヤを実装し，新たな側面から2048の自動プレイヤに改良の余地があることを示すことを目的とする．
 
 \section{2048について}
-2048がGabriele CirulliによってGitHub上に公開されたのは2014年3月のことである．\cite{businessInsider}Cirulliは2048を開発していた当時，「1024」および「2048」\footnote{Cirulli自身が発表した2048とは似ているが，ルールが異なる別のゲームである}というゲームに熱中していた．\cite{CirulliMedium}これらのゲームはどちらもAsher Vollmerによるゲーム「Threes」にルールがよく似ている類似作品であるが，Cirulliは当時Threesの存在については認識していなかった．CirulliはこれらのThreesに端を発するゲームを改良するべく新たなゲームを開発し，ついに「2048」として公開することとなった．ここで挙げた1024，Cirulliが参考にした2048，そしてCirulli自身が発表した2048は全てThreesの類似作品であるものの，これらの作品群の中ではCirulliによる2048が最も人気を集めており，全世界で2300万人以上の人が2048\footnote{なお，ここから単に2048と表記した場合，それはCirulliが開発した2048のことを指す}で遊んだとされる．\cite{CirulliMedium}
+2048がGabriele CirulliによってGitHub上に公開されたのは2014年3月のことである．\cite{BusinessInsider}Cirulliは2048を開発していた当時，「1024」および「2048」\footnote{Cirulli自身が発表した2048とは似ているが，ルールが異なる別のゲームである}というゲームに熱中していた．\cite{CirulliMedium}これらのゲームはどちらもAsher Vollmerによるゲーム「Threes」にルールがよく似ている類似作品であるが，Cirulliは当時Threesの存在については認識していなかった．CirulliはこれらのThreesに端を発するゲームを改良するべく新たなゲームを開発し，ついに「2048」として公開することとなった．ここで挙げた1024，Cirulliが参考にした2048，そしてCirulli自身が発表した2048は全てThreesの類似作品であるものの，これらの作品群の中ではCirulliによる2048が最も人気を集めており，全世界で2300万人以上の人が2048\footnote{なお，ここから単に2048と表記した場合，それはCirulliが開発した2048のことを指す}で遊んだとされる．\cite{CirulliMedium}
 
 2048はシンプルで直感的にルールを理解できる一方で，マスターすることが非常に難しいゲームであることが特徴となっており，このために多くのプレイヤーを熱中させていると同時にゲームAI研究の題材としても多く取り上げられていると考えられる．また，ゲームとしての2048について着目すると，2048については以下のような特徴を挙げることができる：
 
@@ -115,22 +115,49 @@ ${\nu}$という数が書かれたタイルのことを${\nu}$-タイルと呼�
 \section{Szubert \& Jaskowski (2014)}
 Szubert \& Jaskowskiは，TD学習を用いたプレイヤの訓練とnタプルネットワークを用いた価値関数の表現を組み合わせることによって，人間の知識やゲーム木探索を使用しないで十分強い2048プレイヤを実装することに成功した．
 \subsection{TD学習}
-TD学習の「TD」とは\emph{temporal difference}の略であり，すなわち状態間における価値の差分を学習することによって学習器の訓練を行う手法である．2048にあてはめると，ある盤面$s$の評価値と，その盤面の1プレイ後の盤面$s_{next}$の評価値の差分を取り，これを現状定まっている$s$の評価値に足し込んでいくことで価値関数の更新を行うことになる．2048プレイヤに対してTD学習を適用する方法はさまざまなものがあるが，Szubert \& Jaskowskiが検討した適用の方法は以下の通りである：
+TD学習の「TD」とは\emph{temporal difference}の略であり，すなわち状態間における価値の差分を学習することによって学習器の訓練を行う手法である．2048にあてはめると，ある盤面$s$の評価値と，その盤面の1プレイ後の盤面$s''$の評価値の差分を取り，これを現状定まっている$s$の評価値に足し込んでいくことで価値関数の更新を行うことになる．2048プレイヤに対してTD学習を適用する方法はさまざまなものがあるが，Szubert \& Jaskowskiが検討した適用の方法は以下の通りである：
 
 \subsubsection{アクションの評価（Q学習）}
-平易な価値関数の実装として最初に考えられるのが，アクションを評価して
-
-\end{itemize}
-
-にはさまざまな派生があるが，Szubert \& Jaskowskiが使用しているTD(0)学習は以下の式によって表現される：
+平易な価値関数の実装として最初に考えられるのが，アクション$a$を選択した時の盤面$s$の価値を評価する関数$Q(s,a)$を学習する\textbf{Q学習}である．Q学習において，行動評価値$Q(s,a)$は以下のように更新される：
 
 \[
-	V(s) ← V(s) + \alpha (r + V(s'') - V(s) )
+	Q(s,a) \leftarrow Q(s,a) + {\alpha} (r + \max_{a' \in A(s'')} Q(s'', a') - Q(s,a))
 \]
 
-この式において，$V$は価値関数，$\alpha$は学習率，$r$は報酬である．学習率は計算された差分を価値関数の更新にどれほど反映するかを決定するパラメータである。
+ここで，$r$は盤面$s$においてアクション$a$を選択したことにより得られた報酬，$s''$は盤面$s$においてプレイを行った後の盤面，$A(s)$は盤面$s$において選択可能なアクションの集合である．このQ学習においては，プレイ後の盤面$s''$における最も高い行動評価値と報酬の和と，現在の盤面$s$においてアクション$a$を選択することの行動評価値の差を取り，学習率${\alpha}$を掛けて$Q(s,a)$に足し込むという形で，行動価値関数の更新を行っている．
 
-TD学習はTesauroによるバックギャモンへの適用でよく知られるようになり，碁やオセロ，チェスにおけるゲームAIの方策決定の手法として用いられるようになった。
+なお2048にQ学習を適用する場合は，どの盤面に対しても有り得るアクションは高々4つしかないので，$s$と$a$の組み合わせにより値を与える1つの関数を使用するのではなく，4通りのアクションごとに価値関数$V_a(s) \;\; (a \in \text{\textsc{Up, Down, Right, Left}})$を使用することができる\cite{Szubert}．この場合，アクション$a$に対する行動評価値$V_a(s)$は以下のように更新される：
+
+\[
+	V_a(s) \leftarrow V_a(s) + {\alpha} (r + \max_{a' \in A(s'')} V_{a'}(s'') - V_a(s))
+\]
+
+\subsubsection{盤面の評価（TD(0)）}
+次に，TD(0)を利用して盤面$s$の価値を評価する手法が挙げられる．TD(0)は最もシンプルなTD学習のアルゴリズムであり，TD(0)における価値関数$V(s)$は次の式のように更新される：
+
+\[
+	V(s) \leftarrow V(s) + \alpha (r + V(s'') - V(s) )
+\]
+
+一般に，TD(0)によって制御されるエージェントは$r+V(s'')$を目標とする\cite{Sutton}．したがって，盤面の評価を行う際にはこの値を最大化するようなアクションを選択することになるが，このモデルにおいては$r+V(s'')$の\textbf{期待値}を最大化するようなアクションを選択する．すなわち，ある盤面$s$の価値は以下のように評価され，この値を最大化するアクションを選択することになる：
+
+\[
+	r + \sum_{s'' \in S''} P(s,a,s'')V(s'')
+\]
+
+ここで，$S''$は盤面$s$においてプレイを行った後に有り得る盤面の集合を，$P(s,a,s'')$は盤面$s$においてアクション$a$を選択した後に盤面$s''$が得られる確率を与える関数を表す．
+
+上記からわかる通り，盤面の評価モデルにおいて1つのアクションを評価する際には，そのアクションの結果得られる全てのプレイ後の盤面を求める必要がある．2048では最大で15個の空のマスが存在し，これらのマスに生成されるランダムタイルは2種類で，さらに4方向へのアクションを選択できることから，1回のアクション選択のために最大で120個の盤面を求めなければならない．このため，盤面の評価モデルはアクションの評価モデルと比べて実行速度が非常に遅いプログラムとなってしまう．
+
+\subsubsection{遷移後盤面の評価（TD(0)）}
+最後に提案されたのが，アクションの評価モデルと盤面の評価モデルの中間となる遷移後盤面の評価モデルである．
+
+
+
+
+
+
+TD学習はTesauroによるバックギャモンへの適用でよく知られるようになり，碁やオセロ，チェスにおけるゲームAIの方策決定の手法として用いられるようになった。これ前に持って行ってcitationつけましょう
 
 \subsection{nタプルネットワーク}
 TD学習によって盤面の評価とその学習を行うことができるが，盤面と評価値をどのように結びつけるかが問題になる。まず，2048で有り得るすべての盤面に対して評価値を与える1対1対応のルックアップテーブル（LUT）を作成することを考えると，2048で有り得る盤面の数は$(4 \times 4)^{18} \approx 4.7 \times 10^{21}$と膨大な数になり，このようなLUTを計算機上で実装することは現実的に不可能である。
@@ -662,13 +689,14 @@ maximum-in-corner方策の他にも，2048において人間が経験的に習�
 
 \begin{thebibliography}{}
  \bibitem{2048game} 2048. https://gabrielecirulli.github.io/2048/. 2018年1月7日閲覧．
- \bibitem{BuinessInsider} Megan Rose Dickey. Puzzle Game 2048 Will Make You Forget Flappy Bird Ever Existed. Business Insider, https://www.businessinsider.com/2048-puzzle-game-2014-3. 2018年1月7日閲覧．
+ \bibitem{BusinessInsider} Megan Rose Dickey. Puzzle Game 2048 Will Make You Forget Flappy Bird Ever Existed. Business Insider, https://www.businessinsider.com/2048-puzzle-game-2014-3. 2018年1月7日閲覧．
  \bibitem{CirulliMedium} Gabriele Cirulli. 2048, success and me. https://medium.com/@gabrielecirulli/2048-success-and-me-7dc664f7a9bd. 2018年1月7日閲覧．
  \bibitem{Szubert} Marcin Szubert \& Wojciech Jaskowski. Temporal Difference Learning of N-Tuple Networks for the Game 2048. In IEEE Conference on Computational Intelligence and Games, pages 1-8, Dortmund, Aug 2014. IEEE.
  \bibitem{Wu} I-Chen Wu, Kun-Hao Yeh, Chao-Chin Liang, Chia-Chuan Chang, Han Chiang. Multi-Stage Temporal Difference Learning for 2048. In Technologies and Applications of Artificial Intelligence, pp 366-378. Springer, 2014.
  \bibitem{Oka} Kazuto Oka \& Kiminori Matsuzaki. Systematic Selection of N-Tuple Networks for 2048. In International Conference on Computers and Games (CG 2016), Leiden, The Netherlands, 2016.
  \bibitem{Yeh} Kun-Hao Yeh, I-Chen Wu, C. H. Hsueh, Chia-Chuan Chang, Chao-Chin Liang, and Han Chiang. Multi-stage temporal difference learning for 2048-like games. In IEEE Transactions on Computational Intelligence and AI in Games, preprint. 2016.
  \bibitem{Jaskowski} Wojciech Jaskowski. Mastering 2048 with Delayed Temporal Coherence Learning, Multi-Stage Weight Promotion, Redundant Encoding and Carousel Shaping. In IEEE Transactions on Computational Intelligence and AI in Games, preprint. 2017.
+ \bibitem{Sutton} R. Sutton \& A. Barto.『強化学習』（三上貞芳・皆川雅章訳）森北出版．2000.
 \end{thebibliography}
 
 \appendix
