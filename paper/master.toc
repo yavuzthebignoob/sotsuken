@@ -21,7 +21,7 @@
 \contentsline {subsubsection}{勝率}{5}
 \contentsline {subsubsection}{スコア}{5}
 \contentsline {chapter}{\numberline {第2章}先行研究の紹介}{6}
-\contentsline {section}{\numberline {2.1}Szubert \& Jaskowski (2014)}{6}
+\contentsline {section}{\numberline {2.1}Szubert \& Ja\'{s}kowski (2014)}{6}
 \contentsline {subsection}{\numberline {2.1.1}TD学習}{6}
 \contentsline {subsubsection}{アクションの評価（Q学習）}{6}
 \contentsline {subsubsection}{盤面の評価（TD(0)）}{7}
@@ -43,7 +43,7 @@
 \contentsline {subsection}{\numberline {2.4.3}学習率の調整}{16}
 \contentsline {subsection}{\numberline {2.4.4}TD(${\lambda }$)の使用}{17}
 \contentsline {subsection}{\numberline {2.4.5}結果}{17}
-\contentsline {section}{\numberline {2.5}Jaskowski (2017)}{18}
+\contentsline {section}{\numberline {2.5}Ja\'{s}kowski (2017)}{18}
 \contentsline {subsection}{\numberline {2.5.1}自動的な学習率決定アルゴリズムの適用}{18}
 \contentsline {subsubsection}{TC(${\lambda }$)}{18}
 \contentsline {subsubsection}{Autostep}{19}
@@ -63,11 +63,10 @@
 \contentsline {chapter}{\numberline {第4章}提案と実装}{26}
 \contentsline {section}{\numberline {4.1}maximum-in-corner方策の導入}{26}
 \contentsline {section}{\numberline {4.2}実装}{27}
-\contentsline {chapter}{\numberline {第5章}実験}{29}
-\contentsline {section}{\numberline {5.1}実験1：常に${\rho }=1.2$とする}{29}
-\contentsline {section}{\numberline {5.2}実験2：2つの${\rho }$の値を用いる}{30}
-\contentsline {section}{\numberline {5.3}実験3：学習率および学習ゲーム数を変更する}{32}
-\contentsline {chapter}{\numberline {第6章}考察と結論}{34}
-\contentsline {chapter}{謝辞}{35}
-\contentsline {chapter}{参考文献}{36}
-\contentsline {chapter}{\numberline {付録A}}{38}
+\contentsline {chapter}{\numberline {第5章}実験}{31}
+\contentsline {section}{\numberline {5.1}実験1：常に${\rho }=1.2$とする}{31}
+\contentsline {section}{\numberline {5.2}実験2：2つの${\rho }$の値を用いる}{32}
+\contentsline {section}{\numberline {5.3}実験3：学習率および学習ゲーム数を変更する}{34}
+\contentsline {chapter}{\numberline {第6章}考察と結論}{38}
+\contentsline {chapter}{謝辞}{39}
+\contentsline {chapter}{参考文献}{40}
