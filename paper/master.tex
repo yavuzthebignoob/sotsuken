@@ -5,7 +5,7 @@
 \studentid{08-152021}
 \supervisor{山口和紀 教授}
 \handin{2018}{1}
-\keywords{ゲームAI，機械学習}
+\keywords{2048,パズルゲーム,強化学習,ヒューリスティクス}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{float}
 \usepackage{algorithm}
@@ -39,7 +39,7 @@
 
 \frontmatter
 \begin{abstract}
-インターネットブラウザやスマートフォン上で遊ぶことのできるパズルゲーム「2048」をプレイするAIの改良を行った．改良には盤面上で最も大きな数のタイルが隅にあることを重視する独自のヒューリスティック「corner bonus」を使用した．(仮)
+インターネットブラウザやスマートフォン上で遊ぶことのできるパズルゲーム「2048」は2014年3月に公開されて以来世界中で人気を博すパズルゲームとなったが，これにはルールが直感的で理解しやすい一方でその攻略法を会得することが難しいという2048特有の性質によるところが大きい．この性質により2048はゲームAI研究の題材としても多く取り上げられ，特に強化学習を用いて訓練したプレイヤがSzubert \& Ja\'{s}kowskiなど多くの研究者によって発表された．しかしながら，これらのプレイヤには人間が2048を遊ぶ際に用いる経験的な知見は盛り込まれておらず，また強化学習によって必ずしも学習できているとは言えない方策も存在している．本研究においては，特に人間が2048を遊ぶ際に大きなタイルを隅に寄せる傾向があることに注目し，これを「maxtile-in-corner方策」と名付け，既存研究による強化学習ベースのプレイヤに組み込んだ．その結果，maxtile-in-corner方策を組み込んだプレイヤは既存の強化学習で訓練したのみのプレイヤよりも有意に優れた指標を残し，強化学習だけでは習得できない人間の経験的な知見をAIプレイヤにトップダウン的に適用することの効果を示した．
 \end{abstract}
 
 \tableofcontents
@@ -559,6 +559,10 @@ base方策およびarray方策については，これに近いものが強化�
 \section{実装}
 まず，maximum-in-corner方策を採用せず，遷移後盤面を評価する通常のTD学習の擬似コードをAlgorithm \ref{alg2}に示す．この擬似コードはSzubert \& Ja\'{s}kowskiの実装に基づく．なお，\textsc{ValidActions}$(s)$は盤面$s$に対して選択可能なアクションの集合を返す関数，\textsc{ComputeAfterstate}$(s,a)$は盤面$s$とアクション$a$に対して遷移後の盤面$s'$と報酬$r$を返す関数，\textsc{InitializeGameState()}は初期盤面を返す関数，\textsc{IsTerminalState}$(s)$は盤面$s$が終末盤面ならばtrueを返す関数，\textsc{GetNextState}$(s)$は遷移後の盤面$s$に対してランダムタイルを生成する関数である．
 
+本研究においては，Algorithm\ref{alg2}のうち，関数\textsc{ChooseBestTransitionAfterstate}にAlgorithm\ref{alg3}の9行目から11行目を加えた関数\textsc{ChooseBestTransitionAfterstateCorner}を実装すると同時に，その盤面の$maxtile$が四隅のマスにあるかどうかを判断する関数\textsc{IsMaxtileInCorner}を実装する．
+
+なお，\textsc{ChooseBestTransitionAfterstate}は，nタプルネットワークを用いてプレイする\footnote{ここでの「プレイ」とは，検証ゲームを行うという意味である}関数\textsc{PlayGame}およびnタプルネットワークを訓練する関数\textsc{LearnEvaluation}に呼ばれている，nタプルネットワークを参照して最も良い遷移後盤面と報酬を返す関数である．\textsc{ChooseBestTransitionAfterstate}と\textsc{ChooseBestTransitionAfterstateCorner}を両方実装しておいて，検証ゲームを行う際にどちらかの関数を呼ぶようにすることで，検証ゲームと学習ゲームのどちらか，もしくはそのどちらもにおいてmaximum-in-corner方策を採用することができるようになる．
+
 \medskip
 
 \begin{breakablealgorithm}
@@ -623,11 +627,9 @@ base方策およびarray方策については，これに近いものが強化�
 \end{algorithmic}
 \end{breakablealgorithm}
 
-\medskip
 
-本研究においては，Algorithm\ref{alg2}のうち，関数\textsc{ChooseBestTransitionAfterstate}にAlgorithm\ref{alg3}の9行目から11行目を加えた関数\textsc{ChooseBestTransitionAfterstateCorner}を実装すると同時に，その盤面の$maxtile$が四隅のマスにあるかどうかを判断する関数\textsc{IsMaxtileInCorner}を実装する．
 
-\begin{algorithm}
+\begin{algorithm}[t]
 \caption{Maximum-in-corner Policy}
 \label{alg3}
 \begin{algorithmic}[1]
@@ -653,7 +655,7 @@ base方策およびarray方策については，これに近いものが強化�
 \end{algorithmic}
 \end{algorithm}
 
-なお，\textsc{ChooseBestTransitionAfterstate}は，nタプルネットワークを用いてプレイする\footnote{ここでの「プレイ」とは，検証ゲームを行うという意味である}関数\textsc{PlayGame}およびnタプルネットワークを訓練する関数\textsc{LearnEvaluation}に呼ばれている，nタプルネットワークを参照して最も良い遷移後盤面と報酬を返す関数である．\textsc{ChooseBestTransitionAfterstate}と\textsc{ChooseBestTransitionAfterstateCorner}を両方実装しておいて，検証ゲームを行う際にどちらかの関数を呼ぶようにすることで，検証ゲームと学習ゲームのどちらか，もしくはそのどちらもにおいてmaximum-in-corner方策を採用することができるようになる．
+
 
 \chapter{実験}
 \section{実験1：常に${\rho}=1.2$とする}
