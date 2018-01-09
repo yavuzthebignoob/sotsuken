@@ -83,7 +83,12 @@ double NTuples::getValue(vector<double> input) {
   for (int i=0; i<2; i++) {
     for (int j=0; j<4; j++) {
       Game2048Board board(input);
-      v += evaluator.evaluate(this, board);
+      if (i==1) {
+	v += evaluator.evaluate(this, board, true);
+      }
+      else {
+	v += evaluator.evaluate(this, board, false);
+      }
       rotateInputBoardInline(input);
     }
     reflectInputBoardInline(input);
@@ -97,15 +102,20 @@ void NTuples::update(vector<double> input, double expectedValue, double learning
   // vector<double> temp;
   // copy(input.begin(), input.end(), back_inserter(temp));
   double val = 0;
-  double eValue = 0;
-  double aValue = 0;
+  //double eValue = 0;
+  //double aValue = 0;
 
   for (int i=0; i<2; i++) {
     for (int j=0; j<4; j++) {
       Game2048Board board(input);
-      val += evaluator.evaluate(this, board);
-      eValue += evaluator.eFuncEvaluate(this, board);
-      aValue += evaluator.aFuncEvaluate(this, board);
+      if (i==1) {
+	val += evaluator.evaluate(this, board, true);
+      }
+      else {
+	val += evaluator.evaluate(this, board, false);
+      }
+      //eValue += evaluator.eFuncEvaluate(this, board);
+      //aValue += evaluator.aFuncEvaluate(this, board);
       rotateInputBoardInline(input);
     }
     reflectInputBoardInline(input);
@@ -127,16 +137,20 @@ void NTuples::update(vector<double> input, double expectedValue, double learning
   for (int i=0; i<2; i++) {
     for (int j=0; j<4; j++) {
       Game2048Board board(input);
-      for (int i=0; i<allNTuples.size(); i++) {
-	//cerr << "w=" << allNTuples[i].LUT[allNTuples[i].address(board)] << endl;
-	allNTuples[i].LUT[allNTuples[i].address(board)] += delta;
-	// cerr << "modified weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;
-	allNTuples[i].eFunc[allNTuples[i].address(board)] += delta;
-	allNTuples[i].aFunc[allNTuples[i].address(board)] += abs(delta);
+      for (int k=0; k<allNTuples.size(); k++) {
+	if (i==1 && k==2)
+	  continue;
+	else {
+	  //cerr << "w=" << allNTuples[i].LUT[allNTuples[i].address(board)] << endl;
+	  allNTuples[k].LUT[allNTuples[k].address(board)] += delta;
+	  // cerr << "modified weight = " << allNTuples[0].LUT[allNTuples[0].address(board)] << endl;
+	  //allNTuples[i].eFunc[allNTuples[i].address(board)] += delta;
+	  //allNTuples[i].aFunc[allNTuples[i].address(board)] += abs(delta);
+	}
       }
       rotateInputBoardInline(input);
     }
-    reflectInputBoardInline(input);
+    reflectInputBoardInline(input);    
   }
 }
 

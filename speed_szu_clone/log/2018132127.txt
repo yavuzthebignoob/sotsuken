@@ -38,3 +38,17 @@ avg ratio = 0.149
 maxTile   = 2048
 TIME      = 21:47:38 (0:19:39)
 
+After 15000 games:
+avg score = 19906.1
+max score = 62156
+avg ratio = 0.344
+maxTile   = 4096
+TIME      = 22:0:20 (0:32:21)
+
+After 20000 games:
+avg score = 23329.1
+max score = 57672
+avg ratio = 0.367
+maxTile   = 4096
+TIME      = 22:14:39 (0:46:39)
+

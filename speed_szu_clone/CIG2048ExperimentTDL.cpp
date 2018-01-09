@@ -65,7 +65,7 @@ ofstream gradScoreRel2048("./log/gs2048_"+date);
 ofstream gradScoreRel4096("./log/gs4096_"+date);
 */
 
-ofstream eaFuncOut("./log/eaFunc_"+date);
+//ofstream eaFuncOut("./log/eaFunc_"+date);
 
 int main() {
   cerr << "+++ 2048 N-tuple Network Player trainer +++" << endl;
@@ -239,14 +239,14 @@ void evaluatePerformance(TDLGame2048 game, NTuples* vFunction, int numEpisodes, 
   bool isMoreThan9500 = false;
   int maxScore = 0;
 
-  eaFuncOut << "After " << numEpisodes << "games:" << endl;
+  //eaFuncOut << "After " << numEpisodes << "games:" << endl;
   
   for (int i = 0; i < numEpisodes; i++) {
     random();
     TDLGame2048::Game2048Outcome res = game.playByAfterstates(vFunction, random);
 
-    eaFuncOut << "Score=" << res.score << ", eFunc[terminal]=" << res.eFuncVal
-	      << ", aFunc[terminal]=" << res.aFuncVal << ", ratio=" << abs(res.eFuncVal)/res.aFuncVal << endl;
+    //eaFuncOut << "Score=" << res.score << ", eFunc[terminal]=" << res.eFuncVal
+    //<< ", aFunc[terminal]=" << res.aFuncVal << ", ratio=" << abs(res.eFuncVal)/res.aFuncVal << endl;
     
     if (GRADATION_EVAL_POINT==e) {
       // if (true)

@@ -10,9 +10,9 @@ using namespace std;
 
 class DefaultNTupleEvaluator : public NTupleBoardEvaluator {
 public:
-  double evaluate(NTuples* tuples, Game2048Board board);
-  double eFuncEvaluate(NTuples* tuples, Game2048Board board);
-  double aFuncEvaluate(NTuples* tuples, Game2048Board board);
+  double evaluate(NTuples* tuples, Game2048Board board, bool flag);
+  //double eFuncEvaluate(NTuples* tuples, Game2048Board board);
+  //double aFuncEvaluate(NTuples* tuples, Game2048Board board);
 };
 
 #endif
