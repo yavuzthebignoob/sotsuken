@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.10.17)  8 JAN 2018 21:27
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.10.17)  9 JAN 2018 17:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -240,7 +240,10 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 ]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 23.90964pt on input line 45.
- (./master.toc)
+ (./master.toc
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 2.
+)
 \tf@toc=\write3
 \openout3 = `master.toc'.
 
@@ -274,59 +277,12 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 19.9311pt on input line 48.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 19.9311pt on input line 48.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 52.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 52.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 52.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 52.
-
-LaTeX Warning: Citation `2048game' on page 1 undefined on input line 52.
-
-
-LaTeX Warning: Citation `Szubert' on page 1 undefined on input line 52.
-
-
-LaTeX Warning: Citation `Szubert' on page 1 undefined on input line 52.
-
-
-LaTeX Warning: Citation `Wu' on page 1 undefined on input line 52.
-
-
-LaTeX Warning: Citation `Oka' on page 1 undefined on input line 52.
-
-
-LaTeX Warning: Citation `Yeh' on page 1 undefined on input line 52.
-
-
-LaTeX Warning: Citation `Jaskowski' on page 1 undefined on input line 52.
-
-
-LaTeX Warning: Citation `Yeh' on page 1 undefined on input line 54.
-
-
-LaTeX Warning: Citation `Yeh' on page 1 undefined on input line 54.
-
-
-LaTeX Warning: Citation `BusinessInsider' on page 1 undefined on input line 59.
-
-
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 59.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 59.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 59.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 59.
-
-LaTeX Warning: Citation `CirulliMedium' on page 1 undefined on input line 59.
-
-
-LaTeX Warning: Citation `CirulliMedium' on page 1 undefined on input line 59.
-
 [1
 
 ]
@@ -338,6 +294,14 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 73.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 73.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 75.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 75.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 75.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 75.
  [2]
 LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <10> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 77.
@@ -352,38 +316,8 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
 (Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 77.
 
-[3]
-
-LaTeX Warning: Citation `Yeh' on page 4 undefined on input line 101.
-
-[4]
-
-LaTeX Warning: Citation `Jaskowski' on page 5 undefined on input line 126.
-
-
-LaTeX Warning: Citation `Jaskowski' on page 5 undefined on input line 126.
-
-[5]
+[3] [4] [5]
 第2章
-
-LaTeX Warning: Citation `Tesauro' on page 6 undefined on input line 140.
-
-
-LaTeX Warning: Citation `Runarsson' on page 6 undefined on input line 140.
-
-
-LaTeX Warning: Citation `Schraudolph' on page 6 undefined on input line 140.
-
-
-LaTeX Warning: Citation `Dries' on page 6 undefined on input line 140.
-
-
-LaTeX Warning: Citation `SzubertOthello' on page 6 undefined on input line 140.
-
-
-
-LaTeX Warning: Citation `Baxter' on page 6 undefined on input line 140.
-
 [6
 
 ]
@@ -397,13 +331,6 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 9.60999pt on input line 151.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 151.
-
-
-LaTeX Warning: Citation `Szubert' on page 7 undefined on input line 151.
-
-
-LaTeX Warning: Citation `Sutton' on page 7 undefined on input line 164.
-
 LaTeX Font Info:    Font shape `JT1/mc/m/it' in size <10> not available
 (Font)              Font shape `JT1/mc/m/n' tried instead on input line 175.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
@@ -412,34 +339,21 @@ LaTeX Font Info:    Font shape `JY1/mc/m/it' in size <10> not available
 (Font)              Font shape `JY1/mc/m/n' tried instead on input line 175.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 9.60999pt on input line 175.
-[7]
+ [7]
 File: figure_001.png Graphic file (type bmp)
- <figure_001.png>
-
-LaTeX Warning: Citation `Bledsoe' on page 8 undefined on input line 204.
-
-
-LaTeX Warning: Citation `Lucas' on page 8 undefined on input line 204.
-
-[8]
-
-LaTeX Warning: Citation `Szubert' on page 9 undefined on input line 207.
-
+ <figure_001.png> [8]
 File: figure_002.png Graphic file (type bmp)
-<figure_002.png> [9] [10]
+ <figure_002.png> [9] [10]
 File: figure_003.png Graphic file (type bmp)
- <figure_003.png> [11]
+ <figure_003.png>
+[11]
 File: figure_010.eps Graphic file (type eps)
  <figure_010.eps> [12]
 File: figure_004.png Graphic file (type bmp)
-
-<figure_004.png> [13]
+ <figure_004.png> [13]
 File: figure_005.png Graphic file (type bmp)
- <figure_005.png> [14] [15] [16] [17]
-
-LaTeX Warning: Citation `Bagheri' on page 18 undefined on input line 390.
-
-[18] [19] [20]
+ <figure_005.png> [14] [15]
+[16] [17] [18] [19] [20]
 LaTeX Font Info:    Font shape `JT1/mc/m/it' in size <8> not available
 (Font)              Font shape `JT1/mc/m/n' tried instead on input line 488.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
@@ -456,45 +370,21 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 第4章
 [26
 
-]
-
-LaTeX Warning: Reference `alg2' on page 27 undefined on input line 560.
-
-
-LaTeX Warning: Reference `alg2' on page 27 undefined on input line 562.
-
-
-LaTeX Warning: Reference `alg3' on page 27 undefined on input line 562.
-
-[27] [28] [29] [30]
+] [27] [28] [29] [30]
 第5章
-
-LaTeX Warning: Reference `figure_006' on page 31 undefined on input line 676.
-
 File: figure_006.eps Graphic file (type eps)
 <figure_006.eps> [31
 
 ] [32]
-
-LaTeX Warning: Reference `figure_007' on page 33 undefined on input line 719.
-
-
-LaTeX Warning: Reference `figure_009' on page 33 undefined on input line 719.
-
 File: figure_007.eps Graphic file (type eps)
-<figure_007.eps>
+ <figure_007.eps>
 File: figure_008.eps Graphic file (type eps)
  <figure_008.eps>
 File: figure_009.eps Graphic file (type eps)
- <figure_009.eps> [33] [34]
-
-LaTeX Warning: Reference `figure_011' on page 35 undefined on input line 770.
-
-
-LaTeX Warning: Reference `figure_013' on page 35 undefined on input line 770.
-
+ <figure_009.eps>
+[33] [34]
 File: figure_011.eps Graphic file (type eps)
-<figure_011.eps>
+ <figure_011.eps>
 File: figure_012.eps Graphic file (type eps)
  <figure_012.eps>
 File: figure_013.eps Graphic file (type eps)
@@ -517,14 +407,7 @@ Missing character: There is no ^^93 in font cmr10!
 Missing character: There is no ^^e2 in font cmr10!
 Missing character: There is no ^^80 in font cmr10!
 Missing character: There is no ^^93 in font cmr10!
- [41] (./master.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ [41] (./master.aux) ) 
 Here is how much of TeX's memory you used:
  2036 strings out of 493653
  24066 string characters out of 6148873
@@ -532,6 +415,6 @@ Here is how much of TeX's memory you used:
  5595 multiletter control sequences out of 15000+600000
  26942 words of font info for 116 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 29i,12n,22p,1023b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,12n,21p,1023b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on master.dvi (47 pages, 135724 bytes).
+Output written on master.dvi (47 pages, 141712 bytes).
