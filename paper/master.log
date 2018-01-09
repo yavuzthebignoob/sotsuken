@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  9 JAN 2018 22:00
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  9 JAN 2018 22:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -354,8 +354,8 @@ File: figure_010.eps Graphic file (type eps)
  <figure_010.eps> [12]
 File: figure_004.png Graphic file (type bmp)
  <figure_004.png> [13]
-File: figure_005.png Graphic file (type bmp)
- <figure_005.png> [14] [15]
+File: figure_005.eps Graphic file (type eps)
+ <figure_005.eps> [14] [15]
 [16] [17] [18] [19] [20]
 LaTeX Font Info:    Font shape `JT1/mc/m/it' in size <8> not available
 (Font)              Font shape `JT1/mc/m/n' tried instead on input line 489.
@@ -412,12 +412,12 @@ Missing character: There is no ^^80 in font cmr10!
 Missing character: There is no ^^93 in font cmr10!
  [41] (./master.aux) ) 
 Here is how much of TeX's memory you used:
- 2138 strings out of 494865
- 25432 string characters out of 6179768
+ 2136 strings out of 494865
+ 25374 string characters out of 6179768
  89078 words of memory out of 5000000
- 5529 multiletter control sequences out of 15000+600000
+ 5528 multiletter control sequences out of 15000+600000
  27532 words of font info for 119 fonts, out of 8000000 for 9000
  269 hyphenation exceptions out of 8191
  30i,12n,21p,1023b,516s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on master.dvi (47 pages, 143812 bytes).
+Output written on master.dvi (47 pages, 143832 bytes).
