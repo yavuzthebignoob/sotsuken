@@ -1,0 +1,46 @@
+> tdl <- read.table("TDL_array.txt")
+> random <- read.table("random_array.txt")
+> t.test(tdl, random, var=T)
+
+	Two Sample t-test
+
+data:  tdl and random
+t = 70.475, df = 1998, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.7908715 0.8361478
+sample estimates:
+mean of x mean of y 
+ 1.606826  0.793316 
+
+> tdl <- read.table("TDL_base.txt")
+> random <- read.table("random_base.txt")
+> t.test(tdl, random, var=T)
+
+	Two Sample t-test
+
+data:  tdl and random
+t = 145.78, df = 1998, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.2830916 0.2908120
+sample estimates:
+mean of x mean of y 
+0.9119678 0.6250160 
+
+> tdl <- read.table("TDL_mic.txt")
+> random <- read.table("random_mic.txt")
+> t.test(tdl, random, var=T)
+
+	Two Sample t-test
+
+data:  tdl and random
+t = 102.77, df = 1998, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.7212747 0.7493374
+sample estimates:
+ mean of x  mean of y 
+0.81584249 0.08053645 
+
+

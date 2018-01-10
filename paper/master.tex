@@ -420,7 +420,7 @@ Bagheri et al.によるConnect 4\footnote{いわゆる「四目並べ」に近�
 このような学習率の求め方をすることによって，累積誤差と累積絶対誤差の値が近い場合は学習率が大きく，逆に累積誤差と累積絶対誤差の差が大きくなると学習率は小さくなる．ある盤面$s$に対して累積誤差$E(s)$と累積絶対誤差$A(s)$の差が大きいということは，$s$に対して負の値の${\delta}_t$が加算されることが多くなっているということであり，すなわちそれはこの盤面に対しての価値関数の評価が上手く行っていないということであるから，学習率を低くして価値関数の更新を穏やかに行うのは理にかなっていると考えられる．
 
 \subsubsection{Autostep}
-AutostepはMahmoodによって提案されたアルゴリズムで，SuttonによるIDBDの拡張にあたる．Autostepでは，ステップサイズの上限を定め，もしステップサイズが大きくなりすぎていることが検知されたらステップサイズ値を小さくするという方法で，IDBDを改良したものである．Autostepでは3種類のパラメータを設定する必要があり，Ja\'{s}kowskiの研究では，このうち初期ステップサイズ${\alpha}_{init} = 1.0$，割引率${\tau} = 0.0001$は固定され，メタ学習率${\mu}$の値をいくつか選択して実験が行われた．
+AutostepはMahmood\cite{Mahmood}によって提案されたアルゴリズムで，SuttonによるIDBD\cite{IDBD}の拡張にあたる．Autostepでは，ステップサイズの上限を定め，もしステップサイズが大きくなりすぎていることが検知されたらステップサイズ値を小さくするという方法で，IDBDを改良したものである．Autostepでは3種類のパラメータを設定する必要があり，Ja\'{s}kowskiの研究では，このうち初期ステップサイズ${\alpha}_{init} = 1.0$，割引率${\tau} = 0.0001$は固定され，メタ学習率${\mu}$の値をいくつか選択して実験が行われた．
 
 \subsubsection{結果}
 Ja\'{s}kowskiは，前述の2つの自動的な学習率決定アルゴリズムに加え，従来のTD学習\footnote{TC(${\lambda}$)およびTD(${\lambda}$)においては，${\lambda}=0.5$とした}を採用した合計3種類の手法で，1手先読み（すなわち，先読みを行わない）と3手先読みの2つの条件で実験を行った．その結果，全ての学習率決定手法のうち，1手先読みの場合はTC(${\lambda}$)で${\beta}=1.0$の時に平均スコアが最も良くなり，3手先読みの場合はTC(${\lambda}$)で${\beta}=0.5$の時に平均スコアが最も良くなった．1手先読み・3手先読みの場合ともに，TD(${\lambda}$)およびAutostepはどのように学習率・メタ学習率を設定してもTC(${\lambda}$)に優る平均スコアを達成することはできなかった．
@@ -508,7 +508,7 @@ Ja\'{s}kowskiが導入した最後の手法が余剰タプルの追加（Redunda
 \item 基地内でマージすることができるタイルの組ができたら，それらをマージし，さらに大きな数のタイルにする
 \end{itemize}
 
-もし基地を定めない場合，大きなタイルが盤面のあちらこちらへ移動することとなる．$2{\nu}$-タイルを作成することが困難な${\nu}$-タイル──例えば2048-タイルなどが盤面を上下左右に移動することを考えると，例えば4-タイルや8-タイルといった小さなタイルのマージを行う妨げとなり，盤面の自由度が極端に下がる．そのためこの方策は理に適っていると考えられ，先行研究によるプレイヤも強化学習の訓練を通じてこの方策を習得していると考えられる．
+もし基地を定めない場合，大きなタイルが盤面のあちらこちらへ移動することとなる．$2{\nu}$-タイルを作成することが困難な${\nu}$-タイル──例えば2048-タイルなどが盤面を上下左右に移動することを考えると，例えば4-タイルや8-タイルといった小さなタイルのマージを行う妨げとなり，盤面の自由度が極端に下がる．そのため，より長くゲームを行うためにはbase方策に従うことが重要であると考えられる．
 
 \section{array方策}
 人間がbase方策に従って2048プレイする際，基地の中ではできる限りタイルが「$2^{k}-2^{l}-2^{m}-2^{n} \;\; (0<k<l<m<n)$」といった形へ，タイルの数が降順もしくは昇順になるように整列（array）させる傾向がある．この方策を\textbf{array方策}と名付けることとする．
@@ -516,7 +516,7 @@ Ja\'{s}kowskiが導入した最後の手法が余剰タプルの追加（Redunda
 この方策はbase方策との相乗効果が高い．例えば「$32-64-128-256$」という順列の基地を作った場合，基地の外で32-タイルの作成に成功すれば，そのまま基地内でマージを行うことによって512-タイルを作成することができる．あるいは，基地の外で128-タイルの作成に成功した場合はマージを行うと「$32-64-512$」となるが，この状態でもarray方策は維持されており，ゲームを長く進めていても保持しやすい性質である．
 
 \section{maximum-in-corner方策}
-最後に，最もシンプルな方策として\textbf{maximum-in-corner方策}	を挙げる．この方策では，現状の盤面における$max tile$が四隅のどれかのマスにあることを重視する．これはarray方策の拡張的な方策と考えられる．例えば「$2-32-2048-2$」という順列の基地を考えると，前の3つのタイルはarray方策に従っているものの，「$2048-2$」という並びはarray方策に反している．この状況を解決するためには，以下のいずれかの操作が必要になる．
+最後に，最もシンプルな方策として\textbf{maximum-in-corner方策}を挙げる．この方策では，現状の盤面における$max tile$が四隅のどれかのマスにあることを重視する．これはarray方策の拡張的な方策と考えられる．例えば「$2-32-2048-2$」という順列の基地を考えると，前の3つのタイルはarray方策に従っているものの，「$2048-2$」という並びはarray方策に反している．この状況を解決するためには，以下のいずれかの操作が必要になる．
 
 \begin{enumerate}
 \item 2および32にタイルをマージし続け，2048-タイルを作成し，既に存在している2048-タイルとマージする
@@ -527,7 +527,25 @@ Ja\'{s}kowskiが導入した最後の手法が余剰タプルの追加（Redunda
 
 このような困難な状況に陥ることを防ぐため，あらかじめarray方策に反する順列を作らないような方策が必要になる．これがmaximum-in-corner方策であり，大きな数のタイルができる限り盤面の隅から離れないことで，よりarray方策を長く実現できるようにしている．
 
-base方策については，これに近いものが強化学習のプロセスの中で自然と習得されたことが確認されているが，array方策およびmaximum-in-corner方策については厳密に従っているとは言えない．array方策は$maxtile=2048$が達成されるまでは$90\%$\footnote{まだ実験してないのでこれは仮に書いてるだけです，この脚注は後で外す．後に書いてる確率も同じ}の確率で守られているが，その後は$70\%$まで守られる確率が落ちる．maximum-in-corner方策についても同様であり，$maxtile=2048$が達成されるまでは$90\%$の確率で守られているのに対し，その後は$70\%$まで落ちる．maximum-in-corner方策に反したアクションを選択した結果，盤面の状態を非常に悪くしているケースも確認できる．このことから，先行研究の強化学習を使用したプレイヤはmaximum-in-corner方策を明確には習得しておらず，本研究において方策を明示的に導入することで性能に一定の改善が見られるものと考えた．
+\section{ヒューリスティックスと強化学習によるプレイヤの関係}
+強化学習によって訓練された2048プレイヤがこれらの方策に従っているかどうかを確かめるために，各方策に2048の盤面がどれぐらい従っているかを定量的に表現する評価関数を実装した．それぞれの評価関数の定義は以下の通りである．これらの3つのスコアを1ゲーム中全ての盤面に対して算出し，その総和を盤面の数で割った値をそのゲームの各スコアの代表値とする．
+
+\begin{itemize}
+\item \textbf{base方策：}盤面上で最も大きな数のタイルのうち，上位4個のタイルの数の和を${\sigma}$とする．盤面の終端にある4辺のうち，最も大きな数のタイルが集まっている辺を選び，その辺のタイルの数の和を${\pi}$とする．$\displaystyle \frac{\sigma}{\pi}$をこの盤面の\textbf{base方策スコア}とする
+\item \textbf{array方策：}盤面上のbaseにおけるタイルの並びにより，以下の通り\textbf{array方策スコア}を決定する：
+\begin{itemize}
+\item baseの左端から右端まで一度も順列の昇順／降順が逆転しなかった場合，2点とする
+\item baseの左端から右端までの間，1回だけ順列の昇順／降順が逆転した場合，1点とする
+\item baseの左端から右端までの間，2回順列の昇順／降順が逆転した場合，0点とする
+\end{itemize}
+\item \textbf{maximum-in-corner方策：}盤面の四隅のうちいずれかのマスに$maxtile$が存在するなら，\textbf{maximum-in-corner方策スコア}を1点とする．この条件を満たさないならmaximum-in-corner方策スコアは0点である
+\end{itemize}
+
+これらのスコアが強化学習によって訓練されたプレイヤにおいて習得されていることを示すため，ランダムプレイヤ\footnote{全ての盤面において可能なアクションの中からランダムにアクションを選択するプレイヤ}において1000ゲームを行った際のスコアと，強化学習により価値関数の訓練を500,000ゲームにわたって行ったプレイヤにおいて1,000ゲームの検証ゲームを行った際のスコアを比較した．その結果，全ての方策スコアについて，99\%以上有意に強化学習によるプレイヤの方が優れていることを示した．以上により，強化学習により価値関数の訓練を行ったプレイヤは，各方策を自然と習得していることが示された．
+
+ところで，強化学習によるプレイヤのbase方策スコアの平均値は0.912であった．この値が1であれば全ての盤面においてbase方策が守られていることになるが，ゲーム終盤においてタイルの移動が制限されるとbase方策を守ることが難しくなることを考慮すると，base方策はかなり高い確率で守られると考えられる．一方でarray方策スコアの平均値は1.61，maximum-in-corner方策スコアの平均値は0.816であった．base方策が“満点”の9割を達成していたことを考えると，これらのスコアはやや低めである．また前述の通りmaximum-in-corner方策はarray方策の拡張的な方策であるから，maximum-in-corner方策スコアが改善すればarray方策スコアも改善する可能性があり，その結果プレイヤの性能が向上すると考えられる．
+
+以上より，本研究においては特にmaximum-in-corner方策に注目し，先行研究の強化学習を使用したプレイヤに対してより強くmaximum-in-corner方策に従うような改修を導入することによって，2048プレイヤの性能に一定の改善が見られるものと考えた．
 
 \chapter{提案と実装}
 \section{maximum-in-corner方策の導入}
@@ -833,8 +851,9 @@ maximum-in-corner方策の他にも，2048において人間が経験的に習�
  \bibitem{Baxter} J. Baxter, A. Tridgell, \& L. Weaver. Learning to Play Chess Using Temporal Differences. Machine Learning, vol. 40, no. 3, pp. 243-263, 2000.
  \bibitem{Bledsoe} Woodrow Wilson Bledsoe \& Iben Browning. Pattern recognition and reading by machine. In Proc. Eastern Joint Comput. Conf., pages 225–232, 1959.
  \bibitem{Lucas} Simon M. Lucas. Learning to play Othello with N-tuple systems. Australian Journal of Intelligent Information Processing Systems, Special Issue on Game Technology, 9(4):01–20, 2007.
- \bibitem{Bagheri} S Bagheri, M Thill, P Koch, \& W Konen. Online Adaptable Learning Rates for the Game Connect-4. Computational Intelligence
-and AI in Games, IEEE Transactions on, 8(1):33–42, 2016.
+ \bibitem{Bagheri} S Bagheri, M Thill, P Koch, \& W Konen. Online Adaptable Learning Rates for the Game Connect-4. Computational Intelligence and AI in Games, IEEE Transactions on, 8(1):33–42, 2016.
+ \bibitem{Mahmood} Ashique Rupam Mahmood, Richard S Sutton, Thomas Degris, and Patrick M Pilarski. Tuning-free step-size adaptation. In Acoustics, Speech and Signal Processing (ICASSP), 2012 IEEE International Conference on, pages 2121–2124. IEEE, 2012.
+ \bibitem{IDBD} Richard S Sutton. Adapting bias by gradient descent: An incremental version of delta-bar-delta. In AAAI, pages 171–176, 1992.
 \end{thebibliography}
 
 \end{document}

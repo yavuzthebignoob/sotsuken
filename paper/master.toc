@@ -62,6 +62,7 @@
 \contentsline {section}{\numberline {3.1}base方策}{23}
 \contentsline {section}{\numberline {3.2}array方策}{24}
 \contentsline {section}{\numberline {3.3}maximum-in-corner方策}{24}
+\contentsline {section}{\numberline {3.4}ヒューリスティックスと強化学習によるプレイヤの関係}{24}
 \contentsline {chapter}{\numberline {第4章}提案と実装}{26}
 \contentsline {section}{\numberline {4.1}maximum-in-corner方策の導入}{26}
 \contentsline {subsection}{\numberline {4.1.1}$V(s_{a_{\sigma }}) > V(s_{a_{\tau }})$の場合}{26}
