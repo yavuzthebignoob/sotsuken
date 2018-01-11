@@ -74,5 +74,10 @@
 \contentsline {section}{\numberline {5.2}実験2：2つの${\rho }$の値を用いる}{32}
 \contentsline {section}{\numberline {5.3}実験3：学習率および学習ゲーム数を変更する}{34}
 \contentsline {chapter}{\numberline {第6章}考察と結論}{38}
-\contentsline {chapter}{謝辞}{39}
-\contentsline {chapter}{参考文献}{40}
+\contentsline {section}{\numberline {6.1}実験1の考察}{38}
+\contentsline {section}{\numberline {6.2}実験2の考察}{38}
+\contentsline {section}{\numberline {6.3}実験3の考察}{39}
+\contentsline {section}{\numberline {6.4}実験の成果}{40}
+\contentsline {section}{\numberline {6.5}future works}{40}
+\contentsline {chapter}{謝辞}{41}
+\contentsline {chapter}{参考文献}{42}
