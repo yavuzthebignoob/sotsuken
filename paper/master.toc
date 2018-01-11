@@ -70,14 +70,19 @@
 \contentsline {subsection}{\numberline {4.1.3}$V(s_{a_{\sigma }}) < V(s_{a_{\tau }})$かつ${\rho }V(s_{a_{\sigma }}) < V(s_{a_{\tau }})$の場合}{27}
 \contentsline {section}{\numberline {4.2}実装}{27}
 \contentsline {chapter}{\numberline {第5章}実験}{31}
-\contentsline {section}{\numberline {5.1}実験1：常に${\rho }=1.2$とする}{31}
-\contentsline {section}{\numberline {5.2}実験2：2つの${\rho }$の値を用いる}{32}
-\contentsline {section}{\numberline {5.3}実験3：学習率および学習ゲーム数を変更する}{34}
-\contentsline {chapter}{\numberline {第6章}考察と結論}{38}
-\contentsline {section}{\numberline {6.1}実験1の考察}{38}
-\contentsline {section}{\numberline {6.2}実験2の考察}{38}
-\contentsline {section}{\numberline {6.3}実験3の考察}{39}
-\contentsline {section}{\numberline {6.4}実験の成果}{40}
-\contentsline {section}{\numberline {6.5}future works}{40}
-\contentsline {chapter}{謝辞}{41}
-\contentsline {chapter}{参考文献}{42}
+\contentsline {section}{\numberline {5.1}実験の目標}{31}
+\contentsline {section}{\numberline {5.2}実験のセットアップ}{31}
+\contentsline {subsubsection}{プログラムの実装}{31}
+\contentsline {subsubsection}{実行環境}{32}
+\contentsline {subsubsection}{nタプルの対称性と実行時間}{32}
+\contentsline {section}{\numberline {5.3}実験1：maximum-in-corner方策の有用性の提示}{32}
+\contentsline {section}{\numberline {5.4}実験2：二段階のcorner ratioを使用することによる効果の提示}{33}
+\contentsline {section}{\numberline {5.5}実験3：学習率および学習ゲーム数の変更による性能の向上の提示}{35}
+\contentsline {chapter}{\numberline {第6章}考察と結論}{40}
+\contentsline {section}{\numberline {6.1}実験1の考察}{40}
+\contentsline {section}{\numberline {6.2}実験2の考察}{40}
+\contentsline {section}{\numberline {6.3}実験3の考察}{41}
+\contentsline {section}{\numberline {6.4}実験の成果}{42}
+\contentsline {section}{\numberline {6.5}future works}{42}
+\contentsline {chapter}{謝辞}{43}
+\contentsline {chapter}{参考文献}{44}

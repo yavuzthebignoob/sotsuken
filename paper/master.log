@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  11 JAN 2018 12:29
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2017.12.26)  11 JAN 2018 13:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -240,25 +240,25 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 2.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 80.
+(Font)              scaled to size 8.64899pt on input line 83.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 80.
+(Font)              scaled to size 8.64899pt on input line 83.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 80.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 83.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 80.
+(Font)              scaled to size 8.64899pt on input line 83.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 80.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 83.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 80.
+(Font)              scaled to size 8.64899pt on input line 83.
 LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 80.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 83.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 80.
+(Font)              scaled to size 8.64899pt on input line 83.
 LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 80.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 83.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 80.
+(Font)              scaled to size 8.64899pt on input line 83.
  [3])
 \tf@toc=\write3
 \openout3 = `master.toc'.
@@ -375,30 +375,32 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 
 ] [27] [28] [29] [30]
 第5章
-File: figure_006.eps Graphic file (type eps)
-<figure_006.eps> [31
+[31
 
 ] [32]
+File: figure_006.eps Graphic file (type eps)
+ <figure_006.eps> [33]
 File: figure_007.eps Graphic file (type eps)
  <figure_007.eps>
 File: figure_008.eps Graphic file (type eps)
  <figure_008.eps>
 File: figure_009.eps Graphic file (type eps)
- <figure_009.eps>
-[33] [34]
+
+<figure_009.eps> [34] [35] [36]
 File: figure_011.eps Graphic file (type eps)
  <figure_011.eps>
 File: figure_012.eps Graphic file (type eps)
  <figure_012.eps>
 File: figure_013.eps Graphic file (type eps)
- <figure_013.eps> [35] [36] [37]
+
+<figure_013.eps> [37] [38] [39]
 第6章
-[38
+[40
 
-] [39] [40] [41
+] [41] [42] [43
 
 
-] [42
+] [44
 
 ]
 Missing character: There is no ^^e2 in font cmr10!
@@ -416,14 +418,14 @@ Missing character: There is no ^^93 in font cmr10!
 Missing character: There is no ^^e2 in font cmr10!
 Missing character: There is no ^^80 in font cmr10!
 Missing character: There is no ^^93 in font cmr10!
- [43] (./master.aux) ) 
+ [45] (./master.aux) ) 
 Here is how much of TeX's memory you used:
- 2142 strings out of 494865
- 25450 string characters out of 6179768
+ 2146 strings out of 494865
+ 25503 string characters out of 6179768
  90078 words of memory out of 5000000
- 5534 multiletter control sequences out of 15000+600000
- 27532 words of font info for 119 fonts, out of 8000000 for 9000
+ 5537 multiletter control sequences out of 15000+600000
+ 27700 words of font info for 120 fonts, out of 8000000 for 9000
  269 hyphenation exceptions out of 8191
  33i,12n,21p,1199b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on master.dvi (49 pages, 162484 bytes).
+Output written on master.dvi (51 pages, 171820 bytes).

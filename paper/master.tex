@@ -675,10 +675,54 @@ corner ratioによる割増を行わない場合は$a_{\tau}$が最も大きな�
 \end{algorithmic}
 \end{algorithm}
 
-
-
 \chapter{実験}
-\section{実験1：常に${\rho}=1.2$とする}
+
+\section{実験の目標}
+本研究の実験は，maximum-in-corner方策が2048プレイヤに対して有効であることに加え，本方策の特性について明らかにするために，以下の3つの事柄を示すことを目標とする．
+
+\begin{itemize}
+\item 一般に，maximum-in-corner方策を採用すること自体は2048プレイヤの性能を高める可能性がある
+\item 学習ゲームを重ねるにつれ強化学習による学習器の性能は良くなるので，高いcorner ratioの値はcorner誤謬を引き起こす
+\item 1ゲームの中でゲームが終盤に近づくに連れてcorner ratioの値を小さくすることで，corner誤謬の発生を抑制できる
+\end{itemize}
+
+以上の目的のもと，本研究においては以下の3つの実験を行った．
+
+\begin{itemize}
+\item \textbf{実験1：}検証ゲームに対して，${\rho}=1.2$としてcorner bonusを適用する
+\item \textbf{実験2：}検証ゲーム，学習ゲーム，もしくは検証ゲームと学習ゲームの両方に対して，ゲーム内の進行状況に応じて${\rho}=1.2$または${\rho}=1.1$としてcorner bonusを適用する
+\item \textbf{実験3：}より精密な学習を行うため，学習率と学習ゲーム数を変更する．またcorner bonusの値について，実験2では1種類しかなかった変更するタイミングを，実験3においては3種類用意する
+\end{itemize}
+
+\section{実験のセットアップ}
+\subsubsection{プログラムの実装}
+プログラムについては，Szubert \& Ja\'{s}kowskiによるJavaの実装\cite{SzubertInple}を元に，C++で実装を行った．基本的に2048の学習器を訓練するために学習ゲームと検証ゲームを行うプログラムは全て実装したが，nタプルネットワークに対して対称なnタプルを取得するためのクラス\verb|StandardSymmetryExpander|および学習データをファイルへ出力・入力する際に用いるシリアライザは実装しなかった．
+
+\subsubsection{実行環境}
+実験1の実行環境は以下の通りである．
+
+\begin{itemize}
+\item CPU：Intel Core i7-2600S（2.80GHz, 8コア）
+\item メモリ：16GB
+\item OS：ubuntu 16.04.3 LTS
+\item コンパイラ：g++ 5.4.0
+\end{itemize}
+
+メモリが多く必要になったため，実験2・実験3は以下の環境で行った．
+
+\begin{itemize}
+\item CPU：AMD Opteron Processor 6274（1.40GHz, 64コア）
+\item メモリ：256GB
+\item OS：ubuntu 16.04.1 LTS
+\item コンパイラ：g++ 5.4.0
+\end{itemize}
+
+\subsubsection{nタプルの対称性と実行時間}
+実験2および3についてはWuによるnタプルネットワークの配置を用いた．Wuは4つの基本タプルを保持し，盤面を回転・反射させることで，基本タプルに対する1つの盤面の学習において，さまざまな配置の盤面を学習させることを可能にした．一方この実験においては，盤面ではなく基本のnタプルの配置を回転・反射させて，基本タプルと対称なタプルを保持するようにした．これによって，Wuと同様に高い性能で学習することが可能になったが，1回の実験にあたって約3億個の重みを保持する必要が出てしまい，その結果1回の実験ではメモリを10GB消費することとなった．
+
+このようなnタプルネットワークの条件の下で実験を行った結果，実験3は500,000ゲームの学習が終了するまで約17時間，1,000,000ゲームの学習が終了するまでには約40時間を要した．
+
+\section{実験1：maximum-in-corner方策の有用性の提示}
 まず最初に，maximum-in-corner方策を使用することに効果があるのか調べるため，${\rho}=1.2$として実験を行った．詳細な実験のセッティングは以下の通りである．
 
 \begin{itemize}
@@ -693,29 +737,21 @@ corner ratioによる割増を行わない場合は$a_{\tau}$が最も大きな�
 \item 使用するcorner ratio：${\rho}=1.2$
 \end{itemize}
 
-上記の実験の結果のうち，各検証ゲームにおける平均スコアをグラフにプロットしたのが図\ref{figure_006}である．全体的な傾向としては，約200,000ゲームほどの学習を終えるまでの間はcorner ratioあり，すなわちmaximum-in-corner方策を採用したほうが成績が良い．しかしながら，その後はmaximum-in-corner方策なしの方が全体的に成績が良くなり，一応平均スコアは伸び続けているもののmaximum-in-corner方策ありの方は成績が低調になる．
+上記の実験の結果のうち，各検証ゲームにおける平均スコアをグラフにプロットしたのが図\ref{figure_006}である．全体的な傾向としては，約200,000ゲームほどの学習を終えるまでの間はcorner ratioあり，すなわちmaximum-in-corner方策を採用したほうが成績が良い．しかしながら，その後はmaximum-in-corner方策なしの方が全体的に成績が良くなり，一応平均スコアは伸び続けているもののmaximum-in-corner方策ありの方は成績が低調になる．500,000ゲーム学習した中で，検証中にcorner ratioなしのプレイヤが記録した最も高い平均スコアは96,600（490,000ゲーム学習時点）で，corner ratioありのプレイヤが記録した最も高い平均スコアは91,103（
+485,000ゲーム学習時点）であった．
 
 \begin{figure}[t]
 	\begin{center}
 	\includegraphics[width=13cm]{figure_006.eps}
-	\caption{実験1の結果}
+	\caption{実験1：maximum-in-corner方策の有用性の提示．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio」は，検証ゲーム中に${\rho}=1.2$のcorner ratioを適用したプレイヤである．}
 	\label{figure_006}
 	\end{center}
 \end{figure}
 
-実験1の結果より，高い値のcorner ratioを設定することは学習の序盤において効果があることがわかったが，一方で学習が進むと，かえって学習器の性能を弱めてしまうということがわかった．これらの事実に基づき，以下の仮説を立てた．
-
-\begin{itemize}
-\item 一般に，maximum-in-corner方策を採用すること自体は2048プレイヤの性能を高める可能性がある
-\item 学習ゲームを重ねるにつれTD学習による学習器の性能は良くなるので，高いcorner ratioの値はcorner誤謬を引き起こす
-\end{itemize}
-
-この仮説が正しいことを示すために，corner ratioの適用について様々な条件を用意する追加実験を行うことにした．
-
-\section{実験2：2つの${\rho}$の値を用いる}
+\section{実験2：二段階のcorner ratioを使用することによる効果の提示}
 実験1においては検証ゲーム中に一貫して${\rho}=1.2$としていたが，学習ゲームが進んだ後にもこの値を使い続けることはあまり良くないということがわかった．そこで，実験2においては，ゲームの状況に応じて異なるcorner ratioの値を使用することとした．また，実験1では検証中のみにmaximum-in-corner方策を採用していたが，実験2においては学習中および検証中と学習中の両方に採用する条件も設定することとした．
 
-なお，ゲームの進行状況を示す指標としては，スコアと$maxtile$を用いることができる．今回の実験ではcorner ratioを変更する指標として，スコアを参照する実験と$maxtile$を参照する実験の両方をそれぞれ行った．詳細な実験のセッティングは以下の通りである．
+なお，ゲームの進行状況を示す指標としては，スコアと$maxtile$を用いることができる．どちらの指標を用いてcorner ratioを変更するのがより適当かを判断するため，今回の実験ではスコアを参照する実験と$maxtile$を参照する実験の両方をそれぞれ行った．詳細な実験のセッティングは以下の通りである．
 
 \begin{itemize}
 \item 学習ゲーム数：500,000
@@ -741,7 +777,7 @@ corner ratioによる割増を行わない場合は$a_{\tau}$が最も大きな�
 \begin{figure}[tb]
 	\begin{center}
 	\includegraphics[width=13cm]{figure_007.eps}
-	\caption{実験2の結果 - 検証ゲームへのmaximum-in-corner方策の適用}
+	\caption{実験2：検証ゲームへのmaximum-in-corner方策の適用．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio\_4096\_verifying」は，検証ゲーム中に，$maxtile=4096$を達成するまでは${\rho}=1.2$，達成した後は${\rho}=1.1$のcorner ratioを適用したプレイヤである．「corner\_ratio\_70k\_verifying」は，検証ゲーム中に，スコア70,000点を達成するまでは${\rho}=1.2$，達成した後は${\rho}=1.1$のcorner ratioを適用したプレイヤである．}
 	\label{figure_007}
 	\end{center}
 \end{figure}
@@ -749,7 +785,7 @@ corner ratioによる割増を行わない場合は$a_{\tau}$が最も大きな�
 \begin{figure}[tb]
 	\begin{center}
 	\includegraphics[width=13cm]{figure_008.eps}
-	\caption{実験2の結果 - 学習ゲームへのmaximum-in-corner方策の適用}
+	\caption{実験2：学習ゲームへのmaximum-in-corner方策の適用．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio\_4096\_learning」は，学習ゲーム中に，$maxtile=4096$を達成するまでは${\rho}=1.2$，達成した後は${\rho}=1.1$のcorner ratioを適用したプレイヤである．「corner\_ratio\_70k\_learning」は，学習ゲーム中に，スコア70,000点を達成するまでは${\rho}=1.2$，達成した後は${\rho}=1.1$のcorner ratioを適用したプレイヤである．}
 	\label{figure_008}
 	\end{center}
 \end{figure}
@@ -757,15 +793,15 @@ corner ratioによる割増を行わない場合は$a_{\tau}$が最も大きな�
 \begin{figure}[tb]
 	\begin{center}
 	\includegraphics[width=13cm]{figure_009.eps}
-	\caption{実験2の結果 - 検証・学習ゲームへのmaximum-in-corner方策の適用}
+	\caption{実験2：検証・学習ゲームへのmaximum-in-corner方策の適用．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio\_4096\_both」は，検証・学習ゲーム中に，$maxtile=4096$を達成するまでは${\rho}=1.2$，達成した後は${\rho}=1.1$のcorner ratioを適用したプレイヤである．「corner\_ratio\_70k\_both」は，検証・学習ゲーム中に，スコア70,000点を達成するまでは${\rho}=1.2$，達成した後は${\rho}=1.1$のcorner ratioを適用したプレイヤである．}
 	\label{figure_009}
 	\end{center}
 \end{figure}
 
-実験2の結果，ゲームの進行に応じてcorner ratioを変更することにより，TD学習によって学習器の性能が良くなった後でも，maximum-in-corner方策を適用することでさらなる成績の向上が行われることがわかった．それと同時に，ゲームの進行に応じてcorner ratioを割り引くことで，corner誤謬の発生を抑制できるということもわかった．最後に，より適切なcorner ratioの変更の条件を求めつつ，さらに2048プレイヤとしての性能を高めるため，学習率と学習ゲーム数を変更する実験を行った．
+実験2の結果，ゲームの進行に応じてcorner ratioを変更することにより，TD学習によって学習器の性能が良くなった後でも，maximum-in-corner方策を適用することでさらなる成績の向上が行われることがわかった．それと同時に，ゲームの進行に応じてcorner ratioを割り引くことで，corner誤謬の発生を抑制できるということもわかった．
 
-\section{実験3：学習率および学習ゲーム数を変更する}
-実験3においては，より2048プレイヤとしての性能を高めるために，学習率を0.0025に引き下げ，学習ゲーム数を従来の2倍の1,000,000ゲームに変更した．学習率を引き下げることで価値関数$V$の更新が穏やかになるため，学習の速さは若干遅くなるものの，その分精密な学習がなされて最終的な性能は高くなることが期待される．これに加えて，ゲーム中のスコアに応じてcorner ratioを変更することが有効であると判明した実験2の結果を踏まえて，corner ratioを変更する条件として設定するスコアの境界値をさまざまな値に変動させて実験を行った．その他の条件も含めた実験のセッティングは以下の通り．
+\section{実験3：学習率および学習ゲーム数の変更による性能の向上の提示}
+実験3においては，より2048プレイヤとしての性能を高めるために，学習率を0.0025\footnote{Szubert \& Ja\'{s}kowskiの実験において，${\alpha}=0.0025$がより良い結果をもたらすことが示されていたことによる}に引き下げ，学習ゲーム数を従来の2倍の1,000,000ゲームに変更した．学習率を引き下げることで価値関数$V$の更新が穏やかになるため，学習の速さは若干遅くなるものの，その分精密な学習がなされて最終的な性能は高くなることが期待される．これに加えて，ゲーム中のスコアに応じてcorner ratioを変更することが有効であると判明した実験2の結果を踏まえて，corner ratioを変更する条件として設定するスコアの境界値をさまざまな値に変動させて実験を行った．その他の条件も含めた実験のセッティングは以下の通り．
 
 \begin{itemize}
 \item 学習ゲーム数：1,000,000
@@ -792,7 +828,7 @@ corner ratioによる割増を行わない場合は$a_{\tau}$が最も大きな�
 \begin{figure}[tb]
 	\begin{center}
 	\includegraphics[width=13cm]{figure_011.eps}
-	\caption{実験3の結果 - ランダムシードA}
+	\caption{実験3：ランダムシードA}
 	\label{figure_011}
 	\end{center}
 \end{figure}
@@ -800,7 +836,7 @@ corner ratioによる割増を行わない場合は$a_{\tau}$が最も大きな�
 \begin{figure}[tb]
 	\begin{center}
 	\includegraphics[width=13cm]{figure_012.eps}
-	\caption{実験3の結果 - ランダムシードB}
+	\caption{実験3：ランダムシードB}
 	\label{figure_012}
 	\end{center}
 \end{figure}
@@ -808,7 +844,7 @@ corner ratioによる割増を行わない場合は$a_{\tau}$が最も大きな�
 \begin{figure}[tb]
 	\begin{center}
 	\includegraphics[width=13cm]{figure_013.eps}
-	\caption{実験3の結果 - ランダムシードC}
+	\caption{実験3：ランダムシードC}
 	\label{figure_013}
 	\end{center}
 \end{figure}
@@ -871,6 +907,7 @@ corner ratioによる割増を行わない場合は$a_{\tau}$が最も大きな�
  \bibitem{Bagheri} S Bagheri, M Thill, P Koch, \& W Konen. Online Adaptable Learning Rates for the Game Connect-4. Computational Intelligence and AI in Games, IEEE Transactions on, 8(1):33–42, 2016.
  \bibitem{Mahmood} Ashique Rupam Mahmood, Richard S Sutton, Thomas Degris, and Patrick M Pilarski. Tuning-free step-size adaptation. In Acoustics, Speech and Signal Processing (ICASSP), 2012 IEEE International Conference on, pages 2121–2124. IEEE, 2012.
  \bibitem{IDBD} Richard S Sutton. Adapting bias by gradient descent: An incremental version of delta-bar-delta. In AAAI, pages 171–176, 1992.
+ \bibitem{SzubertInple} N-Tuple Networks for the Game 2048. https://github.com/mszubert/2048
 \end{thebibliography}
 
 \end{document}
