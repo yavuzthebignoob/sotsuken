@@ -117,53 +117,53 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}array方策}{24}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}maximum-in-corner方策}{24}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}ヒューリスティックスと強化学習によるプレイヤの関係}{24}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第4章}提案と実装}{26}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第4章}提案と実装}{27}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}maximum-in-corner方策の導入}{26}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}$V(s_{a_{\sigma }}) > V(s_{a_{\tau }})$の場合}{26}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}$V(s_{a_{\sigma }}) < V(s_{a_{\tau }})$かつ${\rho }V(s_{a_{\sigma }}) > V(s_{a_{\tau }})$の場合}{27}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}$V(s_{a_{\sigma }}) < V(s_{a_{\tau }})$かつ${\rho }V(s_{a_{\sigma }}) < V(s_{a_{\tau }})$の場合}{27}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}実装}{27}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}Temporal Difference Learning (TD(0))}{28}}
-\newlabel{alg2}{{2}{28}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Maximum-in-corner Policy}}{30}}
-\newlabel{alg3}{{3}{30}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}maximum-in-corner方策の導入}{27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}$V(s_{a_{\sigma }}) > V(s_{a_{\tau }})$の場合}{27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}$V(s_{a_{\sigma }}) < V(s_{a_{\tau }})$かつ${\rho }V(s_{a_{\sigma }}) > V(s_{a_{\tau }})$の場合}{28}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}$V(s_{a_{\sigma }}) < V(s_{a_{\tau }})$かつ${\rho }V(s_{a_{\sigma }}) < V(s_{a_{\tau }})$の場合}{28}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}実装}{28}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}Temporal Difference Learning (TD(0))}{29}}
+\newlabel{alg2}{{2}{29}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Maximum-in-corner Policy}}{31}}
+\newlabel{alg3}{{3}{31}}
 \citation{SzubertInple}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}実験}{31}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}実験}{32}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}実験の目標}{31}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}実験のセットアップ}{31}}
-\@writefile{toc}{\contentsline {subsubsection}{プログラムの実装}{31}}
-\@writefile{toc}{\contentsline {subsubsection}{実行環境}{32}}
-\@writefile{toc}{\contentsline {subsubsection}{nタプルの対称性と実行時間}{32}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}実験1：maximum-in-corner方策の有用性の提示}{32}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces 実験1：maximum-in-corner方策の有用性の提示．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio」は，検証ゲーム中に${\rho }=1.2$のcorner ratioを適用したプレイヤである．}}{33}}
-\newlabel{figure_006}{{5.1}{33}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}実験2：二段階のcorner ratioを使用することによる効果の提示}{33}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces 実験2：検証ゲームへのmaximum-in-corner方策の適用．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio\_4096\_verifying」は，検証ゲーム中に，$maxtile=4096$を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．「corner\_ratio\_70k\_verifying」は，検証ゲーム中に，スコア70,000を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．}}{35}}
-\newlabel{figure_007}{{5.2}{35}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}実験3：学習率および学習ゲーム数の変更による性能の向上の提示}{35}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces 実験2：学習ゲームへのmaximum-in-corner方策の適用．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio\_4096\_learning」は，学習ゲーム中に，$maxtile=4096$を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．「corner\_ratio\_70k\_learning」は，学習ゲーム中に，スコア70,000を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．}}{36}}
-\newlabel{figure_008}{{5.3}{36}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces 実験2：検証・学習ゲームへのmaximum-in-corner方策の適用．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio\_4096\_both」は，検証・学習ゲーム中に，$maxtile=4096$を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．「corner\_ratio\_70k\_both」は，検証・学習ゲーム中に，スコア70,000を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．}}{37}}
-\newlabel{figure_009}{{5.4}{37}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces 実験3：ランダムシードA}}{38}}
-\newlabel{figure_011}{{5.5}{38}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces 実験3：ランダムシードB}}{39}}
-\newlabel{figure_012}{{5.6}{39}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces 実験3：ランダムシードC}}{39}}
-\newlabel{figure_013}{{5.7}{39}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}考察と結論}{40}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}実験の目標}{32}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}実験のセットアップ}{32}}
+\@writefile{toc}{\contentsline {subsubsection}{プログラムの実装}{32}}
+\@writefile{toc}{\contentsline {subsubsection}{実行環境}{33}}
+\@writefile{toc}{\contentsline {subsubsection}{nタプルの対称性と実行時間}{33}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}実験1：maximum-in-corner方策の有用性の提示}{33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces 実験1：maximum-in-corner方策の有用性の提示．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio」は，検証ゲーム中に${\rho }=1.2$のcorner ratioを適用したプレイヤである．}}{34}}
+\newlabel{figure_006}{{5.1}{34}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}実験2：二段階のcorner ratioを使用することによる効果の提示}{34}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces 実験2：検証ゲームへのmaximum-in-corner方策の適用．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio\_4096\_verifying」は，検証ゲーム中に，$maxtile=4096$を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．「corner\_ratio\_70k\_verifying」は，検証ゲーム中に，スコア70,000を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．}}{36}}
+\newlabel{figure_007}{{5.2}{36}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}実験3：学習率および学習ゲーム数の変更による性能の向上の提示}{36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces 実験2：学習ゲームへのmaximum-in-corner方策の適用．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio\_4096\_learning」は，学習ゲーム中に，$maxtile=4096$を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．「corner\_ratio\_70k\_learning」は，学習ゲーム中に，スコア70,000を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．}}{37}}
+\newlabel{figure_008}{{5.3}{37}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces 実験2：検証・学習ゲームへのmaximum-in-corner方策の適用．「no\_corner\_ratio」は，maximum-in-corner方策を導入しない，強化学習による評価値のみを用いたプレイヤである．「corner\_ratio\_4096\_both」は，検証・学習ゲーム中に，$maxtile=4096$を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．「corner\_ratio\_70k\_both」は，検証・学習ゲーム中に，スコア70,000を達成するまでは${\rho }=1.2$，達成した後は${\rho }=1.1$のcorner ratioを適用したプレイヤである．}}{38}}
+\newlabel{figure_009}{{5.4}{38}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces 実験3：ランダムシードA}}{39}}
+\newlabel{figure_011}{{5.5}{39}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces 実験3：ランダムシードB}}{40}}
+\newlabel{figure_012}{{5.6}{40}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces 実験3：ランダムシードC}}{40}}
+\newlabel{figure_013}{{5.7}{40}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}考察と結論}{41}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}実験1の考察}{40}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}実験2の考察}{40}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}実験3の考察}{41}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}実験の成果}{42}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}future works}{42}}
-\@writefile{toc}{\contentsline {chapter}{謝辞}{43}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}実験1の考察}{41}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}実験2の考察}{41}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}実験3の考察}{42}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}実験の成果}{43}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}future works}{43}}
+\@writefile{toc}{\contentsline {chapter}{謝辞}{44}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{2048game}{1}
@@ -178,7 +178,7 @@
 \bibcite{Tesauro}{10}
 \bibcite{Runarsson}{11}
 \bibcite{Schraudolph}{12}
-\@writefile{toc}{\contentsline {chapter}{参考文献}{44}}
+\@writefile{toc}{\contentsline {chapter}{参考文献}{45}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{Dries}{13}
